@@ -1,0 +1,129 @@
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+      when: always
+
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: always
+
+    - when: never
+
+stages:
+  - test
+  - report
+
+variables:
+  GRADLE_USER_HOME: "$CI_PROJECT_DIR/.gradle"
+  GRADLE_TASK:
+    value: "Criticos"
+    description: "Tarea Gradle: RegresionCompleta, Criticos, Echeq, JunitTest o FullTestJunit4"
+  TEST_FILTER:
+    value: ""
+    description: "Filtro opcional. Ejemplo: *TC0139BERSA*"
+  ENVIRONMENT:
+    value: "EntreRios"
+    description: "Ambiente fijo para este proyecto"
+  METODO:
+    value: "masterCode"
+    description: "Metodo de ejecucion"
+  DATABASE_MODE:
+    value: "json"
+    description: "Fuente de datos: json o mysql"
+  APP_VERSION:
+    value: "2.64.1"
+    description: "Versión de la app para el header xAppVersion en requests API."
+
+
+run_tests:
+  stage: test
+  image: eclipse-temurin:21-jdk-jammy
+  timeout: 60 minutes
+  allow_failure: true
+
+  cache:
+    key: "${CI_COMMIT_REF_SLUG}-gradle"
+    paths:
+      - .gradle/caches/
+      - .gradle/wrapper/
+    policy: pull-push
+
+  before_script:
+    - |
+      echo "Configurando DNS para HBI API Entre Rios..."
+      echo "10.134.69.19 apii.dev.bancoune.com" >> /etc/hosts
+      if getent hosts apii.dev.bancoune.com > /dev/null 2>&1; then
+        echo "OK: apii.dev.bancoune.com resuelve correctamente"
+      else
+        echo "WARNING: no se pudo resolver apii.dev.bancoune.com"
+      fi
+    - chmod +x ./gradlew
+    - test -f src/main/resources/usuarios_hbiapi_bersa.json
+    - apt-get update -qq
+    - apt-get install -y -qq curl > /dev/null 2>&1
+
+    - |
+        echo "Probando API..."
+        curl -k -I https://apii.dev.bancoune.com || true
+
+  script:
+    - |
+      ARGS=(
+        "${GRADLE_TASK}"
+        "-Penv=${ENVIRONMENT}"
+        "-Pmetodo=${METODO}"
+        "-DdataBase=${DATABASE_MODE}"
+        "-DappVersion=${APP_VERSION}"
+        "--no-daemon"
+        "--info"
+      )
+
+      if [ -n "${TEST_FILTER}" ]; then
+        ARGS+=("--tests" "${TEST_FILTER}")
+      fi
+
+      echo "Ejecutando ./gradlew ${ARGS[*]}"
+      ./gradlew "${ARGS[@]}"
+
+  artifacts:
+    when: always
+    expire_in: 7 days
+    reports:
+      junit:
+        - build/test-results/**/*.xml
+    paths:
+      - build/allure-results/
+      - build/test-results/
+      - build/reports/tests/
+
+
+generate_report:
+  stage: report
+  image: eclipse-temurin:21-jdk-jammy
+  when: always
+  needs:
+    - job: run_tests
+      artifacts: true
+
+  before_script:
+    - apt-get update -qq
+    - apt-get install -y -qq wget unzip > /dev/null 2>&1
+
+  script:
+    - |
+      ALLURE_VERSION="2.27.0"
+      ALLURE_URL="https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/${ALLURE_VERSION}/allure-commandline-${ALLURE_VERSION}.zip"
+      wget -q "${ALLURE_URL}" -O /tmp/allure-commandline.zip
+      unzip -q /tmp/allure-commandline.zip -d /opt/
+      export PATH="/opt/allure-${ALLURE_VERSION}/bin:${PATH}"
+
+      if [ ! -d build/allure-results ] || [ -z "$(ls -A build/allure-results 2>/dev/null)" ]; then
+        mkdir -p build/allure-results
+      fi
+
+      allure generate build/allure-results -o allure-report --clean
+
+  artifacts:
+    when: always
+    expire_in: 7 days
+    paths:
+      - allure-report/

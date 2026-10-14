@@ -1,0 +1,9 @@
+{
+  "idProduct": "_idProducto_",
+  "adhesionCode": "_adhesionCode_",
+  "enteDescription": "_empresa_",
+  "belongsTo": "_pertenece_",
+  "userLp": "_codeServicio_",
+  "ajax_uuid": "ac0144b9-d7a6-4fb1-a93c-97b04e5b5658",
+  "xAppVersion": "1.74.0"
+}

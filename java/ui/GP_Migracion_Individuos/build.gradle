@@ -1,0 +1,450 @@
+
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '2.8.1'
+}
+
+group 'global.practia.school'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    jcenter()
+    mavenCentral()
+    maven{
+        url "https://plugins.gradle.org/m2/"
+    }
+    flatDir {
+        dirs 'dependencies'
+    }
+}
+
+dependencies {
+    testImplementation group: 'junit', name: 'junit', version: '4.13.1'
+    implementation group: 'practia.global.jemeinsam-stark.madrid', name: 'web', version: '1.0-SNAPSHOT'
+    testImplementation group: 'io.qameta.allure', name: 'allure-gradle', version: '2.8.1'
+    testImplementation 'mysql:mysql-connector-java-8.0.29'
+    implementation 'io.rest-assured:rest-assured:5.4.0'
+    implementation 'io.rest-assured:json-schema-validator:5.4.0'
+    testImplementation 'io.rest-assured:json-path:5.4.0'
+}
+
+allure {
+    version = '2.13.0'
+    autoconfigure = false
+    aspectjweaver = true
+    configuration = 'testImplementation'
+    useJUnit5 {
+        version = allure.version
+    }
+}
+
+
+def environmentConfig = [
+        SantaFe: [
+                baseUrl: 'https://hbtest01.bancosantafe.com/startPage',
+                baseApiUrl: 'https://apitest01.bancosantafe.com',
+                banco: 'SantaFe'
+        ],
+        EntreRios: [
+                baseUrl: 'https://hbtest01.bancoentrerios.com/startPage',
+                baseApiUrl: 'https://apitest01.bancoentrerios.com',
+                banco:'EntreRios'
+        ],
+        SanJuan: [
+                baseUrl: 'https://hbtest01.bancosanjuan.com/startPage',
+                baseApiUrl: 'https://apitest01.bancosanjuan.com',
+                banco:'SanJuan'
+        ],
+        SantaCruz : [
+                baseUrl: 'https://hbtest01.bancosantacruz.com/startPage',
+                baseApiUrl: 'https://apitest01.bancosantacruz.com',
+                banco:'SantaCruz'
+        ]
+]
+
+def env = project.hasProperty('env') ? project.env : 'SantaFe'
+
+def selectedEnvConfig = environmentConfig[env]
+
+def mainUrl = selectedEnvConfig.get('baseUrl')
+def apiUrl  = selectedEnvConfig.get('baseApiUrl')
+def bank = selectedEnvConfig.get('banco')
+
+def metodo = project.hasProperty("metodo") ? project.metodo : "comun"
+
+test{
+    System.setProperty("appUrl", mainUrl)
+    System.setProperty("bankAPI", apiUrl)
+    System.setProperty("metodo",metodo)
+    systemProperties = System.properties
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+task GPSanity(type:Test){
+    systemProperties = System.properties
+    include '**/SanityTest/Sanity.class'
+    outputs.upToDateWhen {false}
+}
+// Ejecuciones x TAGs
+task Criticos(type:Test){
+    systemProperties = System.properties
+    useJUnit({
+        includeCategories 'GP.Tags.Criticos'
+    })
+    include '**/'+ bank +'/**/*Test.class'
+    outputs.upToDateWhen {false}
+}
+task Alta(type:Test){
+    systemProperties = System.properties
+    useJUnit({
+        includeCategories 'GP.Tags.Alta'
+    })
+    include '**/'+ bank +'/**/*Test.class'
+    outputs.upToDateWhen {false}
+}
+task Media(type:Test){
+    systemProperties = System.properties
+    useJUnit({
+        includeCategories 'GP.Tags.Media'
+    })
+    include '**/'+ bank +'/**/*Test.class'
+    outputs.upToDateWhen {false}
+}
+task Baja(type:Test){
+    systemProperties = System.properties
+    useJUnit({
+        includeCategories 'GP.Tags.Baja'
+    })
+    include '**/'+ bank +'/**/*Test.class'
+    outputs.upToDateWhen {false}
+}
+
+task RegresionCompletaCarpetaCriticos(type: Test) {
+    systemProperties = System.properties
+    include '**/'+ bank +'/**/*Test.class'
+    outputs.upToDateWhen {false}
+}
+task RegresionCompleta(type: Test) {
+    systemProperties = System.properties
+    include '**/'+ bank +'/front/FrontTest.class'
+    outputs.upToDateWhen {false}
+}
+
+task RegresionFront(type: Test) {
+    systemProperties = System.properties
+    include '**/'+ bank +'/**/FrontTest.class'
+    outputs.upToDateWhen {false}
+}
+task RollbackFront(type: Test) {
+    systemProperties = System.properties
+    include '**/'+ bank +'/**/FrontTest.class'
+    outputs.upToDateWhen {false}
+
+    // Métodos específicos dentro de FrontTest:
+    filter {
+        includeTestsMatching "*.${bank}.*.FrontTest.TC0044*"
+        includeTestsMatching "*.${bank}.*.FrontTest.TC0045*"
+        includeTestsMatching "*.${bank}.*.FrontTest.TC0046*"
+        includeTestsMatching "*.${bank}.*.FrontTest.TC0047*"
+        includeTestsMatching "*.${bank}.*.FrontTest.TC0104*"
+        failOnNoMatchingTests = true
+    }
+
+}
+task RegresionSinHA(type: Test) {
+    systemProperties = System.properties
+    include '**/'+ bank +'/**/*Test.class'
+    exclude '**/' + bank + '/herramientas_de_accesibilidad/**'
+    exclude '**/' + bank + '/inversiones/FCIEsco/**'
+    outputs.upToDateWhen {false}
+}
+task RegresionSinHAySinInversiones(type: Test) {
+    systemProperties = System.properties
+    include '**/'+ bank +'/**/*Test.class'
+    exclude '**/' + bank + '/herramientas_de_accesibilidad/**'
+    exclude '**/' + bank + '/inversiones/**'
+    outputs.upToDateWhen {false}
+}
+task RegresionSinCasosCriticosySinHA(type: Test) {
+    systemProperties = System.properties
+    include '**/'+ bank +'/**/*Test.class'
+    exclude '**/' + bank + '/herramientas_de_accesibilidad/**'
+    useJUnit({
+        excludeCategories 'GP.Tags.Criticos'
+    })
+    outputs.upToDateWhen {false}
+}
+task GPHerramientasAccesibilidad(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank + '/herramientas_de_accesibilidad/**'
+    outputs.upToDateWhen {false}
+}
+task GPInversiones(type: Test) {
+    systemProperties = System.properties
+    include '**/' + bank + '/inversiones/**'
+    outputs.upToDateWhen {false}
+}
+
+task FCISuscripcionDMPesos(type: Test) {
+    systemProperties = System.properties
+    include '**/' + bank + '/inversiones/FCIEsco/SuscripcionDentroHorarioMercadoTest.class'
+    outputs.upToDateWhen {false}
+}
+task FCISuscripcionDMDolares(type: Test) {
+    systemProperties = System.properties
+    include '**/' + bank + '/inversiones/FCIEsco/SuscripcionDentroHorarioMercadoUSDTest.class'
+    outputs.upToDateWhen {false}
+}
+task FCISuscripcionFMPesos(type: Test) {
+    systemProperties = System.properties
+    include '**/' + bank + '/inversiones/FCIEsco/SuscripcionFueraHorarioMercadoTest.class'
+    outputs.upToDateWhen {false}
+}
+task FCISuscripcionFMDolares(type: Test) {
+    systemProperties = System.properties
+    include '**/' + bank + '/inversiones/FCIEsco/SuscripcionFueraHorarioMercadoUSDTest.class'
+    outputs.upToDateWhen {false}
+}
+task FCIRescateFMPesos(type: Test){
+    systemProperties = System.properties
+    include '**/' + bank + '/inversiones/FCIEsco/RescateFueraHorarioMercadoTest.class'
+    outputs.upToDateWhen {false}
+}
+task FCIRescateFMDolares(type: Test){
+    systemProperties = System.properties
+    include '**/' + bank + '/inversiones/FCIEsco/RescateFueraHorarioMercadoUSDTest.class'
+    outputs.upToDateWhen {false}
+}
+task FCISuscripcionFPesos(type: Test) {
+    systemProperties = System.properties
+    include '**/' + bank + '/inversiones/FCIEsco/SuscripcionFeriadoTest.class'
+    outputs.upToDateWhen {false}
+}
+task FCISuscripcionFDolares(type: Test) {
+    systemProperties = System.properties
+    include '**/' + bank + '/inversiones/FCIEsco/SuscripcionFeriadoUSDTest.class'
+    outputs.upToDateWhen {false}
+}
+task FCIRescateFPesos(type: Test) {
+    systemProperties = System.properties
+    include '**/' + bank + '/inversiones/FCIEsco/RescateFeriadoTest.class'
+    outputs.upToDateWhen {false}
+}
+task FCIRescateFDolares(type: Test) {
+    systemProperties = System.properties
+    include '**/' + bank + '/inversiones/FCIEsco/RescateFeriadoUSDTest.class'
+    outputs.upToDateWhen {false}
+}
+task FCIRescateDMPesos(type: Test) {
+    systemProperties = System.properties
+    include '**/' + bank + '/inversiones/FCIEsco/RescateDentroHorarioMercadoTest.class'
+    outputs.upToDateWhen {false}
+}
+task FCIRescateDMDolares(type: Test) {
+    systemProperties = System.properties
+    include '**/' + bank + '/inversiones/FCIEsco/RescateDentroHorarioMercadoUSDTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTestCuentas(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/CuentasTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTestCuotificalo(type:Test) {
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/CuotificaloTest.class'
+    outputs.upToDateWhen {false}
+}
+
+task GPTestTransferencias(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/TransferenciasTest.class'
+    outputs.upToDateWhen {false}
+}
+
+task GPTestPagos(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/PagosTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTestTarjetaDeCredito(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/TarjetasDeCreditoTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTestTurnosOnline(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/TurnosOnlineTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPLoginAPI(type:Test){
+    include '**/Tags/*/LoginAPI.class/*/loginStep1'
+}
+task GPTestCompraYVentaUSD(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/CompraYVentaUSDTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTestFondeCDI(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/FondoComunDeInversionesTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTestPlazoFijos(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/PlazoFijosTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTestEcheq(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/EcheqTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTestLogin(type:Test) {
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/LoginTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTestPantallaPrincipal(type:Test) {
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/PantallaPrincipalTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTesPerfil(type:Test) {
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/PerfilTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTestTarjetasDeDebito(type:Test) {
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/TarjetasDeDebitoTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTestRecargas(type:Test) {
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/RecargasTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTestMisTramites(type:Test) {
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/MisTramitesTest.class'
+    outputs.upToDateWhen {false}
+}
+
+task GPTestMensajes(type:Test) {
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/MensajesTest.class'
+    outputs.upToDateWhen {false}
+}    
+
+task GPTestColocacionesAPlazo(type:Test) {
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/ColocacionesAPlazoTest.class'
+    outputs.upToDateWhen {false}
+
+}
+task GPTestMisProductos(type: Test) {
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/MisProductosTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTestChatbot(type: Test) {
+    systemProperties = System.properties
+    include '**/'+ bank +'/**/ChatbotTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTestComparacionComisiones(type: Test) {
+    systemProperties = System.properties
+    include '**/'+ bank +'/**/ComparacionComisionesTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTestBonosDeSalud(type: Test) {
+    systemProperties = System.properties
+    include '**/' + bank +'/**/BonosDeSaludTest.class'
+}
+
+task GPTestCuentaComitente(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/CuentaComitenteTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTestSeguros(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/SegurosTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTestPrestamos(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/PrestamosTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTestPrestamosParaCancelarDeudas(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/PrestamosParaCancelarDeudasTest.class'
+    outputs.upToDateWhen {false}
+}
+
+task GPTestAdelantosDeSueldo(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/AdelantosDeSueldoTest.class'
+    outputs.upToDateWhen {false}
+}
+
+task GPTestCuentasAsociadas(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/CuentasAsociadasTest.class'
+    outputs.upToDateWhen {false}
+}
+
+task GPTestLoginHerramientasDeAccesibilidad(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/LoginHerramientasDeAccesibilidadTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTestEscritorioHerramientasDeAccesibilidadTest(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/EscritorioHerramientasDeAccesibilidadTest.class'
+    outputs.upToDateWhen {false}
+}
+
+task GPTestCuentasHerramientasDeAccesibilidad(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/CuentasHerramientasDeAccesibilidadTest.class'
+    outputs.upToDateWhen {false}
+}
+
+task GPTestTransferenciasHerramientasDeAccesibilidad(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/TransferenciasHerramientasDeAccesibilidadTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTestPagosHerramientasDeAccesibilidad(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/PagosHerramientasDeAccesibilidadTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTestRecargasHerramientasDeAccesibilidad(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/RecargasHerramientasDeAccesibilidadTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTestInversionesHerramientasDeAccesibilidad(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/InversionesHerramientasDeAccesibilidadTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTestTarjetasDeDebitoHerramientasDeAccesibilidad(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/TarjetasDeDebitoHerramientasDeAccesibilidadTest.class'
+    outputs.upToDateWhen {false}
+}
+task GPTestTarjetasDeCreditoHerramientasDeAccesibilidad(type:Test){
+    systemProperties = System.properties
+    include '**/'+ bank +'/*/TarjetasDeCreditoHerramientasDeAccesibilidadTest.class'
+    outputs.upToDateWhen {false}
+}

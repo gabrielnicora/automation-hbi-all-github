@@ -1,0 +1,10 @@
+{
+  "page": 0,
+  "type": "ACTION",
+  "subType": "M",
+  "currency": "PESOS",
+  "term": "AT_DAY",
+  "textSearch": "",
+  "ajax_uuid": "b64bb36c-8fce-4ee6-b2da-a1995d4b58f1",
+  "xAppVersion": "1.96.0"
+}

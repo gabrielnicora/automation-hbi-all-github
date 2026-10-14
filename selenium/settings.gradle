@@ -1,0 +1,13 @@
+rootProject.name = 'GP_Individuos_API'
+
+def dataBaseName = ["mysql", "json"]
+def dataBaseIndex = 0 // Indice para elegir con que base de datos entrar 0-mysql ; 1-json
+
+assignProperty('responseFull', 'false')
+assignProperty('dataBase', dataBaseName[dataBaseIndex])
+
+def assignProperty(String key, Object defaultValue){
+    if(System.getProperty(key) == null){
+        System.setProperty(key, defaultValue)
+    }
+}

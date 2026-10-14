@@ -1,0 +1,136 @@
+- generic [ref=f14e3]:
+  - banner [ref=f14e5]:
+    - generic [ref=f14e6]:
+      - generic "Icono para cerrar menú" [ref=f14e7] [cursor=pointer]
+      - link "Banco Entre Rios" [ref=f14e12] [cursor=pointer]:
+        - /url: /desktop
+    - generic [ref=f14e34]:
+      - link [ref=f14e36] [cursor=pointer]:
+        - /url: /communications
+        - paragraph [ref=f14e42]: Mensajes
+      - paragraph [ref=f14e49] [cursor=pointer]: Perfil
+      - paragraph [ref=f14e56] [cursor=pointer]: Salir
+  - generic [ref=f14e57]:
+    - navigation [ref=f14e59]:
+      - list [ref=f14e60]:
+        - listitem [ref=f14e61]:
+          - button [ref=f14e62] [cursor=pointer]:
+            - paragraph [ref=f14e69]: Inicio
+          - list
+        - listitem [ref=f14e70]:
+          - button [ref=f14e71] [cursor=pointer]:
+            - paragraph [ref=f14e78]: Cuentas
+          - list
+        - listitem [ref=f14e79]:
+          - button [ref=f14e80] [cursor=pointer]:
+            - paragraph [ref=f14e87]: Transferencias
+          - list
+        - listitem [ref=f14e88]:
+          - button [ref=f14e89] [cursor=pointer]:
+            - paragraph [ref=f14e97]: Inversiones
+          - list
+        - listitem [ref=f14e98]:
+          - button [ref=f14e99] [cursor=pointer]:
+            - paragraph [ref=f14e107]: Pagos y servicios
+          - list:
+            - listitem [ref=f14e113]:
+              - button "Pagos" [ref=f14e114] [cursor=pointer]:
+                - paragraph [ref=f14e115]:
+                  - generic [ref=f14e116]: Pagos
+            - listitem [ref=f14e117]:
+              - button "Recargas" [ref=f14e118] [cursor=pointer]:
+                - paragraph [ref=f14e119]:
+                  - generic [ref=f14e120]: Recargas
+        - listitem [ref=f14e121]:
+          - button [ref=f14e122] [cursor=pointer]:
+            - paragraph [ref=f14e129]: Tarjetas
+          - list:
+            - listitem [ref=f14e135]:
+              - button "Tarjeta de crédito" [ref=f14e136] [cursor=pointer]:
+                - paragraph [ref=f14e137]:
+                  - generic [ref=f14e138]: Tarjeta de crédito
+            - listitem [ref=f14e139]:
+              - button "Tarjeta de débito" [ref=f14e140] [cursor=pointer]:
+                - paragraph [ref=f14e141]:
+                  - generic [ref=f14e142]: Tarjeta de débito
+        - listitem [ref=f14e143]:
+          - button [ref=f14e144] [cursor=pointer]:
+            - paragraph [ref=f14e151]: Seguros
+          - list
+        - listitem [ref=f14e152]:
+          - button [ref=f14e153] [cursor=pointer]:
+            - paragraph [ref=f14e160]: Cuotifícalo
+          - list
+        - listitem [ref=f14e161]:
+          - button [ref=f14e162] [cursor=pointer]:
+            - paragraph [ref=f14e170]: Préstamos
+          - list
+        - listitem [ref=f14e171]:
+          - button [ref=f14e172] [cursor=pointer]:
+            - paragraph [ref=f14e179]: Trámites
+          - list:
+            - listitem [ref=f14e185]:
+              - button "Mis trámites" [ref=f14e186] [cursor=pointer]:
+                - paragraph [ref=f14e187]:
+                  - generic [ref=f14e188]: Mis trámites
+            - listitem [ref=f14e189]:
+              - button "Turnos online" [ref=f14e190] [cursor=pointer]:
+                - paragraph [ref=f14e191]:
+                  - generic [ref=f14e192]: Turnos online
+        - listitem [ref=f14e193]:
+          - button [ref=f14e194] [cursor=pointer]:
+            - paragraph [ref=f14e202]: Comparación de comisiones
+          - list
+        - listitem [ref=f14e203]:
+          - button [ref=f14e204] [cursor=pointer]:
+            - paragraph [ref=f14e212]: Mis Productos
+          - list:
+            - listitem [ref=f14e218]:
+              - button "Contratos" [ref=f14e219] [cursor=pointer]:
+                - paragraph [ref=f14e220]:
+                  - generic [ref=f14e221]: Contratos
+            - listitem [ref=f14e222]:
+              - button "Baja / Arrepentimiento" [ref=f14e223] [cursor=pointer]:
+                - paragraph [ref=f14e224]:
+                  - generic [ref=f14e225]: Baja / Arrepentimiento
+      - paragraph [ref=f14e227]: v 3.0.2
+    - generic [ref=f14e228]:
+      - alert
+      - main [ref=f14e231]:
+        - heading "Hola Diewc, Mxdq Mrvh Odxuhqwino" [level=2] [ref=f14e234]
+        - generic [ref=f14e235]:
+          - button [ref=f14e239] [cursor=pointer]:
+            - generic "Icono para ocultar información sensible" [ref=f14e240]
+            - paragraph [ref=f14e245]: Ocultar saldos
+          - generic [ref=f14e251]:
+            - link [ref=f14e254] [cursor=pointer]:
+              - /url: /transfers?fromMenu=true
+              - paragraph [ref=f14e260]: Transferir
+            - link [ref=f14e263] [cursor=pointer]:
+              - /url: /payments?fromMenu=false
+              - paragraph [ref=f14e270]: Pagos
+            - link [ref=f14e273] [cursor=pointer]:
+              - /url: /desktop
+              - paragraph [ref=f14e284]: Extraer con QR
+            - link [ref=f14e287] [cursor=pointer]:
+              - /url: /investments
+              - paragraph [ref=f14e294]: Inversiones
+            - link [ref=f14e297] [cursor=pointer]:
+              - /url: /loans?fromMenu=false
+              - paragraph [ref=f14e304]: Préstamos
+            - link [ref=f14e307] [cursor=pointer]:
+              - /url: /salaryAdvance?fromMenu=false
+              - paragraph [ref=f14e314]: Adelanto de haberes
+          - paragraph [ref=f14e322]:
+            - generic [ref=f14e323]: Tarjetas
+    - button "Contactar por WhatsApp" [ref=f14e330] [cursor=pointer]:
+      - img "WhatsApp" [ref=f14e331]
+    - contentinfo [ref=f14e332]:
+      - generic [ref=f14e333] [cursor=pointer]: utilCode
+      - generic [ref=f14e334] [cursor=pointer]: utilLogger
+      - link "Ayuda" [ref=f14e335] [cursor=pointer]:
+        - /url: /help
+      - link "Defensa de las y los Consumidores" [ref=f14e336] [cursor=pointer]:
+        - /url: /consumerDefense
+      - link "Términos y condiciones" [ref=f14e337] [cursor=pointer]:
+        - /url: /termsAndConditions

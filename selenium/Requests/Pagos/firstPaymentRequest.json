@@ -1,0 +1,16 @@
+{
+  "currency": "ARS",
+  "idProductTD": "_idProductoTarjeta_",
+  "idProductDA": "_idProductoCuenta_",
+  "amount": 1,
+  "enteCode": "969",
+  "enteDescription": "Mercado Libre",
+  "reference": "1234567878",
+  "debtID": "",
+  "conceptDescription": "",
+  "conceptCode": "_conceptCode_",
+  "ususarioLP": "00449535691",
+  "subscribe": false,
+  "adhesionCode": "_adhesionCode_",
+  "manageBaseDebt": false
+}

@@ -1,0 +1,14 @@
+{
+  "idProduct": "_idProduct_",
+  "amount": 10000,
+  "idAdvance": "_idAdvance_",
+  "tna": "_tna_",
+  "tea": "_tea_",
+  "cft": "_cft_",
+  "currency": "ARS",
+  "amountSeals": "_amountSeals_",
+  "moneyToAccredit": "_moneyToAccredit_",
+  "_otp": "OTP_TOKEN@_code2FA_",
+  "ajax_uuid": "0d799e36-c002-4aee-9d65-f463e4436c8e",
+  "xAppVersion": "1.79.1"
+}

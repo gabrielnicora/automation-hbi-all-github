@@ -1,0 +1,10 @@
+{
+  "debitCardId": "_debitCardId_",
+  "creditCardId": "_creditCardId_",
+  "accountId": "_accountId_",
+  "amount": "_amount_",
+  "currency": "ARS",
+  "ticketData": "{\"dueDate\":\"2025-05-08T00:00:00.000-03\",\"balanceArs\":9049.47,\"balanceUsd\":0,\"minimumPayment\":9049.47}",
+  "ajax_uuid": "54e704fe-84b5-4f71-b37e-762261f9e21a",
+  "xAppVersion": "1.81.1"
+}

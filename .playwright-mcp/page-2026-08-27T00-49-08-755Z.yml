@@ -1,0 +1,38 @@
+- generic [ref=e10]:
+  - alert
+  - main [ref=e52]:
+    - generic [ref=e124]:
+      - generic "Volver" [ref=e127]:
+        - paragraph [ref=e133]: Volver
+      - generic "Banco Entre Rios" [ref=e134]
+    - generic [ref=e155]:
+      - generic [ref=e157]:
+        - generic [ref=e160]:
+          - generic [ref=e166]: Usuario
+          - textbox "Usuario" [disabled] [ref=e167]: berhometest17
+          - generic "Icono para mostrar información sensible" [ref=e168]
+          - generic "Icono de editar" [ref=e173]
+        - img "avatar imagen manzanas" [ref=e179]
+      - generic [ref=e181]:
+        - generic [ref=e183]:
+          - generic [ref=e195]: Contraseña
+          - textbox "Contraseña" [ref=e196]
+        - generic "Icono para mostrar información sensible" [ref=e197]
+      - link "teclado virtual" [ref=e203] [cursor=pointer]:
+        - /url: /loginStep1
+      - generic [ref=e210]:
+        - link "Blanquear contraseña" [ref=e211] [cursor=pointer]:
+          - /url: /loginStep1
+        - paragraph [ref=e212]: "|"
+        - link "Desbloquear usuario" [ref=e213] [cursor=pointer]:
+          - /url: /loginStep1
+      - button "Ingresar" [ref=e215] [cursor=pointer]
+    - generic [ref=e219]:
+      - paragraph [ref=e220]:
+        - text: Operar con Home Banking implica aceptar los
+        - link "Términos y Condiciones" [ref=e221] [cursor=pointer]:
+          - /url: /termsAndConditions
+        - text: que ofrece el servicio.
+      - paragraph [ref=e222]:
+        - link "Información de seguridad" [ref=e223] [cursor=pointer]:
+          - /url: /loginStep1

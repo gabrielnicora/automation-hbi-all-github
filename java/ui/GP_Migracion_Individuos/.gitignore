@@ -1,0 +1,13 @@
+.idea/
+.gradle/
+.allure/
+build/allure*
+build/classes
+build/reports
+build/test-results
+build/tmp
+bin/
+.slingshot/prompts
+sample.prompt.md
+build/
+*.exe

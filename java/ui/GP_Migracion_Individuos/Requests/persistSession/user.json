@@ -1,0 +1,15 @@
+{
+  "defaultAvatarId": "_defaultAvatarId_",
+  "previousLoginInfo":"_previousLoginInfo_",
+  "userFullName": "_userFullName_",
+  "email": "_email_",
+  "firstName": "_firstName_",
+  "lastName": "",
+  "phoneNumber": "_phoneNumber_",
+  "gender": "_gender_",
+  "modoEnabled": false,
+  "documentNumber": "_documentNumber_",
+  "accessToken": "_accessToken_",
+  "securitySeal": "_securitySeal_",
+  "securitySealId": "_securitySealId_"
+}

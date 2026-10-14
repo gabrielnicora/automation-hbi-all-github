@@ -1,0 +1,37 @@
+{
+  "name": "automation-hbi-bersa",
+  "version": "0.1.0",
+  "description": "Framework de automatizacion API y UI de Banco Entre Rios con Playwright y TypeScript",
+  "private": true,
+  "packageManager": "pnpm@11.24.0",
+  "scripts": {
+    "test": "playwright test",
+    "test:api": "playwright test --project=api",
+    "test:api:profile": "playwright test tests/api/profile --project=api",
+    "test:api:transfers": "playwright test tests/api/transfers --project=api",
+    "test:api:login": "playwright test tests/api/authentication --project=api",
+    "test:ui": "playwright test --project=ui",
+    "test:ui:login": "playwright test tests/ui/authentication --project=ui",
+    "test:ui:investments": "playwright test tests/ui/investments --project=ui",
+    "test:ui:headed": "playwright test --project=ui --headed",
+    "report": "playwright show-report",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "pnpm run format:check && pnpm run typecheck && pnpm run lint",
+    "codegen": "playwright codegen"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.60.0",
+    "@types/node": "^22.0.0",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.9.6",
+    "typescript": "^5.6.0",
+    "typescript-eslint": "^8.62.0"
+  }
+}

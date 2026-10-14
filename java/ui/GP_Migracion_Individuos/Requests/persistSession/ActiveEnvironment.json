@@ -1,0 +1,11 @@
+{
+  "permissions":"_permissions_",
+  "forms": {},
+  "name": "_fullName_",
+  "type": "_type_",
+  "id":"_idEnvironment_",
+  "administrationScheme": "simple",
+  "enabledFunctionalities": "_enabledFunctionalities_",
+  "userPermissionOverFunctionality": "_userPermissionOverFunctionality_",
+  "productPermissionOverFunctionality": "_productPermissionOverFunctionality_"
+}

@@ -1,0 +1,14 @@
+{
+  "debitCard": "_IddebitCard_",
+  "entityCode": "GFX",
+  "paymentCode": "_codePago_",
+  "belongsTo": "TestAutomation",
+  "handleBaseDebts": true,
+  "debitCardDesc": "_debitCard_",
+  "categoryDesc": "_category_",
+  "entityDesc": "_entity_",
+  "userLP": "_codePago_",
+  "_otp": "OTP_TOKEN@_code_",
+  "ajax_uuid": "0f2a971c-5348-4325-b71c-ac6e03108749",
+  "xAppVersion": "1.74.0"
+}

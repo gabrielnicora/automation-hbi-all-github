@@ -1,0 +1,14 @@
+node_modules/
+playwright-report/
+test-results/
+blob-report/
+.env
+.env.*
+!.env.example
+*.log
+.pnpm-store/
+.auth/
+.playwright/
+.playwright-cli/
+.slingshot/
+.vscode/

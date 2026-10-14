@@ -1,0 +1,20 @@
+{
+  "ajax_uuid": "6afb0b1d-9053-4928-9f84-89e151ee21bc",
+  "currency": "ARS",
+  "orders": [
+    {
+      "amount": 100,
+      "documentNumber": "_document_",
+      "documentType": "DNI",
+      "documentTypeLabel": "DNI",
+      "idOrder": "f111ee40-1634-11f0-9a5a-b31db4c8c0ab",
+      "idProduct": "_idProduct_",
+      "originAccountLabel": "_originAccount_",
+      "originAccountNumber": "_originNumber_",
+      "reference": "TestAutomation"
+    }
+  ],
+  "total": 100,
+  "xAppVersion": "1.79.1",
+  "_otp": "OTP_TOKEN@_code2FA_"
+}

@@ -1,0 +1,12 @@
+{
+  "sellerCuit": "20179326591",
+  "accountId": "_idProductCuenta_",
+  "entitlement": "EDENOR",
+  "concept": "ALQ",
+  "description": "TestAutomation",
+  "reference": "TestAutomation",
+  "ticketData": "{\"bankName\":\"BSF\",\"buyerName\":\"ABRAM, CELIA MARIA \",\"buyerCuit\":\"27114486952\",\"sellerName\":\"TALEB, OMAR FABIO\"}",
+  "_otp": "OTP_TOKEN@_code_",
+  "ajax_uuid": "b2b67ba7-98ac-4e47-9cf0-3075eede7e54",
+  "xAppVersion": "1.75.0"
+}

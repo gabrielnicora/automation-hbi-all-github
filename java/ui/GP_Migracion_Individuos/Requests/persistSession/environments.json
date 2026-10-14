@@ -1,0 +1,12 @@
+{"_idEnvironment_":
+{
+  "idEnvironment": "_idEnvironment_",
+  "name": "_name_",
+  "environmentType": "_environmentType_",
+  "allowedToAccess": "_allowedToAccess_",
+  "calendarLoginRestrictionsEnabled": "_calendarLoginRestrictionsEnabled_",
+  "ipRestrictionsEnabled": "_ipRestrictionsEnabled_",
+  "productGroupId": "_productGroupId_",
+  "smallDesk": "false"
+}
+}

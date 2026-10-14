@@ -1,0 +1,44 @@
+rootProject.name = 'UIAutomation'
+
+def dataBaseName = ["mysql", "json"]
+def dataBaseIndex = 0 // Indice para elegir con que base de datos entrar 0-mysql ; 1-json
+
+assignProperty('browserName','chrome')
+assignProperty('appDefaultWait', '30')
+assignProperty('pageLoadWait','60')
+assignProperty('webdriver.chrome.driver','drivers/chromedriver.exe')
+assignProperty('dataBase', dataBaseName[dataBaseIndex])
+assignProperty('webdriver.chrome.driver','drivers/chromedriver.exe')
+assignProperty('webDriverManager', 'true')
+
+// ChromeDriver Capabilities
+assignProperty('startMaximized', 'true')
+assignProperty('noSandbox', 'true')
+assignProperty('disablePopupBlocking', 'true')
+assignProperty('allowRunningInsecureContent', 'true')
+assignProperty('enableAutomation', 'true')
+assignProperty('disableInfobars', 'true')
+assignProperty('disableDevShmUsage', 'true')
+assignProperty('disableBrowserSideNavigation', 'true')
+assignProperty('disableWebSecurity', 'true')
+assignProperty('allowInsecureLocalhost', 'true')
+assignProperty('ignoreUrlfetcherCertRequests', 'true')
+assignProperty('enableJavascript', 'true')
+assignProperty('ignoreCertificateErrors', 'true')
+assignProperty('incognito', 'false') //Cambiar si queremos ejecutar como incognito
+assignProperty('headless', 'true')   //Cambiar si queremos ver le ejecución
+assignProperty('ParallelTesting', 'false')
+assignProperty('screenResolution', '1920,1080')
+assignProperty('downloadDirectory', 'null')
+// ChromeDriver Prefs
+assignProperty('multiDownload', 'true')
+
+String user = System.getProperty("user.name");
+String path = "C:\\Users\\" + user + "\\Downloads\\";
+assignProperty('download.default_directory',path)
+
+def assignProperty(String key, Object defaultValue){
+    if(System.getProperty(key) == null){
+        System.setProperty(key, defaultValue)
+    }
+}

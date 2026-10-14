@@ -1,0 +1,13 @@
+{
+  "typeSelector": "CBU",
+  "accountSelector": "_accountSelector_",
+  "amount": 1,
+  "currency": "ARS",
+  "buyCuit": "_buyCuit_",
+  "aliasCbu": "_cbuDestino_",
+  "conceptSelector": "ALQ",
+  "reference": "TestAutomation",
+  "validitySelector": "720",
+  "ajax_uuid": "ba0cec85-a704-491b-87a7-348c9cdb1e75",
+  "xAppVersion": "1.74.0"
+}

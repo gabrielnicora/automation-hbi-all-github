@@ -1,0 +1,10 @@
+{
+  "transferType": "C",
+  "amount": "10",
+  "idDollarProduct": "_idProductDolar_",
+  "idPesosProduct": "_idProductPesos_",
+  "currency": "USD",
+  "agreement": true,
+  "ajax_uuid": "0c3d4a96-a2b7-40e7-aaf4-a6fadddd752f",
+  "xAppVersion": "1.80.0"
+}

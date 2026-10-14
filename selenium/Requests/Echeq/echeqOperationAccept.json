@@ -1,0 +1,33 @@
+{
+  "agreement": true,
+  "echeqList": [
+    {
+      "checkId": "_checkId_",
+      "nroEcheq": "_nroEcheq_",
+      "cuitCuil": "20063078175",
+      "personType": "GRIBAUDO, RICARDO AGUSTIN",
+      "status": "EMITIDO-PENDIENTE",
+      "amount": 100,
+      "concept": "ALQ",
+      "paymentDate": "2025-10-23T00:00:00.000-03",
+      "beneficiary": {
+        "identificationType": "CUIT",
+        "identificationNumber": "27114486952",
+        "businessName": "ABRAM, CELIA MARIA                      "
+      },
+      "assignments": null,
+      "pendingCession": {
+        "cessionID": "",
+        "assigneeDocumentType": "",
+        "assigneeDocumentNumber": "",
+        "assignorDocumentType": "",
+        "assignorDocumentNumber": "",
+        "assigneeName": "",
+        "assignorName": ""
+      }
+    }
+  ],
+  "_otp": "OTP_TOKEN@_code_",
+  "ajax_uuid": "933e2d7e-4e06-4ffc-b351-4367ab06f086",
+  "xAppVersion": "1.89.0"
+}

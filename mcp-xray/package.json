@@ -1,0 +1,28 @@
+{
+  "name": "mcp-xray",
+  "version": "0.1.0",
+  "description": "Servidor MCP (stdio) para Jira Server + Xray: descubrir campos, listar tests pendientes de automatizar y crear tests manuales.",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "mcp-xray": "dist/server.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server.js",
+    "dev": "tsx src/server.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}

@@ -1,0 +1,160 @@
+- generic [ref=e139]:
+  - banner [ref=e141]:
+    - generic [ref=e142]:
+      - generic "Icono para cerrar menú" [ref=e143] [cursor=pointer]
+      - link "Banco Entre Rios" [ref=e148] [cursor=pointer]:
+        - /url: /desktop
+    - generic [ref=e170]:
+      - link [ref=e172] [cursor=pointer]:
+        - /url: /communications
+        - paragraph [ref=e178]: Mensajes
+      - paragraph [ref=e185] [cursor=pointer]: Perfil
+      - paragraph [ref=e192] [cursor=pointer]: Salir
+  - generic [ref=e193]:
+    - navigation [ref=e195]:
+      - list [ref=e196]:
+        - listitem [ref=e197]:
+          - button [ref=e198] [cursor=pointer]:
+            - paragraph [ref=e205]: Inicio
+          - list
+        - listitem [ref=e206]:
+          - button [ref=e207] [cursor=pointer]:
+            - paragraph [ref=e214]: Cuentas
+          - list
+        - listitem [ref=e215]:
+          - button [ref=e216] [cursor=pointer]:
+            - paragraph [ref=e223]: Transferencias
+          - list
+        - listitem [ref=e224]:
+          - button [ref=e225] [cursor=pointer]:
+            - paragraph [ref=e233]: Inversiones
+          - list
+        - listitem [ref=e234]:
+          - button [ref=e235] [cursor=pointer]:
+            - paragraph [ref=e243]: Pagos y servicios
+          - list:
+            - listitem [ref=e249]:
+              - button "Pagos" [ref=e250] [cursor=pointer]:
+                - paragraph [ref=e251]:
+                  - generic [ref=e252]: Pagos
+            - listitem [ref=e253]:
+              - button "Recargas" [ref=e254] [cursor=pointer]:
+                - paragraph [ref=e255]:
+                  - generic [ref=e256]: Recargas
+        - listitem [ref=e257]:
+          - button [ref=e258] [cursor=pointer]:
+            - paragraph [ref=e265]: Tarjetas
+          - list:
+            - listitem [ref=e271]:
+              - button "Tarjeta de crédito" [ref=e272] [cursor=pointer]:
+                - paragraph [ref=e273]:
+                  - generic [ref=e274]: Tarjeta de crédito
+            - listitem [ref=e275]:
+              - button "Tarjeta de débito" [ref=e276] [cursor=pointer]:
+                - paragraph [ref=e277]:
+                  - generic [ref=e278]: Tarjeta de débito
+        - listitem [ref=e279]:
+          - button [ref=e280] [cursor=pointer]:
+            - paragraph [ref=e287]: Seguros
+          - list
+        - listitem [ref=e288]:
+          - button [ref=e289] [cursor=pointer]:
+            - paragraph [ref=e296]: Cuotifícalo
+          - list
+        - listitem [ref=e297]:
+          - button [ref=e298] [cursor=pointer]:
+            - paragraph [ref=e306]: Préstamos
+          - list
+        - listitem [ref=e307]:
+          - button [ref=e308] [cursor=pointer]:
+            - paragraph [ref=e315]: Trámites
+          - list:
+            - listitem [ref=e321]:
+              - button "Mis trámites" [ref=e322] [cursor=pointer]:
+                - paragraph [ref=e323]:
+                  - generic [ref=e324]: Mis trámites
+            - listitem [ref=e325]:
+              - button "Turnos online" [ref=e326] [cursor=pointer]:
+                - paragraph [ref=e327]:
+                  - generic [ref=e328]: Turnos online
+        - listitem [ref=e329]:
+          - button [ref=e330] [cursor=pointer]:
+            - paragraph [ref=e338]: Comparación de comisiones
+          - list
+        - listitem [ref=e339]:
+          - button [ref=e340] [cursor=pointer]:
+            - paragraph [ref=e348]: Mis Productos
+          - list:
+            - listitem [ref=e354]:
+              - button "Contratos" [ref=e355] [cursor=pointer]:
+                - paragraph [ref=e356]:
+                  - generic [ref=e357]: Contratos
+            - listitem [ref=e358]:
+              - button "Baja / Arrepentimiento" [ref=e359] [cursor=pointer]:
+                - paragraph [ref=e360]:
+                  - generic [ref=e361]: Baja / Arrepentimiento
+      - paragraph [ref=e363]: v 3.0.2
+    - main [ref=e366]:
+      - generic [ref=e367]:
+        - alert
+        - generic [ref=e368]:
+          - generic "Volver" [ref=e370]
+          - heading "Solicitud de tarjeta de crédito" [level=1] [ref=e377]
+          - button [ref=e379] [cursor=pointer]:
+            - paragraph [ref=e380]: Resumen de contrato
+      - generic [ref=e387]:
+        - link "Postergar solicitud al próximo ingreso" [ref=e389] [cursor=pointer]:
+          - /url: /desktop
+        - generic [ref=e392]:
+          - paragraph [ref=e393]: Marca de la Tarjeta
+          - paragraph [ref=e394]: VISA
+        - generic [ref=e395]:
+          - paragraph [ref=e396]: Tipo de Tarjeta
+          - paragraph [ref=e397]: PLATINUM
+        - generic [ref=e398]:
+          - paragraph [ref=e399]: Limite de compra
+          - paragraph [ref=e400]:
+            - generic [ref=e401]: $ 6.000.000,00
+        - generic [ref=e402]:
+          - paragraph [ref=e403]: Límite en cuotas
+          - paragraph [ref=e404]:
+            - generic [ref=e405]: $ 6.000.000,00
+        - generic [ref=e406]:
+          - paragraph [ref=e407]: Cuenta débito
+          - paragraph [ref=e408]: CC$ 026930
+        - generic [ref=e410]:
+          - paragraph [ref=e412]: Tipo de pago
+          - generic [ref=e413]:
+            - generic "Opción seleccionada. Pago mínimo" [ref=e414]: Pago mínimo
+            - generic "Opción No seleccionada. Pago total" [ref=e423]: Pago total
+        - generic [ref=e432]:
+          - paragraph [ref=e434]: Domicilio de entrega
+          - generic [ref=e438]:
+            - generic [ref=e439]:
+              - generic [ref=e440]: ROSARIO 772, 03 24, 20 DE JUNIO
+              - combobox
+            - img [ref=e447] [cursor=pointer]
+        - generic [ref=e449]:
+          - checkbox "checkbox No chequeado Persona expuesta políticamente" [ref=e450] [cursor=pointer]
+          - generic [ref=e456] [cursor=pointer]: Persona expuesta políticamente
+        - generic [ref=e457]:
+          - checkbox "checkbox No chequeado Residencia Fiscal en el exterior" [ref=e458] [cursor=pointer]
+          - generic [ref=e464] [cursor=pointer]: Residencia Fiscal en el exterior
+        - generic [ref=e465]:
+          - checkbox "checkbox No chequeado Sujeto Obligado UIF" [ref=e466] [cursor=pointer]
+          - generic [ref=e472] [cursor=pointer]: Sujeto Obligado UIF
+        - generic [ref=e473]:
+          - checkbox "checkbox chequeado Recibir resumen electrónico vía email" [checked] [ref=e474] [cursor=pointer]
+          - generic [ref=e481] [cursor=pointer]: Recibir resumen electrónico vía email
+      - button "Continuar" [ref=e483] [cursor=pointer]
+    - button "Contactar por WhatsApp" [ref=e487] [cursor=pointer]:
+      - img "WhatsApp" [ref=e488]
+    - contentinfo [ref=e489]:
+      - generic [ref=e490] [cursor=pointer]: utilCode
+      - generic [ref=e491] [cursor=pointer]: utilLogger
+      - link "Ayuda" [ref=e492] [cursor=pointer]:
+        - /url: /help
+      - link "Defensa de las y los Consumidores" [ref=e493] [cursor=pointer]:
+        - /url: /consumerDefense
+      - link "Términos y condiciones" [ref=e494] [cursor=pointer]:
+        - /url: /termsAndConditions

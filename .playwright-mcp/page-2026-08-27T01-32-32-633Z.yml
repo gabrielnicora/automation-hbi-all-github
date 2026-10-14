@@ -1,0 +1,12 @@
+- main [ref=e6]:
+  - alert [ref=e7]
+  - generic "Banco Entre Rios" [ref=e9]
+  - generic [ref=e31]:
+    - paragraph [ref=e32]:
+      - text: Operar con Home Banking implica aceptar los
+      - link "Términos y Condiciones" [ref=e33] [cursor=pointer]:
+        - /url: /termsAndConditions
+      - text: que ofrece el servicio.
+    - paragraph [ref=e34]:
+      - link "Información de seguridad" [ref=e35] [cursor=pointer]:
+        - /url: /startPage

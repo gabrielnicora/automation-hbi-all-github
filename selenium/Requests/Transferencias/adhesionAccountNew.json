@@ -1,0 +1,8 @@
+{
+  "account": "_destinatarioCBU_",
+  "typeAccount": "CBU",
+  "belongsTo": "_perteneceA_",
+  "email": "",
+  "ownAccount":"_ownAccount_",
+  "_otp": "OTP_TOKEN@_code_"
+}

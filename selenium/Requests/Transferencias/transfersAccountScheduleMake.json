@@ -1,0 +1,48 @@
+{
+  "tranferType": "betweenOwnAccounts",
+  "transferTypeLabel": "Entre cuentas propias",
+  "amount": 1,
+  "currency": "ARS",
+  "originAccountID": "_originAccount_",
+  "targetAccountID": "_targetAccount_",
+  "concept": "ALQ",
+  "conceptLabel": "Alquileres",
+  "reference": "testAutomation",
+  "email": "",
+  "emailMessagge": "",
+  "originAccountLabel": "Caja de Ahorro $ 000024482500",
+  "targetAccountLabel": "CHARLEEN, ALVARA ",
+  "targetCuitCuil": "23244825664",
+  "targetName": "CHARLEEN, ALVARA ",
+  "targetBankName": "NUEVO BANCO DE SANTA FE SOCIEDAD ANONIMA",
+  "targetAccountTypeLabel": "",
+  "_targetAccountNumberLabel": "",
+  "isOwnSynchronisedAccount": true,
+  "debitCard": "_debitCardId_",
+  "debitCardLabel": "_debitCardLabel_",
+  "debitCardCurrency": "ARS",
+  "hasOnlyOneDebitCard": true,
+  "goBackPath": "/transfers",
+  "isNewTransferFlow": true,
+  "isAdheredAccount": true,
+  "cbuTarget": "_cbu_",
+  "targetAccountCode": null,
+  "targetBrandType": null,
+  "targetNumberBank": null,
+  "scheduler": {
+    "selectedOption": "FUTURE",
+    "selectedScheduledFor": {
+      "label": "En una fecha específica",
+      "value": "FUTURE"
+    },
+    "valueDate": "_date_"
+  },
+  "extraValues": {
+    "isAdheredAccount": false,
+    "isOwnAccount": false
+  },
+  "belongsTo": "",
+  "accountTargetSchedule": "",
+  "ajax_uuid": "fd879064-9504-44da-b5cd-f71cea974ba0",
+  "xAppVersion": "1.72.0"
+}

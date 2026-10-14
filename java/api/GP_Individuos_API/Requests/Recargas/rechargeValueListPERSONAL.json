@@ -1,0 +1,76 @@
+{
+  "idProductCard": "_idProductCard_",
+  "idProductAccount": "_idProductAccount_",
+  "payments": [
+    {
+      "company": {
+        "code": "602",
+        "description": "Personal Light",
+        "cVALAmounts": [
+          {
+            "amount": 100,
+            "formattedImport": "$1.00",
+            "description": "100",
+            "code": "005"
+          },
+          {
+            "amount": 400000,
+            "formattedImport": "$4,000.00",
+            "description": "4000",
+            "code": "006"
+          },
+          {
+            "amount": 500000,
+            "formattedImport": "$5,000.00",
+            "description": "5000",
+            "code": "007"
+          },
+          {
+            "amount": 600000,
+            "formattedImport": "$6,000.00",
+            "description": "6000",
+            "code": "003"
+          },
+          {
+            "amount": 700000,
+            "formattedImport": "$7,000.00",
+            "description": "7000",
+            "code": "002"
+          },
+          {
+            "amount": 1000000,
+            "formattedImport": "$10,000.00",
+            "description": "10000",
+            "code": "001"
+          },
+          {
+            "amount": 1200000,
+            "formattedImport": "$12,000.00",
+            "description": "12000",
+            "code": "008"
+          },
+          {
+            "amount": 1500000,
+            "formattedImport": "$15,000.00",
+            "description": "1500",
+            "code": "004"
+          }
+        ]
+      },
+      "number": "1168203779",
+      "amount": "",
+      "amountCode": {
+        "amount": 400000,
+        "formattedImport": "$4,000.00",
+        "description": "4000",
+        "code": "006"
+      },
+      "businessCategory": {
+        "code": "TP",
+        "description": "Telefonia Celular"
+      }
+    }
+  ],
+  "ajax_uuid": "2429fdde-9ddf-41ae-9553-1b47af66b372",
+  "xAppVersion": "1.79.1"
+}

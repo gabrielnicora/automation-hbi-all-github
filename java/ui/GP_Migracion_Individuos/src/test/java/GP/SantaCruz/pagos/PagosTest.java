@@ -1,0 +1,516 @@
+package GP.SantaCruz.pagos;
+
+import GP.Tags.Alta;
+import GP.Tags.Baja;
+import GP.Tags.Criticos;
+import GP.Tags.Media;
+import io.qameta.allure.Allure;
+import io.qameta.allure.junit4.DisplayName;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
+import pages.botonesgenericos.BotonesGenericosPage;
+import steps.botonesgenericos.BotonesGenericosSteps;
+import steps.calendarios.CalendarioSteps;
+import steps.doblefactor.DobleFactorSteps;
+import steps.login.LoginSteps;
+import steps.mensaje.MensajeSteps;
+import steps.menulateral.MenuLateralSteps;
+import steps.menusuperior.MenuSuperiorSteps;
+import steps.pagos.PagosSteps;
+import steps.pagos.adherirservicio.AdherirServicioSteps;
+import steps.pagos.comprobantes.ComprobantesSteps;
+import steps.pagos.debincomprador.AdherirRecurrenciaSteps;
+import steps.pagos.debincomprador.DebinCompradorSteps;
+import steps.pagos.debinvendedor.DebinVendedorSteps;
+import steps.pagos.nuevopago.NuevoPagoSteps;
+import steps.pagos.serviciosadheridos.ServiciosAdheridosSteps;
+import steps.recargas.RecargasSteps;
+import steps.tarjetasdecredito.TarjetasDeCreditoSteps;
+import steps.ticket.TicketSteps;
+import utils.MetodosAPI;
+import utils.UtilsGP;
+
+import java.io.IOException;
+import java.sql.SQLException;
+
+import static db.ConexionDB.cerrarConexion;
+import static utils.Constantes.*;
+
+
+public class PagosTest {
+    ComprobantesSteps comprobantesSteps= new ComprobantesSteps();
+
+    LoginSteps loginSteps = new LoginSteps();
+    MenuLateralSteps menuLateralSteps = new MenuLateralSteps();
+    PagosSteps pagosSteps = new PagosSteps();
+    AdherirServicioSteps adherirServicioSteps = new AdherirServicioSteps();
+    DobleFactorSteps dobleFactorSteps = new DobleFactorSteps();
+    TicketSteps ticketSteps = new TicketSteps();
+    ServiciosAdheridosSteps serviciosAdheridosSteps = new ServiciosAdheridosSteps();
+    NuevoPagoSteps nuevoPagoSteps = new NuevoPagoSteps();
+
+    DebinCompradorSteps debinCompradorSteps = new DebinCompradorSteps();
+    AdherirRecurrenciaSteps adherirRecurrenciaSteps = new AdherirRecurrenciaSteps();
+    CalendarioSteps calendarioSteps = new CalendarioSteps();
+    MensajeSteps mensajeSteps= new MensajeSteps();
+    MenuSuperiorSteps menuSuperiorSteps = new MenuSuperiorSteps();
+    DebinVendedorSteps debinVendedorSteps = new DebinVendedorSteps();
+    RecargasSteps recargasSteps = new RecargasSteps();
+    BotonesGenericosSteps botonesGenericosSteps = new BotonesGenericosSteps();
+    TarjetasDeCreditoSteps tarjetasDeCreditoSteps = new TarjetasDeCreditoSteps();
+    MetodosAPI metodosAPI = new MetodosAPI();
+    BotonesGenericosPage botonesGenericosPage = new BotonesGenericosPage();
+    UtilsGP utilsGP = new UtilsGP();
+    @Test
+    @Category({Criticos.class})
+    @DisplayName("TC-0012-BSC: DEBIN Comprador - Consulta DEBINes históricos - Listado")
+    public void TC0012BSC() {
+        try {
+            loginSteps.iniciarSessionAlEscritorio(uTranspull1);
+            menuLateralSteps.clickPagos();
+            pagosSteps.clickMasOpcionesGenerico();
+            pagosSteps.clickDebinComprador();
+            debinCompradorSteps.clickSelectorConsultarDebin();
+            debinCompradorSteps.keyDownXParametrosGenerico(1, "Hist");
+            calendarioSteps.clickEnFechaDeCreacionHasta();
+            calendarioSteps.clickDiaActual();
+            debinCompradorSteps.clickFechaCreacionDesde();
+            calendarioSteps.clickMesAnterior(10);
+            calendarioSteps.clickEnDiaXParametro("1");
+            debinCompradorSteps.clickBuscar();
+            debinCompradorSteps.validarColumnaIdDebin();
+            debinCompradorSteps.clickDescargarPdfGenerico();
+            menuSuperiorSteps.clickMensaje();
+            mensajeSteps.clickRecibidos();
+            //mensajeSteps.clickSinLeer();
+            //WebDriverWait wait = new WebDriverWait(global.practia.jemeinsamstark.web.core.WebDriver.getInstance(), 10);
+            //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[contains(text(), 'Solicitudes de DEBIN')]")));
+            mensajeSteps.clickPrimerMensaje();
+            mensajeSteps.clickEnTresPuntos();
+            mensajeSteps.clickDescargar();
+            debinCompradorSteps.validarDescarga("Listado DEBIN historico.pdf");
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
+            Assert.fail("Ocurrio un error: " + ex.getMessage());
+        }
+    }
+    @Test
+    @Category({Criticos.class})
+    @DisplayName("TC-0013-BSC: Generar orden DEBIN - Seleccionando CBU")
+    public void TC0013BSC() {
+        try {
+            loginSteps.iniciarSessionAlEscritorio(uTranspull1);
+            menuLateralSteps.clickPagos();
+            pagosSteps.clickMasOpcionesGenerico();
+            pagosSteps.clickDebinVendedor();
+            debinVendedorSteps.clickOrdenDebin();
+            debinVendedorSteps.clickCuentaDestinoDesplegable();
+            debinVendedorSteps.keyDownXParametrosGenerico(0, "");
+            debinVendedorSteps.setImporteGenerico("1");
+            debinVendedorSteps.clickCbu();
+            debinVendedorSteps.setCbuOAlias("3300500115000050021057");
+            debinVendedorSteps.clickBuscar();
+            //debinVendedorSteps.clickNombre();
+            //debinVendedorSteps.keyDownXParametrosGenerico(0, "");
+            debinVendedorSteps.clickConcepto();
+            debinVendedorSteps.keyDownXParametrosGenerico(0, "Alquileres");
+            debinVendedorSteps.setReferencia("Test0013");
+            debinVendedorSteps.clickVigencia();
+            debinVendedorSteps.keyDownXParametrosGenerico(0, "10 Minutos");
+            debinVendedorSteps.clickContinuarGenerico();
+            debinVendedorSteps.clickContinuarGenerico();
+            ticketSteps.validarTicket("Tu solicitud se realizo con exito");
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
+            Assert.fail("Ocurrio un error: " + ex.getMessage());
+        }
+    }
+
+    @Test //Error cbu no existe
+    @Category({Alta.class})
+    @DisplayName("TC-0015-BSC: Adherir DEBIN recurrente (Pesos) -  2do factor por SMS - Descargar - Boton Volver")
+    public void TC0015BSC() {
+        try {
+            loginSteps.iniciarSessionAlEscritorio(uTranspull1);
+            menuLateralSteps.clickPagos();
+            pagosSteps.clickMasOpcionesGenerico();
+            pagosSteps.clickDebinComprador();
+            debinCompradorSteps.clickAdherirRecurrencia();
+            adherirRecurrenciaSteps.clickSelectorCuentaDebito();
+            adherirRecurrenciaSteps.keyDownXParametrosGenerico(0,"");
+            adherirRecurrenciaSteps.setCuitVendedor("20179326591");
+            adherirRecurrenciaSteps.clickBotonConsultar();
+            adherirRecurrenciaSteps.clickSelectorPrestacion();
+            adherirRecurrenciaSteps.keyDownXParametrosGenerico(3,"EDENOR");
+            adherirRecurrenciaSteps.clickSelectorConcepto();
+            adherirRecurrenciaSteps.keyDownXParametrosGenerico(0,"Alquileres");
+            adherirRecurrenciaSteps.setReferencia("TC0015");
+            adherirRecurrenciaSteps.setDescripcion("TC0015");
+            adherirRecurrenciaSteps.clickBotonContinuar();
+            adherirRecurrenciaSteps.clickCheckTerminosCondicionesGenerico();
+            dobleFactorSteps.codigoSegundoFactorOtroMetodo();
+            ticketSteps.validarTicket("Tu solicitud se realizo con exito");
+            ticketSteps.clickDescargas();
+            ticketSteps.validarDescarga("Ticket.pdf");
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
+            Assert.fail("Ocurrio un error: " + ex.getMessage());
+        }
+    }
+
+    //@Test NO SE EJECUTA POR SER PAGO CON BASE
+    @Category({Criticos.class})
+    @DisplayName("TC-0028-BSC: PAGOS - Pagar Impuesto/Servicio Nuevo Pago (Con Base)")
+    public void TC0028BSC() {
+        try {
+            loginSteps.iniciarSessionAlEscritorio(uTranspull1);
+            menuLateralSteps.clickPagos();
+            pagosSteps.clickNuevoPago();
+            nuevoPagoSteps.validarTituloPageGenerico("Nuevo pago");
+            nuevoPagoSteps.clickCardServicios();
+            nuevoPagoSteps.clickInputRubro();
+            nuevoPagoSteps.keyDownToText("Internet y Telecomunicaciones");
+            nuevoPagoSteps.clickInputEmpresa();
+            nuevoPagoSteps.keyDownToText("ECOWIFI");
+            String codigoPago = nuevoPagoSteps.getCodigoPagoDb("ECOWIFI");
+            nuevoPagoSteps.setCodigoDePago(codigoPago);
+            dobleFactorSteps.codigoSegundoFactorBotonContinuar();
+            nuevoPagoSteps.validarTituloPageGenerico("Preparar pago");
+            nuevoPagoSteps.clickPagandoDesdeDesplegable();
+            nuevoPagoSteps.keyDownXParametrosGenerico(0,"");
+            nuevoPagoSteps.clickContinuarGenerico();
+            nuevoPagoSteps.clickConfirmarGenerico();
+            ticketSteps.validarTicket("Tu solicitud se realizo con exito");
+            nuevoPagoSteps.actualizarCodigoPagoDb(codigoPago, "ECOWIFI");
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
+            Assert.fail("Ocurrio un error: " + ex.getMessage());
+        }
+    }
+
+    @Test
+    @Category({Criticos.class})
+    @DisplayName("TC-0070-BSC: Aceptación de DEBIN")
+    public void TC0070BSC() throws SQLException, InterruptedException {
+        try {
+            //PRECONDICION
+            //pagosSteps.generacionDebinApi(uTranspull1,"0860020202800021231452");
+            //TEST
+            //loginSteps.iniciarSesion(u26538177);
+            loginSteps.iniciarSessionAlEscritorio(uTranspull1);
+            menuLateralSteps.clickPagos();
+            pagosSteps.clickMasOpcionesGenerico();
+            pagosSteps.clickDebinComprador();
+            debinCompradorSteps.clickSelectorConsultarDebin();
+            debinCompradorSteps.keyDownToText( "Pendientes");
+            debinCompradorSteps.clickBuscar();
+            debinCompradorSteps.validarColumnaIdDebin();
+            debinCompradorSteps.clickDetalleDebinPrimerElemento();
+            //debinCompradorSteps.validarTituloPageGenerico("Detalle de DEBIN");
+            //debinCompradorSteps.seleccionarTarjetaDebitoSiEstaPresente("");
+            debinCompradorSteps.clickAceptarGenerico();
+            debinCompradorSteps.clickAceptarConEstafas();
+           // debinCompradorSteps.clickAceptarGenerico();
+            //debinCompradorSteps.clickAceptarDebin();
+            debinCompradorSteps.clickCheckTerminosCondicionesGenerico();
+            dobleFactorSteps.codigoSegundoFactorOtroMetodo();
+            ticketSteps.validarTicket("Tu solicitud se realizo con exito");
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
+            Assert.fail("Ocurrio un error: " + ex.getMessage());
+        }
+    }
+    @Test
+    @Category({Criticos.class})
+    @DisplayName("TC-0074-BSC: ADHERIR NUEVO PAGO O SERVICIO")
+    public void TC0074BSC() {
+        try {
+            loginSteps.iniciarSessionAlEscritorio(uTranspull1);
+            menuLateralSteps.clickPagos();
+            pagosSteps.clickServiciosAdheridos();
+            //pagosSteps.clickSelectorTarjetaDebito();
+            //pagosSteps.keyDownToText("8006");
+            //pagosSteps.clickContinuarGenerico();
+            pagosSteps.clickAdherirImpuestoServicio();
+            adherirServicioSteps.validarTituloPageGenerico("Adherir servicio");
+            adherirServicioSteps.clickDesplegableRubro();
+            adherirServicioSteps.setInputRubro("Cobranzas para Empresas y Comercios");
+            adherirServicioSteps.keyDownToText("Cobranzas para Empresas y Comercios");
+            adherirServicioSteps.clickDesplegableEmpresa();
+            adherirServicioSteps.setInputEmpresa("Mercado Libre");
+            adherirServicioSteps.keyDownToText( "Mercado Libre");
+            String codigoPago = "00449535691";
+            adherirServicioSteps.setCodigoDePago(codigoPago);
+            adherirServicioSteps.clickContinuarGenerico();
+            adherirServicioSteps.validarTituloPageGenerico("Confirmar adhesi");
+            dobleFactorSteps.codigoSegundoFactorOtroMetodo();
+            ticketSteps.validarTicket("Tu solicitud se realizo con exito");
+            //TEARDOWN
+            menuLateralSteps.clickPagos();
+            pagosSteps.clickServiciosAdheridos();
+            //pagosSteps.clickSelectorTarjetaDebito();
+            //pagosSteps.keyDownToText("8006");
+            //adherirServicioSteps.clickContinuarGenerico();
+            adherirServicioSteps.validarTituloPageGenerico("Servicios adheridos");
+            serviciosAdheridosSteps.clickEmpresa();
+            serviciosAdheridosSteps.setInputEmpresa("Mercado Libre");
+            adherirServicioSteps.keyDownToText("Mercado Libre");
+            serviciosAdheridosSteps.clickTresPuntos(codigoPago);
+            serviciosAdheridosSteps.eliminarServicioAdherido();
+            serviciosAdheridosSteps.clickConfirmarGenerico();
+            ticketSteps.validarTicket("Tu solicitud se realizo con exito");
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
+            Assert.fail("Ocurrio un error: " + ex.getMessage());
+        }
+    }
+    @Test
+    @Category({Alta.class})
+    @DisplayName("TC-0108-BSC: Pagos - Consulta de comprobantes")
+    public void TC0108BSC() {
+        try {
+            //PRECONDICION
+            loginSteps.iniciarSessionAlEscritorio(u26538177);
+           // pagosSteps.generarUnPagoDeServicioApi("Mercado Libre","12345678987","00449535691");
+            //TEST
+            menuLateralSteps.clickPagos();
+            pagosSteps.clickComprobantes();
+            pagosSteps.validarTituloPageGenerico("Comprobantes de pago");
+            comprobantesSteps.clickEmpresa();
+            comprobantesSteps.setInputEmpresa("Mercado Libre");
+            comprobantesSteps.keyDownXParametrosGenerico(0,"Mercado Libre");
+            comprobantesSteps.clickDescripcion();
+            comprobantesSteps.keyDownXParametrosGenerico(0,"1135");
+            comprobantesSteps.clickFechaCreacionDesde();
+            calendarioSteps.clickMesAnterior(12);
+            calendarioSteps.clickEnDiaXParametro("1");
+            calendarioSteps.clickBuscar();
+            comprobantesSteps.clickTresPuntos();
+            comprobantesSteps.clickDescargarComprobante();
+            comprobantesSteps.validarDescarga("Ticket.pdf");
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
+            Assert.fail("Ocurrio un error: " + ex.getMessage());
+        }
+    }
+    @Test
+    @Category({Media.class})
+    @DisplayName("TC-0137-BSC: PAGOS -COMPROBANTES - Descargar periodo en PDF")
+    public void TC0137BSC() throws InterruptedException {
+        try {
+            //PRECONDICION
+            loginSteps.iniciarSessionAlEscritorio(u26538177);
+           // pagosSteps.generarUnPagoDeServicioApi("Mercado Libre","12345678987","00449535691");
+            //TEST
+            menuLateralSteps.clickPagos();
+            pagosSteps.clickComprobantes();
+            pagosSteps.validarTituloPageGenerico("Comprobantes de pago");
+            comprobantesSteps.clickEmpresa();
+            pagosSteps.keyDownToText( "Tel. Fija Personal");
+            comprobantesSteps.clickDescripcion();
+            pagosSteps.keyDownXParametrosGenerico(2, "");
+            comprobantesSteps.clickDesde();
+            calendarioSteps.clickMesAnterior(35);
+            calendarioSteps.clickEnDiaXParametro("10");
+            comprobantesSteps.clickBuscar();
+            pagosSteps.clickMasOpcionesGenerico();
+            comprobantesSteps.descargarPeriodoPDF();
+            mensajeSteps.clickMensajes();
+            mensajeSteps.clickSinLeer();
+            comprobantesSteps.descargarMensajePDF();
+            mensajeSteps.clickEnTresPuntos();
+            mensajeSteps.clickDescargar();
+            pagosSteps.validarDescarga("Pagos de impuestos o servicios realizados.pdf");
+
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
+            Assert.fail("Ocurrio un error: " + ex.getMessage());
+        }
+
+    }
+
+    @Test
+    @Category({Media.class})
+    @DisplayName("TC-0138-BSC: PAGOS -COMPROBANTES - Ver Pagos en XLS")
+    public void TC0138BSC() {
+        try {
+            //PRECONDICION
+            loginSteps.iniciarSessionAlEscritorio(u26538177);
+           // pagosSteps.generarUnPagoDeServicioApi("Mercado Libre","1234567898","00449535691");
+            //TEST
+            menuLateralSteps.clickPagos();
+            pagosSteps.clickComprobantes();
+            pagosSteps.validarTituloPageGenerico("Comprobantes de pago");
+            comprobantesSteps.clickEmpresa();
+            pagosSteps.keyDownToText( "Tel. Fija Personal");
+            comprobantesSteps.clickDescripcion();
+            pagosSteps.keyDownXParametrosGenerico(0, "");
+            comprobantesSteps.clickDesde();
+            calendarioSteps.clickMesAnterior(35);
+            calendarioSteps.clickEnDiaXParametro("10");
+            comprobantesSteps.clickBuscar();
+            pagosSteps.clickMasOpcionesGenerico();
+            comprobantesSteps.descargarPeriodoXLS();
+            mensajeSteps.clickMensajes();
+            mensajeSteps.clickSinLeer();
+            comprobantesSteps.descargarMensajeXLS();
+            mensajeSteps.clickEnTresPuntos();
+            pagosSteps.validarDescarga("Pagos de impuestos o servicios realizados.xls");
+
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
+            Assert.fail("Ocurrio un error: " + ex.getMessage());
+        }
+    }
+
+    @Test
+    @Category({Alta.class})
+    @DisplayName("TC-0183-BSC: DEBIN Vendedor - Generar orden de DEBIN - Validar campo requerido al no ingresar un CBU y seleccionar buscar.")
+    public void TC00183BSC() {
+        try {
+            loginSteps.iniciarSessionAlEscritorio(uBsc13400488);
+            menuLateralSteps.clickPagos();
+            pagosSteps.clickMasOpcionesGenerico();
+            pagosSteps.clickDebinVendedor();
+            debinVendedorSteps.clickOrdenDebin();
+            debinVendedorSteps.clickCuentaDestinoDesplegable();
+            debinVendedorSteps.keyDownXParametrosGenerico(0, "");
+            debinVendedorSteps.setImporteGenerico("1");
+            debinVendedorSteps.clickCbu();
+            debinVendedorSteps.setCbuOAlias(" ");
+            debinVendedorSteps.clickBuscar();
+            pagosSteps.validarCampoObligatorio();
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
+            Assert.fail("Ocurrio un error: " + ex.getMessage());
+        }
+    }
+    @Test
+    @Category({Baja.class})
+    @DisplayName("TC-0184-BSC: DEBIN Vendedor - Generar orden de DEBIN - Validar campo requerido al no ingresar 'Aias' y seleccionar buscar.")
+    public void TC0184BSC() {
+        try {
+            loginSteps.iniciarSessionAlEscritorio(u23013315);
+            menuLateralSteps.clickPagos();
+            pagosSteps.clickMasOpcionesGenerico();
+            pagosSteps.clickDebinVendedor();
+            debinVendedorSteps.clickOrdenDebin();
+            debinVendedorSteps.clickCuentaDestinoDesplegable();
+            debinVendedorSteps.keyDownToText("8855");
+            debinVendedorSteps.setImporteGenerico("1");
+            debinVendedorSteps.clickAlias();
+            debinVendedorSteps.setCbuOAlias(" ");
+            debinVendedorSteps.clickBuscar();
+            pagosSteps.validarCampoObligatorio();
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
+            Assert.fail("Ocurrio un error: " + ex.getMessage());
+        }
+    }
+    @Test
+    @Category({Criticos.class})
+    @DisplayName("TC-12964-BSC: PAGOS - Pagar Impuesto/Servicio Nuevo Pago (Sin Base)")
+    public void TC12964BSC() {
+        try {
+            loginSteps.iniciarSessionAlEscritorio(uTranspull1);
+            menuLateralSteps.clickPagos();
+            pagosSteps.clickNuevoPago();
+            nuevoPagoSteps.clickCardServicios();
+            nuevoPagoSteps.seleccionarTarjetaDebitoSiEstaPresente("");
+            nuevoPagoSteps.clickInputRubro();
+            nuevoPagoSteps.keyDownToText("Cobranzas para Empresas y Comercios");
+            nuevoPagoSteps.clickInputEmpresa();
+            nuevoPagoSteps.keyDownToText("Mercado Libre");
+            nuevoPagoSteps.validarMensajeCodigoPago();
+            String codigoPago = "00449535691";
+            adherirServicioSteps.setCodigoDePago(codigoPago);
+            dobleFactorSteps.codigoSegundoFactorBotonContinuar();
+            //nuevoPagoSteps.validarTituloPageGenerico("Preparar pago");
+            nuevoPagoSteps.clickPagandoDesdeDesplegable();
+            nuevoPagoSteps.keyDownXParametrosGenerico(0,"");
+            debinVendedorSteps.keyDownToText("8855");
+            recargasSteps.clickBotonSeleccionar();
+            debinVendedorSteps.keyDownToText("MPAGO COMPRA");
+            debinVendedorSteps.setReferencia("1234554321");
+            botonesGenericosSteps.setImporteGenerico("1");
+            adherirServicioSteps.clickContinuarGenerico();
+            serviciosAdheridosSteps.clickConfirmarGenerico();
+            ticketSteps.validarTicket("Tu solicitud se realizo con exito");
+
+
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
+            Assert.fail("Ocurrio un error: " + ex.getMessage());
+        }
+    }
+    @Test
+    @Category({Criticos.class})
+    @DisplayName("TC-12966-BSC: PAGOS - Pagar Impuesto/Servicio Eliminar servicio")
+    public void TC12966BSC() {
+        try {
+            //PRECONDICIÓN
+
+            /*
+            loginSteps.iniciarSesion(u23013315);
+            menuLateralSteps.clickPagos();
+            pagosSteps.clickServiciosAdheridos();
+            pagosSteps.clickAdherirImpuestoServicio();
+            adherirServicioSteps.validarTituloPageGenerico("Adherir servicio");
+            adherirServicioSteps.clickDesplegableRubro();
+            adherirServicioSteps.setInputRubro("Internet y Telecomunicaciones");
+            adherirServicioSteps.keyDownToText("Internet y Telecomunicaciones");
+            adherirServicioSteps.clickDesplegableEmpresa();
+            adherirServicioSteps.setInputEmpresa("ECOWIFI");
+            adherirServicioSteps.keyDownToText( "ECOWIFI");
+            String codigoPago = "99992146";
+            adherirServicioSteps.setCodigoDePago(codigoPago);
+            adherirServicioSteps.clickContinuarGenerico();
+            adherirServicioSteps.validarTituloPageGenerico("Confirmar adhesi");
+            dobleFactorSteps.codigoSegundoFactorOtroMetodo("u23013315");
+            ticketSteps.validarTicket("Tu solicitud se realizo con exito");
+             */
+
+            loginSteps.iniciarSessionAlEscritorio(u26538177);
+            metodosAPI.realizarAdhesionServicio("99992146", "Internet y Telecomunicaciones","ECOWIFI","4003" );
+            //CASO
+            menuLateralSteps.clickCuentas();
+            menuLateralSteps.clickPagos();
+            pagosSteps.clickServiciosAdheridos();
+            serviciosAdheridosSteps.clickTresPuntos("99992146");
+            serviciosAdheridosSteps.eliminarServicioAdherido();
+            serviciosAdheridosSteps.clickConfirmarGenerico();
+            ticketSteps.validarTicket("Tu solicitud se realizo con exito");
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
+            Assert.fail("Ocurrio un error: " + ex.getMessage());
+        }
+    }
+    @After
+    public void cerrarSesionCapturarUPS(){
+        if(utilsGP.estaPresente(botonesGenericosPage.getCodigoUps(),2) && botonesGenericosPage.getCodigoUps().getText().startsWith("#")) {
+            String ups = botonesGenericosPage.getCodigoUps().getText();
+            botonesGenericosSteps.clickVolverGenerico();
+            loginSteps.clickSalirDelaSesion();
+            loginSteps.waitGP();
+            Assert.fail("UPS CODIGO : " + ups);
+        }else if(utilsGP.estaPresente(botonesGenericosPage.getSalirSesion(),2))
+        {
+            loginSteps.clickSalirDelaSesion();
+            loginSteps.waitGP();
+        }else{
+            System.out.println("=================== NO PUDO INICIAR SESION REFRESCAR NAVEGADOR ==============================");
+            Allure.addAttachment("INICIO SESSION,","=================== NO PUDO INICIAR SESION REFRESCAR NAVEGADOR ==============================");
+            global.practia.jemeinsamstark.web.core.WebDriver.getInstance().navigate().to(System.getProperty("bank"));
+            System.out.println("Se Espera que aparezca la pagina de nuevo");
+            loginSteps.waitGP();
+        }
+    }
+    @AfterClass
+    public static void teardown() throws IOException, InterruptedException {
+        global.practia.jemeinsamstark.web.core.WebDriver.closeDriver();
+        cerrarConexion();
+    }
+}
