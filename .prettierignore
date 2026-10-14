@@ -7,3 +7,8 @@ pnpm-lock.yaml
 .env.*
 test-data/private/
 .agents/skills/
+java/
+selenium/
+web/
+mcp-xray/
+.playwright-mcp/

@@ -20,7 +20,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check": "pnpm run format:check && pnpm run typecheck && pnpm run lint",
-    "codegen": "playwright codegen"
+    "codegen": "playwright codegen",
+    "prepare": "husky"
   },
   "engines": {
     "node": ">=20"
@@ -30,6 +31,8 @@
     "@types/node": "^22.0.0",
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.0",
     "prettier": "^3.9.6",
     "typescript": "^5.6.0",
     "typescript-eslint": "^8.62.0"
