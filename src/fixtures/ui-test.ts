@@ -23,6 +23,11 @@ import { EcheqPage } from '../pages/accounts/echeq.page';
 import { AccountAliasPage } from '../pages/accounts/account-alias.page';
 import { AccountMovementsPage } from '../pages/accounts/account-movements.page';
 import { OpinionSurveyPage } from '../pages/feedback/opinion-survey.page';
+import { CreditCardsPage } from '../pages/cards/credit-cards.page';
+import { HomePage } from '../pages/home/home.page';
+import { AddContactPage } from '../pages/transfers/add-contact.page';
+import { DebinSellerPage } from '../pages/payments/debin-seller.page';
+import { SalaryAdvancePage } from '../pages/accounts/salary-advance.page';
 import {
   loadCreditCardTotalPaymentUiData,
   type CreditCardTotalPaymentUiData,
@@ -30,6 +35,9 @@ import {
 import { loadOwnAccountTransferUiData, type OwnAccountTransferUiData } from '../test-data/own-account-transfer-ui-data';
 import { loadAccountAliasUiData, type AccountAliasUiData } from '../test-data/account-alias-ui-data';
 import { loadAccountMovementsUiData, type AccountMovementsUiData } from '../test-data/account-movements-ui-data';
+import { loadCreditCardDetailUiData, type CreditCardDetailUiData } from '../test-data/credit-card-detail-ui-data';
+import { loadContactSearchUiData, type ContactSearchUiData } from '../test-data/contact-search-ui-data';
+import { loadOriginAccountUiData, type OriginAccountUiData } from '../test-data/origin-account-ui-data';
 import {
   loadForeignCurrencyPurchaseUiData,
   type ForeignCurrencyPurchaseUiData,
@@ -38,6 +46,14 @@ import { expect, test as testWithData } from './test-case.fixture';
 import { UpsErrorTracker } from './ups-error-tracker';
 
 interface UiFixtures {
+  readonly addContactPage: AddContactPage;
+  readonly contactSearchUiData: ContactSearchUiData;
+  readonly creditCardDetailUiData: CreditCardDetailUiData;
+  readonly creditCardsPage: CreditCardsPage;
+  readonly debinSellerPage: DebinSellerPage;
+  readonly homePage: HomePage;
+  readonly originAccountUiData: OriginAccountUiData;
+  readonly salaryAdvancePage: SalaryAdvancePage;
   readonly appointmentsPage: AppointmentsPage;
   readonly accountAliasPage: AccountAliasPage;
   readonly accountAliasUiData: AccountAliasUiData;
@@ -87,6 +103,38 @@ export const test = testWithData.extend<UiFixtures>({
     },
     { auto: true },
   ],
+
+  addContactPage: async ({ page }, use) => {
+    await use(new AddContactPage(page));
+  },
+
+  contactSearchUiData: async ({ testCaseId }, use) => {
+    await use(await loadContactSearchUiData(testCaseId));
+  },
+
+  creditCardDetailUiData: async ({ testCaseId }, use) => {
+    await use(await loadCreditCardDetailUiData(testCaseId));
+  },
+
+  creditCardsPage: async ({ page }, use) => {
+    await use(new CreditCardsPage(page));
+  },
+
+  debinSellerPage: async ({ page }, use) => {
+    await use(new DebinSellerPage(page));
+  },
+
+  homePage: async ({ page }, use) => {
+    await use(new HomePage(page));
+  },
+
+  originAccountUiData: async ({ testCaseId }, use) => {
+    await use(await loadOriginAccountUiData(testCaseId));
+  },
+
+  salaryAdvancePage: async ({ page }, use) => {
+    await use(new SalaryAdvancePage(page));
+  },
 
   appointmentsPage: async ({ page }, use) => {
     await use(new AppointmentsPage(page));

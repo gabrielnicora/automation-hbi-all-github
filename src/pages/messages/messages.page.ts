@@ -1,11 +1,39 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 
+export interface MessageSummary {
+  readonly subject: string;
+  readonly date: string;
+}
+
 export class MessagesPage {
   public constructor(private readonly page: Page) {}
 
   public async open(): Promise<void> {
     await this.messagesLink.click();
     await expect(this.unreadTab).toBeVisible();
+  }
+
+  /** Lee asunto y fecha del primer mensaje de la bandeja Recibidos, que identifican a ese mensaje. */
+  public async readFirstMessage(): Promise<MessageSummary> {
+    await expect(this.firstMessage).toBeVisible();
+    return {
+      subject: (await this.firstMessage.locator('p').nth(1).innerText()).trim(),
+      date: (await this.firstMessage.locator('p').nth(2).innerText()).trim(),
+    };
+  }
+
+  /** Elimina el primer mensaje y espera a que la bandeja deje de mostrarlo en primer lugar. */
+  public async deleteFirstMessage(): Promise<void> {
+    const messageText = await this.firstMessage.innerText();
+
+    await this.firstMessage.getByRole('button').click();
+    await expect(this.deleteAction).toBeVisible();
+    await this.deleteAction.click();
+
+    await expect(this.deleteAction).toBeHidden();
+    await expect(this.firstMessage, 'La bandeja debe dejar de mostrar el mensaje eliminado.').not.toHaveText(
+      messageText,
+    );
   }
 
   public async ensureReadMessageAvailable(): Promise<void> {
@@ -64,6 +92,10 @@ export class MessagesPage {
     await message.getByRole('button').click();
     await expect(this.markAsReadAction).toBeVisible();
     await this.markAsReadAction.click();
+  }
+
+  private get deleteAction(): Locator {
+    return this.page.getByText('Eliminar', { exact: true });
   }
 
   private get firstMessage(): Locator {

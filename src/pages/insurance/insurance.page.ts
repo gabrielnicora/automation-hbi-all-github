@@ -1,4 +1,5 @@
 import { expect, type FrameLocator, type Locator, type Page } from '@playwright/test';
+import { becomesVisible } from '../visibility';
 
 export interface InsuranceDetail {
   readonly title: string;
@@ -7,6 +8,17 @@ export interface InsuranceDetail {
 
 export class InsurancePage {
   public constructor(private readonly page: Page) {}
+
+  public async open(): Promise<void> {
+    await this.page.getByRole('button', { name: 'Seguros', exact: true }).click();
+    await expect(this.insuranceFrame).toBeVisible();
+    await expect(this.insuranceApp.getByRole('heading', { name: 'Seguros', exact: true })).toBeVisible();
+  }
+
+  /** Indica si el listado de seguros muestra una tarjeta cuyo texto contiene el nombre indicado. */
+  public async isInsuranceCardAvailable(name: string): Promise<boolean> {
+    return becomesVisible(this.insuranceApp.getByText(name).first());
+  }
 
   public async openRobberyInsuranceDetail(): Promise<void> {
     await this.page.getByRole('button', { name: 'Seguros', exact: true }).click();

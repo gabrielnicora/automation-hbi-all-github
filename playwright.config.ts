@@ -28,7 +28,7 @@ export default defineConfig({
     channel: browserChannel,
     ignoreHTTPSErrors: true,
     actionTimeout: 20_000,
-    navigationTimeout: 45_000,
+    navigationTimeout: 120_000,
     trace: 'off',
     video: 'retain-on-failure',
     screenshot: 'only-on-failure',

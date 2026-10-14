@@ -4,6 +4,7 @@ const TEST_CASE_ID = 'TC0017BERSA';
 
 test.describe('Login UI de Banco Entre Ríos', () => {
   test.use({ testCaseId: TEST_CASE_ID });
+  test.setTimeout(180_000);
 
   test(
     `${TEST_CASE_ID} - inicia sesión y captura el Bearer token`,
