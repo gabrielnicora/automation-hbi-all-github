@@ -630,12 +630,16 @@ evidencia parcial. Reemplaza el job manual único `ui:login:bersa`.
 
 - Los shards no se ejecutan en simultáneo; la división no agrega paralelismo y conserva las
   reglas de identidades compartidas de esta sección.
-- La regresión corre en un pipeline hijo (`.gitlab/ci/regression.yml`) que crea el job
-  `regression`. Una vez disparado, los tres shards y el reporte corren sin intervención.
-- Decisión del usuario, 21 de octubre de 2026, que reemplaza el disparo automático en
-  schedules y con `RUN_REGRESSION=true`: en push y merge request la regresión es siempre
-  manual. En schedules y pipelines ad hoc, `REGRESSION_MODE=manual|auto` (por defecto
-  `manual`) elige entre el disparo manual y la ejecución automática.
+- Decisión del usuario, 21 de octubre de 2026: un único pipeline con los mismos jobs en todo
+  modo, en este orden: `install_deps`, `quality`, `shard_1` → `shard_2` → `shard_3` y
+  `merge_reports`. Reemplaza el pipeline hijo de regresión y `RUN_REGRESSION`.
+- En push y merge request todos los jobs son manuales y no bloquean el pipeline. En schedules
+  y pipelines ad hoc, `REGRESSION_MODE=manual|auto` (por defecto `manual`) elige entre ese
+  modo manual y la ejecución encadenada.
+- En modo manual, `merge_reports` puede ejecutarse con al menos un shard corrido.
+- En modo automático, `quality` corre si `install_deps` termina bien y la regresión si
+  `quality` termina bien. Después, los shards corren en serie sin depender del resultado del
+  anterior y `merge_reports` corre al final.
 - `TEST_PATH` y `TEST_FILTER` (`--grep`) acotan la selección.
 - Cada shard admite fallos para que la cadena y el reporte final se completen; el resultado
   de los tests se lee en el reporte unificado.

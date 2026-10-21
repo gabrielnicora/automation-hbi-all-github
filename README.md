@@ -181,16 +181,15 @@ La variable debe estar en el entorno del proceso o configurada en CI. El archivo
 
 ### CI (GitLab)
 
-`.gitlab-ci.yml` instala dependencias, ejecuta `pnpm run check` y ofrece el job
-`regression`. Ese job crea un pipeline hijo (`.gitlab/ci/regression.yml`) con tres shards
-encadenados (`shard_1` → `shard_2` → `shard_3`), uno por vez y con un worker. Al final,
-`merge_reports` une los resultados en `playwright-report/` y
-`test-results/junit-report.xml`.
+`.gitlab-ci.yml` tiene siempre los mismos jobs: `install_deps` → `quality` → `shard_1` →
+`shard_2` → `shard_3` → `merge_reports`. Los shards corren uno por vez y con un worker;
+`merge_reports` une los resultados en `playwright-report/` y `test-results/junit-report.xml`.
 
-- En push y merge request, `regression` es siempre manual y no bloquea el pipeline.
+- En push y merge request todos los jobs son manuales y se ejecutan en ese orden. Para ver
+  resultados alcanza con correr al menos un shard y después `merge_reports`.
 - En schedules y en pipelines lanzados con _Run pipeline_, `REGRESSION_MODE` elige:
-  `manual` (por defecto, aparece el botón) o `auto` (la regresión corre sola).
-- Una vez disparada, la cadena de shards y el reporte corren sin más clics.
+  `manual` (por defecto, igual que en push) o `auto` (todo encadenado; cada shard corre
+  aunque el anterior falle).
 - `TEST_PATH` (por ejemplo `tests/ui/authentication`) y `TEST_FILTER` (expresión para
   `--grep`) acotan la selección.
 - `TEST_ENV=une-dev` ejecuta contra UNE DEV y agrega a `/etc/hosts` los dominios internos de
