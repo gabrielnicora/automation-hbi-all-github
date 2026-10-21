@@ -30,6 +30,22 @@ posibilidad.
 - Impacto futuro: revisar URLs API/UI, credenciales y datos, identificadores, lector
   de datos y documentación; validar los escenarios existentes contra UNE.
 
+### Ambiente de ejecución UNE DEV
+
+- Estado: aprobado por el usuario el 21 de octubre de 2026; ejecución pendiente de validar.
+- Decisión: durante la transición conviven dos ambientes de ejecución de la misma suite,
+  elegidos con `TEST_ENV`: `qa` (BERSA QA, valor por defecto) y `une-dev` (UNE DEV).
+- `une-dev` usa las mismas identidades, IDs `TC<numero>BERSA` y datos de
+  `test-data/private/bersa.json`. Sólo cambian las URLs base y dos valores comunes a todos los
+  usuarios —contraseña y código de segundo factor— versionados en
+  `test-data/private/une-dev.json`.
+- URLs por defecto de `une-dev`: UI `https://onlinebanking.dev.bancoune.com` y API
+  `https://apii.dev.bancoune.com`; `UI_BASE_URL` y `API_BASE_URL` las reemplazan.
+- Motivo: ejecutar la suite contra UNE antes de completar el reemplazo de BERSA.
+- Reemplaza: la exigencia de una sola entidad activa mientras dure la transición. No habilita
+  perfiles bancarios, factories, datos o tests por banco: la diferencia se limita a la
+  configuración de ambiente y a esos dos valores comunes.
+
 La migración a BERSA cambia los identificadores a sufijo `BERSA` y el origen de
 credenciales a `test-data/private/bersa.json`. Las URLs QA aprobadas el 8 de septiembre de
 2026 son `https://hbtest01.bancoentrerios.com/startPage` para UI y
@@ -515,8 +531,8 @@ factories, perfiles bancarios ni contratos globales.
 
 La configuración contiene únicamente valores que cambian por ambiente o ejecución:
 
-- URL base UI de BERSA;
-- URL base API de BERSA;
+- ambiente de ejecución (`TEST_ENV=qa|une-dev`, sección 1);
+- URL base UI y API de cada ambiente;
 - browser, workers y timeouts globales aprobados;
 - mecanismo de segundo factor;
 - rutas de datos de prueba versionados.
@@ -545,6 +561,9 @@ El origen de credenciales es `test-data/private/bersa.json`. El documento contie
 con el mismo valor de su clave, y el lector valida esa coincidencia antes de devolverlo. Esta
 decisión reemplaza el export legado indexado por el texto de una consulta SQL y evita recorridos
 lineales para localizar un caso.
+
+Con `TEST_ENV=une-dev`, la contraseña de todos los usuarios proviene de
+`test-data/private/une-dev.json`; el usuario sigue proviniendo del caso.
 
 El sufijo `BERSA` se conserva por trazabilidad, pero no selecciona un banco ni una factory.
 Un sufijo diferente debe considerarse inválido para este proyecto.

@@ -11,6 +11,19 @@ variables:
   # Almacenamiento efímero ajustado para reportes y depuración
   KUBERNETES_EPHEMERAL_STORAGE_REQUEST: '2Gi'
   KUBERNETES_EPHEMERAL_STORAGE_LIMIT: '4Gi'
+  # Ambiente de ejecución: qa (BERSA QA) | une-dev (UNE DEV, contraseña y OTP fijos).
+  TEST_ENV: 'qa'
+  # Sólo une-dev: dominios internos que se agregan a /etc/hosts ("ip host" por línea).
+  # Puede reemplazarse con una variable de CI del proyecto.
+  UNE_HOST_ENTRIES: |
+    10.134.68.217 onlinebanking.dev.bancoune.com
+    10.134.68.217 apii.dev.bancoune.com
+    10.134.68.217 apie.dev.bancoune.com
+    10.134.68.217 bffe.dev.bancoune.com
+    10.134.68.217 hbi.dev.bancoune.com
+    10.134.68.217 hbe.dev.bancoune.com
+    10.134.68.217 obe.dev.bancoune.com
+    10.134.68.217 officebanking.dev.bancoune.com
   # 'true' ejecuta la regresión sin intervención; por defecto los shards son manuales.
   RUN_REGRESSION: 'false'
   # Acotan la regresión: rutas de tests (separadas por espacio) y expresión para --grep.
@@ -77,9 +90,25 @@ quality:
   variables:
     # Debe coincidir con la cantidad de jobs shard_N definidos abajo.
     SHARD_TOTAL: '3'
+  before_script:
+    - npm install --global pnpm@${PNPM_VERSION}
+    - |
+      if [ "$TEST_ENV" = "une-dev" ]; then
+        echo "Configurando /etc/hosts para UNE DEV..."
+        echo "$UNE_HOST_ENTRIES" | while read -r ip host rest; do
+          if [ -z "$host" ]; then continue; fi
+          if grep -qE "[[:space:]]${host}([[:space:]]|\$)" /etc/hosts; then
+            echo "SKIP (ya existe): $host"
+          else
+            printf '%s\t%s\n' "$ip" "$host" >> /etc/hosts
+            echo "ADD: $ip -> $host"
+          fi
+          getent hosts "$host" > /dev/null || echo "WARNING: no resuelve $host"
+        done
+      fi
   script:
     - |
-      echo "Playwright | shard ${SHARD_INDEX}/${SHARD_TOTAL} | workers=${PW_WORKERS}"
+      echo "Playwright | ${TEST_ENV} | shard ${SHARD_INDEX}/${SHARD_TOTAL} | workers=${PW_WORKERS}"
       echo "TEST_PATH:   ${TEST_PATH:-<todos>}"
       echo "TEST_FILTER: ${TEST_FILTER:-<sin grep>}"
 

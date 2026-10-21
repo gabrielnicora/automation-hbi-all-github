@@ -55,7 +55,9 @@
 
 - Banco Entre Ríos (BERSA) is the only currently supported bank. UNE will replace BERSA in
   this project when available and validated, as recorded in `SPEC.md`.
-  Simultaneous bank support and Banco Santa Fe remain out of scope.
+  Simultaneous bank support and Banco Santa Fe remain out of scope. During the transition the
+  same suite may run against UNE DEV through `TEST_ENV=une-dev` (environment configuration only;
+  see `SPEC.md` section 1).
 - The current capabilities use the single-bank, layer-oriented architecture defined in
   `SPEC.md`. Technical layers use functional subfolders when needed.
 - Do not add new dependencies on `banks/`, `BankConfig`, bank factories, bank selectors,

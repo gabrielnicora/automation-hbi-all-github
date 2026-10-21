@@ -53,6 +53,21 @@ transferencia, pago, cambio de domicilio, préstamo ni ninguna otra mutación de
   código de verificación específicamente emitido por otro desafío, salvo que la
   especificación de la capacidad lo apruebe.
 
+## Código fijo por ambiente
+
+Decisión del usuario, 21 de octubre de 2026. En `TEST_ENV=une-dev` todos los usuarios usan el
+mismo código, versionado como `secondFactorCode` en `test-data/private/une-dev.json`.
+
+- Tiene prioridad sobre `SECOND_FACTOR_METHOD` y el master code.
+- Reemplaza el OTP de autorización de operaciones y los códigos de verificación
+  (`requestNewCode`), incluido el del teléfono nuevo.
+- El flujo dispara igualmente el envío del desafío y no consulta `util.codes`.
+- El código fijo es el valor final a ingresar: no se le aplican las extracciones o
+  validaciones de formato pensadas para los registros de `util.codes`.
+- No aplica a `requestSingleCode`: ese recorrido lee un mensaje (por ejemplo, el correo de
+  recupero de usuario), no un código, y sigue consultando la bandeja.
+- Con `TEST_ENV=qa` no cambia nada.
+
 ## Diseño aprobado
 
 - `SecondFactorCodeInboxApi` es dueño del contrato de `util.codes`, normalización,

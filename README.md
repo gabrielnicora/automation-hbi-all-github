@@ -190,6 +190,26 @@ tres shards encadenados (`shard_1` → `shard_2` → `shard_3`), uno por vez y c
 - `RUN_REGRESSION=true` o un pipeline programado ejecutan todo sin intervención.
 - `TEST_PATH` (por ejemplo `tests/ui/authentication`) y `TEST_FILTER` (expresión para
   `--grep`) acotan la selección.
+- `TEST_ENV=une-dev` ejecuta contra UNE DEV y agrega a `/etc/hosts` los dominios internos de
+  `UNE_HOST_ENTRIES`.
+
+### Ambientes
+
+`TEST_ENV` elige el ambiente; por defecto es `qa`.
+
+| `TEST_ENV` | Ambiente | Usuarios                       | Contraseña y segundo factor                      |
+| ---------- | -------- | ------------------------------ | ------------------------------------------------ |
+| `qa`       | BERSA QA | `test-data/private/bersa.json` | Los de cada caso; códigos leídos de `util.codes` |
+| `une-dev`  | UNE DEV  | Los mismos de BERSA            | Comunes, desde `test-data/private/une-dev.json`  |
+
+En `une-dev` el código fijo reemplaza el OTP de operaciones y los códigos de verificación; el
+correo de recupero de usuario se sigue leyendo de la bandeja. Por ejemplo, en PowerShell:
+
+```powershell
+$env:TEST_ENV = 'une-dev'
+pnpm run test:api:login
+Remove-Item Env:TEST_ENV
+```
 
 ## Cómo contribuir
 

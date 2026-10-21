@@ -1,4 +1,5 @@
 import { loadBersaTestCaseRow, type BersaTestCaseRow } from './bersa-test-case';
+import { loadFixedAccess } from './fixed-access';
 
 export interface LoginCredentials {
   readonly password: string;
@@ -20,16 +21,21 @@ function extractCredentials(row: BersaTestCaseRow, testCaseId: string): LoginCre
   return { username: username.trim(), password };
 }
 
+/** En un ambiente con acceso fijo (`une-dev`), todos los usuarios comparten la contraseña. */
+async function applyFixedPassword(credentials: LoginCredentials): Promise<LoginCredentials> {
+  const fixedAccess = await loadFixedAccess();
+  return fixedAccess ? { ...credentials, password: fixedAccess.password } : credentials;
+}
+
 export async function loadLoginCredentials(testCaseId: string): Promise<LoginCredentials> {
   const row = await loadBersaTestCaseRow(testCaseId);
-  return extractCredentials(row, testCaseId.trim().toUpperCase());
+  return applyFixedPassword(extractCredentials(row, testCaseId.trim().toUpperCase()));
 }
 
 /** Segundo usuario del caso (`user1`/`pass1`; `usuario2`/`password2` en el legado). */
 export async function loadSecondUserCredentials(testCaseId: string): Promise<LoginCredentials> {
   const row = await loadBersaTestCaseRow(testCaseId);
-  return extractCredentials(
-    { user: row.user1, pass: row.pass1 },
-    `${testCaseId.trim().toUpperCase()} (segundo usuario)`,
+  return applyFixedPassword(
+    extractCredentials({ user: row.user1, pass: row.pass1 }, `${testCaseId.trim().toUpperCase()} (segundo usuario)`),
   );
 }
