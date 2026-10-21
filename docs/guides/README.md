@@ -8,6 +8,13 @@ organizar tests, fixtures, datos, clientes API y Page Objects. Conservar las val
 legadas aunque el ambiente falle. Registrar dudas para revisión humana posterior y continuar
 la migración sin pedir aclaración ni aprobación por cada caso.
 
+Antes de leer o portar un caso, comprobar su elegibilidad y canal en el
+[catálogo canónico de casos migrables](../../specs/migration/migratable-cases.md). El catálogo
+es cerrado: no migrar IDs ausentes ni definiciones ignoradas, deshabilitadas, obsoletas o
+deprecadas. Para los casos declarados API, aplicar allí la precedencia API y la excepción
+documentada cuando la única fuente existente sea un método UI activo de `FrontTest.java`.
+`WEB` equivale a UI y se implementa bajo `tests/ui/`.
+
 La decisión está aprobada en SPEC.md, sección 3, y alineada con AGENTS.md. Una familia no
 autoriza copiar moneda, payload, datos, assertions ni marcas de fallo esperado de su testigo
 a todos los demás casos. Respetar las decisiones explícitas que ya reemplazaron el legado
@@ -41,12 +48,14 @@ no constituye un caso UI migrable bajo esta regla.
 ## Lectura dirigida
 
 1. AGENTS.md, .agents/source-of-truth.md y SPEC.md.
-2. [Principios](migration-principles.md) y [proceso](migration-process.md).
-3. [Familia correspondiente](families/README.md), especificaciones disponibles y código del
+2. [Catálogo de casos migrables](../../specs/migration/migratable-cases.md); detener el caso
+   individual si no es elegible.
+3. [Principios](migration-principles.md) y [proceso](migration-process.md).
+4. [Familia correspondiente](families/README.md), especificaciones disponibles y código del
    testigo necesario. No cargar todas las familias para migrar un solo comportamiento.
-4. Código legado del caso, métodos llamados y datos que realmente usa, desde las rutas
+5. Código legado del caso, métodos llamados y datos que realmente usa, desde las rutas
    locales del canal indicadas arriba.
-5. [Checklist](validation-checklist.md) y [registro de dudas](ambiguities/README.md).
+6. [Checklist](validation-checklist.md) y [registro de dudas](ambiguities/README.md).
 
 [Análisis de fuentes](source-analysis.md) explica cómo leer el legado durante el portado.
 La ausencia de una especificación individual no bloquea migrar un caso ya existente.
@@ -65,6 +74,7 @@ testigo específico; las variantes conservan su propio comportamiento legado.
 - Código migrado y datos necesarios, integrados en las fixtures existentes.
 - Comprobaciones estáticas y resultados de ejecución disponibles.
 - Resumen breve de casos portados, pendientes de ejecución y faltantes concretos.
+- Resumen del inventario del catálogo: elegibles, excluidos, sin fuente y desvíos detectados.
 - Dudas o diferencias registradas sólo cuando existan, agrupables por lote.
 
 No exigir tablas de equivalencia ni un documento por cada caso. No trasladar retries internos:

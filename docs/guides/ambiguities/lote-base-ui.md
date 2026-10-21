@@ -56,7 +56,11 @@ Ninguna sección cambia una assertion legada: los casos que fallan conservan su 
 - Aplicado: el port espera el ícono tras "Ingresar", abre la pestaña y exige el logo
   "Tienda Clic".
 - Portado: completado. Ejecución: fallida (el control no existe en la UI actual).
+- Alcance posterior: el catálogo aprobado el 19 de octubre de 2026 no incluye `TC0152BERSA`.
+  El portado del 14 de octubre queda identificado como implementación preexistente fuera del
+  alcance migrable; el cambio documental no lo elimina ni lo cuenta entre los 265 casos.
 - Revisión humana: pendiente; ¿se retiró el acceso directo del producto?
+  Resolver por separado si el test preexistente debe permanecer en la suite.
 
 ## TC0161BERSA — UI — Información de seguridad
 

@@ -2,6 +2,16 @@
 
 ## 1. Elegir referencia y portar
 
+Comprobar primero el ID en el
+[catálogo canónico](../../specs/migration/migratable-cases.md). Si no figura o su definición
+aplicable está ignorada, deshabilitada, obsoleta o deprecada, excluirlo del lote e informar el
+motivo; no analizarlo como caso pendiente de portado. Resolver el canal con la precedencia y la
+excepción definidas en ese catálogo.
+
+Una definición requiere método y `@Test` activos. Las marcas sobre el método o su clase la
+excluyen; un helper deprecado no excluye por sí solo al caso. `WEB` se informa e implementa como
+UI.
+
 Localizar el caso en la copia del canal indicada en las
 [rutas locales del legado](README.md#ubicación-del-legado-dentro-del-repositorio).
 
@@ -40,6 +50,9 @@ ruta y método legado, comportamiento conservado y pregunta pendiente es suficie
 Ejecutar los checks estáticos del proyecto y las pruebas funcionales aplicables que el ambiente
 permita. Revisar que cada assertion legada siga representada; no producir una tabla por caso.
 Verificar los testigos afectados cuando cambie un componente compartido.
+
+El resumen del lote distingue catalogados, elegibles, excluidos, sin fuente, portados y
+validados. El número de IDs catalogados no equivale a migraciones terminadas.
 
 Un fallo de QA se informa conservando el test. Un resultado no ejecutado, esperado fallido o
 con datos faltantes no se declara validado.

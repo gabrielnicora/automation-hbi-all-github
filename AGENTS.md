@@ -97,6 +97,12 @@
   dependencies as the functional reference; use current witnesses for architecture.
   Preserve legacy assertions (URL, ticket, locator, etc.), data and effects unless an
   explicit approved decision already replaces that behavior for the same case.
+- Before analyzing or porting a legacy case, check
+  `specs/migration/migratable-cases.md`. Migrate only catalogued, active cases and apply its
+  declared-channel precedence and inconsistency rules. Do not migrate uncatalogued cases or
+  definitions marked ignored, disabled, obsolete or deprecated.
+- Treat `WEB` as UI. Determine inactivity from the test method or containing class; a deprecated
+  helper alone does not exclude an otherwise active case.
 - Do not stop or ask about migration ambiguities: record the evidence and applied behavior
   in docs/guides/ambiguities/ for later human review and continue. Do not require a per-case
   comparison table. Missing source/dependencies must be reported precisely; translate what

@@ -2,7 +2,10 @@
 
 Usar esta lista durante el trabajo y en el cierre del lote; no exigir una tabla por caso.
 
-- [ ] Se portaron los casos del alcance con su identidad y canal.
+- [ ] Todos los casos portados figuran en `specs/migration/migratable-cases.md`, estaban activos
+      en el legado y respetan la precedencia de canal; las exclusiones e inconsistencias se
+      informaron con su motivo.
+- [ ] Se portaron los casos elegibles del alcance del lote con su identidad y canal efectivo.
 - [ ] Se conservaron las assertions del legado y de sus helpers, salvo decisiones explícitas
       que ya las reemplazaron. No se omitieron comprobaciones para evitar fallos externos.
 - [ ] Se reutilizaron los testigos y fixtures compatibles; no se agregaron capas delegadoras.
@@ -21,6 +24,8 @@ Usar esta lista durante el trabajo y en el cierre del lote; no exigir una tabla 
       pruebas no ejecutadas. Documentar una prueba no ejecutada no equivale a aprobarla.
 - [ ] Se verificaron los testigos afectados por cambios compartidos cuando el ambiente lo permitió.
 - [ ] Se distingue código portado, revisión humana pendiente y validación QA pendiente/fallida.
+- [ ] El cierre informa catalogados, elegibles, excluidos, sin fuente y portados; no usa 265 como
+      sinónimo de migraciones terminadas.
 
 Los datos QA faltantes o errores externos de seguros/turnos no invalidan esos ejemplos como
 referencia. Las marcas de fallo esperado existentes no se heredan automáticamente.

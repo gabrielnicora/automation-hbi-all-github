@@ -1,7 +1,7 @@
 # Especificación principal — Framework de automatización de Banco Entre Ríos
 
 > Estado: autenticación e inversiones validadas en BERSA QA; perfil API pendiente  
-> Versión: 3.1
+> Versión: 3.2
 > Alcance: Banco Entre Ríos (BERSA), ambiente QA, automatización API y UI con Playwright
 
 ## 1. Decisión de alcance
@@ -136,6 +136,33 @@ las otras clases se consultan sólo como dependencias de esos métodos.
 
 `java/` conserva el legado como referencia de migración. La implementación migrada sigue
 ubicándose en las capas Playwright/TypeScript definidas en la sección 6.
+
+### Catálogo cerrado de casos migrables
+
+Decisión del usuario, 19 de octubre de 2026: el alcance de la migración acelerada queda
+limitado a los 265 IDs enumerados en `specs/migration/migratable-cases.md`: 178 declarados
+como `API` y 87 como `WEB`. Ese documento es el catálogo canónico de elegibilidad y canal.
+
+- No migrar casos ausentes del catálogo, aunque existan y sean ejecutables en el legado.
+- La presencia en el catálogo no basta: excluir toda definición efectiva marcada como
+  ignorada, deshabilitada, obsoleta o deprecada, incluidas `@Ignore`, `@Disabled` y marcas
+  equivalentes.
+- Para un ID declarado `API`, priorizar su fuente API aunque también exista en UI. Sólo cuando
+  no exista ninguna definición API y sí exista un método UI activo válido en `FrontTest.java`,
+  migrarlo como UI y registrar la inconsistencia de canal en `docs/guides/ambiguities/`.
+- Una definición API existente pero excluida por sus marcas no habilita el fallback a UI.
+- Para un ID declarado `WEB`, aplicar la regla vigente de fuente UI exclusiva en
+  `FrontTest.java`; esta decisión no autoriza fallback de `WEB` a API.
+
+Esta decisión precisa qué significa «casos existentes» dentro de la migración acelerada y
+reemplaza cualquier interpretación de que todo caso BERSA encontrado en el legado integra el
+alcance. El catálogo distingue alcance de avance: un ID listado no queda por ello encontrado,
+portado ni validado. Esta decisión tampoco ordena retirar tests ya implementados fuera del
+catálogo; se registran como inconsistencias preexistentes hasta decidir su permanencia.
+
+Para determinar si un caso está activo se evalúan su método de test y su clase. Un helper
+deprecado no excluye automáticamente un test activo; las marcas efectivas del método o de su
+clase sí lo excluyen. `WEB` es la denominación legada del canal UI.
 
 La suite permanente contiene escenarios funcionales API y UI. Pueden existir
 verificaciones temporales durante el desarrollo, pero no se mantendrá una arquitectura de

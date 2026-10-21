@@ -3,12 +3,14 @@
 | Fuente                           | Uso                                                         |
 | -------------------------------- | ----------------------------------------------------------- |
 | SPEC.md y decisiones explícitas  | Arquitectura, políticas y excepciones aprobadas             |
+| Catálogo de casos migrables      | Elegibilidad, canal declarado y precedencia de búsqueda     |
 | Código legado y métodos llamados | Pasos, datos y assertions que se deben trasladar            |
 | Testigos y código actual         | APIs disponibles, composición y patrones de implementación  |
 | Especificaciones de capacidades  | Contratos concretos y decisiones que reemplazaron el legado |
 | Guías de familia                 | Orientación y límites de reutilización                      |
 
-Estas fuentes se consultan durante la traducción; no se exige una ficha o tabla previa por caso.
+Comprobar primero `specs/migration/migratable-cases.md`. Estas fuentes se consultan durante la
+traducción; no se exige una ficha o tabla previa por caso.
 El código actual puede tener incidencias externas o validación pendiente: no asumir que todo
 componente está funcionalmente validado por existir en el repositorio.
 
