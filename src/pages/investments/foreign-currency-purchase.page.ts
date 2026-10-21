@@ -1,4 +1,5 @@
 import { expect, type Locator, type Page } from '@playwright/test';
+import { becomesVisible } from '../visibility';
 
 export interface ForeignCurrencyPurchaseForm {
   readonly operationType: string;
@@ -36,6 +37,58 @@ export class ForeignCurrencyPurchasePage {
 
   public async readValidationMessage(): Promise<string> {
     return (await this.validationMessage.innerText()).trim();
+  }
+
+  /** Elige el tipo de operación cuyo texto contiene el valor (legado seleccionarDropdownGenerico). */
+  public async selectOperationType(label: string): Promise<void> {
+    await this.selectOption(this.operationType, label, false);
+  }
+
+  /** Elige la cuenta origen cuyo texto contiene el valor. */
+  public async selectOriginAccount(label: string): Promise<void> {
+    await this.selectOption(this.originAccount, label, false);
+  }
+
+  /** Elige la cuenta destino cuyo texto contiene el valor (por ejemplo `USD` o `$`). */
+  public async selectDestinationAccount(label: string): Promise<void> {
+    await this.selectOption(this.destinationAccount, label, false);
+  }
+
+  /** Escribe el importe como el legado (`sendKeys` sobre `#userAmount`). */
+  public async typeAmount(amount: string): Promise<void> {
+    await expect(this.amountInput).toBeVisible();
+    await this.amountInput.pressSequentially(amount);
+    await expect(this.amountInput).toHaveValue(amount);
+  }
+
+  /** Presiona Continuar sin exigir un mensaje de validación (legado clickContinuarGenerico). */
+  public async pressContinue(): Promise<void> {
+    await this.continueButton.scrollIntoViewIfNeeded();
+    await this.continueButton.click();
+  }
+
+  public async pressConfirm(): Promise<void> {
+    const confirm = this.page.locator("xpath=//button[@aria-label='Confirmar']").first();
+    await confirm.scrollIntoViewIfNeeded();
+    await confirm.click();
+  }
+
+  /** Indica si algún elemento muestra el texto (legado `//*[contains(text(), ...)]`). */
+  public async isMessageShown(text: string): Promise<boolean> {
+    return becomesVisible(this.page.locator(`xpath=//*[contains(text(), "${text}")]`).first());
+  }
+
+  /**
+   * Abre el desplegable de cuenta indicado e informa si muestra alguna opción que contiene el texto
+   * (legado validarDesplegableCuentasEn* + keyDownXParametrosGenerico). Cierra el desplegable al terminar.
+   */
+  public async accountOptionsInclude(field: 'destination' | 'origin', text: string): Promise<boolean> {
+    const container = field === 'origin' ? this.originAccount : this.destinationAccount;
+    await expect(container).toBeVisible();
+    await container.click();
+    const shown = await becomesVisible(this.page.locator(`xpath=//div[contains(text(),"${text}")]`).first());
+    await this.page.keyboard.press('Escape');
+    return shown;
   }
 
   private async selectOption(container: Locator, label: string, exactMatch = true): Promise<void> {

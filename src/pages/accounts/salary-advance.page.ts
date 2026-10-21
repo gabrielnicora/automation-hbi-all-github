@@ -39,6 +39,36 @@ export class SalaryAdvancePage {
     return this.continueButton.isEnabled();
   }
 
+  /** "¿Cuánto necesitás?" (`#amount`). */
+  public async fillRequestedAmount(amount: string): Promise<void> {
+    const input = this.page.locator('#amount');
+    await expect(input).toBeVisible();
+    await input.pressSequentially(amount);
+  }
+
+  public async pressContinue(): Promise<void> {
+    await this.continueButton.scrollIntoViewIfNeeded();
+    await this.continueButton.click();
+  }
+
+  public async pressConfirm(): Promise<void> {
+    const confirm = this.page.locator("xpath=//button[@aria-label='Confirmar']").first();
+    await confirm.scrollIntoViewIfNeeded();
+    await confirm.click();
+  }
+
+  /** Flecha "Volver" (legado clickVolverFlechaGenerico); espera la solicitud de adelanto. */
+  public async goBackWithArrow(): Promise<void> {
+    await expect(this.page.locator('div.notification.notification-success.notification-visible')).toHaveCount(0);
+    await this.page.locator("xpath=//span[normalize-space(.)='Volver']/ancestor::div[1]").first().click();
+    await expect(this.contractSummaryLink).toBeVisible();
+  }
+
+  /** Indica si se ve la notificación de error de monto permitido (legado validarAlertMontoPermitido). */
+  public async isAmountErrorShown(): Promise<boolean> {
+    return becomesVisible(this.page.locator('div.notification.notification-error.notification-visible').first());
+  }
+
   public async openContractSummary(): Promise<void> {
     await this.contractSummaryLink.click();
     await expect(this.redirectDialogHeading).toBeVisible();

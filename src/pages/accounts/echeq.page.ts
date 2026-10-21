@@ -1,4 +1,5 @@
 import { expect, type Locator, type Page } from '@playwright/test';
+import { becomesVisible } from '../visibility';
 
 export interface EcheqRow {
   readonly emissionDate: string;
@@ -45,6 +46,60 @@ export class EcheqPage {
     await this.todayButton.click();
     await this.applyButton.click();
     await this.filterButton.click();
+  }
+
+  /** Abre "Filtrar" (legado clickbtnFiltrar). */
+  public async openFilters(): Promise<void> {
+    await this.filterButton.click();
+    await expect(this.applyButton).toBeVisible();
+  }
+
+  public async isTextShown(text: string): Promise<boolean> {
+    return becomesVisible(this.page.locator(`xpath=//*[contains(text(), "${text}")]`).first());
+  }
+
+  /** Indica si un `span` o `div` con el texto se ve (etiquetas de filtros del legado). */
+  public async isLabelShown(text: string, element: 'div' | 'span'): Promise<boolean> {
+    return becomesVisible(this.page.locator(`xpath=//${element}[contains(text(), '${text}')]`).first());
+  }
+
+  public async applyFilters(): Promise<void> {
+    await this.page.locator("xpath=//span[contains(text(),'Aplicar')]").first().click();
+  }
+
+  /** Busca por número de eCheq y estado "Emitido pendiente" (legado TC124865). */
+  public async searchByNumberAndPendingState(echeqNumber: string): Promise<void> {
+    await this.page.locator("xpath=//input[contains(@id,'echeq')]").first().pressSequentially(echeqNumber);
+    await this.page.locator("xpath=//div[contains(text(), 'Todos')]").first().click();
+    await this.page.locator("xpath=//div[contains(text(), 'Emitido pendiente')]").last().click();
+    await this.page.locator("xpath=//button[@aria-label='Buscar']").first().click();
+  }
+
+  public async openFirstDetail(): Promise<void> {
+    const detail = this.page.locator("xpath=(//*[@aria-label='tabla']//*[contains(@aria-label,'flecha')])[1]");
+    await expect(detail).toBeVisible();
+    await detail.scrollIntoViewIfNeeded();
+    await detail.click();
+  }
+
+  /** Aceptar el eCheq desde el detalle (botón genérico "Aceptar"). */
+  public async startAcceptance(): Promise<void> {
+    await this.page.locator("xpath=//button[@aria-label='Aceptar']").first().click();
+  }
+
+  /** Continuar la aceptación y esperar el segundo factor. */
+  public async continueToSecondFactor(): Promise<void> {
+    const continueButton = this.page.locator("xpath=//button[@aria-label='Continuar']").first();
+    await continueButton.scrollIntoViewIfNeeded();
+    await continueButton.click();
+    await expect(this.page.locator('#secondFactor')).toBeVisible();
+  }
+
+  public async enterSecondFactorCode(code: string): Promise<void> {
+    await this.page.locator('#secondFactor').fill(code);
+    const confirm = this.page.locator("xpath=//button[@aria-label='Confirmar']").first();
+    await confirm.scrollIntoViewIfNeeded();
+    await confirm.click();
   }
 
   public async readVisibleRows(): Promise<readonly EcheqRow[]> {

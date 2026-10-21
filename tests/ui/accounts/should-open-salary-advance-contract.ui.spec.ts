@@ -1,21 +1,5 @@
 import { expect, test } from '../../../src/fixtures/ui-test';
-
-const OFFER_TEXTS = [
-  'Solicitud de adelanto',
-  'solicitar entre $',
-  'El importe solicitado más el interés se devolverá en la próxima acreditación de sueldo.',
-  'El monto de interés se calculará según la cantidad de días que transcurran desde que solicites el adelanto hasta que cobres tu próximo sueldo.',
-  'Resumen de contrato',
-  'Mis adelantos',
-];
-
-const NO_OFFER_TEXTS = [
-  'Adelanto de sueldo',
-  'Resumen de contrato',
-  'Mis adelantos',
-  'En este momento no podemos procesar tu solicitud',
-  'No contamos con una oferta disponible para vos!',
-];
+import { expectSalaryAdvanceRequestScreen } from './salary-advance-request-screen';
 
 test.describe('Resumen de contrato de adelanto de sueldo UI de Banco Entre Ríos', () => {
   const TEST_CASE_ID = 'TC0227BERSA';
@@ -61,15 +45,6 @@ test.describe('Cancelación de redirección al contrato UI de Banco Entre Ríos'
     await salaryAdvancePage.openContractSummary();
     await salaryAdvancePage.cancelContractRedirect();
 
-    const hasOffer = await salaryAdvancePage.hasOfferAvailable();
-    const expectedTexts = hasOffer ? OFFER_TEXTS : NO_OFFER_TEXTS;
-
-    for (const expectedText of expectedTexts) {
-      expect(await salaryAdvancePage.isTextShown(expectedText), `Debe mostrar "${expectedText}".`).toBe(true);
-    }
-
-    if (hasOffer) {
-      expect(await salaryAdvancePage.isContinueEnabled(), 'Con oferta, Continuar debe estar habilitado.').toBe(true);
-    }
+    await expectSalaryAdvanceRequestScreen(salaryAdvancePage);
   });
 });
