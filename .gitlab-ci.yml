@@ -3,38 +3,182 @@ image: mcr.microsoft.com/playwright:v1.60.0-noble
 variables:
   PNPM_VERSION: '11.19.0'
   PW_WORKERS: '1'
+  # Recursos base moderados para 1 worker de Playwright
+  KUBERNETES_CPU_REQUEST: '2'
+  KUBERNETES_CPU_LIMIT: '3'
+  KUBERNETES_MEMORY_REQUEST: '4Gi'
+  KUBERNETES_MEMORY_LIMIT: '6Gi'
+  # Almacenamiento efímero ajustado para reportes y depuración
+  KUBERNETES_EPHEMERAL_STORAGE_REQUEST: '2Gi'
+  KUBERNETES_EPHEMERAL_STORAGE_LIMIT: '4Gi'
+  # 'true' ejecuta la regresión sin intervención; por defecto los shards son manuales.
+  RUN_REGRESSION: 'false'
+  # Acotan la regresión: rutas de tests (separadas por espacio) y expresión para --grep.
+  TEST_PATH: ''
+  TEST_FILTER: ''
 
 stages:
+  - setup
   - quality
-  - ui
+  - regression
+  - report
 
-.pnpm_setup:
-  before_script:
+default:
+  tags:
+    - application
+
+# =====================================================================
+# Setup: instala dependencias una vez y las comparte como artifact
+# =====================================================================
+install_deps:
+  stage: setup
+  script:
     - npm install --global pnpm@${PNPM_VERSION}
-    - pnpm install --frozen-lockfile
+    - pnpm install --frozen-lockfile --store-dir "$CI_PROJECT_DIR/.pnpm-store"
   cache:
     key:
       files:
         - pnpm-lock.yaml
     paths:
       - .pnpm-store/
+  artifacts:
+    # Debe cubrir la espera hasta lanzar shard_1 a mano más la cadena completa de shards.
+    expire_in: 1 day
+    paths:
+      - node_modules/
+
+# Los jobs posteriores reutilizan node_modules/ de install_deps (no ejecutan pnpm install).
+.pnpm_setup:
+  needs:
+    - job: install_deps
+      artifacts: true
+  before_script:
+    - npm install --global pnpm@${PNPM_VERSION}
 
 quality:
   extends: .pnpm_setup
   stage: quality
+  variables:
+    KUBERNETES_CPU_REQUEST: '1'
+    KUBERNETES_MEMORY_REQUEST: '2Gi'
   script:
     - pnpm run check
 
-ui:login:bersa:
+# =====================================================================
+# Regresión en 3 shards encadenados: 1 -> 2 -> 3
+# Los shards corren de a uno porque los escenarios API y UI reutilizan
+# identidades (SPEC.md, sección 9). Dividir la suite acota la duración de
+# cada job y conserva evidencia parcial; no agrega paralelismo.
+# =====================================================================
+.shard:
   extends: .pnpm_setup
-  stage: ui
-  when: manual
+  stage: regression
+  timeout: 6 hours
+  variables:
+    # Debe coincidir con la cantidad de jobs shard_N definidos abajo.
+    SHARD_TOTAL: '3'
   script:
-    - pnpm run test:ui:login
+    - |
+      echo "Playwright | shard ${SHARD_INDEX}/${SHARD_TOTAL} | workers=${PW_WORKERS}"
+      echo "TEST_PATH:   ${TEST_PATH:-<todos>}"
+      echo "TEST_FILTER: ${TEST_FILTER:-<sin grep>}"
+
+      set -- --shard="${SHARD_INDEX}/${SHARD_TOTAL}" --reporter=list,blob
+      # TEST_PATH sin comillas para admitir varias rutas separadas por espacio.
+      if [ -n "$TEST_PATH" ]; then set -- "$@" $TEST_PATH; fi
+      if [ -n "$TEST_FILTER" ]; then set -- "$@" --grep "$TEST_FILTER"; fi
+
+      pnpm exec playwright test "$@"
   artifacts:
     when: always
+    expire_in: 1 day
+    paths:
+      - blob-report/
+
+shard_1:
+  extends: .shard
+  needs:
+    - job: install_deps
+      artifacts: true
+    - job: quality
+      artifacts: false
+  variables:
+    SHARD_INDEX: '1'
+  rules:
+    - if: '$RUN_REGRESSION == "true"'
+      when: on_success
+      allow_failure: true
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: on_success
+      allow_failure: true
+    - when: manual
+      allow_failure: true
+
+# allow_failure en cada shard: un fallo de tests no corta la cadena y el
+# reporte final incluye los tres shards.
+shard_2:
+  extends: .shard
+  needs:
+    - job: install_deps
+      artifacts: true
+    - job: shard_1
+      artifacts: false
+  variables:
+    SHARD_INDEX: '2'
+  rules:
+    - when: on_success
+      allow_failure: true
+
+shard_3:
+  extends: .shard
+  needs:
+    - job: install_deps
+      artifacts: true
+    - job: shard_2
+      artifacts: false
+  variables:
+    SHARD_INDEX: '3'
+  rules:
+    - when: on_success
+      allow_failure: true
+
+# =====================================================================
+# Reporte unificado (HTML + JUnit) a partir de los blobs de los shards
+# =====================================================================
+merge_reports:
+  extends: .pnpm_setup
+  stage: report
+  needs:
+    - job: install_deps
+      artifacts: true
+    - job: shard_1
+      artifacts: true
+      optional: true
+    - job: shard_2
+      artifacts: true
+      optional: true
+    - job: shard_3
+      artifacts: true
+      optional: true
+  rules:
+    - if: '$RUN_REGRESSION == "true"'
+      when: always
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: always
+    - when: manual
+      allow_failure: true
+  script:
+    - |
+      ls -la blob-report/ 2>/dev/null || true
+      if ! ls blob-report/*.zip >/dev/null 2>&1; then
+        echo "ERROR: no hay blobs en blob-report/. ¿Corrieron los shards?"
+        exit 1
+      fi
+      pnpm exec playwright merge-reports --config=merge.config.ts blob-report
+  artifacts:
+    when: always
+    expire_in: 1 week
     paths:
       - playwright-report/
-      - test-results/
     reports:
       junit: test-results/junit-report.xml

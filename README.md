@@ -179,6 +179,18 @@ Remove-Item Env:PW_RETRIES
 La variable debe estar en el entorno del proceso o configurada en CI. El archivo
 `.env.example` sirve de referencia; no se carga automáticamente como configuración.
 
+### CI (GitLab)
+
+`.gitlab-ci.yml` instala dependencias, ejecuta `pnpm run check` y ofrece la regresión en
+tres shards encadenados (`shard_1` → `shard_2` → `shard_3`), uno por vez y con un worker.
+`merge_reports` une los resultados en `playwright-report/` y `test-results/junit-report.xml`.
+
+- Por defecto `shard_1` y `merge_reports` son manuales; al iniciar `shard_1` los demás
+  shards siguen solos.
+- `RUN_REGRESSION=true` o un pipeline programado ejecutan todo sin intervención.
+- `TEST_PATH` (por ejemplo `tests/ui/authentication`) y `TEST_FILTER` (expresión para
+  `--grep`) acotan la selección.
+
 ## Cómo contribuir
 
 La guía [docs/test-authoring.md](./docs/test-authoring.md) describe la superficie objetivo

@@ -601,6 +601,21 @@ recibió `COR002E`. No se asignó significado ni se aceptó ese código. Con un 
 cuatro escenarios BSC finalizaron correctamente. Esa evidencia no valida BERSA, pero se
 conserva un worker como política segura hasta probar aislamiento de datos en el banco activo.
 
+### Regresión en CI por shards
+
+Decisión del usuario, 21 de octubre de 2026: `.gitlab-ci.yml` ejecuta la regresión en tres
+shards de Playwright encadenados (`shard_1` → `shard_2` → `shard_3`), con un worker cada uno,
+y un job final que une sus reportes blob en el HTML y el JUnit habituales mediante
+`merge.config.ts`. Estado: aprobado. Motivo: acotar la duración de cada job y conservar
+evidencia parcial. Reemplaza el job manual único `ui:login:bersa`.
+
+- Los shards no se ejecutan en simultáneo; la división no agrega paralelismo y conserva las
+  reglas de identidades compartidas de esta sección.
+- La regresión es manual por defecto; corre sin intervención con `RUN_REGRESSION=true` o en
+  un pipeline programado. `TEST_PATH` y `TEST_FILTER` (`--grep`) acotan la selección.
+- Cada shard admite fallos para que la cadena y el reporte final se completen; el resultado
+  de los tests se lee en el reporte unificado.
+
 ### Selección smoke
 
 Al necesitar una ejecución breve de funcionalidades críticas, definir una selección smoke
