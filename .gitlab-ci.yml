@@ -1,72 +1,28 @@
-image: mcr.microsoft.com/playwright:v1.60.0-noble
+include:
+  - local: .gitlab/ci/base.yml
 
+# Variables visibles al lanzar un pipeline a mano (Run pipeline) o en un schedule.
+# Se transmiten al pipeline hijo de regresión.
 variables:
-  PNPM_VERSION: '11.19.0'
-  PW_WORKERS: '1'
-  # Recursos base moderados para 1 worker de Playwright
-  KUBERNETES_CPU_REQUEST: '2'
-  KUBERNETES_CPU_LIMIT: '3'
-  KUBERNETES_MEMORY_REQUEST: '4Gi'
-  KUBERNETES_MEMORY_LIMIT: '6Gi'
-  # Almacenamiento efímero ajustado para reportes y depuración
-  KUBERNETES_EPHEMERAL_STORAGE_REQUEST: '2Gi'
-  KUBERNETES_EPHEMERAL_STORAGE_LIMIT: '4Gi'
-  # Ambiente de ejecución: qa (BERSA QA) | une-dev (UNE DEV, contraseña y OTP fijos).
-  TEST_ENV: 'qa'
-  # Sólo une-dev: dominios internos que se agregan a /etc/hosts ("ip host" por línea).
-  # Puede reemplazarse con una variable de CI del proyecto.
-  UNE_HOST_ENTRIES: |
-    10.134.68.217 onlinebanking.dev.bancoune.com
-    10.134.68.217 apii.dev.bancoune.com
-    10.134.68.217 apie.dev.bancoune.com
-    10.134.68.217 bffe.dev.bancoune.com
-    10.134.68.217 hbi.dev.bancoune.com
-    10.134.68.217 hbe.dev.bancoune.com
-    10.134.68.217 obe.dev.bancoune.com
-    10.134.68.217 officebanking.dev.bancoune.com
-  # 'true' ejecuta la regresión sin intervención; por defecto los shards son manuales.
-  RUN_REGRESSION: 'false'
-  # Acotan la regresión: rutas de tests (separadas por espacio) y expresión para --grep.
-  TEST_PATH: ''
-  TEST_FILTER: ''
+  REGRESSION_MODE:
+    value: 'manual'
+    options: ['manual', 'auto']
+    description: 'Schedules y pipelines ad hoc: manual (botón regression) o auto (corre sola). En push y MR siempre es manual.'
+  TEST_ENV:
+    value: 'qa'
+    options: ['qa', 'une-dev']
+    description: 'qa = BERSA QA; une-dev = UNE DEV (contraseña y OTP fijos).'
+  TEST_PATH:
+    value: ''
+    description: 'Opcional: rutas de tests separadas por espacio (por ejemplo tests/ui/authentication).'
+  TEST_FILTER:
+    value: ''
+    description: 'Opcional: expresión para --grep.'
 
 stages:
   - setup
   - quality
   - regression
-  - report
-
-default:
-  tags:
-    - application
-
-# =====================================================================
-# Setup: instala dependencias una vez y las comparte como artifact
-# =====================================================================
-install_deps:
-  stage: setup
-  script:
-    - npm install --global pnpm@${PNPM_VERSION}
-    - pnpm install --frozen-lockfile --store-dir "$CI_PROJECT_DIR/.pnpm-store"
-  cache:
-    key:
-      files:
-        - pnpm-lock.yaml
-    paths:
-      - .pnpm-store/
-  artifacts:
-    # Debe cubrir la espera hasta lanzar shard_1 a mano más la cadena completa de shards.
-    expire_in: 1 day
-    paths:
-      - node_modules/
-
-# Los jobs posteriores reutilizan node_modules/ de install_deps (no ejecutan pnpm install).
-.pnpm_setup:
-  needs:
-    - job: install_deps
-      artifacts: true
-  before_script:
-    - npm install --global pnpm@${PNPM_VERSION}
 
 quality:
   extends: .pnpm_setup
@@ -78,136 +34,28 @@ quality:
     - pnpm run check
 
 # =====================================================================
-# Regresión en 3 shards encadenados: 1 -> 2 -> 3
-# Los shards corren de a uno porque los escenarios API y UI reutilizan
-# identidades (SPEC.md, sección 9). Dividir la suite acota la duración de
-# cada job y conserva evidencia parcial; no agrega paralelismo.
+# Regresión: un solo disparo que crea el pipeline hijo con los 3 shards
+# encadenados y el reporte unificado (.gitlab/ci/regression.yml).
+# Manual con allow_failure: no bloquea el pipeline ni el MR. Una vez
+# disparado, la cadena completa corre sin más intervención.
 # =====================================================================
-.shard:
-  extends: .pnpm_setup
+regression:
   stage: regression
-  timeout: 6 hours
-  variables:
-    # Debe coincidir con la cantidad de jobs shard_N definidos abajo.
-    SHARD_TOTAL: '3'
-  before_script:
-    - npm install --global pnpm@${PNPM_VERSION}
-    - |
-      if [ "$TEST_ENV" = "une-dev" ]; then
-        echo "Configurando /etc/hosts para UNE DEV..."
-        echo "$UNE_HOST_ENTRIES" | while read -r ip host rest; do
-          if [ -z "$host" ]; then continue; fi
-          if grep -qE "[[:space:]]${host}([[:space:]]|\$)" /etc/hosts; then
-            echo "SKIP (ya existe): $host"
-          else
-            printf '%s\t%s\n' "$ip" "$host" >> /etc/hosts
-            echo "ADD: $ip -> $host"
-          fi
-          getent hosts "$host" > /dev/null || echo "WARNING: no resuelve $host"
-        done
-      fi
-  script:
-    - |
-      echo "Playwright | ${TEST_ENV} | shard ${SHARD_INDEX}/${SHARD_TOTAL} | workers=${PW_WORKERS}"
-      echo "TEST_PATH:   ${TEST_PATH:-<todos>}"
-      echo "TEST_FILTER: ${TEST_FILTER:-<sin grep>}"
-
-      set -- --shard="${SHARD_INDEX}/${SHARD_TOTAL}" --reporter=list,blob
-      # TEST_PATH sin comillas para admitir varias rutas separadas por espacio.
-      if [ -n "$TEST_PATH" ]; then set -- "$@" $TEST_PATH; fi
-      if [ -n "$TEST_FILTER" ]; then set -- "$@" --grep "$TEST_FILTER"; fi
-
-      pnpm exec playwright test "$@"
-  artifacts:
-    when: always
-    expire_in: 1 day
-    paths:
-      - blob-report/
-
-shard_1:
-  extends: .shard
   needs:
-    - job: install_deps
-      artifacts: true
     - job: quality
       artifacts: false
-  variables:
-    SHARD_INDEX: '1'
+  trigger:
+    include: .gitlab/ci/regression.yml
+    strategy: depend
+    forward:
+      pipeline_variables: true
   rules:
-    - if: '$RUN_REGRESSION == "true"'
-      when: on_success
+    # Push y MR: siempre manual, sin importar REGRESSION_MODE.
+    - if: '$CI_PIPELINE_SOURCE == "push" || $CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: manual
       allow_failure: true
-    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    # Schedule o pipeline ad hoc con REGRESSION_MODE=auto: corre sola.
+    - if: '$REGRESSION_MODE == "auto"'
       when: on_success
-      allow_failure: true
     - when: manual
       allow_failure: true
-
-# allow_failure en cada shard: un fallo de tests no corta la cadena y el
-# reporte final incluye los tres shards.
-shard_2:
-  extends: .shard
-  needs:
-    - job: install_deps
-      artifacts: true
-    - job: shard_1
-      artifacts: false
-  variables:
-    SHARD_INDEX: '2'
-  rules:
-    - when: on_success
-      allow_failure: true
-
-shard_3:
-  extends: .shard
-  needs:
-    - job: install_deps
-      artifacts: true
-    - job: shard_2
-      artifacts: false
-  variables:
-    SHARD_INDEX: '3'
-  rules:
-    - when: on_success
-      allow_failure: true
-
-# =====================================================================
-# Reporte unificado (HTML + JUnit) a partir de los blobs de los shards
-# =====================================================================
-merge_reports:
-  extends: .pnpm_setup
-  stage: report
-  needs:
-    - job: install_deps
-      artifacts: true
-    - job: shard_1
-      artifacts: true
-      optional: true
-    - job: shard_2
-      artifacts: true
-      optional: true
-    - job: shard_3
-      artifacts: true
-      optional: true
-  rules:
-    - if: '$RUN_REGRESSION == "true"'
-      when: always
-    - if: '$CI_PIPELINE_SOURCE == "schedule"'
-      when: always
-    - when: manual
-      allow_failure: true
-  script:
-    - |
-      ls -la blob-report/ 2>/dev/null || true
-      if ! ls blob-report/*.zip >/dev/null 2>&1; then
-        echo "ERROR: no hay blobs en blob-report/. ¿Corrieron los shards?"
-        exit 1
-      fi
-      pnpm exec playwright merge-reports --config=merge.config.ts blob-report
-  artifacts:
-    when: always
-    expire_in: 1 week
-    paths:
-      - playwright-report/
-    reports:
-      junit: test-results/junit-report.xml

@@ -630,8 +630,13 @@ evidencia parcial. Reemplaza el job manual único `ui:login:bersa`.
 
 - Los shards no se ejecutan en simultáneo; la división no agrega paralelismo y conserva las
   reglas de identidades compartidas de esta sección.
-- La regresión es manual por defecto; corre sin intervención con `RUN_REGRESSION=true` o en
-  un pipeline programado. `TEST_PATH` y `TEST_FILTER` (`--grep`) acotan la selección.
+- La regresión corre en un pipeline hijo (`.gitlab/ci/regression.yml`) que crea el job
+  `regression`. Una vez disparado, los tres shards y el reporte corren sin intervención.
+- Decisión del usuario, 21 de octubre de 2026, que reemplaza el disparo automático en
+  schedules y con `RUN_REGRESSION=true`: en push y merge request la regresión es siempre
+  manual. En schedules y pipelines ad hoc, `REGRESSION_MODE=manual|auto` (por defecto
+  `manual`) elige entre el disparo manual y la ejecución automática.
+- `TEST_PATH` y `TEST_FILTER` (`--grep`) acotan la selección.
 - Cada shard admite fallos para que la cadena y el reporte final se completen; el resultado
   de los tests se lee en el reporte unificado.
 
