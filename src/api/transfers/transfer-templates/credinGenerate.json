@@ -1,0 +1,19 @@
+{
+  "conceptSelector": "ALQ",
+  "description": "testAutomation",
+  "receiptNumber": "",
+  "amount": 1,
+  "currency": "_currency_",
+  "isAccountOwner": "false",
+  "debitCuit": "_debitCuit_",
+  "debitOwner": "_debitName_",
+  "debitCustomer": "{\"headline\":{\"firstName\":\"_debitName_\",\"cuil\":\"_debitCuit_\"},\"account\":{\"idEnvironment\":0,\"idProduct\":null,\"productType\":\"01\",\"productTypeLabel\":null,\"productTypeShortLabel\":null,\"description\":null,\"productAlias\":null,\"smsAlias\":null,\"label\":null,\"shortLabel\":null,\"extraInfo\":null,\"deleted\":false,\"client\":null,\"currency\":\"_currency_\",\"number\":\"_debitNumber_\",\"ownerName\":null,\"consolidatedAmount\":0,\"permissions\":null,\"family\":null,\"segment\":null,\"favourite\":false,\"overdraftLine\":0,\"pendingBalance\":0,\"balance\":null,\"countableBalance\":0,\"totalCheckAmount\":0,\"cbu\":\"_cbuOrigen_\",\"aliasCbu\":\"_debitAlias_\",\"statements\":null,\"overdraft\":false,\"loadBalance\":false,\"debitCardNumber\":null,\"amountPesos\":0,\"quotation\":0,\"brandType\":\"_debitBrandType_\",\"id\":null,\"labelWithBalance\":null,\"numberBank\":\"_debitNumberBank_\",\"bankName\":null,\"active\":true,\"acceptDeposit\":false,\"useSignature\":null,\"modifyAliasCbu\":true,\"cbuHash\":null,\"shortLabelWithBalance\":null,\"bimonetary\":false,\"isCurrentAccount\":false,\"isSavingsBank\":false}}",
+  "creditCuit": "_creditCuit_",
+  "creditOwner": "_creditOwner_",
+  "creditCustomer": "{\"headline\":{\"firstName\":\"_creditOwner_ \",\"cuil\":\"_creditCuit_\"},\"account\":{\"idEnvironment\":0,\"idProduct\":null,\"productType\":\"11\",\"productTypeLabel\":null,\"productTypeShortLabel\":null,\"description\":null,\"productAlias\":null,\"smsAlias\":null,\"label\":null,\"shortLabel\":null,\"extraInfo\":null,\"deleted\":false,\"client\":null,\"currency\":\"_currency_\",\"number\":\"_creidtNumber_\",\"ownerName\":null,\"consolidatedAmount\":0,\"permissions\":null,\"family\":null,\"segment\":null,\"favourite\":false,\"overdraftLine\":0,\"pendingBalance\":0,\"balance\":null,\"countableBalance\":0,\"totalCheckAmount\":0,\"cbu\":\"_cbuDestino_\",\"aliasCbu\":\"_creditAlias_\",\"statements\":null,\"overdraft\":false,\"loadBalance\":false,\"debitCardNumber\":null,\"amountPesos\":0,\"quotation\":0,\"brandType\":\"_creditBrandtype_\",\"id\":null,\"labelWithBalance\":null,\"numberBank\":\"_creditNumberBank_\",\"bankName\":null,\"active\":true,\"acceptDeposit\":false,\"useSignature\":null,\"modifyAliasCbu\":true,\"cbuHash\":null,\"shortLabelWithBalance\":null,\"bimonetary\":false,\"isCurrentAccount\":false,\"isSavingsBank\":false}}",
+  "idProduct": "_debitIdProduct_",
+  "targetCBU": "_cbuDestino_",
+  "_otp": "OTP_TOKEN@_code_",
+  "ajax_uuid": "254230aa-b8c6-46e4-928d-c2054a2ec772",
+  "xAppVersion": "1.71.2"
+}

@@ -1,0 +1,12 @@
+{
+  "startDate": "_startDate_",
+  "endDate": "_endDate_",
+  "credinStatus": "TODOS",
+  "cuitOriginator": "_cuitOriginator_",
+  "cuitRecipient": "_cuitRecipient_",
+  "searchAs": "_searchAs_",
+  "isExport": false,
+  "page": "1",
+  "ajax_uuid": "252b85cf-11ff-45f7-92be-9013b8a72c63",
+  "xAppVersion": "1.72.0"
+}

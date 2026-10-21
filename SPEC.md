@@ -160,6 +160,11 @@ alcance. El catálogo distingue alcance de avance: un ID listado no queda por el
 portado ni validado. Esta decisión tampoco ordena retirar tests ya implementados fuera del
 catálogo; se registran como inconsistencias preexistentes hasta decidir su permanencia.
 
+Decisión del usuario, 21 de octubre de 2026: el avance por caso —elegibilidad resuelta, fuente,
+lote, portado, ejecución QA y revisión humana— se registra en `docs/guides/migration-status.md`,
+punto de entrada operativo de la migración. El catálogo conserva la autoridad sobre alcance y
+canal declarado. Reemplaza el informe de avance únicamente por lote.
+
 Para determinar si un caso está activo se evalúan su método de test y su clase. Un helper
 deprecado no excluye automáticamente un test activo; las marcas efectivas del método o de su
 clase sí lo excluyen. `WEB` es la denominación legada del canal UI.

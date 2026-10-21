@@ -26,6 +26,8 @@ Usar esta lista durante el trabajo y en el cierre del lote; no exigir una tabla 
 - [ ] Se distingue código portado, revisión humana pendiente y validación QA pendiente/fallida.
 - [ ] El cierre informa catalogados, elegibles, excluidos, sin fuente y portados; no usa 265 como
       sinónimo de migraciones terminadas.
+- [ ] Las filas del lote y el resumen de `docs/guides/migration-status.md` reflejan portado,
+      ejecución QA y revisión humana por separado.
 
 Los datos QA faltantes o errores externos de seguros/turnos no invalidan esos ejemplos como
 referencia. Las marcas de fallo esperado existentes no se heredan automáticamente.

@@ -58,6 +58,7 @@ seguir el protocolo de rangos consecutivos y control de truncación de `AGENTS.m
 | Exploración, generación o depuración con Playwright | `.agents/skills/playwright-cli/SKILL.md` y las referencias que correspondan según esa skill. |
 | Migración acelerada de casos legados                | `docs/guides/README.md` y la guía de la familia funcional correspondiente.                   |
 | Elegibilidad y canal de casos a migrar              | `specs/migration/migratable-cases.md`; catálogo cerrado previo a leer o portar cada caso.    |
+| Avance y lote de cada caso a migrar                 | `docs/guides/migration-status.md`; punto de entrada operativo, subordinado al catálogo.      |
 
 Si una capacidad usa otra como precondición y el cambio afecta esa dependencia, leer
 también su especificación. Para capacidades nuevas o rutas renombradas, buscar en
