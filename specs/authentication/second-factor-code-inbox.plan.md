@@ -63,6 +63,12 @@ transferencia, pago, cambio de domicilio, préstamo ni ninguna otra mutación de
 - Los clientes de capacidad conservan únicamente endpoints y payloads propios.
 - Un workflow puede coordinar el Page Object y la bandeja cuando un recorrido UI lo
   requiera; no contiene locators ni endpoints.
+- Desafío sin reenvío (`requestSingleCode`, migración acelerada L11, 21 de octubre de 2026):
+  cuando el disparo no puede repetirse desde la misma pantalla (correo de recupero de
+  usuario, TC0048/TC128240BERSA), la bandeja toma la línea base, el flujo dispara una sola vez
+  y se esperan las 12 consultas iniciales; si no llega, falla con el mismo diagnóstico. El
+  criterio puede pedir la propiedad `codeNoFormat` cuando el registro es un mensaje y no un
+  código. Detalle en `docs/guides/ambiguities/lote-l11-ui.md`.
 
 ## Diagnóstico y seguridad
 

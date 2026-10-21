@@ -22,20 +22,7 @@ export class ProfileMobilePhoneApi {
   public constructor(private readonly api: ReportingApiRequest) {}
 
   public async readCurrentPhone(session: AuthenticatedSession): Promise<string> {
-    const body = await this.api.post({
-      data: {
-        lang: 'es',
-        idSession: session.accessToken,
-        channel: 'frontend',
-        ajax_uuid: '',
-        xAppVersion: '',
-      },
-      endpoint: ENDPOINT,
-      expectedCodes: SUCCESS_CODES,
-      step: 'lectura del teléfono actual del perfil',
-    });
-    const data = readRequiredObject(body, 'data', 'La lectura de perfil');
-    const userData = readRequiredObject(data, 'userData', 'La lectura de perfil');
+    const userData = await this.readUserData(session, 'lectura del teléfono actual del perfil');
     const mobileNumber = userData.mobileNumber;
     const phone =
       typeof mobileNumber === 'string'
@@ -50,6 +37,35 @@ export class ProfileMobilePhoneApi {
     }
 
     return normalizeProfileMobilePhone(phone);
+  }
+
+  /** Email del perfil (`userData.email`), origen de los códigos enviados por correo (legado `LoginAPI.email`). */
+  public async readCurrentEmail(session: AuthenticatedSession): Promise<string> {
+    const userData = await this.readUserData(session, 'lectura del email del perfil');
+    const email = typeof userData.email === 'string' ? userData.email.trim() : '';
+
+    if (!email) {
+      throw new Error('La lectura de perfil no devolvió email válido.');
+    }
+
+    return email;
+  }
+
+  private async readUserData(session: AuthenticatedSession, step: string): Promise<ApiJsonObject> {
+    const body = await this.api.post({
+      data: {
+        lang: 'es',
+        idSession: session.accessToken,
+        channel: 'frontend',
+        ajax_uuid: '',
+        xAppVersion: '',
+      },
+      endpoint: ENDPOINT,
+      expectedCodes: SUCCESS_CODES,
+      step,
+    });
+    const data = readRequiredObject(body, 'data', 'La lectura de perfil');
+    return readRequiredObject(data, 'userData', 'La lectura de perfil');
   }
 }
 

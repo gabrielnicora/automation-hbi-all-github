@@ -73,6 +73,43 @@ export class LoginPage {
     return this.readAuthenticatedSession(authenticationResponsePromise);
   }
 
+  /** Carga el usuario en la pantalla de login sin continuar (legado setUsuario). */
+  public async typeUsername(username: string): Promise<void> {
+    await expect(this.usernameInput).toBeVisible();
+    await this.usernameInput.fill(username);
+  }
+
+  /** "Recuperar usuario" (legado clickRecuperarUsuario); espera el campo CUIL. */
+  public async openUserRecovery(): Promise<void> {
+    await this.page.locator("xpath=//*[text()='Recuperar usuario']").first().click();
+    await expect(this.recoveryCuilInput).toBeVisible();
+  }
+
+  public async fillRecoveryCuil(cuil: string): Promise<void> {
+    await this.recoveryCuilInput.pressSequentially(cuil);
+  }
+
+  /** Estado del botón submit del recupero (legado getContinuarLogin). */
+  public async isRecoveryContinueEnabled(): Promise<boolean> {
+    return this.recoverySubmitButton.isEnabled();
+  }
+
+  /** Continuar del recupero (legado clickContinuarGenerico). */
+  public async continueUserRecovery(): Promise<void> {
+    await this.page.locator("xpath=//button[@aria-label='Continuar']").first().click();
+  }
+
+  public async isTextShown(text: string): Promise<boolean> {
+    return becomesVisible(this.page.locator(`xpath=//*[contains(text(), "${text}")]`).first());
+  }
+
+  /** "Iniciar sesión" tras el recupero (legado clickBotonIniciarSesion). */
+  public async returnToSignIn(): Promise<void> {
+    const signIn = this.page.locator("xpath=//button[contains(@aria-label, 'Iniciar sesi')]").first();
+    await expect(signIn).toBeVisible();
+    await signIn.click();
+  }
+
   /** Abre "Información de seguridad" desde la pantalla de usuario y lee el título de la página externa. */
   public async openSecurityInformation(): Promise<ExternalPageSummary> {
     await expect(this.usernameInput).toBeVisible();
@@ -148,6 +185,14 @@ export class LoginPage {
 
   private virtualKeyboardKey(key: string): Locator {
     return this.page.locator(`div[data-skbtn=${JSON.stringify(key)}]`);
+  }
+
+  private get recoveryCuilInput(): Locator {
+    return this.page.locator('input[name="cuil"]');
+  }
+
+  private get recoverySubmitButton(): Locator {
+    return this.page.locator("xpath=//button[@type='submit']").first();
   }
 
   private get storeShortcut(): Locator {

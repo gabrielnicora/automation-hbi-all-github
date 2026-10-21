@@ -159,6 +159,22 @@ export class LoginApi {
     );
   }
 
+  /** Id del sello de seguridad del usuario (`step1` → `data._securitySealId`, legado `tomarIdImagen`). */
+  public async readSecuritySealId(username: string): Promise<number> {
+    const step1 = await this.executeStep(
+      'step1',
+      { lang: 'es', _usuario: username, _secondFactor: '', channel: 'frontend', ajax_uuid: '', xAppVersion: '' },
+      undefined,
+    );
+    const sealId = Number(step1.data._securitySealId);
+
+    if (!Number.isInteger(sealId)) {
+      throw new Error('El login API en step1 no devolvió _securitySealId válido.');
+    }
+
+    return sealId;
+  }
+
   private async executeStep(
     step: LoginStep,
     data: ApiJsonObject,

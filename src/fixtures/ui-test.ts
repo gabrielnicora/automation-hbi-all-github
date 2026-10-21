@@ -23,6 +23,12 @@ import { StartPage } from '../pages/start-page/start.page';
 import { OwnAccountTransferPage } from '../pages/transfers/own-account-transfer.page';
 import { EcheqPage } from '../pages/accounts/echeq.page';
 import { AccountsPage } from '../pages/accounts/accounts.page';
+import { PaymentServicesPage } from '../pages/payments/payment-services.page';
+import { ServiceAdhesionPage } from '../pages/payments/service-adhesion.page';
+import { PaymentReceiptsPage } from '../pages/payments/payment-receipts.page';
+import { SecuritySealPage } from '../pages/profile/security-seal.page';
+import { ProductDocumentsPage } from '../pages/documents/product-documents.page';
+import { PaymentServicesPreparationWorkflow } from '../workflows/payments/payment-services-preparation.workflow';
 import { LoanRequestPage } from '../pages/loans/loan-request.page';
 import { AccountAliasPage } from '../pages/accounts/account-alias.page';
 import { AccountMovementsPage } from '../pages/accounts/account-movements.page';
@@ -63,6 +69,12 @@ import { UpsErrorTracker } from './ups-error-tracker';
 interface UiFixtures {
   readonly accountsPage: AccountsPage;
   readonly addContactPage: AddContactPage;
+  readonly paymentReceiptsPage: PaymentReceiptsPage;
+  readonly paymentServicesPage: PaymentServicesPage;
+  readonly paymentServicesPreparationWorkflow: PaymentServicesPreparationWorkflow;
+  readonly productDocumentsPage: ProductDocumentsPage;
+  readonly securitySealPage: SecuritySealPage;
+  readonly serviceAdhesionPage: ServiceAdhesionPage;
   readonly loanRequestPage: LoanRequestPage;
   readonly contactAgendaPage: ContactAgendaPage;
   readonly credinRequestPage: CredinRequestPage;
@@ -134,6 +146,30 @@ export const test = testWithData.extend<UiFixtures>({
 
   addContactPage: async ({ page }, use) => {
     await use(new AddContactPage(page));
+  },
+
+  paymentReceiptsPage: async ({ page }, use) => {
+    await use(new PaymentReceiptsPage(page));
+  },
+
+  paymentServicesPage: async ({ page }, use) => {
+    await use(new PaymentServicesPage(page));
+  },
+
+  paymentServicesPreparationWorkflow: async ({ paymentServicesPage, serviceAdhesionPage, smsOperationOtpApi }, use) => {
+    await use(new PaymentServicesPreparationWorkflow(paymentServicesPage, serviceAdhesionPage, smsOperationOtpApi));
+  },
+
+  productDocumentsPage: async ({ page }, use) => {
+    await use(new ProductDocumentsPage(page));
+  },
+
+  securitySealPage: async ({ page }, use) => {
+    await use(new SecuritySealPage(page));
+  },
+
+  serviceAdhesionPage: async ({ page }, use) => {
+    await use(new ServiceAdhesionPage(page));
   },
 
   accountsPage: async ({ page }, use) => {

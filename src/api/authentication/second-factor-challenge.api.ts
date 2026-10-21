@@ -34,6 +34,27 @@ export class SecondFactorChallengeApi {
     return this.requestNewCode(session, request);
   }
 
+  /**
+   * Espera el código de un único envío (sin reenvíos), para desafíos cuyo disparo no puede
+   * repetirse desde la misma pantalla (por ejemplo, el correo de recupero de usuario).
+   */
+  public async requestSingleCode(
+    session: AuthenticatedSession,
+    criteria: SecondFactorCodeCriteria,
+    requestCode: () => Promise<void>,
+  ): Promise<string> {
+    const previousSnapshot = await this.codeInbox.snapshot(session, criteria);
+
+    await requestCode();
+    const code = await this.codeInbox.waitForNewCode(session, criteria, previousSnapshot, INITIAL_CODE_WAIT_POLLS);
+
+    if (!code) {
+      throw new SecondFactorCodeUnavailableError(criteria, 1, INITIAL_CODE_WAIT_POLLS);
+    }
+
+    return code;
+  }
+
   public async requestNewCode(session: AuthenticatedSession, request: SecondFactorCodeRequest): Promise<string> {
     const previousSnapshot = await this.codeInbox.snapshot(session, request.criteria);
 
