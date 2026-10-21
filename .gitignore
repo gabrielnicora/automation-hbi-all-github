@@ -12,3 +12,6 @@ blob-report/
 .playwright-cli/
 .slingshot/
 .vscode/
+/web
+/api
+.DS_Store
