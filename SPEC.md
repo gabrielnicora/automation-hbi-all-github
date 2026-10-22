@@ -236,10 +236,18 @@ Estado: aprobado. Motivo: validar el contexto para agentes con evidencia y no po
   datos de `test-data/private/`. No se agregan ambientes ni variables.
 - Antes del agente se ejecuta el login UI `TC0017BERSA`; si falla, la corrida se informa como
   ambiente no disponible y no se atribuye al agente.
-- El agente no ejecuta escenarios contra el banco: valida con `pnpm run check` y
-  `playwright test --list`. El runner ejecuta el caso producido con `PW_RETRIES=0`. Sólo se
-  usan casos de consulta que no modifican usuarios; una tarea con un caso mutante requiere
-  una decisión previa.
+- En las tareas de autoría el agente no ejecuta escenarios contra el banco: valida con
+  `pnpm run check` y `playwright test --list`. El runner ejecuta el caso producido con
+  `PW_RETRIES=0`. Sólo se usan casos de consulta que no modifican usuarios; una tarea con un
+  caso mutante requiere una decisión previa.
+- Decisión del usuario, 22 de octubre de 2026: tareas de reparación. La tarea rompe un
+  locator de un Page Object en la copia (simula un cambio de pantalla) y el agente debe
+  repararlo. Sólo en estas tareas el agente puede ejecutar contra UAT, con `PW_RETRIES=0`,
+  los specs de consulta que la tarea declara en `agentMayRun`. La corrección exige que el
+  caso vuelva a pasar, que sólo cambie el Page Object, que el test y sus expectativas queden
+  intactos, que el locator nuevo no use XPath ni esperas fijas y siga la prioridad de
+  `src/pages/AGENTS.md`, y que el agente no haya ejecutado otros specs. Precisa, para estas
+  tareas, la regla anterior que impedía al agente ejecutar escenarios.
 - La corrección automática verifica `check`, presencia del caso en `--list`, rutas
   modificadas permitidas, ausencia de selectores, URLs y esperas fijas en el test, fixtures
   esperadas, escaneo de secretos, lecturas de `.env` y el resultado de la ejecución. Registra

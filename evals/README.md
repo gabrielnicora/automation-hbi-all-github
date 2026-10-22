@@ -25,9 +25,18 @@ Requiere el CLI `claude` autenticado y acceso a UAT (ambiente `qa`, URLs por def
 Resultados en `evals/results/<fecha>-<tarea>/` (no se versiona): `report.md`, `report.json`,
 `diff.patch`, `transcript.jsonl` y los logs de cada paso.
 
+## Tareas de reparación
+
+Una tarea con `replace` rompe un texto exacto del código en la copia (por ejemplo un locator de
+un Page Object, simulando un cambio de pantalla) y pide repararlo. Sólo en estas tareas el
+agente puede ejecutar contra UAT los specs listados en `agentMayRun`; la corrección verifica
+además que no haya ejecutado otros, que `unchangedPaths` (el test) siga intacto y, con
+`locatorRepair`, que el locator nuevo no use XPath ni esperas fijas y use `getBy*`.
+
 ## Agregar una tarea
 
 Crear `evals/tasks/<id>.json` con `remove` (archivo y `describeContaining` del caso a quitar),
 `prompt` (descripción funcional, como en Xray) y `expected` (`testCaseId`, `project`,
-`allowedPaths`, `fixtures`, `run`). Usar sólo casos de consulta: una tarea con un caso que
+`allowedPaths`, `fixtures`, `run`). Para reparación: `replace`, `agentMayRun` y en `expected`
+`unchangedPaths` y `locatorRepair` (`file`, `brokenMarker`). Usar sólo casos de consulta: una tarea con un caso que
 modifica usuarios requiere una decisión previa en la especificación.

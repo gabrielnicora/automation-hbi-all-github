@@ -13,3 +13,4 @@ web/
 mcp-xray/
 .playwright-mcp/
 .agents/index/
+evals/results/
