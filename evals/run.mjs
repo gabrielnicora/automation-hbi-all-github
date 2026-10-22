@@ -77,11 +77,20 @@ function uatEnvironment() {
   return environment;
 }
 
-function run(command, args, { cwd = ROOT, input, logFile, timeoutMs = 15 * 60_000 } = {}) {
+/**
+ * El agente usa el login propio del CLI `claude`. Si el runner se lanza desde otra sesión de
+ * Claude (app de escritorio, SDK), sus variables de sesión harían que el agente intente
+ * autenticarse por ese canal y falle; se quitan sólo para el proceso del agente.
+ */
+function agentEnvironment() {
+  return Object.fromEntries(Object.entries(uatEnvironment()).filter(([name]) => !/^(ANTHROPIC_|CLAUDE)/.test(name)));
+}
+
+function run(command, args, { cwd = ROOT, env = uatEnvironment(), input, logFile, timeoutMs = 15 * 60_000 } = {}) {
   const result = spawnSync(command, args, {
     cwd,
     encoding: 'utf8',
-    env: uatEnvironment(),
+    env,
     input,
     maxBuffer: 256 * 1024 * 1024,
     timeout: timeoutMs,
@@ -154,7 +163,8 @@ function prepareWorktree(task) {
     throw new Error(`No se pudo regenerar el catálogo en el worktree:\n${index.output}`);
   }
 
-  git(worktree, 'add', '-A');
+  // node_modules es un symlink al repositorio principal: no forma parte del caso.
+  git(worktree, 'add', '-A', '--', '.', ':!node_modules');
   git(
     worktree,
     '-c',
@@ -197,6 +207,7 @@ function runAgent(task, worktree, runDir, options) {
   const started = Date.now();
   const result = run('claude', args, {
     cwd: worktree,
+    env: agentEnvironment(),
     logFile: path.join(runDir, 'transcript.jsonl'),
     timeoutMs: 45 * 60_000,
   });
@@ -257,7 +268,8 @@ function changedFiles(worktree) {
     .split('\n')
     .filter(Boolean)
     .map((line) => line.slice(3).replace(/^"|"$/g, ''))
-    .map((file) => (file.includes(' -> ') ? file.split(' -> ')[1] : file));
+    .map((file) => (file.includes(' -> ') ? file.split(' -> ')[1] : file))
+    .filter((file) => file !== 'node_modules');
 }
 
 function findListedTest(worktree, expected) {
@@ -479,6 +491,12 @@ function evaluate(taskId, options) {
     const agent = runAgent(task, worktree, runDir, options);
     report.agentDurationMs = agent.durationMs;
     report.agent = summarizeTranscript(agent.transcript, worktree);
+
+    if (report.agent.isError || report.agent.turns === undefined) {
+      // Sin una corrida válida del agente no hay nada que corregir (autenticación, presupuesto, etc.).
+      report.status = 'agente no ejecutado';
+      return report;
+    }
 
     console.log(`[${task.id}] Corrigiendo…`);
     report.grade = grade(task, worktree, runDir);
