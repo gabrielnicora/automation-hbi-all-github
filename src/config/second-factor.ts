@@ -1,4 +1,5 @@
 import { readFile } from 'node:fs/promises';
+import { loadFixedAccess } from '../test-data/fixed-access';
 
 export type RequestedSecondFactorMethod = 'common' | 'master-code';
 export type EffectiveSecondFactorMethod = RequestedSecondFactorMethod;
@@ -7,6 +8,8 @@ export interface SecondFactorConfig {
   readonly requestedMethod: RequestedSecondFactorMethod;
   readonly masterCode: string;
   readonly masterCodeEnabledUsers: ReadonlySet<string>;
+  /** Código común a todos los usuarios del ambiente (`une-dev`); tiene prioridad sobre el master code. */
+  readonly fixedCode: string | undefined;
 }
 
 function isJsonObject(value: unknown): value is Record<string, unknown> {
@@ -75,6 +78,7 @@ export async function loadSecondFactorConfig(
     requestedMethod: readRequestedMethod(source.SECOND_FACTOR_METHOD),
     masterCode: readMasterCode(document),
     masterCodeEnabledUsers: readEnabledUsers(document),
+    fixedCode: (await loadFixedAccess())?.secondFactorCode,
   };
 }
 

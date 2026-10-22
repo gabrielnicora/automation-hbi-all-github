@@ -1,0 +1,44 @@
+{
+  "agreement": true,
+  "echeqList": [
+    {
+      "checkId": "_checkId_",
+      "nroEcheq": "_nroEcheq_",
+      "cuitCuil": "20063078175",
+      "personType": "GRIBAUDO, RICARDO AGUSTIN",
+      "status": "ACTIVO",
+      "amount": 100,
+      "concept": "ALQ",
+      "paymentDate": "2025-10-24T00:00:00.000-03",
+      "beneficiary": {
+        "identificationType": "CUIT",
+        "identificationNumber": "27114486952",
+        "businessName": "ABRAM, CELIA MARIA                      "
+      },
+      "assignments": null,
+      "pendingCession": {
+        "cessionID": "",
+        "assigneeDocumentType": "",
+        "assigneeDocumentNumber": "",
+        "assignorDocumentType": "",
+        "assignorDocumentNumber": "",
+        "assigneeName": "",
+        "assignorName": ""
+      }
+    }
+  ],
+  "endorseType": "NOM",
+  "endorseTypeLabel": "Nominal",
+  "documentType": "CUIT",
+  "documentTypeLabel": "CUIT",
+  "documentNumber": "_documentNumber_",
+  "reference": "1234567890",
+  "referenceValue": "1234",
+  "checkSendEmail": false,
+  "email": "",
+  "emailMessage": "",
+  "socialReason": "PEREZ, LEONARDO DARIO                   ",
+  "_otp": "OTP_TOKEN@_code_",
+  "ajax_uuid": "df09d921-0e86-4037-8be3-7086ad3aeda4",
+  "xAppVersion": "1.89.0"
+}

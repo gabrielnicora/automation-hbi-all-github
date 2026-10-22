@@ -51,7 +51,8 @@ propios: OTP de autorización de operación y código de verificación del telé
 - Si se solicita `master-code` y el usuario está habilitado, se utiliza master code.
 - Si el usuario no está habilitado, se selecciona el recorrido común antes de mutar.
 - El master code reemplaza sólo al OTP de la operación.
-- El código de verificación del teléfono siempre proviene de `util.codes`.
+- El código de verificación del teléfono proviene de `util.codes`, salvo en `TEST_ENV=une-dev`,
+  donde se usa el código fijo del ambiente (ver la política transversal).
 - El polling se aplica únicamente al esperar códigos.
 - La solicitud `sendCode` puede reintentarse de forma acotada cuando BERSA devuelve
   `COR020W`, que el flujo legado clasifica como respuesta reintentable de datos/servicio.
@@ -150,3 +151,8 @@ Hasta resolverlo se conserva la lista actual; no se agregan códigos ni se restr
 paso suponiendo significados. También se debe confirmar la equivalencia de endpoints,
 payloads y segundo factor en BERSA. Estas revisiones no bloquean la configuración del
 runner, pero sí impiden declarar validado el escenario en BERSA.
+
+Decisión del usuario, 21 de octubre de 2026: en `une-dev` el código fijo del ambiente se usa tal
+cual como código de verificación del teléfono nuevo. En `qa` se conserva la validación legado:
+el código leído de `util.codes` debe contener `-`. Reemplaza la decisión abierta sobre el
+formato del código de verificación en `une-dev`.

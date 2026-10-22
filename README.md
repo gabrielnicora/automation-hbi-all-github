@@ -179,6 +179,40 @@ Remove-Item Env:PW_RETRIES
 La variable debe estar en el entorno del proceso o configurada en CI. El archivo
 `.env.example` sirve de referencia; no se carga automáticamente como configuración.
 
+### CI (GitLab)
+
+`.gitlab-ci.yml` tiene siempre los mismos jobs: `install_deps` → `quality` → `shard_1` →
+`shard_2` → `shard_3` → `merge_reports`. Los shards corren uno por vez y con un worker;
+`merge_reports` une los resultados en `playwright-report/` y `test-results/junit-report.xml`.
+
+- En push y merge request todos los jobs son manuales y se ejecutan en ese orden. Para ver
+  resultados alcanza con correr al menos un shard y después `merge_reports`.
+- En schedules y en pipelines lanzados con _Run pipeline_, `REGRESSION_MODE` elige:
+  `manual` (por defecto, igual que en push) o `auto` (todo encadenado; cada shard corre
+  aunque el anterior falle).
+- `TEST_PATH` (por ejemplo `tests/ui/authentication`) y `TEST_FILTER` (expresión para
+  `--grep`) acotan la selección.
+- `TEST_ENV=une-dev` ejecuta contra UNE DEV y agrega a `/etc/hosts` los dominios internos de
+  `UNE_HOST_ENTRIES`.
+
+### Ambientes
+
+`TEST_ENV` elige el ambiente; por defecto es `qa`.
+
+| `TEST_ENV` | Ambiente | Usuarios                       | Contraseña y segundo factor                      |
+| ---------- | -------- | ------------------------------ | ------------------------------------------------ |
+| `qa`       | BERSA QA | `test-data/private/bersa.json` | Los de cada caso; códigos leídos de `util.codes` |
+| `une-dev`  | UNE DEV  | Los mismos de BERSA            | Comunes, desde `test-data/private/une-dev.json`  |
+
+En `une-dev` el código fijo reemplaza el OTP de operaciones y los códigos de verificación; el
+correo de recupero de usuario se sigue leyendo de la bandeja. Por ejemplo, en PowerShell:
+
+```powershell
+$env:TEST_ENV = 'une-dev'
+pnpm run test:api:login
+Remove-Item Env:TEST_ENV
+```
+
 ## Cómo contribuir
 
 La guía [docs/test-authoring.md](./docs/test-authoring.md) describe la superficie objetivo

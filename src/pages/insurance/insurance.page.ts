@@ -32,6 +32,26 @@ export class InsurancePage {
     await expect(this.detailDescription).toBeVisible();
   }
 
+  /** Continuar la solicitud del seguro (botón genérico "Continuar" dentro de la aplicación de seguros). */
+  public async continueRequest(): Promise<void> {
+    const continueButton = this.insuranceApp.locator("xpath=//button[@aria-label='Continuar']").first();
+    await continueButton.scrollIntoViewIfNeeded();
+    await continueButton.click();
+  }
+
+  /** Acepta términos y condiciones (legado clickCheckTerminosCondicionesGenerico). */
+  public async acceptTerms(): Promise<void> {
+    const terms = this.insuranceApp.locator("xpath=//*[@name='agreement']/following-sibling::span").first();
+    await expect(terms).toBeVisible();
+    await terms.scrollIntoViewIfNeeded();
+    await terms.click();
+  }
+
+  /** Indica si se ve el botón con ese aria-label ("Confirmar", "Cancelar"). */
+  public async isButtonShown(label: string): Promise<boolean> {
+    return becomesVisible(this.insuranceApp.locator(`xpath=//button[@aria-label='${label}']`).first());
+  }
+
   public async readDetail(): Promise<InsuranceDetail> {
     return {
       title: (await this.detailTitle.innerText()).trim(),

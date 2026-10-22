@@ -1,4 +1,5 @@
 import { expect, type Locator, type Page } from '@playwright/test';
+import { becomesVisible } from '../visibility';
 import { FUND_RISKS, type FundRisk } from './fund-risk';
 
 const FILTER_RESULT_TIMEOUT_MS = 15_000;
@@ -10,6 +11,12 @@ const FUNDS_LINK_NAME = 'Invertí en Fondos';
 const RISK_GROUP_LABEL = 'RIESGO:';
 const RISK_COLUMN_LABEL = 'RIESGO';
 const LOAD_ERROR_MESSAGE = 'Ocurrió un error al recuperar los fondos. Por favor, intentá nuevamente más tarde.';
+
+const CURRENCY_GROUP_LABEL = 'MONEDA:';
+// Fondos por moneda del legado (enums/inversiones/fci/FiltroMonedaFci).
+export const FUND_CURRENCIES = ['pesos', 'dollars'] as const;
+export type FundCurrency = (typeof FUND_CURRENCIES)[number];
+const CURRENCY_LABELS: Readonly<Record<FundCurrency, string>> = { pesos: 'PESOS', dollars: 'DÓLARES' };
 
 const RISK_LABELS: Readonly<Record<FundRisk, string>> = {
   conservative: 'CONSERVADOR',
@@ -73,6 +80,124 @@ export class InvestmentFundsPage {
     const visibleLabels = await Promise.all(visibleFundRows.map((row) => this.readRiskLabel(row)));
 
     return visibleLabels.map((label) => this.toFundRisk(label));
+  }
+
+  /** Deja seleccionado únicamente el filtro de moneda indicado (legado seleccionarUnicamenteFiltrosPorMoneda). */
+  public async selectOnlyCurrency(selectedCurrency: FundCurrency): Promise<void> {
+    for (const currency of FUND_CURRENCIES) {
+      const shouldBeSelected = currency === selectedCurrency;
+      const filter = this.groupFilter(CURRENCY_GROUP_LABEL, CURRENCY_LABELS[currency]);
+
+      if ((await this.isFilterSelected(filter)) !== shouldBeSelected) {
+        await this.withLoadErrorContext(async () => {
+          await filter.click();
+          await expect
+            .poll(() => this.isFilterSelected(filter), {
+              message: `El filtro ${CURRENCY_LABELS[currency]} no cambió de estado.`,
+            })
+            .toBe(shouldBeSelected);
+        });
+      }
+    }
+
+    for (const currency of FUND_CURRENCIES) {
+      const filter = this.groupFilter(CURRENCY_GROUP_LABEL, CURRENCY_LABELS[currency]);
+
+      if ((await this.isFilterSelected(filter)) !== (currency === selectedCurrency)) {
+        throw new Error(`El filtro ${CURRENCY_LABELS[currency]} no quedó en el estado esperado.`);
+      }
+    }
+  }
+
+  /**
+   * Texto de la segunda celda de cada fila visible, donde el legado lee la moneda del fondo
+   * (`//*[@aria-label='fila']/div[2]/p`).
+   */
+  public async getVisibleFundCurrencyTexts(): Promise<readonly string[]> {
+    await this.waitForVisibleFundRows();
+    const rows = await this.visibleFundRows.all();
+
+    return Promise.all(rows.map(async (row) => (await row.getByRole('cell').nth(1).innerText()).trim()));
+  }
+
+  /** Activa el selector "Mis fondos" (legado clickLabelMisFondos). */
+  public async showMyFunds(): Promise<void> {
+    const toggle = this.page.locator("xpath=//p[text()='Mis fondos']/../descendant::label").first();
+    await expect(toggle).toBeVisible();
+    await toggle.click();
+  }
+
+  /** Indica si se muestra el listado de la tabla de fondos (legado validaListadoFCI). */
+  public async isFundListShown(): Promise<boolean> {
+    return becomesVisible(this.page.locator("xpath=//*[@aria-label='tabla']/div[2]").first());
+  }
+
+  /** Abre el detalle de un fondo desde su menú de acciones y elige "Mi fondo" (legado clickIconoAccionesDetalleFCI). */
+  public async openMyFundDetail(fundName: string): Promise<void> {
+    const actions = this.page
+      .locator(
+        `xpath=//p[contains(text(),'${fundName}')]/../..//following::div[@aria-label='Icono de listar acciones del FCI'][1]`,
+      )
+      .first();
+    await actions.scrollIntoViewIfNeeded();
+    await actions.click();
+    await this.page.locator("xpath=//span[text()='Detalle del fondo']").first().click();
+    await this.page.locator("xpath=//p[text()= 'Mi fondo']").first().click();
+    await expect(this.moreInformation).toBeVisible();
+  }
+
+  /** Abre "Más Información" del fondo y espera su botón Aceptar. */
+  public async openMoreInformation(): Promise<void> {
+    await this.moreInformation.click();
+    await expect(this.moreInformationAccept).toBeVisible();
+  }
+
+  /**
+   * Acepta "Más Información". Si se abre una pestaña nueva, la cierra y vuelve a la principal
+   * (legado UtilsGP.ManageTab + backMainTap). Devuelve si se abrió una pestaña.
+   */
+  public async acceptMoreInformation(): Promise<boolean> {
+    const pagesBefore = this.page.context().pages().length;
+    await this.moreInformationAccept.click();
+    const extraPages = this.page.context().pages().slice(pagesBefore);
+    await Promise.all(extraPages.map((extraPage) => extraPage.close()));
+    return extraPages.length > 0;
+  }
+
+  /** Presiona Cancelar si está visible (legado clickCancelarGenerico, sin assertion). */
+  public async cancelIfShown(): Promise<void> {
+    const cancel = this.page.locator("xpath=//button[@aria-label='Cancelar']").first();
+
+    if (await cancel.isVisible()) {
+      await cancel.click();
+    }
+  }
+
+  /** Inicia la solicitud de una nueva cuenta comitente desde Información de fondos. */
+  public async startCommitentAccountRequest(): Promise<void> {
+    const request = this.page.locator("xpath=//span[contains(text(),'Solicitar nueva cuenta comitente')]/..").first();
+    await expect(request).toBeVisible();
+    await request.click();
+  }
+
+  private get moreInformation(): Locator {
+    return this.page.locator("xpath=//span[contains(text(),'Más Información')]/../../..").first();
+  }
+
+  private get moreInformationAccept(): Locator {
+    return this.page.locator("xpath=//span[text()='Aceptar']").first();
+  }
+
+  private groupFilter(groupLabel: string, optionLabel: string): Locator {
+    return this.page
+      .locator(
+        `xpath=//*[normalize-space()="${groupLabel}"]/following-sibling::div[p[normalize-space()="${optionLabel}"]]`,
+      )
+      .first();
+  }
+
+  private async isFilterSelected(filter: Locator): Promise<boolean> {
+    return (await filter.locator('div[fill]').count()) > 0;
   }
 
   private get loadError(): Locator {

@@ -49,7 +49,10 @@ export class PhoneChangeApi {
       criteria: { origin: replacementPhone, property: 'codeNoFormat' },
       requestInitialCode: () => this.sendPhoneVerificationCode(session, username, currentPhone, replacementPhone),
     });
-    const verificationCode = this.extractVerificationCode(rawVerificationCode);
+    // El código fijo de une-dev se usa tal cual; el de util.codes trae el formato BERSA con '-'.
+    const verificationCode = this.secondFactor.usesFixedCode
+      ? rawVerificationCode
+      : this.extractVerificationCode(rawVerificationCode);
 
     if (!verificationCode) {
       throw new Error('El código de verificación del teléfono nuevo no tiene el formato esperado.');

@@ -1,7 +1,7 @@
 # Especificación principal — Framework de automatización de Banco Entre Ríos
 
 > Estado: autenticación e inversiones validadas en BERSA QA; perfil API pendiente  
-> Versión: 3.2
+> Versión: 3.3
 > Alcance: Banco Entre Ríos (BERSA), ambiente QA, automatización API y UI con Playwright
 
 ## 1. Decisión de alcance
@@ -29,6 +29,22 @@ posibilidad.
   habilita soporte simultáneo de bancos.
 - Impacto futuro: revisar URLs API/UI, credenciales y datos, identificadores, lector
   de datos y documentación; validar los escenarios existentes contra UNE.
+
+### Ambiente de ejecución UNE DEV
+
+- Estado: aprobado por el usuario el 21 de octubre de 2026; ejecución pendiente de validar.
+- Decisión: durante la transición conviven dos ambientes de ejecución de la misma suite,
+  elegidos con `TEST_ENV`: `qa` (BERSA QA, valor por defecto) y `une-dev` (UNE DEV).
+- `une-dev` usa las mismas identidades, IDs `TC<numero>BERSA` y datos de
+  `test-data/private/bersa.json`. Sólo cambian las URLs base y dos valores comunes a todos los
+  usuarios —contraseña y código de segundo factor— versionados en
+  `test-data/private/une-dev.json`.
+- URLs por defecto de `une-dev`: UI `https://onlinebanking.dev.bancoune.com` y API
+  `https://apii.dev.bancoune.com`; `UI_BASE_URL` y `API_BASE_URL` las reemplazan.
+- Motivo: ejecutar la suite contra UNE antes de completar el reemplazo de BERSA.
+- Reemplaza: la exigencia de una sola entidad activa mientras dure la transición. No habilita
+  perfiles bancarios, factories, datos o tests por banco: la diferencia se limita a la
+  configuración de ambiente y a esos dos valores comunes.
 
 La migración a BERSA cambia los identificadores a sufijo `BERSA` y el origen de
 credenciales a `test-data/private/bersa.json`. Las URLs QA aprobadas el 8 de septiembre de
@@ -160,6 +176,11 @@ alcance. El catálogo distingue alcance de avance: un ID listado no queda por el
 portado ni validado. Esta decisión tampoco ordena retirar tests ya implementados fuera del
 catálogo; se registran como inconsistencias preexistentes hasta decidir su permanencia.
 
+Decisión del usuario, 21 de octubre de 2026: el avance por caso —elegibilidad resuelta, fuente,
+lote, portado, ejecución QA y revisión humana— se registra en `docs/guides/migration-status.md`,
+punto de entrada operativo de la migración. El catálogo conserva la autoridad sobre alcance y
+canal declarado. Reemplaza el informe de avance únicamente por lote.
+
 Para determinar si un caso está activo se evalúan su método de test y su clase. Un helper
 deprecado no excluye automáticamente un test activo; las marcas efectivas del método o de su
 clase sí lo excluyen. `WEB` es la denominación legada del canal UI.
@@ -167,6 +188,40 @@ clase sí lo excluyen. `WEB` es la denominación legada del canal UI.
 La suite permanente contiene escenarios funcionales API y UI. Pueden existir
 verificaciones temporales durante el desarrollo, pero no se mantendrá una arquitectura de
 tests unitarios que aumente la superficie de autoría sin una necesidad aprobada.
+
+### Contexto para agentes de automatización
+
+Decisión del usuario, 22 de octubre de 2026: preparar el repositorio para que un agente de IA
+automatice casos con este framework leyendo el mínimo de código y sin exponer secretos.
+Estado: aprobado. Motivo: con la migración avanzada, la mayoría de las tareas agregan o
+mantienen casos sobre capacidades existentes; leer documentos completos y recorrer el código
+en cada tarea encarece el trabajo sin mejorar el resultado.
+
+- `AGENTS.md` raíz contiene rol, mapa, reglas duras, comandos y cierre. Cada capa tiene su
+  `AGENTS.md` (`tests/`, `src/pages/`, `src/api/`, `src/fixtures/`, `src/workflows/`,
+  `test-data/`) con sus reglas y un archivo de referencia por patrón. `CLAUDE.md` importa
+  el raíz para Claude Code.
+- La lectura se selecciona por tarea en `.agents/source-of-truth.md`. Este documento se lee
+  completo antes de cambiar arquitectura, dependencias, configuración global o CI; para agregar
+  o mantener casos dentro de la arquitectura vigente alcanzan las secciones citadas por el
+  `AGENTS.md` de la capa y la especificación de la capacidad. Reemplaza la exigencia de leer
+  `SPEC.md` completo ante cualquier cambio de implementación o de tests.
+- Las reglas de migración acelerada salen del `AGENTS.md` raíz a
+  `.agents/docs/legacy-migration.md`, sin cambiar su contenido normativo (sección 3).
+- `pnpm run agent:index` genera en `.agents/index/` un catálogo de fixtures, Page Objects,
+  clientes API, workflows, loaders, tests y campos de datos por caso, a partir del código, de
+  `playwright test --list` y de `test-data/private/bersa.json` (sólo nombres de campo, nunca
+  valores). El catálogo se versiona y no se edita a mano; `pnpm run check` falla si está
+  desactualizado. Se consulta antes de abrir código.
+- `pnpm run check` y el hook de pre-commit ejecutan `scripts/check-secrets.mjs`, que busca
+  secretos de plataforma (tokens JWT, Bearer, PAT, claves privadas, credenciales en URL,
+  archivos `.env`) en los archivos versionados o preparados. No marca los datos dummy de la
+  sección 8.
+- `.playwright-mcp/` deja de versionarse: sus snapshots provienen de sesiones QA. `.ignore`
+  excluye el legado y los artefactos de las búsquedas por defecto; la migración los busca con
+  ruta explícita.
+- `.claude/settings.json` niega a los agentes la lectura de `.env`, configuraciones locales de
+  MCP y credenciales del usuario, y los comandos que vuelcan variables de entorno.
 
 ### Registro de decisiones
 
@@ -250,11 +305,14 @@ Estructura adoptada:
 
 ```text
 automation-hbi-all/
-├── AGENTS.md
+├── AGENTS.md                         Más un AGENTS.md por capa (sección 3)
+├── CLAUDE.md
 ├── .agents/
 │   ├── source-of-truth.md
 │   ├── docs/
+│   ├── index/                        Catálogo generado por pnpm run agent:index
 │   └── skills/
+├── scripts/                          Herramientas del repositorio, no de los tests
 ├── SPEC.md
 ├── specs/
 │   ├── api/
@@ -339,6 +397,8 @@ una capacidad aprobada coordine múltiples páginas o decisiones significativas.
 | `tests/api/`         | Escenarios API y expectativas funcionales; no contiene endpoints ni payloads.              |
 | `specs/`             | Comportamiento aprobado, criterios de aceptación, seguridad y decisiones abiertas.         |
 | `test-data/private/` | Datos dummy QA/DEV versionados; el nombre de la ruta se conserva por compatibilidad.       |
+| `scripts/`           | Catálogo para agentes y escaneo de secretos; los tests no lo importan.                     |
+| `.agents/index/`     | Catálogo generado; no se edita a mano.                                                     |
 
 ### 6.1 Tests
 
@@ -510,8 +570,8 @@ factories, perfiles bancarios ni contratos globales.
 
 La configuración contiene únicamente valores que cambian por ambiente o ejecución:
 
-- URL base UI de BERSA;
-- URL base API de BERSA;
+- ambiente de ejecución (`TEST_ENV=qa|une-dev`, sección 1);
+- URL base UI y API de cada ambiente;
 - browser, workers y timeouts globales aprobados;
 - mecanismo de segundo factor;
 - rutas de datos de prueba versionados.
@@ -541,6 +601,9 @@ con el mismo valor de su clave, y el lector valida esa coincidencia antes de dev
 decisión reemplaza el export legado indexado por el texto de una consulta SQL y evita recorridos
 lineales para localizar un caso.
 
+Con `TEST_ENV=une-dev`, la contraseña de todos los usuarios proviene de
+`test-data/private/une-dev.json`; el usuario sigue proviniendo del caso.
+
 El sufijo `BERSA` se conserva por trazabilidad, pero no selecciona un banco ni una factory.
 Un sufijo diferente debe considerarse inválido para este proyecto.
 
@@ -556,6 +619,13 @@ archivos credenciales, datos personales o valores provenientes de producción.
 Por higiene de reportes, los tests y errores no repiten contraseñas ni códigos. Los access
 tokens, exchange tokens, headers Bearer, cookies y cuerpos completos de autenticación se
 generan en ejecución y no se imprimen ni adjuntan.
+
+Los secretos de plataforma —PAT de Jira o GitLab, variables protegidas de CI, archivos `.env`,
+configuraciones locales de MCP y claves de servicios— nunca se versionan, se leen ni se
+imprimen desde el repositorio ni por agentes; `scripts/check-secrets.mjs` los detecta antes
+del commit y en `pnpm run check` (sección 3). Los agentes usan los datos dummy a través de los
+loaders de `src/test-data/` y los referencian por `testCaseId`; no copian contraseñas, master
+codes ni códigos a tests, commits, merge requests ni respuestas.
 
 Los usuarios y datos funcionales QA/DEV son dummy y pueden mostrarse completos para
 diagnóstico. Todo test que carga credenciales agrega el usuario como anotación de
@@ -595,6 +665,32 @@ solapar sesiones: una respuesta UI no incluyó el token esperado y el login prev
 recibió `COR002E`. No se asignó significado ni se aceptó ese código. Con un worker, los
 cuatro escenarios BSC finalizaron correctamente. Esa evidencia no valida BERSA, pero se
 conserva un worker como política segura hasta probar aislamiento de datos en el banco activo.
+
+### Regresión en CI por shards
+
+Decisión del usuario, 21 de octubre de 2026: `.gitlab-ci.yml` ejecuta la regresión en tres
+shards de Playwright encadenados (`shard_1` → `shard_2` → `shard_3`), con un worker cada uno,
+y un job final que une sus reportes blob en el HTML y el JUnit habituales mediante
+`merge.config.ts`. Estado: aprobado. Motivo: acotar la duración de cada job y conservar
+evidencia parcial. Reemplaza el job manual único `ui:login:bersa`.
+
+- Los shards no se ejecutan en simultáneo; la división no agrega paralelismo y conserva las
+  reglas de identidades compartidas de esta sección.
+- Decisión del usuario, 21 de octubre de 2026: un único pipeline con los mismos jobs en todo
+  modo, en este orden: `install_deps`, `quality`, `shard_1` → `shard_2` → `shard_3` y
+  `merge_reports`. Reemplaza el pipeline hijo de regresión y `RUN_REGRESSION`.
+- En push y merge request todos los jobs son manuales y no bloquean el pipeline. En schedules
+  y pipelines ad hoc, `REGRESSION_MODE=manual|auto` (por defecto `manual`) elige entre ese
+  modo manual y la ejecución encadenada.
+- En modo manual, `merge_reports` puede ejecutarse con al menos un shard corrido.
+- En modo automático, `quality` corre si `install_deps` termina bien y la regresión si
+  `quality` termina bien. Después, los shards corren en serie sin depender del resultado del
+  anterior y `merge_reports` corre al final.
+- `TEST_PATH` y `TEST_FILTER` (`--grep`) acotan la selección.
+- `quality` ejecuta `pnpm run check`, que desde el 22 de octubre de 2026 incluye el escaneo
+  de secretos y el control de actualización del catálogo de agentes (sección 3).
+- Cada shard admite fallos para que la cadena y el reporte final se completen; el resultado
+  de los tests se lee en el reporte unificado.
 
 ### Selección smoke
 

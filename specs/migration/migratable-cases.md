@@ -340,7 +340,10 @@ bajo `tests/ui/` y se informa como UI efectivo.
 - Cualquier alta, baja o cambio de tipo requiere una nueva decisión explícita del usuario y
   la actualización de este documento antes de migrar con el criterio nuevo.
 - Los estados de avance —encontrado, excluido, portado, con revisión pendiente o validado—
-  no se mantienen en este catálogo; se informan por lote para no confundir alcance con avance.
+  no se mantienen en este catálogo para no confundir alcance con avance. Decisión del usuario,
+  21 de octubre de 2026: se registran en `docs/guides/migration-status.md`, que enumera los mismos
+  IDs como punto de entrada operativo y se actualiza al cierre de cada lote. Reemplaza el informe
+  de avance sólo por lote. Ante una diferencia de IDs o canal, prevalece este catálogo.
 - El total portable se calcula como catalogados menos excluidos, casos sin fuente y fuentes
   ambiguas. Una parametrización puede producir varias ejecuciones, pero cubre un solo ID.
 - El orden de las filas no define prioridad de migración; los lotes se agrupan por familia y

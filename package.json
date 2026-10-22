@@ -19,7 +19,10 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check": "pnpm run format:check && pnpm run typecheck && pnpm run lint",
+    "secrets:check": "node scripts/check-secrets.mjs",
+    "agent:index": "node scripts/agent-index.mjs",
+    "agent:index:check": "node scripts/agent-index.mjs --check",
+    "check": "pnpm run format:check && pnpm run typecheck && pnpm run lint && pnpm run secrets:check && pnpm run agent:index:check",
     "codegen": "playwright codegen",
     "prepare": "husky"
   },

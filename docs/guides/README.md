@@ -48,8 +48,9 @@ no constituye un caso UI migrable bajo esta regla.
 ## Lectura dirigida
 
 1. AGENTS.md, .agents/source-of-truth.md y SPEC.md.
-2. [Catálogo de casos migrables](../../specs/migration/migratable-cases.md); detener el caso
-   individual si no es elegible.
+2. [Estado de la migración](migration-status.md) para ubicar el caso, su fuente y su lote, y el
+   [catálogo de casos migrables](../../specs/migration/migratable-cases.md), que prevalece sobre
+   el estado; detener el caso individual si no es elegible.
 3. [Principios](migration-principles.md) y [proceso](migration-process.md).
 4. [Familia correspondiente](families/README.md), especificaciones disponibles y código del
    testigo necesario. No cargar todas las familias para migrar un solo comportamiento.
@@ -75,6 +76,7 @@ testigo específico; las variantes conservan su propio comportamiento legado.
 - Comprobaciones estáticas y resultados de ejecución disponibles.
 - Resumen breve de casos portados, pendientes de ejecución y faltantes concretos.
 - Resumen del inventario del catálogo: elegibles, excluidos, sin fuente y desvíos detectados.
+- Filas y resumen de [migration-status.md](migration-status.md) actualizados con el resultado del lote.
 - Dudas o diferencias registradas sólo cuando existan, agrupables por lote.
 
 No exigir tablas de equivalencia ni un documento por cada caso. No trasladar retries internos:

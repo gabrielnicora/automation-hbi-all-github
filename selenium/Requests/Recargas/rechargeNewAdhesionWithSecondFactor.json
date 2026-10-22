@@ -1,9 +1,0 @@
-{
-  "idProduct": "_idProducto_",
-  "companyCode": "_codCompania_",
-  "rubroCode": "TP",
-  "addUser": "{\"code\":\"_num_\",\"description\":\"_perteneceA_\"}",
-  "_otp": "OTP_TOKEN@_code_",
-  "ajax_uuid": "4e0fea27-bc6e-42d4-87bc-5cdf8b433d2d",
-  "xAppVersion": "1.71.0"
-}

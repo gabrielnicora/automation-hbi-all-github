@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./mcp-xray/.env)",
+      "Read(./mcp-xray/.env.*)",
+      "Read(./.kiro/settings/**)",
+      "Read(./.vscode/mcp.json)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Read(~/.config/glab-cli/**)",
+      "Read(~/.config/gh/**)",
+      "Read(~/.npmrc)",
+      "Read(~/.claude.json)",
+      "Bash(printenv:*)",
+      "Bash(env)",
+      "Bash(export)",
+      "Bash(set)",
+      "Bash(cat .env:*)",
+      "Bash(cat ./.env:*)",
+      "Bash(git push --force:*)"
+    ]
+  }
+}

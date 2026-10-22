@@ -41,6 +41,30 @@ function readRequiredString(source: ApiJsonObject, propertyName: string, context
   return value.trim();
 }
 
+/**
+ * CUIL como lo arma el legado (LoginApiSteps): todos los `productGroupId` bajo `data.environments`,
+ * sin corchetes ni comillas y unidos por coma.
+ */
+function readCustomerCuil(data: ApiJsonObject): string | undefined {
+  const found: string[] = [];
+  const visit = (value: unknown): void => {
+    if (Array.isArray(value)) {
+      value.forEach(visit);
+    } else if (typeof value === 'object' && value !== null) {
+      for (const [key, child] of Object.entries(value)) {
+        if (key === 'productGroupId' && child !== null && child !== undefined) {
+          found.push(String(child));
+        }
+
+        visit(child);
+      }
+    }
+  };
+
+  visit(data.environments);
+  return found.length > 0 ? found.join(',') : undefined;
+}
+
 function hasGeneralConditions(data: ApiJsonObject): boolean {
   const value = data.generalConditionsText;
   return typeof value === 'string' ? value.trim().length > 0 : Boolean(value);
@@ -124,7 +148,31 @@ export class LoginApi {
     const accessToken = readRequiredString(finalStep.data, '_accessToken', `El login API en ${finalStepName}`);
     const documentNumber = finalStep.data.documentNumber;
 
-    return createAuthenticatedSession(accessToken, typeof documentNumber === 'string' ? documentNumber : undefined);
+    return createAuthenticatedSession(
+      accessToken,
+      typeof documentNumber === 'string' ? documentNumber : undefined,
+      readCustomerCuil(finalStep.data),
+      // Como LoginApiSteps: userFullName sin corchetes ni comillas.
+      finalStep.data.userFullName === undefined || finalStep.data.userFullName === null
+        ? undefined
+        : String(finalStep.data.userFullName).replace(/[[\]"]/g, ''),
+    );
+  }
+
+  /** Id del sello de seguridad del usuario (`step1` → `data._securitySealId`, legado `tomarIdImagen`). */
+  public async readSecuritySealId(username: string): Promise<number> {
+    const step1 = await this.executeStep(
+      'step1',
+      { lang: 'es', _usuario: username, _secondFactor: '', channel: 'frontend', ajax_uuid: '', xAppVersion: '' },
+      undefined,
+    );
+    const sealId = Number(step1.data._securitySealId);
+
+    if (!Number.isInteger(sealId)) {
+      throw new Error('El login API en step1 no devolvió _securitySealId válido.');
+    }
+
+    return sealId;
   }
 
   private async executeStep(

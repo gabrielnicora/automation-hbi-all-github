@@ -22,11 +22,20 @@ export class SecondFactorChallengeApi {
     private readonly config: SecondFactorConfig,
   ) {}
 
+  /** Indica si el ambiente usa un código fijo, que ya es el valor final a ingresar. */
+  public get usesFixedCode(): boolean {
+    return this.config.fixedCode !== undefined;
+  }
+
   public async resolveOperationOtp(
     session: AuthenticatedSession,
     username: string,
     request: SecondFactorCodeRequest,
   ): Promise<string> {
+    if (this.config.fixedCode) {
+      return this.requestFixedCode(this.config.fixedCode, request);
+    }
+
     if (resolveEffectiveSecondFactorMethod(this.config, username) === 'master-code') {
       return this.config.masterCode;
     }
@@ -34,7 +43,32 @@ export class SecondFactorChallengeApi {
     return this.requestNewCode(session, request);
   }
 
+  /**
+   * Espera el código de un único envío (sin reenvíos), para desafíos cuyo disparo no puede
+   * repetirse desde la misma pantalla (por ejemplo, el correo de recupero de usuario).
+   */
+  public async requestSingleCode(
+    session: AuthenticatedSession,
+    criteria: SecondFactorCodeCriteria,
+    requestCode: () => Promise<void>,
+  ): Promise<string> {
+    const previousSnapshot = await this.codeInbox.snapshot(session, criteria);
+
+    await requestCode();
+    const code = await this.codeInbox.waitForNewCode(session, criteria, previousSnapshot, INITIAL_CODE_WAIT_POLLS);
+
+    if (!code) {
+      throw new SecondFactorCodeUnavailableError(criteria, 1, INITIAL_CODE_WAIT_POLLS);
+    }
+
+    return code;
+  }
+
   public async requestNewCode(session: AuthenticatedSession, request: SecondFactorCodeRequest): Promise<string> {
+    if (this.config.fixedCode) {
+      return this.requestFixedCode(this.config.fixedCode, request);
+    }
+
     const previousSnapshot = await this.codeInbox.snapshot(session, request.criteria);
 
     await request.requestInitialCode();
@@ -57,5 +91,11 @@ export class SecondFactorChallengeApi {
       MAXIMUM_CODE_SENDS,
       INITIAL_CODE_WAIT_POLLS + (MAXIMUM_CODE_SENDS - 1) * REPLACEMENT_CODE_WAIT_POLLS,
     );
+  }
+
+  /** Ambiente con código fijo: dispara el desafío igual que el recorrido común, sin leer `util.codes`. */
+  private async requestFixedCode(fixedCode: string, request: SecondFactorCodeRequest): Promise<string> {
+    await request.requestInitialCode();
+    return fixedCode;
   }
 }
