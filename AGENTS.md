@@ -1,130 +1,122 @@
-# automation-hbi-all repository instructions
+# automation-hbi-all — agent instructions
 
-## Source of truth
+You automate API and UI test cases for Banco Entre Ríos (BERSA) with Playwright Test and
+TypeScript, inside the existing architecture. Most tasks add or maintain a case on a
+capability that already has fixtures, Page Objects or API clients.
 
-- Before substantive repository analysis, planning or changes, read this file and
-  `.agents/source-of-truth.md` completely. Discover and read applicable nested
-  `AGENTS.md` and `AGENTS.override.md` files along the paths being worked on;
-  an override takes precedence over AGENTS.md in the same directory.
-- Before changing architecture, structure, tests or implementation in this repository,
-  read `SPEC.md` completely.
-- Treat `SPEC.md` as the main Specification-Driven Development source
-  of truth for this framework.
-- Before implementing a capability, also read its applicable specification under `specs/`.
-  Accelerated legacy migration follows the exception in SPEC.md section 3: a missing or
-  unapproved per-case specification does not block translating existing code.
-- The user's latest explicit decision takes precedence. When it changes an approved
-  decision, update the corresponding specification before implementing the change.
+## Start here, every task
 
-## Complete reading and evidence
+1. Read this file and `.agents/source-of-truth.md`. Read only the rows of its table that
+   apply to the task, and read those documents completely.
+2. Find what already exists in `.agents/index/` (fixtures, Page Objects, API clients,
+   workflows, loaders, tests by case, data fields by case). Open a source file only when you
+   will change it, or when you need behavior the catalog does not show.
+3. Before editing a layer, read its `AGENTS.md` (table below).
+4. The user's latest explicit decision wins. When it changes an approved decision, update the
+   affected specification under `specs/` (or `SPEC.md`) before implementing.
 
-- Read the applicable canonical documents selected by `.agents/source-of-truth.md`
-  before proposing a repository plan. Read only relevant skills and their required
-  references; never load all skills or all specifications indiscriminately.
-- A search match, heading list, first/last excerpt, conversation summary or previous
-  assistant answer does not count as a complete reading of a required document.
-- For long files, obtain the line count and read consecutive, numbered ranges until
-  every line is covered. Keep each output small enough to inspect without truncation.
-  If any tool output is truncated, reduce the range and read the missing content
-  before proceeding with dependent work. A successful command exit is not proof of
-  a complete reading. Do not combine large documents into one output.
-- Keep a compact task checklist of sources actually read (complete or exact ranges),
-  applicable acceptance criteria, restrictions, and unresolved decisions. Connect
-  each material criterion to its canonical file and section. This checklist helps
-  navigation; it does not replace the sources or become a second specification.
-- Before editing, reread the applicable behavior and restrictions in their sources.
-  Before validation, reread the acceptance criteria and required checks. Before the
-  final answer, compare the changes and observed results with those criteria and
-  reread the governing sections. Unchanged unrelated sections need not be reloaded.
-- After context compaction, a scope change, or a source change, reopen the affected
-  canonical sources before continuing. If prior full coverage is uncertain, read
-  those documents completely again. Do not infer requirements from remembered context.
-- Never claim to have read or complied with content that was not actually inspected.
-  Distinguish documented intent, observed implementation and verified behavior.
-- If a required source cannot be read, report its exact path and stop only the work
-  that depends on it. For material conflicts not resolved by instruction precedence
-  or the user's explicit decision, explain the conflict and ask before implementing, except
-  for accelerated legacy migration: preserve the legacy behavior provisionally, record the
-  conflict for later human review, and continue as authorized in SPEC.md section 3.
-- For repository tasks, report briefly: sources actually read, selected skills (or
-  none), acceptance criteria, changed files (or none), validation results (including
-  checks not run), and unresolved assumptions/conflicts (or none). Scale detail to
-  the task; do not print whole documents or claim that this protocol guarantees recall.
+## Map
 
-## Active scope and target architecture
+```text
+tests ──► fixtures ──┬──► pages ──► Playwright UI
+                     ├──► api ────► APIRequestContext
+                     └──► workflows (optional)
+config, test-data ──► fixtures        models ──► pages / api / workflows
+```
 
-- Banco Entre Ríos (BERSA) is the only currently supported bank. UNE will replace BERSA in
-  this project when available and validated, as recorded in `SPEC.md`.
-  Simultaneous bank support and Banco Santa Fe remain out of scope. During the transition the
-  same suite may run against UNE DEV through `TEST_ENV=une-dev` (environment configuration only;
-  see `SPEC.md` section 1).
-- The current capabilities use the single-bank, layer-oriented architecture defined in
-  `SPEC.md`. Technical layers use functional subfolders when needed.
-- Do not add new dependencies on `banks/`, `BankConfig`, bank factories, bank selectors,
-  shared-bank profiles or workflow overrides.
-- For UI, use Page Object Model: selectors and UI mechanics live in the corresponding
-  Page Object under `src/pages/<area>/`.
-- Apply `SPEC.md` section 6.2.2: Page Objects receive scenario values, expose UI actions and
-  synchronized observations, and keep case-specific data and business expectations in tests
-  and test data. Do not copy an existing witness's responsibility violations during migration.
-- Use workflows only when they coordinate multiple Page Objects or meaningful functional
-  decisions. A workflow that only delegates one call must not be created.
-- Keep endpoints and payload protocol in the API client under `src/api/<area>/`.
-- Keep cross-layer models small and explicit under `src/models/`.
-- Keep fixture composition under `src/fixtures/`, execution configuration under
-  `src/config/`, and versioned test-data loaders under `src/test-data/`.
-- Create a business/domain layer only for a demonstrated reusable business rule.
-- Do not recreate legacy `banks/`, `contracts/`, `features/`, `support/` or `test-setup/`
-  layers.
+| Layer                          | Instructions              | Reference file                                             |
+| ------------------------------ | ------------------------- | ---------------------------------------------------------- |
+| `tests/`                       | `tests/AGENTS.md`         | `tests/api/profile/should-change-phone.api.spec.ts`        |
+| `src/pages/`                   | `src/pages/AGENTS.md`     | `src/pages/investments/investment-funds.page.ts`           |
+| `src/api/`                     | `src/api/AGENTS.md`       | `src/api/profile/notification-preferences.api.ts`          |
+| `src/fixtures/`                | `src/fixtures/AGENTS.md`  | `src/fixtures/api-test.ts`, `src/fixtures/ui-test.ts`      |
+| `src/workflows/`               | `src/workflows/AGENTS.md` | `src/workflows/transfers/third-party-transfer.workflow.ts` |
+| `test-data/`, `src/test-data/` | `test-data/AGENTS.md`     | `src/test-data/account-selection-data.ts`                  |
+| `src/config/`                  | this file                 | `src/config/environment.ts`                                |
 
-## Working rules
+`src/models/` holds small types shared by more than one layer. `src/config/` holds only
+values that change per environment or run; never selectors, endpoints or payloads.
 
-- For future Xray integration work, read `.agents/docs/integracion-xray.md` first.
-  It records the proposed design and unresolved decisions, not an implemented or
-  approved capability. Resolve those decisions in `specs/`
-  before changing tests, reporters, scripts or CI for Xray.
+## Hard rules
 
-- Use Playwright Test with TypeScript for API and UI automation.
-- Treat the versioned data under `test-data/private/` as team-created dummy QA/DEV data,
-  not as production secrets. Never add production credentials or production personal data;
-  keep runtime session tokens and cookies out of logs, reports and attachments.
-- Work incrementally and keep already migrated BERSA scenarios executable.
-- Read legacy API sources from `java/api/GP_Individuos_API/` and legacy UI sources
-  from `java/ui/GP_Migracion_Individuos/`, relative to this repository root, as approved
-  in `SPEC.md` section 3. Use these local copies instead of external checkouts or remote
-  repositories. For UI, only `FrontTest.java` methods define migratable cases; follow
-  other legacy classes only as dependencies of those methods. Report missing local
-  sources precisely and apply the accelerated migration missing-source policy.
-- In accelerated migration, complete the port using the executable legacy case and its
-  dependencies as the functional reference; use current witnesses for architecture.
-  Preserve legacy assertions (URL, ticket, locator, etc.), data and effects unless an
-  explicit approved decision already replaces that behavior for the same case.
-- Before analyzing or porting a legacy case, check
-  `specs/migration/migratable-cases.md`. Migrate only catalogued, active cases and apply its
-  declared-channel precedence and inconsistency rules. Do not migrate uncatalogued cases or
-  definitions marked ignored, disabled, obsolete or deprecated.
-- Treat `WEB` as UI. Determine inactivity from the test method or containing class; a deprecated
-  helper alone does not exclude an otherwise active case.
-- Do not stop or ask about migration ambiguities: record the evidence and applied behavior
-  in docs/guides/ambiguities/ for later human review and continue. Do not require a per-case
-  comparison table. Missing source/dependencies must be reported precisely; translate what
-  is available and continue the batch without inventing values or claiming false completion.
-- Do not port legacy internal retry loops; use Playwright runner retries. Reuse existing
-  approved second-factor polling/challenge resends without duplicating them.
-- For genuinely new capabilities outside migration, resolve material specification decisions
-  before implementation. Examples and snippets alone do not approve new behavior.
-- Apply SOLID, KISS, YAGNI and DRY without introducing abstractions that have no proven
-  use.
-- Keep tests readable for a QA Automation engineer who does not know the internal fixture
-  composition.
-- Follow the case-design and validation guidance in `docs/test-authoring.md`.
-  Separate functional variants; parameterize data-only differences with individual results.
-- Record material decisions and the decisions they replace in the affected specification.
-- For broad changes, compare concrete validation diagnostics before and after the change;
-  do not treat equal error counts as proof of no regression.
-- Smoke selection and offline environment checks follow the policies in `SPEC.md`.
-  Define their scope before adding tags, tests, scripts or CI jobs.
-- Keep the default Playwright execution sequential while API and UI scenarios reuse test
-  identities. Increase workers only with documented data isolation.
-- For Playwright exploration, generation or debugging, use the repository skill at
-  `.agents/skills/playwright-cli/SKILL.md` and read the relevant references it routes to.
+Architecture (`SPEC.md` sections 5–7):
+
+- BERSA is the only supported bank; `TEST_ENV=une-dev` only changes environment values.
+  Never add `banks/`, `BankConfig`, bank factories, bank selectors, shared-bank profiles
+  or workflow overrides, and
+  never recreate `contracts/`, `features/`, `support/` or `test-setup/`.
+- Tests contain no selectors, URLs, endpoints, payloads, credentials or polling. Selectors
+  live in one Page Object; endpoints live in one API client.
+- A workflow exists only when it coordinates two or more Page Objects or clients with
+  meaningful decisions. A business layer exists only for a demonstrated reusable rule.
+- Prefer reusing an existing fixture, Page Object or client over creating one. Apply SOLID,
+  KISS, YAGNI and DRY without abstractions that have no proven use.
+- Work incrementally and keep already migrated scenarios executable. Record material
+  decisions, and the decisions they replace, in the affected specification.
+
+Secrets and data (`SPEC.md` section 8):
+
+- `test-data/private/*.json` is versioned dummy QA/DEV data. Use it only through the loaders
+  in `src/test-data/` and refer to it by `testCaseId`. Do not copy passwords, master codes or
+  codes into tests, commits, merge requests or answers; dummy usernames may be shown.
+- Runtime tokens, Bearer headers, cookies and session ids are never printed, attached or
+  passed to `expect` matchers (pass a boolean with a fixed message).
+- Platform secrets (Jira/GitLab PATs, CI variables, `.env` files, local MCP configs) are
+  never read, printed or committed. Do not run `printenv`, `env` or `cat .env`.
+- Never add production URLs, credentials or personal data. Never invent users, accounts or
+  cards: if `bersa.json` lacks the row or field a case needs, stop that case and report the
+  exact missing fields.
+
+Execution (`SPEC.md` section 9):
+
+- Tests hit the real BERSA QA (or UNE DEV) environment. Run only the spec file you changed;
+  do not run the full suite unless asked.
+- Ask before running a case that mutates shared users (phone or address change, transfers,
+  payments, DEBIN, fixed terms, withdrawal orders) unless the user already asked to run it.
+- Keep one worker. Do not raise `PW_WORKERS` or enable `fullyParallel`.
+
+## Commands
+
+```bash
+pnpm run check                                  # format, typecheck, lint, secrets, catalog
+pnpm exec playwright test --list                # compiles and resolves fixtures; no bank calls
+pnpm run agent:index                            # regenerate .agents/index/ after code changes
+PW_RETRIES=0 pnpm exec playwright test <file>   # run one spec against QA
+```
+
+Environment variables: `TEST_ENV` (`qa` default, `une-dev`), `UI_BASE_URL`, `API_BASE_URL`,
+`PW_WORKERS` (default 1), `PW_RETRIES` (default 1), `PW_BROWSER_CHANNEL`,
+`SECOND_FACTOR_METHOD` (`common` default, `master-code`).
+
+## Reading and evidence
+
+- A search match, excerpt, catalog entry or summary is not a complete reading of a required
+  document. For long files, read consecutive numbered ranges until every line is covered; if
+  output is truncated, read the missing range before dependent work.
+- Keep a compact checklist of sources actually read, applicable acceptance criteria,
+  restrictions and open decisions, each linked to its canonical file and section.
+- Read only the skills the task needs and their required references.
+- After context compaction, a scope change or a source change, reopen the affected sources.
+- Never claim to have read, run or complied with something you did not. Distinguish
+  documented intent, observed implementation and verified behavior.
+- If a required source cannot be read, report its exact path and stop only dependent work.
+  Ask about material conflicts not resolved by precedence or by the user's decision.
+
+## Specialized work
+
+- Legacy migration: `.agents/docs/legacy-migration.md` (rules), `specs/migration/migratable-cases.md`.
+- Playwright exploration, generation or debugging: `.agents/skills/playwright-cli/SKILL.md`.
+  Do not commit exploration snapshots.
+- Xray: `.agents/docs/integracion-xray.md` is a proposal, not an approved capability.
+- New capabilities outside migration: resolve material decisions in `specs/` first. Examples
+  and snippets alone do not approve behavior. Smoke selection and offline checks follow
+  `SPEC.md` section 9 before adding tags, scripts or jobs.
+
+## Done
+
+Before the final answer: run `pnpm run check` (it fails if the catalog is stale; run
+`pnpm run agent:index`), `playwright test --list`, and the affected spec when allowed. For
+broad changes, compare concrete diagnostics (file, rule, message) before and after; equal
+error counts do not prove there is no regression.
+Report briefly: sources read, skills used, acceptance criteria, changed files, validation
+results (including checks not run and why), and open assumptions or conflicts.

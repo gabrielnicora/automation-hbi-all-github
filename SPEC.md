@@ -1,7 +1,7 @@
 # Especificación principal — Framework de automatización de Banco Entre Ríos
 
 > Estado: autenticación e inversiones validadas en BERSA QA; perfil API pendiente  
-> Versión: 3.2
+> Versión: 3.3
 > Alcance: Banco Entre Ríos (BERSA), ambiente QA, automatización API y UI con Playwright
 
 ## 1. Decisión de alcance
@@ -189,6 +189,40 @@ La suite permanente contiene escenarios funcionales API y UI. Pueden existir
 verificaciones temporales durante el desarrollo, pero no se mantendrá una arquitectura de
 tests unitarios que aumente la superficie de autoría sin una necesidad aprobada.
 
+### Contexto para agentes de automatización
+
+Decisión del usuario, 22 de octubre de 2026: preparar el repositorio para que un agente de IA
+automatice casos con este framework leyendo el mínimo de código y sin exponer secretos.
+Estado: aprobado. Motivo: con la migración avanzada, la mayoría de las tareas agregan o
+mantienen casos sobre capacidades existentes; leer documentos completos y recorrer el código
+en cada tarea encarece el trabajo sin mejorar el resultado.
+
+- `AGENTS.md` raíz contiene rol, mapa, reglas duras, comandos y cierre. Cada capa tiene su
+  `AGENTS.md` (`tests/`, `src/pages/`, `src/api/`, `src/fixtures/`, `src/workflows/`,
+  `test-data/`) con sus reglas y un archivo de referencia por patrón. `CLAUDE.md` importa
+  el raíz para Claude Code.
+- La lectura se selecciona por tarea en `.agents/source-of-truth.md`. Este documento se lee
+  completo antes de cambiar arquitectura, dependencias, configuración global o CI; para agregar
+  o mantener casos dentro de la arquitectura vigente alcanzan las secciones citadas por el
+  `AGENTS.md` de la capa y la especificación de la capacidad. Reemplaza la exigencia de leer
+  `SPEC.md` completo ante cualquier cambio de implementación o de tests.
+- Las reglas de migración acelerada salen del `AGENTS.md` raíz a
+  `.agents/docs/legacy-migration.md`, sin cambiar su contenido normativo (sección 3).
+- `pnpm run agent:index` genera en `.agents/index/` un catálogo de fixtures, Page Objects,
+  clientes API, workflows, loaders, tests y campos de datos por caso, a partir del código, de
+  `playwright test --list` y de `test-data/private/bersa.json` (sólo nombres de campo, nunca
+  valores). El catálogo se versiona y no se edita a mano; `pnpm run check` falla si está
+  desactualizado. Se consulta antes de abrir código.
+- `pnpm run check` y el hook de pre-commit ejecutan `scripts/check-secrets.mjs`, que busca
+  secretos de plataforma (tokens JWT, Bearer, PAT, claves privadas, credenciales en URL,
+  archivos `.env`) en los archivos versionados o preparados. No marca los datos dummy de la
+  sección 8.
+- `.playwright-mcp/` deja de versionarse: sus snapshots provienen de sesiones QA. `.ignore`
+  excluye el legado y los artefactos de las búsquedas por defecto; la migración los busca con
+  ruta explícita.
+- `.claude/settings.json` niega a los agentes la lectura de `.env`, configuraciones locales de
+  MCP y credenciales del usuario, y los comandos que vuelcan variables de entorno.
+
 ### Registro de decisiones
 
 Registrar las decisiones materiales en la especificación afectada, junto con su estado,
@@ -271,11 +305,14 @@ Estructura adoptada:
 
 ```text
 automation-hbi-all/
-├── AGENTS.md
+├── AGENTS.md                         Más un AGENTS.md por capa (sección 3)
+├── CLAUDE.md
 ├── .agents/
 │   ├── source-of-truth.md
 │   ├── docs/
+│   ├── index/                        Catálogo generado por pnpm run agent:index
 │   └── skills/
+├── scripts/                          Herramientas del repositorio, no de los tests
 ├── SPEC.md
 ├── specs/
 │   ├── api/
@@ -360,6 +397,8 @@ una capacidad aprobada coordine múltiples páginas o decisiones significativas.
 | `tests/api/`         | Escenarios API y expectativas funcionales; no contiene endpoints ni payloads.              |
 | `specs/`             | Comportamiento aprobado, criterios de aceptación, seguridad y decisiones abiertas.         |
 | `test-data/private/` | Datos dummy QA/DEV versionados; el nombre de la ruta se conserva por compatibilidad.       |
+| `scripts/`           | Catálogo para agentes y escaneo de secretos; los tests no lo importan.                     |
+| `.agents/index/`     | Catálogo generado; no se edita a mano.                                                     |
 
 ### 6.1 Tests
 
@@ -581,6 +620,13 @@ Por higiene de reportes, los tests y errores no repiten contraseñas ni códigos
 tokens, exchange tokens, headers Bearer, cookies y cuerpos completos de autenticación se
 generan en ejecución y no se imprimen ni adjuntan.
 
+Los secretos de plataforma —PAT de Jira o GitLab, variables protegidas de CI, archivos `.env`,
+configuraciones locales de MCP y claves de servicios— nunca se versionan, se leen ni se
+imprimen desde el repositorio ni por agentes; `scripts/check-secrets.mjs` los detecta antes
+del commit y en `pnpm run check` (sección 3). Los agentes usan los datos dummy a través de los
+loaders de `src/test-data/` y los referencian por `testCaseId`; no copian contraseñas, master
+codes ni códigos a tests, commits, merge requests ni respuestas.
+
 Los usuarios y datos funcionales QA/DEV son dummy y pueden mostrarse completos para
 diagnóstico. Todo test que carga credenciales agrega el usuario como anotación de
 Playwright. Los datos de sesión y autenticación indicados arriba continúan excluidos.
@@ -641,6 +687,8 @@ evidencia parcial. Reemplaza el job manual único `ui:login:bersa`.
   `quality` termina bien. Después, los shards corren en serie sin depender del resultado del
   anterior y `merge_reports` corre al final.
 - `TEST_PATH` y `TEST_FILTER` (`--grep`) acotan la selección.
+- `quality` ejecuta `pnpm run check`, que desde el 22 de octubre de 2026 incluye el escaneo
+  de secretos y el control de actualización del catálogo de agentes (sección 3).
 - Cada shard admite fallos para que la cadena y el reporte final se completen; el resultado
   de los tests se lee en el reporte unificado.
 

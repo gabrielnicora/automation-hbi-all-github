@@ -12,3 +12,4 @@ selenium/
 web/
 mcp-xray/
 .playwright-mcp/
+.agents/index/

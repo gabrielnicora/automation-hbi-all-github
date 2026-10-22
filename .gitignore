@@ -15,3 +15,7 @@ blob-report/
 /web
 /api
 .DS_Store
+# Snapshots de exploración con Playwright MCP: provienen de sesiones QA.
+.playwright-mcp/
+# Configuración local de Claude Code (la compartida es .claude/settings.json).
+.claude/settings.local.json
