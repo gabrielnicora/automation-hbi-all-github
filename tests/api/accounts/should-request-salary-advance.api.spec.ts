@@ -2,7 +2,7 @@ import { ProductWidgetsApi } from '../../../src/api/accounts/product-widgets.api
 import { SalaryAdvanceApi } from '../../../src/api/accounts/salary-advance.api';
 import { test } from '../../../src/fixtures/api-test';
 
-const TEST_CASE_ID = 'TC0223BERSA';
+const TEST_CASE_ID = 'TC0110003BERSA';
 // Importe fijo de las plantillas legadas sealLoansByAmount.json y salaryAdvanceConfirm.json.
 const ADVANCE_AMOUNT = 10000;
 

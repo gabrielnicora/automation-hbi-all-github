@@ -10,8 +10,12 @@ capability specification under `specs/<area>/`. Find existing cases in
   same behavior and channel.
 - Import `test` and `expect` only from `src/fixtures/api-test.ts` or `src/fixtures/ui-test.ts`.
 - Declare `const TEST_CASE_ID = 'TC<number>BERSA'`, call `test.use({ testCaseId: TEST_CASE_ID })`
-  and start every title with the ID. The ID selects the data row; the same functional case
-  keeps its ID across API and UI.
+  and start every title with the ID. The ID selects the data row.
+- IDs follow `SPEC.md` section 10.1: `TC<family 2><channel 1=api 2=ui><sequence 4>BERSA`, one
+  ID per channel. Get a new one with `pnpm run case:new -- <family> <api|ui>` (family = the
+  folder under `tests/<channel>/`); it registers the ID in `test-data/case-ids.json`. Never
+  invent, compute or reuse an ID. To find the new ID of an old one (as cited in `specs/` or
+  `docs/`), look up `legacyId` in `test-data/case-ids.json`.
 - Wrap each functional step in `test.step('<what the user does>', ...)`.
 - Use the fixtures by name in the callback (`loginApi`, `loginCredentials`, `<area>Page`,
   `<area>Api`, `<case>Data`). Do not construct Page Objects or clients in the test.

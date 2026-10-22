@@ -1,6 +1,6 @@
 import { expect, test } from '../../../src/fixtures/api-test';
 
-const TEST_CASE_ID = 'TC0229BERSA';
+const TEST_CASE_ID = 'TC0110004BERSA';
 
 test.describe('Adelanto de sueldo API de Banco Entre Ríos', () => {
   test.use({ testCaseId: TEST_CASE_ID });

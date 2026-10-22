@@ -632,7 +632,7 @@ No existen ni se permiten dependencias hacia `banks/shared`, `BankConfig`,
 ## 8. Datos de prueba y seguridad de ejecución
 
 El origen de credenciales es `test-data/private/bersa.json`. El documento contiene el objeto
-`testCases`, indexado directamente por cada `testCaseId` BERSA. Cada registro conserva `tcName`
+`testCases`, indexado directamente por cada `testCaseId` BERSA (numeración de la sección 10.1). Cada registro conserva `tcName`
 con el mismo valor de su clave, y el lector valida esa coincidencia antes de devolverlo. Esta
 decisión reemplaza el export legado indexado por el texto de una consulta SQL y evita recorridos
 lineales para localizar un caso.
@@ -750,9 +750,34 @@ del banco. Esta política no incorpora scripts, jobs ni una suite permanente adi
 - Variables y funciones: `camelCase`.
 - Clases, tipos e interfaces: `PascalCase`.
 - Tests: `<behavior-name>.<channel>.spec.ts`.
-- Cada título comienza con `TC<numero>BERSA`.
-- El mismo caso funcional conserva su ID entre API y UI; la identidad del escenario
-  se distingue por caso y canal. `testCaseId` también selecciona los datos de prueba.
+- Cada título comienza con `TC<numero>BERSA`. `testCaseId` también selecciona los datos de prueba.
+
+### 10.1 Numeración de casos
+
+Decisión del usuario, 22 de octubre de 2026. Estado: aprobado. Motivo: la numeración heredada
+proviene de una lista única que luego se separó por familia funcional y por canal, por lo que
+no es lineal y no permite asignar un número nuevo sin riesgo de choque. Un agente necesita una
+regla determinística para numerar casos nuevos.
+
+- Formato: `TC<FF><C><NNNN>BERSA`. `FF` es el código de familia (2 dígitos), `C` el canal
+  (`1` API, `2` UI) y `NNNN` la secuencia dentro de esa familia y canal. Ejemplo: tarjetas por
+  UI `TC0320001BERSA`. Se mantiene el patrón `TC<numero>BERSA` del lector de datos.
+- Familia = carpeta funcional del test (`tests/<canal>/<familia>/`). Los códigos y todos los IDs
+  asignados viven en `test-data/case-ids.json`, junto con el ID anterior (`legacyId`) de cada
+  caso migrado. Ese archivo es la única fuente de trazabilidad hacia los IDs anteriores.
+- Cada canal tiene su propio ID: el mismo caso funcional por API y por UI recibe dos números.
+  Reemplaza la regla anterior que conservaba el ID entre API y UI.
+- Un ID nuevo se obtiene con `pnpm run case:new -- <familia> <api|ui>`, que toma el próximo
+  número libre y lo registra. Nadie, ni personas ni agentes, inventa o calcula un ID a mano.
+  Una familia nueva se agrega al registro con el siguiente código libre.
+- `pnpm run check` falla si un test usa un ID no registrado, un ID anterior en lugar del nuevo,
+  o un ID cuya familia o canal no corresponde a la carpeta del test.
+- Migración del 22 de octubre de 2026: se renumeraron los tests y las filas de
+  `test-data/private/bersa.json`, asignando la secuencia en el orden de los IDs anteriores. La
+  fila del único ID compartido entre canales (`TC0017BERSA`) se duplicó para sus dos IDs. Las
+  filas sin test conservan su ID anterior. `specs/`, este documento, `README.md`, `docs/` y el
+  legado `java/` conservan los IDs anteriores y se leen con el mapeo; los IDs citados en las
+  secciones de este documento son anteriores salvo que se indique lo contrario.
 - Ambos logins `TC0012BERSA` pertenecen a la selección `@regression` por su importancia.
   Esta etiqueta no implica pertenencia a smoke ni una vinculación con Xray.
 - `TC0139BERSA` pertenece a `@critical`; la etiqueta expresa criticidad funcional y no

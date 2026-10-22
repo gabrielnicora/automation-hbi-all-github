@@ -12,19 +12,19 @@ interface DeclarationCase {
 
 const DECLARATION_CASES: readonly DeclarationCase[] = [
   {
-    id: 'TC0192BERSA',
+    id: 'TC0310004BERSA',
     title: 'Persona expuesta políticamente no permite continuar la solicitud',
     declarations: { exteriorResidence: false, pep: true, soUIF: false },
     expectedMessage: 'Persona expuesta politicamente',
   },
   {
-    id: 'TC0193BERSA',
+    id: 'TC0310005BERSA',
     title: 'Residencia fiscal en el exterior no permite continuar la solicitud',
     declarations: { exteriorResidence: true, pep: false, soUIF: false },
     expectedMessage: 'Residencia en el exterior',
   },
   {
-    id: 'TC0194BERSA',
+    id: 'TC0310006BERSA',
     title: 'Sujeto obligado UIF no permite continuar la solicitud',
     declarations: { exteriorResidence: false, pep: false, soUIF: true },
     expectedMessage: 'Error UIF',

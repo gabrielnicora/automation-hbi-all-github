@@ -1,7 +1,7 @@
 import { FUND_RISK } from '../../../src/pages/investments/fund-risk';
 import { expect, test } from '../../../src/fixtures/ui-test';
 
-const TEST_CASE_ID = 'TC0119BERSA';
+const TEST_CASE_ID = 'TC0720004BERSA';
 
 test.describe('FCI - filtros de fondos por riesgo', () => {
   test.use({ testCaseId: TEST_CASE_ID });

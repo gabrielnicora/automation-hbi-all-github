@@ -1,7 +1,7 @@
 import { expect, test } from '../../../src/fixtures/ui-test';
 
 test.describe('Generación de DEBIN vendedor por CBU UI de Banco Entre Ríos', () => {
-  const TEST_CASE_ID = 'TC0183BERSA';
+  const TEST_CASE_ID = 'TC1120001BERSA';
   test.use({ testCaseId: TEST_CASE_ID });
   test.setTimeout(180_000);
 
@@ -29,7 +29,7 @@ test.describe('Generación de DEBIN vendedor por CBU UI de Banco Entre Ríos', (
 });
 
 test.describe('Generación de DEBIN vendedor por alias UI de Banco Entre Ríos', () => {
-  const TEST_CASE_ID = 'TC0184BERSA';
+  const TEST_CASE_ID = 'TC1120002BERSA';
   test.use({ testCaseId: TEST_CASE_ID });
   test.setTimeout(180_000);
 

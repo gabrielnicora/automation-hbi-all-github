@@ -6,10 +6,10 @@ const SERVICE_CODE = '00449535691';
 test.describe('Pago de servicios UI de Banco Entre Ríos', () => {
   test.setTimeout(300_000);
 
-  test.describe('TC110847BERSA', () => {
-    test.use({ testCaseId: 'TC110847BERSA' });
+  test.describe('TC1120004BERSA', () => {
+    test.use({ testCaseId: 'TC1120004BERSA' });
 
-    test('TC110847BERSA - muestra el estado de los pagos realizados en simultáneo', async ({
+    test('TC1120004BERSA - muestra el estado de los pagos realizados en simultáneo', async ({
       loginApi,
       loginCredentials,
       loginPage,
@@ -38,10 +38,10 @@ test.describe('Pago de servicios UI de Banco Entre Ríos', () => {
     });
   });
 
-  test.describe('TC110363BERSA', () => {
-    test.use({ testCaseId: 'TC110363BERSA' });
+  test.describe('TC1120003BERSA', () => {
+    test.use({ testCaseId: 'TC1120003BERSA' });
 
-    test('TC110363BERSA - filtra comprobantes de pago por empresa y descripción', async ({
+    test('TC1120003BERSA - filtra comprobantes de pago por empresa y descripción', async ({
       loginApi,
       loginCredentials,
       loginPage,

@@ -1,7 +1,7 @@
 import { expect, test } from '../../../src/fixtures/ui-test';
 
 test.describe('Consulta de tarjetas de crédito Visa UI de Banco Entre Ríos', () => {
-  const TEST_CASE_ID = 'TC0032BERSA';
+  const TEST_CASE_ID = 'TC0320001BERSA';
   test.use({ testCaseId: TEST_CASE_ID });
   test.setTimeout(180_000);
 
@@ -24,7 +24,7 @@ test.describe('Consulta de tarjetas de crédito Visa UI de Banco Entre Ríos', (
 });
 
 test.describe('Consulta de tarjetas de crédito Mastercard UI de Banco Entre Ríos', () => {
-  const TEST_CASE_ID = 'TC0033BERSA';
+  const TEST_CASE_ID = 'TC0320002BERSA';
   test.use({ testCaseId: TEST_CASE_ID });
   test.setTimeout(180_000);
 
@@ -47,7 +47,7 @@ test.describe('Consulta de tarjetas de crédito Mastercard UI de Banco Entre Rí
 });
 
 test.describe('Detalle de tarjeta de crédito UI de Banco Entre Ríos', () => {
-  const TEST_CASE_ID = 'TC0062BERSA';
+  const TEST_CASE_ID = 'TC0320003BERSA';
   test.use({ testCaseId: TEST_CASE_ID });
   test.setTimeout(180_000);
 

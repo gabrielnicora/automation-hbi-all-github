@@ -5,10 +5,10 @@ import { requiredTransferValue } from '../../../src/test-data/transfer-case-data
 // CBU del caso de la agenda por API, como el legado.
 
 test.describe('Historial de transferencias por UI', () => {
-  test.describe('TC16756BERSA', () => {
-    test.use({ testCaseId: 'TC16756BERSA' });
+  test.describe('TC1520003BERSA', () => {
+    test.use({ testCaseId: 'TC1520003BERSA' });
 
-    test('TC16756BERSA - Transferencias realizadas - Ver mis transferencias (movimientos de hace dos meses)', async ({
+    test('TC1520003BERSA - Transferencias realizadas - Ver mis transferencias (movimientos de hace dos meses)', async ({
       loginApi,
       loginCredentials,
       loginPage,
@@ -44,10 +44,10 @@ test.describe('Historial de transferencias por UI', () => {
     });
   });
 
-  test.describe('TC18103BERSA', () => {
-    test.use({ testCaseId: 'TC18103BERSA' });
+  test.describe('TC1520008BERSA', () => {
+    test.use({ testCaseId: 'TC1520008BERSA' });
 
-    test('TC18103BERSA - Transferencias realizadas - Ver mis transferencias (borrar filtros)', async ({
+    test('TC1520008BERSA - Transferencias realizadas - Ver mis transferencias (borrar filtros)', async ({
       loginApi,
       loginCredentials,
       loginPage,
@@ -88,10 +88,10 @@ test.describe('Historial de transferencias por UI', () => {
     });
   });
 
-  test.describe('TC29408BERSA', () => {
-    test.use({ testCaseId: 'TC29408BERSA' });
+  test.describe('TC1520009BERSA', () => {
+    test.use({ testCaseId: 'TC1520009BERSA' });
 
-    test('TC29408BERSA - Transferencias Programadas - Nuevo historial - Visualización', async ({
+    test('TC1520009BERSA - Transferencias Programadas - Nuevo historial - Visualización', async ({
       loginCredentials,
       loginPage,
       startPage,

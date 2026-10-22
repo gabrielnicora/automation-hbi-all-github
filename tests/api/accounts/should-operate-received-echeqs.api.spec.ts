@@ -41,10 +41,10 @@ async function expectEcheqsInStatus(
 }
 
 test.describe('eCheq API de Banco Entre Ríos — operaciones', () => {
-  test.describe('TC124907BERSA', () => {
-    test.use({ testCaseId: 'TC124907BERSA' });
+  test.describe('TC0110083BERSA', () => {
+    test.use({ testCaseId: 'TC0110083BERSA' });
 
-    test('TC124907BERSA - Consulta del detalle de un eCheq - Estado Aceptar', async ({
+    test('TC0110083BERSA - Consulta del detalle de un eCheq - Estado Aceptar', async ({
       echeqOperationsApi,
       loginApi,
       loginCredentials,
@@ -58,10 +58,10 @@ test.describe('eCheq API de Banco Entre Ríos — operaciones', () => {
     });
   });
 
-  test.describe('TC124908BERSA', () => {
-    test.use({ testCaseId: 'TC124908BERSA' });
+  test.describe('TC0110084BERSA', () => {
+    test.use({ testCaseId: 'TC0110084BERSA' });
 
-    test('TC124908BERSA - Consulta del detalle de un eCheq - Estado Endosar', async ({
+    test('TC0110084BERSA - Consulta del detalle de un eCheq - Estado Endosar', async ({
       echeqOperationsApi,
       loginApi,
       loginCredentials,
@@ -80,10 +80,10 @@ test.describe('eCheq API de Banco Entre Ríos — operaciones', () => {
     });
   });
 
-  test.describe('TC124910BERSA', () => {
-    test.use({ testCaseId: 'TC124910BERSA' });
+  test.describe('TC0110086BERSA', () => {
+    test.use({ testCaseId: 'TC0110086BERSA' });
 
-    test('TC124910BERSA - Consulta del detalle de un eCheq - Estado Repudiar', async ({
+    test('TC0110086BERSA - Consulta del detalle de un eCheq - Estado Repudiar', async ({
       echeqOperationsApi,
       loginApi,
       loginCredentials,
@@ -103,10 +103,10 @@ test.describe('eCheq API de Banco Entre Ríos — operaciones', () => {
     });
   });
 
-  test.describe('TC124911BERSA', () => {
-    test.use({ testCaseId: 'TC124911BERSA' });
+  test.describe('TC0110087BERSA', () => {
+    test.use({ testCaseId: 'TC0110087BERSA' });
 
-    test('TC124911BERSA - Consulta del detalle de un eCheq - Estado Custodiar', async ({
+    test('TC0110087BERSA - Consulta del detalle de un eCheq - Estado Custodiar', async ({
       echeqOperationsApi,
       loginApi,
       loginCredentials,
@@ -126,10 +126,10 @@ test.describe('eCheq API de Banco Entre Ríos — operaciones', () => {
     });
   });
 
-  test.describe('TC124912BERSA', () => {
-    test.use({ testCaseId: 'TC124912BERSA' });
+  test.describe('TC0110088BERSA', () => {
+    test.use({ testCaseId: 'TC0110088BERSA' });
 
-    test('TC124912BERSA - Consulta del detalle de un eCheq - Custodiar y rescatar', async ({
+    test('TC0110088BERSA - Consulta del detalle de un eCheq - Custodiar y rescatar', async ({
       echeqOperationsApi,
       loginApi,
       loginCredentials,
@@ -151,10 +151,10 @@ test.describe('eCheq API de Banco Entre Ríos — operaciones', () => {
     });
   });
 
-  test.describe('TC128237BERSA', () => {
-    test.use({ testCaseId: 'TC128237BERSA' });
+  test.describe('TC0110091BERSA', () => {
+    test.use({ testCaseId: 'TC0110091BERSA' });
 
-    test('TC128237BERSA - Solicitar devolución de eCheq', async ({
+    test('TC0110091BERSA - Solicitar devolución de eCheq', async ({
       echeqOperationsApi,
       loginApi,
       loginCredentials,
@@ -184,10 +184,10 @@ test.describe('eCheq API de Banco Entre Ríos — operaciones', () => {
     });
   });
 
-  test.describe('TC128231BERSA', () => {
-    test.use({ testCaseId: 'TC128231BERSA' });
+  test.describe('TC0110090BERSA', () => {
+    test.use({ testCaseId: 'TC0110090BERSA' });
 
-    test('TC128231BERSA - Depositar eCheq - Variable encendida', async ({
+    test('TC0110090BERSA - Depositar eCheq - Variable encendida', async ({
       echeqOperationsApi,
       loginApi,
       loginCredentials,

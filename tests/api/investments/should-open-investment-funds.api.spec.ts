@@ -1,6 +1,6 @@
 import { test } from '../../../src/fixtures/api-test';
 
-const TEST_CASE_ID = 'TC0115BERSA';
+const TEST_CASE_ID = 'TC0710004BERSA';
 
 test.describe('Fondos comunes de inversión API de Banco Entre Ríos', () => {
   test.use({ testCaseId: TEST_CASE_ID });

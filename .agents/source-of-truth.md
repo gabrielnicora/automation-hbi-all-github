@@ -39,6 +39,7 @@ código, buscar en el catálogo generado `.agents/index/` (`SPEC.md`, sección 3
 | Registrar fixtures                                    | `src/fixtures/AGENTS.md`.                                                                                                           |
 | Crear o modificar workflows                           | `src/workflows/AGENTS.md`.                                                                                                          |
 | Datos de prueba y sus loaders                         | `test-data/AGENTS.md`.                                                                                                              |
+| Numeración de casos o IDs citados en specs/docs       | `SPEC.md`, sección 10.1, y `test-data/case-ids.json`.                                                                               |
 | Arquitectura, dependencias, configuración global o CI | `SPEC.md` completo.                                                                                                                 |
 | Cierre transversal de encuesta opcional por UI        | `specs/ui/optional-satisfaction-survey.md`.                                                                                         |
 | Autoría o revisión de tests                           | `docs/test-authoring.md` y especificaciones de las capacidades afectadas.                                                           |

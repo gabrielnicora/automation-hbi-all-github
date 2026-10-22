@@ -34,17 +34,17 @@ async function generateCredin(
 
 const GENERATIONS = [
   {
-    id: 'TC0014BERSA',
+    id: 'TC1510002BERSA',
     title:
       'Generar CREDIN - Cuenta propia $ (mismo Banco u otro) - Mas de una cuenta Debito - CBU - Segundo factor por SMS',
   },
   // El legado no resuelve la tarjeta de débito en este caso (ver lote-l6-api.md); se usa la del registro.
-  { id: 'TC12938BERSA', title: 'TRANSFERENCIAS - Generar CREDIN - Dolares' },
+  { id: 'TC1510031BERSA', title: 'TRANSFERENCIAS - Generar CREDIN - Dolares' },
 ] as const;
 
 const QUERIES = [
-  { id: 'TC12939BERSA', title: 'TRANSFERENCIAS - Consultar CREDIN Originante', searchAs: 'Originante' },
-  { id: 'TC12940BERSA', title: 'TRANSFERENCIAS - Consultar CREDIN destinatario', searchAs: 'Destinatario' },
+  { id: 'TC1510032BERSA', title: 'TRANSFERENCIAS - Consultar CREDIN Originante', searchAs: 'Originante' },
+  { id: 'TC1510033BERSA', title: 'TRANSFERENCIAS - Consultar CREDIN destinatario', searchAs: 'Destinatario' },
 ] as const;
 
 test.describe('CREDIN API de Banco Entre Ríos', () => {

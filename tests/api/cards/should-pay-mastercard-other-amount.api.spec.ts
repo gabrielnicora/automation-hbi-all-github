@@ -1,7 +1,7 @@
 import { ProductWidgetsApi } from '../../../src/api/accounts/product-widgets.api';
 import { test } from '../../../src/fixtures/api-test';
 
-const TEST_CASE_ID = 'TC0165BERSA';
+const TEST_CASE_ID = 'TC0310003BERSA';
 // Importe fijo del legado TarjetaSteps.realizarPagoOtroImporte.
 const OTHER_AMOUNT = 1;
 

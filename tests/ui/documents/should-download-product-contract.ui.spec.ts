@@ -1,6 +1,6 @@
 import { expect, test } from '../../../src/fixtures/ui-test';
 
-const TEST_CASE_ID = 'TC0077BERSA';
+const TEST_CASE_ID = 'TC0420001BERSA';
 const PRODUCT = 'Alta Cuenta Comitente desde Home Banking';
 
 test.describe('Administración de productos UI de Banco Entre Ríos', () => {

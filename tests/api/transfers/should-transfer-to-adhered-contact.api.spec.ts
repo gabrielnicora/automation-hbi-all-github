@@ -5,11 +5,11 @@ import { requiredTransferValue } from '../../../src/test-data/transfer-case-data
 // Legado: quitar el CBU de la agenda, agendarlo con el ID del caso como referencia, transferir
 // ARS/USD 1 al contacto agendado (sin OTP) y validar el descuento en la cuenta origen.
 const ADHERED_CONTACT_TRANSFERS = [
-  { id: 'TC0409BERSA', title: 'TRANSFERENCIAS - terceros mismo banco $ - AGENDADOS' },
-  { id: 'TC0411BERSA', title: 'Transferencias - terceros otros bancos $ - AGENDADOS' },
-  { id: 'TC0427BERSA', title: 'Transferencias CVU - terceros $ AGENDADOS' },
-  { id: 'TC0410BERSA', title: 'Transferencias - terceros mismo banco USD - AGENDADOS' },
-  { id: 'TC0412BERSA', title: 'Transferencias - terceros mismo banco USD - AGENDADOS' },
+  { id: 'TC1510006BERSA', title: 'TRANSFERENCIAS - terceros mismo banco $ - AGENDADOS' },
+  { id: 'TC1510008BERSA', title: 'Transferencias - terceros otros bancos $ - AGENDADOS' },
+  { id: 'TC1510013BERSA', title: 'Transferencias CVU - terceros $ AGENDADOS' },
+  { id: 'TC1510007BERSA', title: 'Transferencias - terceros mismo banco USD - AGENDADOS' },
+  { id: 'TC1510009BERSA', title: 'Transferencias - terceros mismo banco USD - AGENDADOS' },
 ] as const;
 
 test.describe('Transferencias a contactos agendados API de Banco Entre Ríos', () => {

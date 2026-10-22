@@ -17,10 +17,10 @@ const FILTER_LABELS = [
 test.describe('Consulta y aceptación de eCheq UI de Banco Entre Ríos', () => {
   test.setTimeout(180_000);
 
-  test.describe('TC29413BERSA', () => {
-    test.use({ testCaseId: 'TC29413BERSA' });
+  test.describe('TC0120014BERSA', () => {
+    test.use({ testCaseId: 'TC0120014BERSA' });
 
-    test('TC29413BERSA - muestra los campos del filtro de eCheq', async ({
+    test('TC0120014BERSA - muestra los campos del filtro de eCheq', async ({
       echeqPage,
       loginCredentials,
       loginPage,
@@ -39,10 +39,10 @@ test.describe('Consulta y aceptación de eCheq UI de Banco Entre Ríos', () => {
     });
   });
 
-  test.describe('TC0026BERSA', () => {
-    test.use({ testCaseId: 'TC0026BERSA' });
+  test.describe('TC0120001BERSA', () => {
+    test.use({ testCaseId: 'TC0120001BERSA' });
 
-    test('TC0026BERSA - muestra el detalle del primer eCheq con todos los estados', async ({
+    test('TC0120001BERSA - muestra el detalle del primer eCheq con todos los estados', async ({
       echeqPage,
       loginCredentials,
       loginPage,
@@ -64,10 +64,10 @@ test.describe('Consulta y aceptación de eCheq UI de Banco Entre Ríos', () => {
     });
   });
 
-  test.describe('TC124865BERSA', () => {
-    test.use({ testCaseId: 'TC124865BERSA' });
+  test.describe('TC0120016BERSA', () => {
+    test.use({ testCaseId: 'TC0120016BERSA' });
 
-    test('TC124865BERSA - acepta un eCheq emitido pendiente con segundo factor', async ({
+    test('TC0120016BERSA - acepta un eCheq emitido pendiente con segundo factor', async ({
       echeqPage,
       loginApi,
       loginCredentials,

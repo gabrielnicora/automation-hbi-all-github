@@ -2,7 +2,7 @@ import { ProductWidgetsApi } from '../../../src/api/accounts/product-widgets.api
 import { test } from '../../../src/fixtures/api-test';
 import { RECURRING_DEBIN_SUBSCRIPTION } from '../../../src/test-data/payment-services-data';
 
-const TEST_CASE_ID = 'TC0015BERSA';
+const TEST_CASE_ID = 'TC1110003BERSA';
 
 test.describe('DEBIN API de Banco Entre Ríos', () => {
   test.use({ testCaseId: TEST_CASE_ID });

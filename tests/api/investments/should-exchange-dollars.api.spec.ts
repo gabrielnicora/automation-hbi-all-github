@@ -3,10 +3,10 @@ import { test } from '../../../src/fixtures/api-test';
 
 // El legado sólo valida que la operación responda con un código de éxito.
 test.describe('Compra y venta de dólares API de Banco Entre Ríos', () => {
-  test.describe('TC0069BERSA', () => {
-    test.use({ testCaseId: 'TC0069BERSA' });
+  test.describe('TC0710003BERSA', () => {
+    test.use({ testCaseId: 'TC0710003BERSA' });
 
-    test('TC0069BERSA - Compra de moneda extranjera (USD)', async ({
+    test('TC0710003BERSA - Compra de moneda extranjera (USD)', async ({
       accountPairData,
       dollarExchangeApi,
       loginApi,
@@ -26,10 +26,10 @@ test.describe('Compra y venta de dólares API de Banco Entre Ríos', () => {
     });
   });
 
-  test.describe('TC0009BERSA', () => {
-    test.use({ testCaseId: 'TC0009BERSA' });
+  test.describe('TC0710001BERSA', () => {
+    test.use({ testCaseId: 'TC0710001BERSA' });
 
-    test('TC0009BERSA - Venta de moneda extranjera (USD)', async ({
+    test('TC0710001BERSA - Venta de moneda extranjera (USD)', async ({
       accountPairData,
       dollarExchangeApi,
       loginApi,

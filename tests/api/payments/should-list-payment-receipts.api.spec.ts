@@ -2,7 +2,7 @@ import { ProductWidgetsApi } from '../../../src/api/accounts/product-widgets.api
 import { test } from '../../../src/fixtures/api-test';
 import { MERCADO_LIBRE_PAYMENT } from '../../../src/test-data/payment-services-data';
 
-const TEST_CASE_ID = 'TC0108BERSA';
+const TEST_CASE_ID = 'TC1110006BERSA';
 
 test.describe('Comprobantes de pagos API de Banco Entre Ríos', () => {
   test.use({ testCaseId: TEST_CASE_ID });

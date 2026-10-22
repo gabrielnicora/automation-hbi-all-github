@@ -1,7 +1,7 @@
 import { expect, test } from '../../../src/fixtures/ui-test';
 
 test.describe('Alta de contacto con CBU inválido UI de Banco Entre Ríos', () => {
-  const TEST_CASE_ID = 'TC0146BERSA';
+  const TEST_CASE_ID = 'TC1520001BERSA';
   test.use({ testCaseId: TEST_CASE_ID });
   test.setTimeout(180_000);
 
@@ -24,7 +24,7 @@ test.describe('Alta de contacto con CBU inválido UI de Banco Entre Ríos', () =
 });
 
 test.describe('Alta de contacto con alias inválido UI de Banco Entre Ríos', () => {
-  const TEST_CASE_ID = 'TC0148BERSA';
+  const TEST_CASE_ID = 'TC1520002BERSA';
   test.use({ testCaseId: TEST_CASE_ID });
   test.setTimeout(180_000);
 

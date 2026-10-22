@@ -5,10 +5,10 @@ import { test } from '../../../src/fixtures/ui-test';
 const FUND_NAME = 'A-Delta Ahorro';
 
 test.describe('FCI - Más información del fondo por UI', () => {
-  test.describe('TC0133BERSA', () => {
-    test.use({ testCaseId: 'TC0133BERSA' });
+  test.describe('TC0720008BERSA', () => {
+    test.use({ testCaseId: 'TC0720008BERSA' });
 
-    test('TC0133BERSA - FCI - Más información - Aceptar modal', async ({
+    test('TC0720008BERSA - FCI - Más información - Aceptar modal', async ({
       investmentFundsPage,
       loginCredentials,
       loginPage,
@@ -30,10 +30,10 @@ test.describe('FCI - Más información del fondo por UI', () => {
     });
   });
 
-  test.describe('TC0134BERSA', () => {
-    test.use({ testCaseId: 'TC0134BERSA' });
+  test.describe('TC0720009BERSA', () => {
+    test.use({ testCaseId: 'TC0720009BERSA' });
 
-    test('TC0134BERSA - FCI - Más información - Rechazar modal', async ({
+    test('TC0720009BERSA - FCI - Más información - Rechazar modal', async ({
       investmentFundsPage,
       loginCredentials,
       loginPage,

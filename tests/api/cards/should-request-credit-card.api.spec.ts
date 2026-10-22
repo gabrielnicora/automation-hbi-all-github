@@ -1,7 +1,7 @@
 import { ProductWidgetsApi } from '../../../src/api/accounts/product-widgets.api';
 import { expect, test } from '../../../src/fixtures/api-test';
 
-const TEST_CASE_ID = 'TC0149BERSA';
+const TEST_CASE_ID = 'TC0310001BERSA';
 
 test.describe('Solicitud de tarjeta de crédito API de Banco Entre Ríos', () => {
   test.use({ testCaseId: TEST_CASE_ID });

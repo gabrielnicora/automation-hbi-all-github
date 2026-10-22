@@ -1,6 +1,6 @@
 import { expect, test } from '../../../src/fixtures/ui-test';
 
-const TEST_CASE_ID = 'TC0173BERSA';
+const TEST_CASE_ID = 'TC0720010BERSA';
 
 test.describe('Alta de cuenta comitente por UI', () => {
   test.use({ testCaseId: TEST_CASE_ID });

@@ -16,10 +16,10 @@ function expectFirstMovementFields(movements: readonly FundMovement[]): void {
 }
 
 test.describe('Movimientos de fondos API de Banco Entre Ríos', () => {
-  test.describe('TC0129BERSA', () => {
-    test.use({ testCaseId: 'TC0129BERSA' });
+  test.describe('TC0710006BERSA', () => {
+    test.use({ testCaseId: 'TC0710006BERSA' });
 
-    test('TC0129BERSA - FCI - Movimientos', async ({ investmentFundsApi, loginApi, loginCredentials }) => {
+    test('TC0710006BERSA - FCI - Movimientos', async ({ investmentFundsApi, loginApi, loginCredentials }) => {
       const session = await test.step('Autenticar al usuario', () => loginApi.authenticate(loginCredentials));
       const commitentAccount = await test.step('Consultar la cuenta comitente', () =>
         investmentFundsApi.readCommitentAccount(session));
@@ -32,10 +32,10 @@ test.describe('Movimientos de fondos API de Banco Entre Ríos', () => {
     });
   });
 
-  test.describe('TC0130BERSA', () => {
-    test.use({ testCaseId: 'TC0130BERSA' });
+  test.describe('TC0710007BERSA', () => {
+    test.use({ testCaseId: 'TC0710007BERSA' });
 
-    test('TC0130BERSA - FCI - Movimientos con descarga PDF', async ({
+    test('TC0710007BERSA - FCI - Movimientos con descarga PDF', async ({
       investmentFundsApi,
       loginApi,
       loginCredentials,

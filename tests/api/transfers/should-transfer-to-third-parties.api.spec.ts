@@ -25,38 +25,43 @@ function destinationValue(data: TransferCaseData, type: DestinationType): string
 // Casos que además validan el descuento en la cuenta origen (validarDescuentoCuenta).
 const WITH_ORIGIN_DEBIT: readonly ImmediateTransferCase[] = [
   {
-    id: 'TC12930BERSA',
+    id: 'TC1510028BERSA',
     title: 'A cuentas de terceros CBU - mismo banco - Pesos',
     destinationType: 'CBU',
     variant: 'standard',
   },
   {
-    id: 'TC12969BERSA',
+    id: 'TC1510034BERSA',
     title: 'A cuentas de terceros CVU - otros bancos - Pesos',
     destinationType: 'CBU',
     variant: 'standard',
   },
   {
-    id: 'TC12932BERSA',
+    id: 'TC1510029BERSA',
     title: 'A cuentas de terceros ALIAS - mismo banco - Pesos',
     destinationType: 'ALIAS',
     variant: 'standard',
   },
-  { id: 'TC0429BERSA', title: 'ALIAS de CVU - terceros $ NO AGENDADOS', destinationType: 'ALIAS', variant: 'standard' },
   {
-    id: 'TC0344BERSA',
+    id: 'TC1510014BERSA',
+    title: 'ALIAS de CVU - terceros $ NO AGENDADOS',
+    destinationType: 'ALIAS',
+    variant: 'standard',
+  },
+  {
+    id: 'TC1510005BERSA',
     title: 'A cuentas de terceros ALIAS - otros bancos - Pesos',
     destinationType: 'ALIAS',
     variant: 'standard',
   },
   {
-    id: 'TC0424BERSA',
+    id: 'TC1510012BERSA',
     title: 'ALIAS - terceros otros bancos USD - NO AGENDADOS',
     destinationType: 'ALIAS',
     variant: 'standard',
   },
   {
-    id: 'TC0422BERSA',
+    id: 'TC1510011BERSA',
     title: 'ALIAS - terceros mismo banco USD - NO AGENDADOS',
     destinationType: 'ALIAS',
     variant: 'usd',
@@ -66,13 +71,13 @@ const WITH_ORIGIN_DEBIT: readonly ImmediateTransferCase[] = [
 // Casos que sólo validan la aceptación de la transferencia.
 const WITHOUT_BALANCE_CHECK: readonly ImmediateTransferCase[] = [
   {
-    id: 'TC12935BERSA',
+    id: 'TC1510030BERSA',
     title: 'Transferencias Programadas (Fecha especifica) CBU - terceros mismo banco $ - NO AGENDADOS',
     destinationType: 'CBU',
     variant: 'standard',
   },
   {
-    id: 'TC0477BERSA',
+    id: 'TC1510021BERSA',
     title: 'Transferencias Programadas (Fecha especifica) ALIAS - terceros mismo banco $ - NO AGENDADOS',
     destinationType: 'ALIAS',
     variant: 'standard',
@@ -82,13 +87,13 @@ const WITHOUT_BALANCE_CHECK: readonly ImmediateTransferCase[] = [
 // Casos de "saldo actualizado" que además validan el incremento en destino (validarIncrementoEnCuenta).
 const WITH_DESTINATION_CREDIT: readonly ImmediateTransferCase[] = [
   {
-    id: 'TC18097BERSA',
+    id: 'TC1510043BERSA',
     title: 'Saldo actualizado - Transferencias a un Alias CVU en pesos',
     destinationType: 'ALIAS',
     variant: 'standard',
   },
   {
-    id: 'TC18098BERSA',
+    id: 'TC1510044BERSA',
     title: 'Saldo actualizado - Transferencias a un Alias CBU en dólares',
     destinationType: 'ALIAS',
     variant: 'standard',
@@ -98,10 +103,10 @@ const WITH_DESTINATION_CREDIT: readonly ImmediateTransferCase[] = [
 // Casos sin descripción que validan el comprobante.
 const WITHOUT_DESCRIPTION: readonly { readonly id: string; readonly title: string }[] = [
   {
-    id: 'TC18089BERSA',
+    id: 'TC1510039BERSA',
     title: 'Transferencia a cuentas propias con CBU de otra entidad sin el campo Descripción al agendarse',
   },
-  { id: 'TC18093BERSA', title: 'Transferencia a Terceros con CBU de otra entidad sin el campo Descripción' },
+  { id: 'TC1510041BERSA', title: 'Transferencia a Terceros con CBU de otra entidad sin el campo Descripción' },
 ];
 
 test.describe('Transferencias inmediatas a terceros API de Banco Entre Ríos', () => {

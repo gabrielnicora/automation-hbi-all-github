@@ -1,6 +1,6 @@
 import { expect, test } from '../../../src/fixtures/ui-test';
 
-const TEST_CASE_ID = 'TC128244BERSA';
+const TEST_CASE_ID = 'TC0720019BERSA';
 
 /**
  * Importe que carga el legado a partir del saldo mostrado (PlazosFijosSteps + UtilsGP.parseMontoAR):

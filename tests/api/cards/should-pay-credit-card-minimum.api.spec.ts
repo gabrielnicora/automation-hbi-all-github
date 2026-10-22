@@ -3,10 +3,10 @@ import { test } from '../../../src/fixtures/api-test';
 
 const MINIMUM_PAYMENTS = [
   {
-    id: 'TC16039BERSA',
+    id: 'TC0310008BERSA',
     title: 'Tarjetas de crédito - Pagar el importe mínimo de una tarjeta de crédito Mastercard',
   },
-  { id: 'TC0164BERSA', title: 'Tarjeta de Crédito - Pagar mínimo de una Tarjeta de Crédito Visa' },
+  { id: 'TC0310002BERSA', title: 'Tarjeta de Crédito - Pagar mínimo de una Tarjeta de Crédito Visa' },
 ] as const;
 
 // El legado sólo valida que la consulta del mínimo y el pago respondan con un código de éxito.

@@ -14,10 +14,10 @@ function expectLastYearPage(history: TransferHistoryPage): void {
 }
 
 test.describe('Historial de transferencias API de Banco Entre Ríos', () => {
-  test.describe('TC18100BERSA', () => {
-    test.use({ testCaseId: 'TC18100BERSA' });
+  test.describe('TC1510045BERSA', () => {
+    test.use({ testCaseId: 'TC1510045BERSA' });
 
-    test('TC18100BERSA - Transferencias programadas - Fecha específica agendada - Historial de transferencias', async ({
+    test('TC1510045BERSA - Transferencias programadas - Fecha específica agendada - Historial de transferencias', async ({
       loginApi,
       loginCredentials,
       thirdPartyTransferWorkflow,
@@ -36,7 +36,7 @@ test.describe('Historial de transferencias API de Banco Entre Ríos', () => {
         thirdPartyTransferWorkflow.adhereAndFindDestination(
           session,
           loginCredentials.username,
-          'TC18100BERSA',
+          'TC1510045BERSA',
           previous,
         ));
       const { debitCard, origin } = await test.step('Consultar los productos del usuario', () =>
@@ -60,10 +60,10 @@ test.describe('Historial de transferencias API de Banco Entre Ríos', () => {
     });
   });
 
-  test.describe('TC18101BERSA', () => {
-    test.use({ testCaseId: 'TC18101BERSA' });
+  test.describe('TC1510046BERSA', () => {
+    test.use({ testCaseId: 'TC1510046BERSA' });
 
-    test('TC18101BERSA - Transferencias a contacto agendado - Historial de transferencias', async ({
+    test('TC1510046BERSA - Transferencias a contacto agendado - Historial de transferencias', async ({
       loginApi,
       loginCredentials,
       thirdPartyTransferWorkflow,
@@ -83,7 +83,7 @@ test.describe('Historial de transferencias API de Banco Entre Ríos', () => {
         thirdPartyTransferWorkflow.adhereAndFindDestination(
           session,
           loginCredentials.username,
-          'TC18101BERSA',
+          'TC1510046BERSA',
           previous,
         ));
       const { debitCard, origin, products } = await test.step('Consultar los productos del usuario', () =>
@@ -101,7 +101,7 @@ test.describe('Historial de transferencias API de Banco Entre Ríos', () => {
           idAdheredAccount,
           origin,
           debitCard,
-          'TC18101BERSA',
+          'TC1510046BERSA',
         ));
       const history = await test.step('Consultar el historial del último año', () =>
         transferHistoryApi.listLastYear(session));
@@ -110,10 +110,10 @@ test.describe('Historial de transferencias API de Banco Entre Ríos', () => {
     });
   });
 
-  test.describe('TC18102BERSA', () => {
-    test.use({ testCaseId: 'TC18102BERSA' });
+  test.describe('TC1510047BERSA', () => {
+    test.use({ testCaseId: 'TC1510047BERSA' });
 
-    test('TC18102BERSA - Transferencias a CVU - Historial de transferencias', async ({
+    test('TC1510047BERSA - Transferencias a CVU - Historial de transferencias', async ({
       loginApi,
       loginCredentials,
       thirdPartyTransferWorkflow,
@@ -152,10 +152,10 @@ test.describe('Historial de transferencias API de Banco Entre Ríos', () => {
     });
   });
 
-  test.describe('TC16759BERSA', () => {
-    test.use({ testCaseId: 'TC16759BERSA' });
+  test.describe('TC1510036BERSA', () => {
+    test.use({ testCaseId: 'TC1510036BERSA' });
 
-    test('TC16759BERSA - Transferencias realizadas - Ver mis transferencias - Filtros', async ({
+    test('TC1510036BERSA - Transferencias realizadas - Ver mis transferencias - Filtros', async ({
       loginApi,
       loginCredentials,
       transferHistoryApi,
@@ -170,9 +170,9 @@ test.describe('Historial de transferencias API de Banco Entre Ríos', () => {
   });
 
   const SEARCHES = [
-    { id: 'TC16765BERSA', title: 'Ver mis transferencias - rango más nombre en buscador', searchedText: 'Borges' },
+    { id: 'TC1510037BERSA', title: 'Ver mis transferencias - rango más nombre en buscador', searchedText: 'Borges' },
     {
-      id: 'TC16768BERSA',
+      id: 'TC1510038BERSA',
       title: 'Ver mis transferencias - rango más nombre en buscador',
       searchedText: 'TestAutomation',
     },
@@ -197,10 +197,10 @@ test.describe('Historial de transferencias API de Banco Entre Ríos', () => {
     });
   }
 
-  test.describe('TC18104BERSA', () => {
-    test.use({ testCaseId: 'TC18104BERSA' });
+  test.describe('TC1510048BERSA', () => {
+    test.use({ testCaseId: 'TC1510048BERSA' });
 
-    test('TC18104BERSA - Transferencias realizadas - Ver mis transferencias - Búsqueda sin resultados', async ({
+    test('TC1510048BERSA - Transferencias realizadas - Ver mis transferencias - Búsqueda sin resultados', async ({
       loginApi,
       loginCredentials,
       thirdPartyTransferWorkflow,

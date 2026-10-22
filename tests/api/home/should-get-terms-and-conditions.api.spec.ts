@@ -1,6 +1,6 @@
 import { expect, test } from '../../../src/fixtures/api-test';
 
-const TEST_CASE_ID = 'TC0159BERSA';
+const TEST_CASE_ID = 'TC0510001BERSA';
 
 test.describe('Pantalla principal API de Banco Entre Ríos', () => {
   test.use({ testCaseId: TEST_CASE_ID });

@@ -1,6 +1,6 @@
 import { expect, test } from '../../../src/fixtures/api-test';
 
-const TEST_CASE_ID = 'TC12967BERSA';
+const TEST_CASE_ID = 'TC0310007BERSA';
 
 test.describe('Tarjetas API de Banco Entre Ríos', () => {
   test.use({ testCaseId: TEST_CASE_ID });

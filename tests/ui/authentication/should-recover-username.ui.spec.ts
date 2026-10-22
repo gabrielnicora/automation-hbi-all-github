@@ -1,8 +1,8 @@
 import { expect, test } from '../../../src/fixtures/ui-test';
 
 const RECOVERY_CASES = [
-  { testCaseId: 'TC0048BERSA', cuil: '20136570820', checksContinueState: false },
-  { testCaseId: 'TC128240BERSA', cuil: '20080010045', checksContinueState: true },
+  { testCaseId: 'TC0220002BERSA', cuil: '20136570820', checksContinueState: false },
+  { testCaseId: 'TC0220004BERSA', cuil: '20080010045', checksContinueState: true },
 ] as const;
 
 for (const { testCaseId, cuil, checksContinueState } of RECOVERY_CASES) {

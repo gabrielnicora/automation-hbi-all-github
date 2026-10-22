@@ -5,10 +5,10 @@ import { requiredTransferValue } from '../../../src/test-data/transfer-case-data
 // agendarNuevoContacto). El legado sólo valida códigos de éxito; no afirma el estado final de la agenda.
 
 test.describe('Agenda de destinatarios de transferencias API de Banco Entre Ríos', () => {
-  test.describe('TC0145BERSA', () => {
-    test.use({ testCaseId: 'TC0145BERSA' });
+  test.describe('TC1510004BERSA', () => {
+    test.use({ testCaseId: 'TC1510004BERSA' });
 
-    test('TC0145BERSA - Transferencias - Añadir nuevo destinatario - Con cbu valido', async ({
+    test('TC1510004BERSA - Transferencias - Añadir nuevo destinatario - Con cbu valido', async ({
       loginApi,
       loginCredentials,
       thirdPartyTransferWorkflow,
@@ -26,16 +26,16 @@ test.describe('Agenda de destinatarios de transferencias API de Banco Entre Río
         thirdPartyTransferWorkflow.adhereAndFindDestination(
           session,
           loginCredentials.username,
-          'TC0145BERSA',
+          'TC1510004BERSA',
           previous,
         ));
     });
   });
 
-  test.describe('TC12981BERSA', () => {
-    test.use({ testCaseId: 'TC12981BERSA' });
+  test.describe('TC1510035BERSA', () => {
+    test.use({ testCaseId: 'TC1510035BERSA' });
 
-    test('TC12981BERSA - Transferencias - Eliminar destinatario de agenda', async ({
+    test('TC1510035BERSA - Transferencias - Eliminar destinatario de agenda', async ({
       loginApi,
       loginCredentials,
       thirdPartyTransferWorkflow,
@@ -50,7 +50,7 @@ test.describe('Agenda de destinatarios de transferencias API de Banco Entre Río
         thirdPartyTransferWorkflow.adhereAndFindDestination(
           session,
           loginCredentials.username,
-          'TC12981BERSA',
+          'TC1510035BERSA',
           previous,
         ));
 

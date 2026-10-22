@@ -1,6 +1,6 @@
 import { expect, test } from '../../../src/fixtures/ui-test';
 
-const TEST_CASE_ID = 'TC18088BERSA';
+const TEST_CASE_ID = 'TC1520004BERSA';
 
 test.describe('Transferencias UI de Banco Entre Ríos', () => {
   test.use({ testCaseId: TEST_CASE_ID });

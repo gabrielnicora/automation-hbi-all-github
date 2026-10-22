@@ -1,6 +1,6 @@
 import { expect, test } from '../../../src/fixtures/ui-test';
 
-const TEST_CASE_ID = 'TC0052BERSA';
+const TEST_CASE_ID = 'TC1220001BERSA';
 
 test.describe('Turnos online UI de Banco Entre Ríos', () => {
   test.use({ testCaseId: TEST_CASE_ID });

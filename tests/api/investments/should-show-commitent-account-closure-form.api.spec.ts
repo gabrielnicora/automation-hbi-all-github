@@ -1,6 +1,6 @@
 import { expect, test } from '../../../src/fixtures/api-test';
 
-const TEST_CASE_ID = 'TC0125BERSA';
+const TEST_CASE_ID = 'TC0710005BERSA';
 
 function placeHoldersWithOrder(fields: readonly { order: unknown; placeHolder: unknown }[], order: number): string {
   // El legado lee el filtro JSONPath y quita corchetes y comillas: varios resultados quedan unidos por coma.

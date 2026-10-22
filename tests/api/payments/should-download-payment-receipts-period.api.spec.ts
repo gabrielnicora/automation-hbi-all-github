@@ -5,13 +5,13 @@ import { MERCADO_LIBRE_PAYMENT } from '../../../src/test-data/payment-services-d
 // Nombres de archivo del legado (Settings.PAGOS_PDF y PAGOS_XLS).
 const PERIOD_DOWNLOADS = [
   {
-    id: 'TC0137BERSA',
+    id: 'TC1110007BERSA',
     title: 'Descargar periodo en PDF',
     format: 'pdf',
     fileName: 'Pagos de impuestos o servicios realizados.pdf',
   },
   {
-    id: 'TC0138BERSA',
+    id: 'TC1110008BERSA',
     title: 'Descargar periodo en XLS',
     format: 'xls',
     fileName: 'Pagos de impuestos o servicios realizados.xls',

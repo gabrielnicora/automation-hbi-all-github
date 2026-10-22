@@ -1,7 +1,7 @@
 import { test } from '../../../src/fixtures/api-test';
 
-const TEST_CASE_ID = 'TC0006BERSA';
-// Destinatario y tipo fijados por el caso legado CuentasTest.TC0006BERSA.
+const TEST_CASE_ID = 'TC0110001BERSA';
+// Destinatario y tipo fijados por el caso legado CuentasTest.TC0110001BERSA.
 const DESTINATION = { account: '3860006503000031964422', typeAccount: 'CBU' } as const;
 
 test.describe('Agenda de destinatarios API de Banco Entre Ríos', () => {

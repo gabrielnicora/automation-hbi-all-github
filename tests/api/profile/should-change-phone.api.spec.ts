@@ -1,6 +1,6 @@
 import { expect, test } from '../../../src/fixtures/api-test';
 
-const TEST_CASE_ID = 'TC0001BERSA';
+const TEST_CASE_ID = 'TC1310001BERSA';
 
 test.describe('Cambio de teléfono por API de Banco Entre Ríos', () => {
   test.setTimeout(120000);

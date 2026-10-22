@@ -1,6 +1,6 @@
 import { expect, test } from '../../../src/fixtures/ui-test';
 
-const TEST_CASE_ID = 'TC128242BERSA';
+const TEST_CASE_ID = 'TC0320013BERSA';
 // Información del detalle de TC del legado (validacionTarjetaCreditoVisaYMaster).
 const DETAIL_INFORMATION = [
   'Límite de compra',

@@ -1,19 +1,19 @@
 import { expect, test } from '../../../src/fixtures/ui-test';
 
 // Formulario de compra/venta de dólares (legado CompraVentaDeDolaresSteps). Reutiliza la navegación
-// del testigo TC0178BERSA: Inversiones → Gestioná tus inversiones → Compra venta de dólares.
+// del testigo TC0720011BERSA: Inversiones → Gestioná tus inversiones → Compra venta de dólares.
 const TERMS_REQUIRED_MESSAGE = 'Leer y aceptar los términos y condiciones es obligatorio para continuar';
 
 test.describe('Compra y venta de dólares por UI', () => {
   const WITHOUT_TERMS = [
     {
-      id: 'TC0179BERSA',
+      id: 'TC0720012BERSA',
       title: 'Compra de moneda extranjera - Seguir flujo de compra de dólar sin aceptar check',
       operation: 'Comprar',
       destination: 'USD',
     },
     {
-      id: 'TC0188BERSA',
+      id: 'TC0720016BERSA',
       title: 'Venta de moneda extranjera - Seguir flujo de venta de dólar sin aceptar check',
       operation: 'Vender',
       destination: '$',
@@ -54,10 +54,10 @@ test.describe('Compra y venta de dólares por UI', () => {
     });
   }
 
-  test.describe('TC0187BERSA', () => {
-    test.use({ testCaseId: 'TC0187BERSA' });
+  test.describe('TC0720015BERSA', () => {
+    test.use({ testCaseId: 'TC0720015BERSA' });
 
-    test('TC0187BERSA - Inversiones - Venta de moneda extranjera - Importe 0 - Validar mensaje', async ({
+    test('TC0720015BERSA - Inversiones - Venta de moneda extranjera - Importe 0 - Validar mensaje', async ({
       foreignCurrencyPurchasePage,
       loginCredentials,
       loginPage,
@@ -88,28 +88,28 @@ test.describe('Compra y venta de dólares por UI', () => {
   // El legado recorre el desplegable y exige que muestre una opción con la moneda indicada.
   const ACCOUNT_OPTIONS = [
     {
-      id: 'TC0181BERSA',
+      id: 'TC0720013BERSA',
       title: 'Compra - Desplegable Cuenta Origen sólo cuentas en pesos',
       operation: 'Comprar',
       field: 'origin',
       currency: '$',
     },
     {
-      id: 'TC0182BERSA',
+      id: 'TC0720014BERSA',
       title: 'Compra - Desplegable Cuenta Destino sólo cuentas en dólares',
       operation: 'Comprar',
       field: 'destination',
       currency: 'USD',
     },
     {
-      id: 'TC0189BERSA',
+      id: 'TC0720017BERSA',
       title: 'Venta - Desplegable Cuenta Destino sólo cuentas en pesos',
       operation: 'Vender',
       field: 'destination',
       currency: '$',
     },
     {
-      id: 'TC0190BERSA',
+      id: 'TC0720018BERSA',
       title: 'Venta - Desplegable Cuenta Origen sólo cuentas en dólares',
       operation: 'Vender',
       field: 'origin',

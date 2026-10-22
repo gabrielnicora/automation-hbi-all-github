@@ -1,6 +1,6 @@
 import { expect, test } from '../../../src/fixtures/ui-test';
 
-const TEST_CASE_ID = 'TC0178BERSA';
+const TEST_CASE_ID = 'TC0720011BERSA';
 
 test.describe('Compra de moneda extranjera por UI', () => {
   test.use({ testCaseId: TEST_CASE_ID });

@@ -23,7 +23,9 @@
     "agent:index": "node scripts/agent-index.mjs",
     "agent:index:check": "node scripts/agent-index.mjs --check",
     "eval": "node evals/run.mjs",
-    "check": "pnpm run format:check && pnpm run typecheck && pnpm run lint && pnpm run secrets:check && pnpm run agent:index:check",
+    "case:new": "node scripts/case-ids.mjs new",
+    "case-ids:check": "node scripts/case-ids.mjs check",
+    "check": "pnpm run format:check && pnpm run typecheck && pnpm run lint && pnpm run secrets:check && pnpm run case-ids:check && pnpm run agent:index:check",
     "codegen": "playwright codegen",
     "prepare": "husky"
   },

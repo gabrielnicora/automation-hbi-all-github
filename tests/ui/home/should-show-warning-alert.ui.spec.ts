@@ -1,6 +1,6 @@
 import { expect, test } from '../../../src/fixtures/ui-test';
 
-const TEST_CASE_ID = 'TC128243BERSA';
+const TEST_CASE_ID = 'TC0520001BERSA';
 
 // Chromium devuelve el color opaco como rgb(); equivale al rgba(255, 241, 184, 1) del legado.
 const WARNING_BACKGROUND_COLOR = 'rgb(255, 241, 184)';

@@ -2,7 +2,7 @@ import { ProductWidgetsApi } from '../../../src/api/accounts/product-widgets.api
 import { expect, test } from '../../../src/fixtures/api-test';
 import { MERCADO_PAGO_SERVICE } from '../../../src/test-data/payment-services-data';
 
-const TEST_CASE_ID = 'TC12966BERSA';
+const TEST_CASE_ID = 'TC1110010BERSA';
 
 test.describe('Pagos de servicios API de Banco Entre Ríos', () => {
   test.use({ testCaseId: TEST_CASE_ID });

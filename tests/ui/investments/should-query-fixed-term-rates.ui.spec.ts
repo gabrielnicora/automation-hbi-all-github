@@ -4,12 +4,12 @@ import { expect, test } from '../../../src/fixtures/ui-test';
 // se exigen las columnas Plazo Desde, Plazo Hasta y Tasa TNA pizarra.
 const RATE_QUERIES = [
   {
-    id: 'TC0044BERSA',
+    id: 'TC0720001BERSA',
     title: 'PF - Consulta de Tasas - Tipo - Tradicional en Pesos',
     type: 'Plazo Fijo Tradicional en Pesos',
   },
   {
-    id: 'TC0045BERSA',
+    id: 'TC0720002BERSA',
     title: 'PF - Consulta de Tasas - Tipo - Tradicional en Dólares',
     type: 'Plazo Fijo Tradicional en D',
   },

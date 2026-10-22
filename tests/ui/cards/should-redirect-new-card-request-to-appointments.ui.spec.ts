@@ -1,6 +1,6 @@
 import { expect, test } from '../../../src/fixtures/ui-test';
 
-const TEST_CASE_ID = 'TC0195BERSA';
+const TEST_CASE_ID = 'TC0320012BERSA';
 
 test.describe('Solicitud de tarjeta de crédito por UI', () => {
   test.use({ testCaseId: TEST_CASE_ID });

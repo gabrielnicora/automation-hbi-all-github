@@ -7,10 +7,10 @@ const TERMS_REQUIRED_TEXT = 'Leer y aceptar los términos y condiciones es oblig
 test.describe('Solicitud de adelanto de sueldo UI de Banco Entre Ríos', () => {
   test.setTimeout(180_000);
 
-  test.describe('TC0222BERSA', () => {
-    test.use({ testCaseId: 'TC0222BERSA' });
+  test.describe('TC0120004BERSA', () => {
+    test.use({ testCaseId: 'TC0120004BERSA' });
 
-    test('TC0222BERSA - muestra la pantalla completa de solicitud de adelanto', async ({
+    test('TC0120004BERSA - muestra la pantalla completa de solicitud de adelanto', async ({
       homePage,
       loginCredentials,
       loginPage,
@@ -29,10 +29,10 @@ test.describe('Solicitud de adelanto de sueldo UI de Banco Entre Ríos', () => {
     });
   });
 
-  test.describe('TC0225BERSA', () => {
-    test.use({ testCaseId: 'TC0225BERSA' });
+  test.describe('TC0120005BERSA', () => {
+    test.use({ testCaseId: 'TC0120005BERSA' });
 
-    test('TC0225BERSA - vuelve a la solicitud al presionar Volver', async ({
+    test('TC0120005BERSA - vuelve a la solicitud al presionar Volver', async ({
       loginCredentials,
       loginPage,
       originAccountUiData,
@@ -52,10 +52,10 @@ test.describe('Solicitud de adelanto de sueldo UI de Banco Entre Ríos', () => {
     });
   });
 
-  test.describe('TC0226BERSA', () => {
-    test.use({ testCaseId: 'TC0226BERSA' });
+  test.describe('TC0120006BERSA', () => {
+    test.use({ testCaseId: 'TC0120006BERSA' });
 
-    test('TC0226BERSA - exige aceptar términos y condiciones al confirmar', async ({
+    test('TC0120006BERSA - exige aceptar términos y condiciones al confirmar', async ({
       loginCredentials,
       loginPage,
       originAccountUiData,
@@ -76,8 +76,8 @@ test.describe('Solicitud de adelanto de sueldo UI de Banco Entre Ríos', () => {
   });
 
   for (const { testCaseId, amount, description } of [
-    { testCaseId: 'TC0237BERSA', amount: '0', description: 'inferior al mínimo' },
-    { testCaseId: 'TC0238BERSA', amount: '9999999', description: 'superior al máximo' },
+    { testCaseId: 'TC0120009BERSA', amount: '0', description: 'inferior al mínimo' },
+    { testCaseId: 'TC0120010BERSA', amount: '9999999', description: 'superior al máximo' },
   ] as const) {
     test.describe(testCaseId, () => {
       test.use({ testCaseId });

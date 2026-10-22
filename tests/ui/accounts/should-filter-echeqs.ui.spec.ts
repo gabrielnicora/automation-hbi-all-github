@@ -1,6 +1,6 @@
 import { expect, test } from '../../../src/fixtures/ui-test';
 
-const TEST_CASE_ID = 'TC29414BERSA';
+const TEST_CASE_ID = 'TC0120015BERSA';
 const ISSUER_CUIT = '20063078175';
 const EXPECTED_STATE = 'Emitido-Pendiente';
 

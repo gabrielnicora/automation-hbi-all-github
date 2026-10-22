@@ -1,7 +1,7 @@
 import { ProductWidgetsApi } from '../../../src/api/accounts/product-widgets.api';
 import { expect, test } from '../../../src/fixtures/api-test';
 
-const TEST_CASE_ID = 'TC12973BERSA';
+const TEST_CASE_ID = 'TC0710008BERSA';
 
 test.describe('Plazo fijo API de Banco Entre Ríos', () => {
   test.use({ testCaseId: TEST_CASE_ID });

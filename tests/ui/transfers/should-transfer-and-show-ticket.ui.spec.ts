@@ -11,11 +11,11 @@ function todayAsLegacyDate(): string {
 }
 
 test.describe('Transferencias por UI con comprobante', () => {
-  test.describe('TC18096BERSA', () => {
-    test.use({ testCaseId: 'TC18096BERSA' });
+  test.describe('TC1520006BERSA', () => {
+    test.use({ testCaseId: 'TC1520006BERSA' });
 
     // El legado lee el saldo antes y después de transferir, pero no los compara.
-    test('TC18096BERSA - Saldo actualizado - Transferencias a cuentas propias en pesos del mismo banco', async ({
+    test('TC1520006BERSA - Saldo actualizado - Transferencias a cuentas propias en pesos del mismo banco', async ({
       loginCredentials,
       loginPage,
       startPage,
@@ -53,10 +53,10 @@ test.describe('Transferencias por UI con comprobante', () => {
     });
   });
 
-  test.describe('TC18099BERSA', () => {
-    test.use({ testCaseId: 'TC18099BERSA' });
+  test.describe('TC1520007BERSA', () => {
+    test.use({ testCaseId: 'TC1520007BERSA' });
 
-    test('TC18099BERSA - Transferencias a CBU - Historial de transferencias', async ({
+    test('TC1520007BERSA - Transferencias a CBU - Historial de transferencias', async ({
       loginApi,
       loginCredentials,
       loginPage,
@@ -109,10 +109,10 @@ test.describe('Transferencias por UI con comprobante', () => {
     });
   });
 
-  test.describe('TC18092BERSA', () => {
-    test.use({ testCaseId: 'TC18092BERSA' });
+  test.describe('TC1520005BERSA', () => {
+    test.use({ testCaseId: 'TC1520005BERSA' });
 
-    test('TC18092BERSA - Cambios en comprobante - TF inmediatas a terceros - Todos los campos - CBU otra entidad', async ({
+    test('TC1520005BERSA - Cambios en comprobante - TF inmediatas a terceros - Todos los campos - CBU otra entidad', async ({
       loginApi,
       loginCredentials,
       loginPage,

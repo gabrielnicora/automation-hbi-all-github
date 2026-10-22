@@ -2,13 +2,13 @@ import { FUND_RISK } from '../../../src/pages/investments/fund-risk';
 import { expect, test } from '../../../src/fixtures/ui-test';
 
 // Filtros de "Información de fondos" (legado FondoComunInversionSteps). Reutiliza el recorrido del
-// testigo TC0119BERSA: login UI y menú Inversiones → Invertí en Fondos.
+// testigo TC0720004BERSA: login UI y menú Inversiones → Invertí en Fondos.
 
 test.describe('FCI - filtros de fondos por UI', () => {
-  test.describe('TC0118BERSA', () => {
-    test.use({ testCaseId: 'TC0118BERSA' });
+  test.describe('TC0720003BERSA', () => {
+    test.use({ testCaseId: 'TC0720003BERSA' });
 
-    test('TC0118BERSA - FCI - Filtros - Mi Tenencia - Fondos por Riesgo - Conservador', async ({
+    test('TC0720003BERSA - FCI - Filtros - Mi Tenencia - Fondos por Riesgo - Conservador', async ({
       investmentFundsPage,
       loginCredentials,
       loginPage,
@@ -36,8 +36,8 @@ test.describe('FCI - filtros de fondos por UI', () => {
   // El legado (validaFondosPorMonedaEnListado) sólo falla si el listado está vacío: su comparación de
   // moneda nunca puede fallar. Se conserva esa exigencia (ver lote-l7-ui.md).
   const CURRENCY_FILTERS = [
-    { id: 'TC0126BERSA', title: 'FCI - Filtros: Fondos por moneda - Pesos', currency: 'pesos' },
-    { id: 'TC0127BERSA', title: 'FCI - Filtros: Fondos por moneda - Dólar', currency: 'dollars' },
+    { id: 'TC0720005BERSA', title: 'FCI - Filtros: Fondos por moneda - Pesos', currency: 'pesos' },
+    { id: 'TC0720006BERSA', title: 'FCI - Filtros: Fondos por moneda - Dólar', currency: 'dollars' },
   ] as const;
 
   for (const filterCase of CURRENCY_FILTERS) {
@@ -67,10 +67,10 @@ test.describe('FCI - filtros de fondos por UI', () => {
     });
   }
 
-  test.describe('TC0128BERSA', () => {
-    test.use({ testCaseId: 'TC0128BERSA' });
+  test.describe('TC0720007BERSA', () => {
+    test.use({ testCaseId: 'TC0720007BERSA' });
 
-    test('TC0128BERSA - FCI - Filtros: Mi Tenencia', async ({
+    test('TC0720007BERSA - FCI - Filtros: Mi Tenencia', async ({
       investmentFundsPage,
       loginCredentials,
       loginPage,

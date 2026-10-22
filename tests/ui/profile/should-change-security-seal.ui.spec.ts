@@ -1,6 +1,6 @@
 import { expect, test } from '../../../src/fixtures/ui-test';
 
-const TEST_CASE_ID = 'TC0035BERSA';
+const TEST_CASE_ID = 'TC1320002BERSA';
 
 test.describe('Cambio de sello de seguridad UI de Banco Entre Ríos', () => {
   test.use({ testCaseId: TEST_CASE_ID });

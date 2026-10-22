@@ -12,4 +12,4 @@ o cuando se necesite un comportamiento que el catálogo no muestra. Se regenera 
 | `pages.md` | 39 Page Objects: constructor, métodos públicos y fixture que los entrega. |
 | `api.md` | 36 clientes API y workflows con sus métodos públicos. |
 | `tests.md` | 262 tests en 91 archivos, con tags y fixtures usadas. |
-| `test-data.md` | Loaders y 220 casos de `bersa.json` con sus campos disponibles y tests que los usan. |
+| `test-data.md` | Loaders y 221 casos de `bersa.json` con sus campos disponibles y tests que los usan. |

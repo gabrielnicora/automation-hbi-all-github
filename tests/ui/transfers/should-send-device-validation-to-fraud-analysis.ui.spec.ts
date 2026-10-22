@@ -44,10 +44,10 @@ test.describe('VU Fraud - validación del dispositivo por UI', () => {
     });
   });
 
-  test.describe('TC128246BERSA', () => {
-    test.use({ testCaseId: 'TC128246BERSA' });
+  test.describe('TC1520010BERSA', () => {
+    test.use({ testCaseId: 'TC1520010BERSA' });
 
-    test('TC128246BERSA - VU Fraud - adhesionAccount envía metodoValidacionFP', async ({
+    test('TC1520010BERSA - VU Fraud - adhesionAccount envía metodoValidacionFP', async ({
       contactAgendaPage,
       loginApi,
       loginCredentials,
@@ -81,10 +81,10 @@ test.describe('VU Fraud - validación del dispositivo por UI', () => {
     });
   });
 
-  test.describe('TC128247BERSA', () => {
-    test.use({ testCaseId: 'TC128247BERSA' });
+  test.describe('TC1520011BERSA', () => {
+    test.use({ testCaseId: 'TC1520011BERSA' });
 
-    test('TC128247BERSA - VU Fraud - transfers.account.makeWithCaps envía metodoValidacionFP', async ({
+    test('TC1520011BERSA - VU Fraud - transfers.account.makeWithCaps envía metodoValidacionFP', async ({
       contactAgendaPage,
       loginApi,
       loginCredentials,
@@ -124,10 +124,10 @@ test.describe('VU Fraud - validación del dispositivo por UI', () => {
     });
   });
 
-  test.describe('TC128248BERSA', () => {
-    test.use({ testCaseId: 'TC128248BERSA' });
+  test.describe('TC1520012BERSA', () => {
+    test.use({ testCaseId: 'TC1520012BERSA' });
 
-    test('TC128248BERSA - VU Fraud - credin.generate envía metodoValidacionFP', async ({
+    test('TC1520012BERSA - VU Fraud - credin.generate envía metodoValidacionFP', async ({
       credinRequestPage,
       loginApi,
       loginCredentials,
@@ -172,10 +172,10 @@ test.describe('VU Fraud - validación del dispositivo por UI', () => {
     });
   });
 
-  test.describe('TC128249BERSA', () => {
-    test.use({ testCaseId: 'TC128249BERSA' });
+  test.describe('TC1520013BERSA', () => {
+    test.use({ testCaseId: 'TC1520013BERSA' });
 
-    test('TC128249BERSA - VU Fraud - transfers.account.scheduleMakeWithCaps envía metodoValidacionFP', async ({
+    test('TC1520013BERSA - VU Fraud - transfers.account.scheduleMakeWithCaps envía metodoValidacionFP', async ({
       contactAgendaPage,
       loginApi,
       loginCredentials,

@@ -1,6 +1,6 @@
 import { expect, test } from '../../../src/fixtures/ui-test';
 
-const TEST_CASE_ID = 'TC128241BERSA';
+const TEST_CASE_ID = 'TC0120017BERSA';
 const SHORT_ALIAS = 'test';
 const LONG_ALIAS = 'qweryyhtfdsxggtjhgdeghii';
 const INVALID_ALIAS = '!!!!!!!!!!!!!!!!';

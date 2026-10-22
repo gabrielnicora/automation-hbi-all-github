@@ -21,7 +21,7 @@ import ts from 'typescript';
 const ROOT = process.cwd();
 const PLAYWRIGHT_CLI = createRequire(import.meta.url).resolve('@playwright/test/cli');
 const PRECHECK = {
-  grep: 'TC0017BERSA',
+  grep: 'TC0220001BERSA',
   project: 'ui',
   spec: 'tests/ui/authentication/should-login-and-capture-bearer.ui.spec.ts',
 };
@@ -530,7 +530,7 @@ function renderReport(report) {
     `# Evaluación ${report.task} — ${report.status}`,
     '',
     `- Commit evaluado: \`${report.commit}\` · ambiente: UAT (qa, URLs por defecto)`,
-    `- Login de control TC0017BERSA: ${report.precheck}`,
+    `- Login de control TC0220001BERSA: ${report.precheck}`,
   ];
 
   if (report.agent) {
@@ -582,7 +582,7 @@ function evaluate(taskId, options) {
   if (options.skipPrecheck) {
     report.precheck = 'omitido';
   } else {
-    console.log(`[${task.id}] Login de control TC0017BERSA contra UAT…`);
+    console.log(`[${task.id}] Login de control TC0220001BERSA contra UAT…`);
     const precheck = run(
       process.execPath,
       [

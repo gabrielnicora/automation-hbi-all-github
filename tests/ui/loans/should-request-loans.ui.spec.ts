@@ -3,10 +3,10 @@ import { expect, test } from '../../../src/fixtures/ui-test';
 test.describe('Solicitud de préstamos UI de Banco Entre Ríos', () => {
   test.setTimeout(180_000);
 
-  test.describe('TC0206BERSA', () => {
-    test.use({ testCaseId: 'TC0206BERSA' });
+  test.describe('TC0820001BERSA', () => {
+    test.use({ testCaseId: 'TC0820001BERSA' });
 
-    test('TC0206BERSA - llega a la confirmación de un nuevo préstamo', async ({
+    test('TC0820001BERSA - llega a la confirmación de un nuevo préstamo', async ({
       loanRequestPage,
       loginCredentials,
       loginPage,
@@ -42,10 +42,10 @@ test.describe('Solicitud de préstamos UI de Banco Entre Ríos', () => {
     });
   });
 
-  test.describe('TC0220BERSA', () => {
-    test.use({ testCaseId: 'TC0220BERSA' });
+  test.describe('TC0820002BERSA', () => {
+    test.use({ testCaseId: 'TC0820002BERSA' });
 
-    test('TC0220BERSA - llega a la confirmación de un préstamo para cancelar deudas', async ({
+    test('TC0820002BERSA - llega a la confirmación de un préstamo para cancelar deudas', async ({
       loanRequestPage,
       loginCredentials,
       loginPage,
@@ -77,10 +77,10 @@ test.describe('Solicitud de préstamos UI de Banco Entre Ríos', () => {
     });
   });
 
-  test.describe('TC0221BERSA', () => {
-    test.use({ testCaseId: 'TC0221BERSA' });
+  test.describe('TC0820003BERSA', () => {
+    test.use({ testCaseId: 'TC0820003BERSA' });
 
-    test('TC0221BERSA - abre el resumen de contrato del préstamo para cancelar deudas', async ({
+    test('TC0820003BERSA - abre el resumen de contrato del préstamo para cancelar deudas', async ({
       loanRequestPage,
       loginCredentials,
       loginPage,

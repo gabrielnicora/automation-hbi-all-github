@@ -36,20 +36,20 @@ test.describe('Seguimiento de tarjetas de crédito por UI', () => {
     });
   });
 
-  test.describe('TC0153BERSA', () => {
-    test.use({ testCaseId: 'TC0153BERSA' });
+  test.describe('TC0320005BERSA', () => {
+    test.use({ testCaseId: 'TC0320005BERSA' });
 
-    test('TC0153BERSA - Tarjeta de Crédito - Seguimiento de Tarjetas de Crédito', async ({
+    test('TC0320005BERSA - Tarjeta de Crédito - Seguimiento de Tarjetas de Crédito', async ({
       creditCardTrackingPage,
     }) => {
       await expectTrackingList(creditCardTrackingPage);
     });
   });
 
-  test.describe('TC0155BERSA', () => {
-    test.use({ testCaseId: 'TC0155BERSA' });
+  test.describe('TC0320006BERSA', () => {
+    test.use({ testCaseId: 'TC0320006BERSA' });
 
-    test('TC0155BERSA - Tarjeta de Crédito - Seguimiento de Tarjetas de Crédito - Detalles', async ({
+    test('TC0320006BERSA - Tarjeta de Crédito - Seguimiento de Tarjetas de Crédito - Detalles', async ({
       creditCardTrackingPage,
     }) => {
       await expectTrackingList(creditCardTrackingPage);
@@ -62,10 +62,10 @@ test.describe('Seguimiento de tarjetas de crédito por UI', () => {
     });
   });
 
-  test.describe('TC0157BERSA', () => {
-    test.use({ testCaseId: 'TC0157BERSA' });
+  test.describe('TC0320007BERSA', () => {
+    test.use({ testCaseId: 'TC0320007BERSA' });
 
-    test('TC0157BERSA - Tarjeta de Crédito - Seguimiento de Tarjetas de Crédito - Descargar Detalles', async ({
+    test('TC0320007BERSA - Tarjeta de Crédito - Seguimiento de Tarjetas de Crédito - Descargar Detalles', async ({
       creditCardTrackingPage,
     }) => {
       await expectTrackingList(creditCardTrackingPage);
@@ -78,11 +78,11 @@ test.describe('Seguimiento de tarjetas de crédito por UI', () => {
     });
   });
 
-  test.describe('TC0158BERSA', () => {
-    test.use({ testCaseId: 'TC0158BERSA' });
+  test.describe('TC0320008BERSA', () => {
+    test.use({ testCaseId: 'TC0320008BERSA' });
 
     // El legado presiona imprimir y cambia de pestaña sin afirmar un resultado.
-    test('TC0158BERSA - Tarjeta de Crédito - Seguimiento de Tarjetas de Crédito - Imprimir Detalles', async ({
+    test('TC0320008BERSA - Tarjeta de Crédito - Seguimiento de Tarjetas de Crédito - Imprimir Detalles', async ({
       creditCardTrackingPage,
     }) => {
       await expectTrackingList(creditCardTrackingPage);

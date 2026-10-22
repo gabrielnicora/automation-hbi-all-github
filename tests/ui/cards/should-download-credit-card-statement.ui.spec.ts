@@ -4,10 +4,10 @@ import { expect, test } from '../../../src/fixtures/ui-test';
 // clickPrimerPeriodo, clickDescargaPrimerPeriodo y validarDescarga("Estado")).
 
 test.describe('Resúmenes de tarjeta de crédito por UI', () => {
-  test.describe('TC0104BERSA', () => {
-    test.use({ testCaseId: 'TC0104BERSA' });
+  test.describe('TC0320004BERSA', () => {
+    test.use({ testCaseId: 'TC0320004BERSA' });
 
-    test('TC0104BERSA - Tarjeta de Crédito - Descarga de resumen', async ({
+    test('TC0320004BERSA - Tarjeta de Crédito - Descarga de resumen', async ({
       creditCardDetailUiData,
       creditCardsPage,
       loginCredentials,
@@ -34,10 +34,10 @@ test.describe('Resúmenes de tarjeta de crédito por UI', () => {
     });
   });
 
-  test.describe('TC0167BERSA', () => {
-    test.use({ testCaseId: 'TC0167BERSA' });
+  test.describe('TC0320011BERSA', () => {
+    test.use({ testCaseId: 'TC0320011BERSA' });
 
-    test('TC0167BERSA - Tarjeta de Crédito - Consultar último resumen de una Tarjeta de Crédito', async ({
+    test('TC0320011BERSA - Tarjeta de Crédito - Consultar último resumen de una Tarjeta de Crédito', async ({
       creditCardDetailUiData,
       creditCardsPage,
       loginCredentials,

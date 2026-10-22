@@ -2,7 +2,7 @@ import { expect, test } from '../../../src/fixtures/ui-test';
 import { expectSalaryAdvanceRequestScreen } from './salary-advance-request-screen';
 
 test.describe('Resumen de contrato de adelanto de sueldo UI de Banco Entre Ríos', () => {
-  const TEST_CASE_ID = 'TC0227BERSA';
+  const TEST_CASE_ID = 'TC0120007BERSA';
   test.use({ testCaseId: TEST_CASE_ID });
   test.setTimeout(180_000);
 
@@ -26,7 +26,7 @@ test.describe('Resumen de contrato de adelanto de sueldo UI de Banco Entre Ríos
 });
 
 test.describe('Cancelación de redirección al contrato UI de Banco Entre Ríos', () => {
-  const TEST_CASE_ID = 'TC0228BERSA';
+  const TEST_CASE_ID = 'TC0120008BERSA';
   test.use({ testCaseId: TEST_CASE_ID });
   test.setTimeout(180_000);
 

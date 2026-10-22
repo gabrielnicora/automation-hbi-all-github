@@ -1,9 +1,9 @@
 import { expect, test } from '../../../src/fixtures/ui-test';
 
 const NEW_ACCOUNT_CASES = [
-  { testCaseId: 'TC29410BERSA', accountType: 'Caja de Ahorro', currency: 'Pesos' },
-  { testCaseId: 'TC29411BERSA', accountType: 'Caja de Ahorro', currency: 'Dólares' },
-  { testCaseId: 'TC29412BERSA', accountType: 'Cuenta Corriente', currency: 'Pesos' },
+  { testCaseId: 'TC0120011BERSA', accountType: 'Caja de Ahorro', currency: 'Pesos' },
+  { testCaseId: 'TC0120012BERSA', accountType: 'Caja de Ahorro', currency: 'Dólares' },
+  { testCaseId: 'TC0120013BERSA', accountType: 'Cuenta Corriente', currency: 'Pesos' },
 ] as const;
 
 for (const { testCaseId, accountType, currency } of NEW_ACCOUNT_CASES) {

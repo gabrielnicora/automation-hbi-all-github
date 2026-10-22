@@ -1,7 +1,7 @@
 import { expect, test } from '../../../src/fixtures/ui-test';
 import { createRandomAddress } from '../../../src/test-data/change-address-data';
 
-const TEST_CASE_ID = 'TC0004BERSA';
+const TEST_CASE_ID = 'TC1320001BERSA';
 
 test.describe('Cambio de domicilio UI de Banco Entre Ríos', () => {
   test.setTimeout(240_000);

@@ -1,6 +1,6 @@
 import { expect, test } from '../../../src/fixtures/ui-test';
 
-const TEST_CASE_ID = 'TC0163BERSA';
+const TEST_CASE_ID = 'TC0320010BERSA';
 const TOTAL_PAYMENT = 'Pagar el total';
 const PAYMENT_REVIEW_FIELDS = [
   'Alias por defecto',

@@ -37,6 +37,8 @@ add production credentials, real personal data, tokens or cookies.
 
 ## Adding a case
 
+- Get the ID first with `pnpm run case:new -- <family> <api|ui>` (`SPEC.md` section 10.1).
+  `test-data/case-ids.json` maps each ID to its family, channel and previous ID (`legacyId`).
 - New case on existing data shape: add the row to `bersa.json` with the fields the loader
   reads. Only use values the team provided; never invent users, accounts or cards.
 - If the needed row or field does not exist, stop that case and report the exact `testCaseId`

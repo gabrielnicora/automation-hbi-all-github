@@ -15,28 +15,28 @@ function destinationValue(data: TransferCaseData, type: DestinationType): string
 
 // Programadas a terceros: el legado sólo valida la aceptación.
 const SCHEDULED_TO_THIRD_PARTIES: readonly { id: string; title: string; destinationType: DestinationType }[] = [
-  { id: 'TC0473BERSA', title: 'CBU - terceros otros bancos $ - NO AGENDADOS', destinationType: 'CBU' },
-  { id: 'TC0484BERSA', title: 'CVU - terceros $ NO AGENDADOS', destinationType: 'CBU' },
-  { id: 'TC0472BERSA', title: 'CBU - terceros mismo banco USD - NO AGENDADOS', destinationType: 'CBU' },
-  { id: 'TC0474BERSA', title: 'CBU - terceros otros bancos USD - NO AGENDADOS', destinationType: 'CBU' },
-  { id: 'TC0485BERSA', title: 'ALIAS de CVU - terceros $ NO AGENDADOS', destinationType: 'ALIAS' },
-  { id: 'TC0478BERSA', title: 'ALIAS - terceros mismo banco USD - NO AGENDADOS', destinationType: 'ALIAS' },
-  { id: 'TC0479BERSA', title: 'ALIAS - terceros otros bancos $ - NO AGENDADOS', destinationType: 'ALIAS' },
-  { id: 'TC0480BERSA', title: 'ALIAS - terceros otros bancos USD - NO AGENDADOS', destinationType: 'ALIAS' },
+  { id: 'TC1510019BERSA', title: 'CBU - terceros otros bancos $ - NO AGENDADOS', destinationType: 'CBU' },
+  { id: 'TC1510026BERSA', title: 'CVU - terceros $ NO AGENDADOS', destinationType: 'CBU' },
+  { id: 'TC1510018BERSA', title: 'CBU - terceros mismo banco USD - NO AGENDADOS', destinationType: 'CBU' },
+  { id: 'TC1510020BERSA', title: 'CBU - terceros otros bancos USD - NO AGENDADOS', destinationType: 'CBU' },
+  { id: 'TC1510027BERSA', title: 'ALIAS de CVU - terceros $ NO AGENDADOS', destinationType: 'ALIAS' },
+  { id: 'TC1510022BERSA', title: 'ALIAS - terceros mismo banco USD - NO AGENDADOS', destinationType: 'ALIAS' },
+  { id: 'TC1510023BERSA', title: 'ALIAS - terceros otros bancos $ - NO AGENDADOS', destinationType: 'ALIAS' },
+  { id: 'TC1510024BERSA', title: 'ALIAS - terceros otros bancos USD - NO AGENDADOS', destinationType: 'ALIAS' },
 ];
 
 // Programadas a terceros con comprobante completo (validarticketTodosLosCampos).
 const SCHEDULED_WITH_TICKET = [
-  { id: 'TC18090BERSA', title: 'Programada (fecha específica) CBU a cuentas propias otro banco $ - NO AGENDADO' },
-  { id: 'TC18094BERSA', title: 'Programada (fecha específica) CBU a Terceros otro banco $ - NO AGENDADOS' },
+  { id: 'TC1510040BERSA', title: 'Programada (fecha específica) CBU a cuentas propias otro banco $ - NO AGENDADO' },
+  { id: 'TC1510042BERSA', title: 'Programada (fecha específica) CBU a Terceros otro banco $ - NO AGENDADOS' },
 ] as const;
 
 // Programadas a un contacto que el caso agenda con su ID como referencia.
 const SCHEDULED_TO_ADHERED_CONTACT = [
-  { id: 'TC0465BERSA', title: 'Programadas (fecha específica) - terceros mismo banco $ - AGENDADOS' },
-  { id: 'TC0468BERSA', title: 'Programadas (fecha específica) - terceros otros bancos USD - AGENDADOS' },
-  { id: 'TC0467BERSA', title: 'Programadas (fecha específica) - terceros otros bancos $ - AGENDADOS' },
-  { id: 'TC0483BERSA', title: 'Programadas (fecha específica) CVU - terceros $ AGENDADOS' },
+  { id: 'TC1510015BERSA', title: 'Programadas (fecha específica) - terceros mismo banco $ - AGENDADOS' },
+  { id: 'TC1510017BERSA', title: 'Programadas (fecha específica) - terceros otros bancos USD - AGENDADOS' },
+  { id: 'TC1510016BERSA', title: 'Programadas (fecha específica) - terceros otros bancos $ - AGENDADOS' },
+  { id: 'TC1510025BERSA', title: 'Programadas (fecha específica) CVU - terceros $ AGENDADOS' },
 ] as const;
 
 test.describe('Transferencias programadas API de Banco Entre Ríos', () => {
@@ -77,11 +77,11 @@ test.describe('Transferencias programadas API de Banco Entre Ríos', () => {
     });
   }
 
-  test.describe('TC0418BERSA', () => {
-    test.use({ testCaseId: 'TC0418BERSA' });
+  test.describe('TC1510010BERSA', () => {
+    test.use({ testCaseId: 'TC1510010BERSA' });
 
     // El título legado dice "NO AGENDADOS" inmediata, pero el caso programa la transferencia.
-    test('TC0418BERSA - Transferencias CBU - terceros otros bancos USD - NO AGENDADOS', async ({
+    test('TC1510010BERSA - Transferencias CBU - terceros otros bancos USD - NO AGENDADOS', async ({
       loginApi,
       loginCredentials,
       thirdPartyTransferWorkflow,
@@ -209,10 +209,10 @@ test.describe('Transferencias programadas API de Banco Entre Ríos', () => {
     });
   }
 
-  test.describe('TC0008BERSA', () => {
-    test.use({ testCaseId: 'TC0008BERSA' });
+  test.describe('TC1510001BERSA', () => {
+    test.use({ testCaseId: 'TC1510001BERSA' });
 
-    test('TC0008BERSA - Transferencia intrabancaria en pesos - propias - programada', async ({
+    test('TC1510001BERSA - Transferencia intrabancaria en pesos - propias - programada', async ({
       loginApi,
       loginCredentials,
       productWidgetsApi,

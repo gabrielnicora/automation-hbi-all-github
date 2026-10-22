@@ -1,6 +1,6 @@
 import { expect, test } from '../../../src/fixtures/ui-test';
 
-const TEST_CASE_ID = 'TC0151BERSA';
+const TEST_CASE_ID = 'TC0220003BERSA';
 
 test.describe('Login UI con teclado virtual de Banco Entre Ríos', () => {
   test.use({ testCaseId: TEST_CASE_ID });

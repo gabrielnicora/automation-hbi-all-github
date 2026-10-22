@@ -2,9 +2,9 @@ import { expect, test } from '../../../src/fixtures/api-test';
 
 // Consultas del legado EcheqSteps.validaEcheqs(estado, operationType): exige elementos en la página 1.
 const STATUS_QUERIES = [
-  { id: 'TC25610BERSA', title: "Validar el listado de eCheq en el estado 'Todos'", statement: 'Todos' },
-  { id: 'TC124909BERSA', title: "Consulta del detalle de un eCheq - Estado 'Emitir'", statement: 'EMITIDO-PENDIENTE' },
-  { id: 'TC124913BERSA', title: 'Consulta del detalle de un eCheq - Estado Anular', statement: 'ANULADO' },
+  { id: 'TC0110005BERSA', title: "Validar el listado de eCheq en el estado 'Todos'", statement: 'Todos' },
+  { id: 'TC0110085BERSA', title: "Consulta del detalle de un eCheq - Estado 'Emitir'", statement: 'EMITIDO-PENDIENTE' },
+  { id: 'TC0110089BERSA', title: 'Consulta del detalle de un eCheq - Estado Anular', statement: 'ANULADO' },
 ] as const;
 
 test.describe('eCheq API de Banco Entre Ríos — consulta por estado', () => {

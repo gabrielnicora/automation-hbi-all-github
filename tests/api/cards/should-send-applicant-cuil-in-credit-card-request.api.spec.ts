@@ -5,11 +5,11 @@ import { expect, test } from '../../../src/fixtures/api-test';
 // la diferencia de título (create/update) está registrada en lote-l4-api.md.
 const CUIL_CASES = [
   {
-    id: 'TC128238BERSA',
+    id: 'TC0310009BERSA',
     title: 'Verificar que el dato cuilSolicitante se envíe en application/create en nueva alta de TC',
   },
   {
-    id: 'TC128239BERSA',
+    id: 'TC0310010BERSA',
     title: 'Verificar que el dato cuilSolicitante se envíe en application/update en alta de TC ya iniciada',
   },
 ] as const;

@@ -1,0 +1,1598 @@
+{
+  "policy": "SPEC.md, sección 10.1. Obtener IDs nuevos con pnpm run case:new -- <familia> <api|ui>.",
+  "channels": {
+    "api": "1",
+    "ui": "2"
+  },
+  "families": {
+    "accounts": "01",
+    "authentication": "02",
+    "cards": "03",
+    "documents": "04",
+    "home": "05",
+    "insurance": "06",
+    "investments": "07",
+    "loans": "08",
+    "messages": "09",
+    "mis-products": "10",
+    "payments": "11",
+    "procedures": "12",
+    "profile": "13",
+    "start-page": "14",
+    "transfers": "15"
+  },
+  "cases": [
+    {
+      "id": "TC0110001BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC0006BERSA"
+    },
+    {
+      "id": "TC0110002BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC0027BERSA"
+    },
+    {
+      "id": "TC0110003BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC0223BERSA"
+    },
+    {
+      "id": "TC0110004BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC0229BERSA"
+    },
+    {
+      "id": "TC0110005BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC25610BERSA"
+    },
+    {
+      "id": "TC0110006BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29450BERSA"
+    },
+    {
+      "id": "TC0110007BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29451BERSA"
+    },
+    {
+      "id": "TC0110008BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29452BERSA"
+    },
+    {
+      "id": "TC0110009BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29453BERSA"
+    },
+    {
+      "id": "TC0110010BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29454BERSA"
+    },
+    {
+      "id": "TC0110011BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29455BERSA"
+    },
+    {
+      "id": "TC0110012BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29456BERSA"
+    },
+    {
+      "id": "TC0110013BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29457BERSA"
+    },
+    {
+      "id": "TC0110014BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29458BERSA"
+    },
+    {
+      "id": "TC0110015BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29459BERSA"
+    },
+    {
+      "id": "TC0110016BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29460BERSA"
+    },
+    {
+      "id": "TC0110017BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29461BERSA"
+    },
+    {
+      "id": "TC0110018BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29462BERSA"
+    },
+    {
+      "id": "TC0110019BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29463BERSA"
+    },
+    {
+      "id": "TC0110020BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29464BERSA"
+    },
+    {
+      "id": "TC0110021BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29465BERSA"
+    },
+    {
+      "id": "TC0110022BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29466BERSA"
+    },
+    {
+      "id": "TC0110023BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29467BERSA"
+    },
+    {
+      "id": "TC0110024BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29468BERSA"
+    },
+    {
+      "id": "TC0110025BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29469BERSA"
+    },
+    {
+      "id": "TC0110026BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29470BERSA"
+    },
+    {
+      "id": "TC0110027BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29471BERSA"
+    },
+    {
+      "id": "TC0110028BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29472BERSA"
+    },
+    {
+      "id": "TC0110029BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29473BERSA"
+    },
+    {
+      "id": "TC0110030BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29474BERSA"
+    },
+    {
+      "id": "TC0110031BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29475BERSA"
+    },
+    {
+      "id": "TC0110032BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29476BERSA"
+    },
+    {
+      "id": "TC0110033BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29477BERSA"
+    },
+    {
+      "id": "TC0110034BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29478BERSA"
+    },
+    {
+      "id": "TC0110035BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29480BERSA"
+    },
+    {
+      "id": "TC0110036BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29481BERSA"
+    },
+    {
+      "id": "TC0110037BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29482BERSA"
+    },
+    {
+      "id": "TC0110038BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29483BERSA"
+    },
+    {
+      "id": "TC0110039BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29484BERSA"
+    },
+    {
+      "id": "TC0110040BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29491BERSA"
+    },
+    {
+      "id": "TC0110041BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29492BERSA"
+    },
+    {
+      "id": "TC0110042BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29493BERSA"
+    },
+    {
+      "id": "TC0110043BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29494BERSA"
+    },
+    {
+      "id": "TC0110044BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29495BERSA"
+    },
+    {
+      "id": "TC0110045BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29496BERSA"
+    },
+    {
+      "id": "TC0110046BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29497BERSA"
+    },
+    {
+      "id": "TC0110047BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29498BERSA"
+    },
+    {
+      "id": "TC0110048BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29499BERSA"
+    },
+    {
+      "id": "TC0110049BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29500BERSA"
+    },
+    {
+      "id": "TC0110050BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29501BERSA"
+    },
+    {
+      "id": "TC0110051BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29502BERSA"
+    },
+    {
+      "id": "TC0110052BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29503BERSA"
+    },
+    {
+      "id": "TC0110053BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29504BERSA"
+    },
+    {
+      "id": "TC0110054BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29505BERSA"
+    },
+    {
+      "id": "TC0110055BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29506BERSA"
+    },
+    {
+      "id": "TC0110056BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29507BERSA"
+    },
+    {
+      "id": "TC0110057BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29508BERSA"
+    },
+    {
+      "id": "TC0110058BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29509BERSA"
+    },
+    {
+      "id": "TC0110059BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29510BERSA"
+    },
+    {
+      "id": "TC0110060BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29511BERSA"
+    },
+    {
+      "id": "TC0110061BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29512BERSA"
+    },
+    {
+      "id": "TC0110062BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29513BERSA"
+    },
+    {
+      "id": "TC0110063BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29514BERSA"
+    },
+    {
+      "id": "TC0110064BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29516BERSA"
+    },
+    {
+      "id": "TC0110065BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29517BERSA"
+    },
+    {
+      "id": "TC0110066BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29518BERSA"
+    },
+    {
+      "id": "TC0110067BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29519BERSA"
+    },
+    {
+      "id": "TC0110068BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29520BERSA"
+    },
+    {
+      "id": "TC0110069BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29521BERSA"
+    },
+    {
+      "id": "TC0110070BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29522BERSA"
+    },
+    {
+      "id": "TC0110071BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29523BERSA"
+    },
+    {
+      "id": "TC0110072BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29524BERSA"
+    },
+    {
+      "id": "TC0110073BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29525BERSA"
+    },
+    {
+      "id": "TC0110074BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29526BERSA"
+    },
+    {
+      "id": "TC0110075BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29527BERSA"
+    },
+    {
+      "id": "TC0110076BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29528BERSA"
+    },
+    {
+      "id": "TC0110077BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29529BERSA"
+    },
+    {
+      "id": "TC0110078BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29530BERSA"
+    },
+    {
+      "id": "TC0110079BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29531BERSA"
+    },
+    {
+      "id": "TC0110080BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29532BERSA"
+    },
+    {
+      "id": "TC0110081BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29533BERSA"
+    },
+    {
+      "id": "TC0110082BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC29534BERSA"
+    },
+    {
+      "id": "TC0110083BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC124907BERSA"
+    },
+    {
+      "id": "TC0110084BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC124908BERSA"
+    },
+    {
+      "id": "TC0110085BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC124909BERSA"
+    },
+    {
+      "id": "TC0110086BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC124910BERSA"
+    },
+    {
+      "id": "TC0110087BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC124911BERSA"
+    },
+    {
+      "id": "TC0110088BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC124912BERSA"
+    },
+    {
+      "id": "TC0110089BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC124913BERSA"
+    },
+    {
+      "id": "TC0110090BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC128231BERSA"
+    },
+    {
+      "id": "TC0110091BERSA",
+      "family": "accounts",
+      "channel": "api",
+      "legacyId": "TC128237BERSA"
+    },
+    {
+      "id": "TC0120001BERSA",
+      "family": "accounts",
+      "channel": "ui",
+      "legacyId": "TC0026BERSA"
+    },
+    {
+      "id": "TC0120002BERSA",
+      "family": "accounts",
+      "channel": "ui",
+      "legacyId": "TC0040BERSA"
+    },
+    {
+      "id": "TC0120003BERSA",
+      "family": "accounts",
+      "channel": "ui",
+      "legacyId": "TC0041BERSA"
+    },
+    {
+      "id": "TC0120004BERSA",
+      "family": "accounts",
+      "channel": "ui",
+      "legacyId": "TC0222BERSA"
+    },
+    {
+      "id": "TC0120005BERSA",
+      "family": "accounts",
+      "channel": "ui",
+      "legacyId": "TC0225BERSA"
+    },
+    {
+      "id": "TC0120006BERSA",
+      "family": "accounts",
+      "channel": "ui",
+      "legacyId": "TC0226BERSA"
+    },
+    {
+      "id": "TC0120007BERSA",
+      "family": "accounts",
+      "channel": "ui",
+      "legacyId": "TC0227BERSA"
+    },
+    {
+      "id": "TC0120008BERSA",
+      "family": "accounts",
+      "channel": "ui",
+      "legacyId": "TC0228BERSA"
+    },
+    {
+      "id": "TC0120009BERSA",
+      "family": "accounts",
+      "channel": "ui",
+      "legacyId": "TC0237BERSA"
+    },
+    {
+      "id": "TC0120010BERSA",
+      "family": "accounts",
+      "channel": "ui",
+      "legacyId": "TC0238BERSA"
+    },
+    {
+      "id": "TC0120011BERSA",
+      "family": "accounts",
+      "channel": "ui",
+      "legacyId": "TC29410BERSA"
+    },
+    {
+      "id": "TC0120012BERSA",
+      "family": "accounts",
+      "channel": "ui",
+      "legacyId": "TC29411BERSA"
+    },
+    {
+      "id": "TC0120013BERSA",
+      "family": "accounts",
+      "channel": "ui",
+      "legacyId": "TC29412BERSA"
+    },
+    {
+      "id": "TC0120014BERSA",
+      "family": "accounts",
+      "channel": "ui",
+      "legacyId": "TC29413BERSA"
+    },
+    {
+      "id": "TC0120015BERSA",
+      "family": "accounts",
+      "channel": "ui",
+      "legacyId": "TC29414BERSA"
+    },
+    {
+      "id": "TC0120016BERSA",
+      "family": "accounts",
+      "channel": "ui",
+      "legacyId": "TC124865BERSA"
+    },
+    {
+      "id": "TC0120017BERSA",
+      "family": "accounts",
+      "channel": "ui",
+      "legacyId": "TC128241BERSA"
+    },
+    {
+      "id": "TC0210001BERSA",
+      "family": "authentication",
+      "channel": "api",
+      "legacyId": "TC0017BERSA"
+    },
+    {
+      "id": "TC0220001BERSA",
+      "family": "authentication",
+      "channel": "ui",
+      "legacyId": "TC0017BERSA"
+    },
+    {
+      "id": "TC0220002BERSA",
+      "family": "authentication",
+      "channel": "ui",
+      "legacyId": "TC0048BERSA"
+    },
+    {
+      "id": "TC0220003BERSA",
+      "family": "authentication",
+      "channel": "ui",
+      "legacyId": "TC0151BERSA"
+    },
+    {
+      "id": "TC0220004BERSA",
+      "family": "authentication",
+      "channel": "ui",
+      "legacyId": "TC128240BERSA"
+    },
+    {
+      "id": "TC0310001BERSA",
+      "family": "cards",
+      "channel": "api",
+      "legacyId": "TC0149BERSA"
+    },
+    {
+      "id": "TC0310002BERSA",
+      "family": "cards",
+      "channel": "api",
+      "legacyId": "TC0164BERSA"
+    },
+    {
+      "id": "TC0310003BERSA",
+      "family": "cards",
+      "channel": "api",
+      "legacyId": "TC0165BERSA"
+    },
+    {
+      "id": "TC0310004BERSA",
+      "family": "cards",
+      "channel": "api",
+      "legacyId": "TC0192BERSA"
+    },
+    {
+      "id": "TC0310005BERSA",
+      "family": "cards",
+      "channel": "api",
+      "legacyId": "TC0193BERSA"
+    },
+    {
+      "id": "TC0310006BERSA",
+      "family": "cards",
+      "channel": "api",
+      "legacyId": "TC0194BERSA"
+    },
+    {
+      "id": "TC0310007BERSA",
+      "family": "cards",
+      "channel": "api",
+      "legacyId": "TC12967BERSA"
+    },
+    {
+      "id": "TC0310008BERSA",
+      "family": "cards",
+      "channel": "api",
+      "legacyId": "TC16039BERSA"
+    },
+    {
+      "id": "TC0310009BERSA",
+      "family": "cards",
+      "channel": "api",
+      "legacyId": "TC128238BERSA"
+    },
+    {
+      "id": "TC0310010BERSA",
+      "family": "cards",
+      "channel": "api",
+      "legacyId": "TC128239BERSA"
+    },
+    {
+      "id": "TC0320001BERSA",
+      "family": "cards",
+      "channel": "ui",
+      "legacyId": "TC0032BERSA"
+    },
+    {
+      "id": "TC0320002BERSA",
+      "family": "cards",
+      "channel": "ui",
+      "legacyId": "TC0033BERSA"
+    },
+    {
+      "id": "TC0320003BERSA",
+      "family": "cards",
+      "channel": "ui",
+      "legacyId": "TC0062BERSA"
+    },
+    {
+      "id": "TC0320004BERSA",
+      "family": "cards",
+      "channel": "ui",
+      "legacyId": "TC0104BERSA"
+    },
+    {
+      "id": "TC0320005BERSA",
+      "family": "cards",
+      "channel": "ui",
+      "legacyId": "TC0153BERSA"
+    },
+    {
+      "id": "TC0320006BERSA",
+      "family": "cards",
+      "channel": "ui",
+      "legacyId": "TC0155BERSA"
+    },
+    {
+      "id": "TC0320007BERSA",
+      "family": "cards",
+      "channel": "ui",
+      "legacyId": "TC0157BERSA"
+    },
+    {
+      "id": "TC0320008BERSA",
+      "family": "cards",
+      "channel": "ui",
+      "legacyId": "TC0158BERSA"
+    },
+    {
+      "id": "TC0320009BERSA",
+      "family": "cards",
+      "channel": "ui",
+      "legacyId": "TC0162BERSA"
+    },
+    {
+      "id": "TC0320010BERSA",
+      "family": "cards",
+      "channel": "ui",
+      "legacyId": "TC0163BERSA"
+    },
+    {
+      "id": "TC0320011BERSA",
+      "family": "cards",
+      "channel": "ui",
+      "legacyId": "TC0167BERSA"
+    },
+    {
+      "id": "TC0320012BERSA",
+      "family": "cards",
+      "channel": "ui",
+      "legacyId": "TC0195BERSA"
+    },
+    {
+      "id": "TC0320013BERSA",
+      "family": "cards",
+      "channel": "ui",
+      "legacyId": "TC128242BERSA"
+    },
+    {
+      "id": "TC0420001BERSA",
+      "family": "documents",
+      "channel": "ui",
+      "legacyId": "TC0077BERSA"
+    },
+    {
+      "id": "TC0510001BERSA",
+      "family": "home",
+      "channel": "api",
+      "legacyId": "TC0159BERSA"
+    },
+    {
+      "id": "TC0520001BERSA",
+      "family": "home",
+      "channel": "ui",
+      "legacyId": "TC128243BERSA"
+    },
+    {
+      "id": "TC0620001BERSA",
+      "family": "insurance",
+      "channel": "ui",
+      "legacyId": "TC0196BERSA"
+    },
+    {
+      "id": "TC0620002BERSA",
+      "family": "insurance",
+      "channel": "ui",
+      "legacyId": "TC0197BERSA"
+    },
+    {
+      "id": "TC0620003BERSA",
+      "family": "insurance",
+      "channel": "ui",
+      "legacyId": "TC12928BERSA"
+    },
+    {
+      "id": "TC0710001BERSA",
+      "family": "investments",
+      "channel": "api",
+      "legacyId": "TC0009BERSA"
+    },
+    {
+      "id": "TC0710002BERSA",
+      "family": "investments",
+      "channel": "api",
+      "legacyId": "TC0042BERSA"
+    },
+    {
+      "id": "TC0710003BERSA",
+      "family": "investments",
+      "channel": "api",
+      "legacyId": "TC0069BERSA"
+    },
+    {
+      "id": "TC0710004BERSA",
+      "family": "investments",
+      "channel": "api",
+      "legacyId": "TC0115BERSA"
+    },
+    {
+      "id": "TC0710005BERSA",
+      "family": "investments",
+      "channel": "api",
+      "legacyId": "TC0125BERSA"
+    },
+    {
+      "id": "TC0710006BERSA",
+      "family": "investments",
+      "channel": "api",
+      "legacyId": "TC0129BERSA"
+    },
+    {
+      "id": "TC0710007BERSA",
+      "family": "investments",
+      "channel": "api",
+      "legacyId": "TC0130BERSA"
+    },
+    {
+      "id": "TC0710008BERSA",
+      "family": "investments",
+      "channel": "api",
+      "legacyId": "TC12973BERSA"
+    },
+    {
+      "id": "TC0720001BERSA",
+      "family": "investments",
+      "channel": "ui",
+      "legacyId": "TC0044BERSA"
+    },
+    {
+      "id": "TC0720002BERSA",
+      "family": "investments",
+      "channel": "ui",
+      "legacyId": "TC0045BERSA"
+    },
+    {
+      "id": "TC0720003BERSA",
+      "family": "investments",
+      "channel": "ui",
+      "legacyId": "TC0118BERSA"
+    },
+    {
+      "id": "TC0720004BERSA",
+      "family": "investments",
+      "channel": "ui",
+      "legacyId": "TC0119BERSA"
+    },
+    {
+      "id": "TC0720005BERSA",
+      "family": "investments",
+      "channel": "ui",
+      "legacyId": "TC0126BERSA"
+    },
+    {
+      "id": "TC0720006BERSA",
+      "family": "investments",
+      "channel": "ui",
+      "legacyId": "TC0127BERSA"
+    },
+    {
+      "id": "TC0720007BERSA",
+      "family": "investments",
+      "channel": "ui",
+      "legacyId": "TC0128BERSA"
+    },
+    {
+      "id": "TC0720008BERSA",
+      "family": "investments",
+      "channel": "ui",
+      "legacyId": "TC0133BERSA"
+    },
+    {
+      "id": "TC0720009BERSA",
+      "family": "investments",
+      "channel": "ui",
+      "legacyId": "TC0134BERSA"
+    },
+    {
+      "id": "TC0720010BERSA",
+      "family": "investments",
+      "channel": "ui",
+      "legacyId": "TC0173BERSA"
+    },
+    {
+      "id": "TC0720011BERSA",
+      "family": "investments",
+      "channel": "ui",
+      "legacyId": "TC0178BERSA"
+    },
+    {
+      "id": "TC0720012BERSA",
+      "family": "investments",
+      "channel": "ui",
+      "legacyId": "TC0179BERSA"
+    },
+    {
+      "id": "TC0720013BERSA",
+      "family": "investments",
+      "channel": "ui",
+      "legacyId": "TC0181BERSA"
+    },
+    {
+      "id": "TC0720014BERSA",
+      "family": "investments",
+      "channel": "ui",
+      "legacyId": "TC0182BERSA"
+    },
+    {
+      "id": "TC0720015BERSA",
+      "family": "investments",
+      "channel": "ui",
+      "legacyId": "TC0187BERSA"
+    },
+    {
+      "id": "TC0720016BERSA",
+      "family": "investments",
+      "channel": "ui",
+      "legacyId": "TC0188BERSA"
+    },
+    {
+      "id": "TC0720017BERSA",
+      "family": "investments",
+      "channel": "ui",
+      "legacyId": "TC0189BERSA"
+    },
+    {
+      "id": "TC0720018BERSA",
+      "family": "investments",
+      "channel": "ui",
+      "legacyId": "TC0190BERSA"
+    },
+    {
+      "id": "TC0720019BERSA",
+      "family": "investments",
+      "channel": "ui",
+      "legacyId": "TC128244BERSA"
+    },
+    {
+      "id": "TC0820001BERSA",
+      "family": "loans",
+      "channel": "ui",
+      "legacyId": "TC0206BERSA"
+    },
+    {
+      "id": "TC0820002BERSA",
+      "family": "loans",
+      "channel": "ui",
+      "legacyId": "TC0220BERSA"
+    },
+    {
+      "id": "TC0820003BERSA",
+      "family": "loans",
+      "channel": "ui",
+      "legacyId": "TC0221BERSA"
+    },
+    {
+      "id": "TC0910001BERSA",
+      "family": "messages",
+      "channel": "api",
+      "legacyId": "TC0094BERSA"
+    },
+    {
+      "id": "TC0910002BERSA",
+      "family": "messages",
+      "channel": "api",
+      "legacyId": "TC0098BERSA"
+    },
+    {
+      "id": "TC0910003BERSA",
+      "family": "messages",
+      "channel": "api",
+      "legacyId": "TC0109BERSA"
+    },
+    {
+      "id": "TC0920001BERSA",
+      "family": "messages",
+      "channel": "ui",
+      "legacyId": "TC0086BERSA"
+    },
+    {
+      "id": "TC0920002BERSA",
+      "family": "messages",
+      "channel": "ui",
+      "legacyId": "TC0090BERSA"
+    },
+    {
+      "id": "TC1020001BERSA",
+      "family": "mis-products",
+      "channel": "ui",
+      "legacyId": "TC0075BERSA"
+    },
+    {
+      "id": "TC1110001BERSA",
+      "family": "payments",
+      "channel": "api",
+      "legacyId": "TC0012BERSA"
+    },
+    {
+      "id": "TC1110002BERSA",
+      "family": "payments",
+      "channel": "api",
+      "legacyId": "TC0013BERSA"
+    },
+    {
+      "id": "TC1110003BERSA",
+      "family": "payments",
+      "channel": "api",
+      "legacyId": "TC0015BERSA"
+    },
+    {
+      "id": "TC1110004BERSA",
+      "family": "payments",
+      "channel": "api",
+      "legacyId": "TC0070BERSA"
+    },
+    {
+      "id": "TC1110005BERSA",
+      "family": "payments",
+      "channel": "api",
+      "legacyId": "TC0074BERSA"
+    },
+    {
+      "id": "TC1110006BERSA",
+      "family": "payments",
+      "channel": "api",
+      "legacyId": "TC0108BERSA"
+    },
+    {
+      "id": "TC1110007BERSA",
+      "family": "payments",
+      "channel": "api",
+      "legacyId": "TC0137BERSA"
+    },
+    {
+      "id": "TC1110008BERSA",
+      "family": "payments",
+      "channel": "api",
+      "legacyId": "TC0138BERSA"
+    },
+    {
+      "id": "TC1110009BERSA",
+      "family": "payments",
+      "channel": "api",
+      "legacyId": "TC12964BERSA"
+    },
+    {
+      "id": "TC1110010BERSA",
+      "family": "payments",
+      "channel": "api",
+      "legacyId": "TC12966BERSA"
+    },
+    {
+      "id": "TC1120001BERSA",
+      "family": "payments",
+      "channel": "ui",
+      "legacyId": "TC0183BERSA"
+    },
+    {
+      "id": "TC1120002BERSA",
+      "family": "payments",
+      "channel": "ui",
+      "legacyId": "TC0184BERSA"
+    },
+    {
+      "id": "TC1120003BERSA",
+      "family": "payments",
+      "channel": "ui",
+      "legacyId": "TC110363BERSA"
+    },
+    {
+      "id": "TC1120004BERSA",
+      "family": "payments",
+      "channel": "ui",
+      "legacyId": "TC110847BERSA"
+    },
+    {
+      "id": "TC1210001BERSA",
+      "family": "procedures",
+      "channel": "api",
+      "legacyId": "TC0078BERSA"
+    },
+    {
+      "id": "TC1220001BERSA",
+      "family": "procedures",
+      "channel": "ui",
+      "legacyId": "TC0052BERSA"
+    },
+    {
+      "id": "TC1310001BERSA",
+      "family": "profile",
+      "channel": "api",
+      "legacyId": "TC0001BERSA"
+    },
+    {
+      "id": "TC1310002BERSA",
+      "family": "profile",
+      "channel": "api",
+      "legacyId": "TC0102BERSA"
+    },
+    {
+      "id": "TC1320001BERSA",
+      "family": "profile",
+      "channel": "ui",
+      "legacyId": "TC0004BERSA"
+    },
+    {
+      "id": "TC1320002BERSA",
+      "family": "profile",
+      "channel": "ui",
+      "legacyId": "TC0035BERSA"
+    },
+    {
+      "id": "TC1420001BERSA",
+      "family": "start-page",
+      "channel": "ui",
+      "legacyId": "TC0152BERSA"
+    },
+    {
+      "id": "TC1420002BERSA",
+      "family": "start-page",
+      "channel": "ui",
+      "legacyId": "TC0156BERSA"
+    },
+    {
+      "id": "TC1420003BERSA",
+      "family": "start-page",
+      "channel": "ui",
+      "legacyId": "TC0161BERSA"
+    },
+    {
+      "id": "TC1510001BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0008BERSA"
+    },
+    {
+      "id": "TC1510002BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0014BERSA"
+    },
+    {
+      "id": "TC1510003BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0139BERSA"
+    },
+    {
+      "id": "TC1510004BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0145BERSA"
+    },
+    {
+      "id": "TC1510005BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0344BERSA"
+    },
+    {
+      "id": "TC1510006BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0409BERSA"
+    },
+    {
+      "id": "TC1510007BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0410BERSA"
+    },
+    {
+      "id": "TC1510008BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0411BERSA"
+    },
+    {
+      "id": "TC1510009BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0412BERSA"
+    },
+    {
+      "id": "TC1510010BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0418BERSA"
+    },
+    {
+      "id": "TC1510011BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0422BERSA"
+    },
+    {
+      "id": "TC1510012BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0424BERSA"
+    },
+    {
+      "id": "TC1510013BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0427BERSA"
+    },
+    {
+      "id": "TC1510014BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0429BERSA"
+    },
+    {
+      "id": "TC1510015BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0465BERSA"
+    },
+    {
+      "id": "TC1510016BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0467BERSA"
+    },
+    {
+      "id": "TC1510017BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0468BERSA"
+    },
+    {
+      "id": "TC1510018BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0472BERSA"
+    },
+    {
+      "id": "TC1510019BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0473BERSA"
+    },
+    {
+      "id": "TC1510020BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0474BERSA"
+    },
+    {
+      "id": "TC1510021BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0477BERSA"
+    },
+    {
+      "id": "TC1510022BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0478BERSA"
+    },
+    {
+      "id": "TC1510023BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0479BERSA"
+    },
+    {
+      "id": "TC1510024BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0480BERSA"
+    },
+    {
+      "id": "TC1510025BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0483BERSA"
+    },
+    {
+      "id": "TC1510026BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0484BERSA"
+    },
+    {
+      "id": "TC1510027BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC0485BERSA"
+    },
+    {
+      "id": "TC1510028BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC12930BERSA"
+    },
+    {
+      "id": "TC1510029BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC12932BERSA"
+    },
+    {
+      "id": "TC1510030BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC12935BERSA"
+    },
+    {
+      "id": "TC1510031BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC12938BERSA"
+    },
+    {
+      "id": "TC1510032BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC12939BERSA"
+    },
+    {
+      "id": "TC1510033BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC12940BERSA"
+    },
+    {
+      "id": "TC1510034BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC12969BERSA"
+    },
+    {
+      "id": "TC1510035BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC12981BERSA"
+    },
+    {
+      "id": "TC1510036BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC16759BERSA"
+    },
+    {
+      "id": "TC1510037BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC16765BERSA"
+    },
+    {
+      "id": "TC1510038BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC16768BERSA"
+    },
+    {
+      "id": "TC1510039BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC18089BERSA"
+    },
+    {
+      "id": "TC1510040BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC18090BERSA"
+    },
+    {
+      "id": "TC1510041BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC18093BERSA"
+    },
+    {
+      "id": "TC1510042BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC18094BERSA"
+    },
+    {
+      "id": "TC1510043BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC18097BERSA"
+    },
+    {
+      "id": "TC1510044BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC18098BERSA"
+    },
+    {
+      "id": "TC1510045BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC18100BERSA"
+    },
+    {
+      "id": "TC1510046BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC18101BERSA"
+    },
+    {
+      "id": "TC1510047BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC18102BERSA"
+    },
+    {
+      "id": "TC1510048BERSA",
+      "family": "transfers",
+      "channel": "api",
+      "legacyId": "TC18104BERSA"
+    },
+    {
+      "id": "TC1520001BERSA",
+      "family": "transfers",
+      "channel": "ui",
+      "legacyId": "TC0146BERSA"
+    },
+    {
+      "id": "TC1520002BERSA",
+      "family": "transfers",
+      "channel": "ui",
+      "legacyId": "TC0148BERSA"
+    },
+    {
+      "id": "TC1520003BERSA",
+      "family": "transfers",
+      "channel": "ui",
+      "legacyId": "TC16756BERSA"
+    },
+    {
+      "id": "TC1520004BERSA",
+      "family": "transfers",
+      "channel": "ui",
+      "legacyId": "TC18088BERSA"
+    },
+    {
+      "id": "TC1520005BERSA",
+      "family": "transfers",
+      "channel": "ui",
+      "legacyId": "TC18092BERSA"
+    },
+    {
+      "id": "TC1520006BERSA",
+      "family": "transfers",
+      "channel": "ui",
+      "legacyId": "TC18096BERSA"
+    },
+    {
+      "id": "TC1520007BERSA",
+      "family": "transfers",
+      "channel": "ui",
+      "legacyId": "TC18099BERSA"
+    },
+    {
+      "id": "TC1520008BERSA",
+      "family": "transfers",
+      "channel": "ui",
+      "legacyId": "TC18103BERSA"
+    },
+    {
+      "id": "TC1520009BERSA",
+      "family": "transfers",
+      "channel": "ui",
+      "legacyId": "TC29408BERSA"
+    },
+    {
+      "id": "TC1520010BERSA",
+      "family": "transfers",
+      "channel": "ui",
+      "legacyId": "TC128246BERSA"
+    },
+    {
+      "id": "TC1520011BERSA",
+      "family": "transfers",
+      "channel": "ui",
+      "legacyId": "TC128247BERSA"
+    },
+    {
+      "id": "TC1520012BERSA",
+      "family": "transfers",
+      "channel": "ui",
+      "legacyId": "TC128248BERSA"
+    },
+    {
+      "id": "TC1520013BERSA",
+      "family": "transfers",
+      "channel": "ui",
+      "legacyId": "TC128249BERSA"
+    }
+  ]
+}
