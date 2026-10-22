@@ -3,7 +3,16 @@
 // Por cada tarea: login UI de control contra UAT (qa) → worktree descartable sin el caso →
 // agente sin interacción → corrección automática → ejecución del caso producido.
 import { spawnSync } from 'node:child_process';
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, symlinkSync, writeFileSync } from 'node:fs';
+import {
+  existsSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  realpathSync,
+  rmSync,
+  symlinkSync,
+  writeFileSync,
+} from 'node:fs';
 import { createRequire } from 'node:module';
 import os from 'node:os';
 import path from 'node:path';
@@ -149,8 +158,18 @@ function removeDescribe(worktree, { describeContaining, file }) {
 }
 
 function prepareWorktree(task) {
-  const worktree = path.join(mkdtempSync(path.join(os.tmpdir(), 'hbi-eval-')), 'repo');
-  git(ROOT, 'worktree', 'add', '--detach', worktree, 'HEAD');
+  // Copia de HEAD sin historial: con un worktree, `git log`/`git show` revelan el caso quitado.
+  const worktree = path.join(realpathSync(mkdtempSync(path.join(os.tmpdir(), 'hbi-eval-'))), 'repo');
+  mkdirSync(worktree);
+  const archive = spawnSync('git', ['archive', '--format=tar', 'HEAD'], { cwd: ROOT, maxBuffer: 1024 * 1024 * 1024 });
+  if (archive.status !== 0) {
+    throw new Error(`git archive falló: ${archive.stderr}`);
+  }
+  const extract = spawnSync('tar', ['-x', '-C', worktree], { input: archive.stdout });
+  if (extract.status !== 0) {
+    throw new Error(`No se pudo extraer la copia de HEAD: ${extract.stderr}`);
+  }
+  git(worktree, 'init', '-q');
   symlinkSync(path.join(ROOT, 'node_modules'), path.join(worktree, 'node_modules'));
 
   for (const removal of task.remove) {
@@ -230,10 +249,21 @@ function summarizeTranscript(transcript, worktree) {
     .filter((event) => event.type === 'assistant')
     .flatMap((event) => event.message?.content ?? [])
     .filter((block) => block.type === 'tool_use');
-  const toPath = (file) => (file ? path.relative(worktree, path.resolve(worktree, file)) : '');
-  const filesRead = toolUses.filter((use) => use.name === 'Read').map((use) => toPath(use.input?.file_path));
+  const toPath = (file) => path.relative(worktree, path.resolve(worktree, file));
+  // Archivos consultados con Read o mencionados en comandos Bash (cat, sed, grep…), en orden.
+  const REPO_PATH =
+    /(?:^|[\s'"=])((?:\.agents|\.claude|src|tests|specs|docs|test-data|scripts|evals)\/[\w./-]+|[A-Z][\w-]*\.md|package\.json|\.env[\w.]*)/g;
+  const mentions = toolUses.flatMap((use) => {
+    if (use.name === 'Read' && use.input?.file_path) return [toPath(use.input.file_path)];
+    if (use.name === 'Bash') return [...String(use.input?.command ?? '').matchAll(REPO_PATH)].map((match) => match[1]);
+    return [];
+  });
+  const filesRead = [...new Set(mentions.filter((file) => !file.startsWith('..')))];
   const firstIndexRead = filesRead.findIndex((file) => file.startsWith('.agents/index/'));
   const firstCodeRead = filesRead.findIndex((file) => /^(src|tests)\/.*\.ts$/.test(file));
+  const historyAccess = toolUses.some(
+    (use) => use.name === 'Bash' && /\bgit\s+(log|show|blame|reflog)\b/.test(String(use.input?.command)),
+  );
   const envAccess = toolUses.some((use) => {
     const text = JSON.stringify(use.input ?? {});
     return /\.env(?!\.example)\b/.test(text);
@@ -249,6 +279,7 @@ function summarizeTranscript(transcript, worktree) {
     costUsd: result.total_cost_usd,
     envAccess,
     filesRead,
+    historyAccess,
     finalReport: result.result ?? '',
     indexBeforeCode: firstIndexRead !== -1 && (firstCodeRead === -1 || firstIndexRead < firstCodeRead),
     isError: Boolean(result.is_error),
@@ -264,11 +295,12 @@ function summarizeTranscript(transcript, worktree) {
 // ---------------------------------------------------------------------------------------
 
 function changedFiles(worktree) {
-  return git(worktree, 'status', '--porcelain', '--untracked-files=all')
-    .split('\n')
-    .filter(Boolean)
-    .map((line) => line.slice(3).replace(/^"|"$/g, ''))
-    .map((file) => (file.includes(' -> ') ? file.split(' -> ')[1] : file))
+  // -z conserva las rutas tal cual: sin comillas ni recortes del formato de texto.
+  const status = run('git', ['status', '--porcelain=v1', '-z', '--untracked-files=all'], { cwd: worktree }).stdout;
+  return status
+    .split('\0')
+    .filter((entry) => entry.length > 3)
+    .map((entry) => entry.slice(3))
     .filter((file) => file !== 'node_modules');
 }
 
@@ -418,8 +450,8 @@ function renderReport(report) {
       `- Herramientas: ${Object.entries(agent.toolCounts ?? {})
         .map(([name, count]) => `${name} ${count}`)
         .join(', ')}`,
-      `- Archivos leídos (${agent.filesRead.length}): ${agent.filesRead.map((file) => `\`${file}\``).join(', ')}`,
-      `- Consultó el catálogo antes del código: ${agent.indexBeforeCode ? 'sí' : 'no'} · accedió a .env: ${agent.envAccess ? 'sí' : 'no'}`,
+      `- Archivos consultados (${agent.filesRead.length}): ${agent.filesRead.map((file) => `\`${file}\``).join(', ')}`,
+      `- Consultó el catálogo antes del código: ${agent.indexBeforeCode ? 'sí' : 'no'} · accedió a .env: ${agent.envAccess ? 'sí' : 'no'} · usó el historial de Git: ${agent.historyAccess ? 'sí' : 'no'}`,
     );
   }
 
@@ -525,9 +557,9 @@ function evaluate(taskId, options) {
   } finally {
     save();
     if (options.keep) {
-      console.log(`Worktree conservado en ${worktree}`);
+      console.log(`Copia de trabajo conservada en ${worktree}`);
     } else {
-      git(ROOT, 'worktree', 'remove', '--force', worktree);
+      rmSync(path.dirname(worktree), { force: true, recursive: true });
     }
   }
 

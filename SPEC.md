@@ -245,8 +245,10 @@ Estado: aprobado. Motivo: validar el contexto para agentes con evidencia y no po
   esperadas, escaneo de secretos, lecturas de `.env` y el resultado de la ejecución. Registra
   turnos, costo y archivos leídos. Una rúbrica evaluada por modelo queda para una decisión
   posterior.
-- Cada corrida usa un `git worktree` descartable fuera del repositorio; los resultados se
-  guardan en `evals/results/`, que no se versiona.
+- Cada corrida usa una copia descartable de `HEAD` fuera del repositorio y sin historial de
+  Git (`git archive`), para que el caso quitado no pueda recuperarse con `git log` o
+  `git show`. Reemplaza el uso de un `git worktree`, que conservaba el historial. Los
+  resultados se guardan en `evals/results/`, que no se versiona.
 
 ### Registro de decisiones
 
