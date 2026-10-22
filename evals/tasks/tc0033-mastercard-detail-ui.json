@@ -1,0 +1,30 @@
+{
+  "id": "tc0033-mastercard-detail-ui",
+  "summary": "Recrear por UI el caso TC0033BERSA (detalle de tarjeta Mastercard) sobre Page Objects y fixtures existentes.",
+  "remove": [
+    {
+      "file": "tests/ui/cards/should-consult-credit-cards.ui.spec.ts",
+      "describeContaining": "TC0033BERSA"
+    }
+  ],
+  "prompt": [
+    "Automatizá el caso de prueba TC0033BERSA por UI.",
+    "",
+    "Caso (Xray): Consulta de tarjetas de crédito Mastercard.",
+    "Precondición: usuario de Home Banking con una tarjeta de crédito Mastercard; los datos del caso están en los datos de prueba versionados.",
+    "Pasos:",
+    "1. Abrir la página de inicio de Home Banking e ir al login.",
+    "2. Iniciar sesión con el usuario del caso.",
+    "3. Ir a Tarjetas de crédito y abrir el detalle de la tarjeta del caso.",
+    "Resultado esperado: el título del detalle contiene «Master».",
+    "",
+    "Restricciones de esta tarea: no ejecutes escenarios contra el banco; validá con `pnpm run check` y `pnpm exec playwright test --list`. Seguí las instrucciones del repositorio y terminá con el reporte de la sección Done de AGENTS.md."
+  ],
+  "expected": {
+    "testCaseId": "TC0033BERSA",
+    "project": "ui",
+    "allowedPaths": ["tests/ui/cards/", ".agents/index/"],
+    "fixtures": ["creditCardDetailUiData", "creditCardsPage", "loginCredentials", "loginPage", "startPage"],
+    "run": true
+  }
+}

@@ -68,12 +68,19 @@ function scanFile(file) {
     findings.push({ file, line: 0, rule: 'Archivo .env versionado o preparado' });
   }
 
-  let size;
+  let stats;
   try {
-    size = statSync(file).size;
+    stats = statSync(file);
   } catch {
     return findings; // Archivo borrado en el índice.
   }
+
+  // Symlinks a carpetas (por ejemplo node_modules en un worktree) no son archivos a revisar.
+  if (!stats.isFile()) {
+    return findings;
+  }
+
+  const size = stats.size;
 
   if (size > MAX_FILE_BYTES) {
     return findings;

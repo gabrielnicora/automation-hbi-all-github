@@ -223,6 +223,33 @@ en cada tarea encarece el trabajo sin mejorar el resultado.
 - `.claude/settings.json` niega a los agentes la lectura de `.env`, configuraciones locales de
   MCP y credenciales del usuario, y los comandos que vuelcan variables de entorno.
 
+### Evaluación del agente de automatización
+
+Decisión del usuario, 22 de octubre de 2026: medir con casos ya automatizados si un agente
+automatiza correctamente con este framework y si las instrucciones y el catálogo lo ayudan.
+Estado: aprobado. Motivo: validar el contexto para agentes con evidencia y no por opinión.
+
+- `evals/` contiene tareas (`evals/tasks/*.json`) y un runner (`pnpm run eval -- <tarea>`).
+  Cada tarea quita un caso existente, regenera el catálogo para no filtrar la respuesta, pide
+  al agente que lo automatice desde una descripción funcional y corrige el resultado.
+- Ambiente: UAT es el ambiente `qa` de la sección 1 (BERSA QA, URLs por defecto) con los
+  datos de `test-data/private/`. No se agregan ambientes ni variables.
+- Antes del agente se ejecuta el login UI `TC0017BERSA`; si falla, la corrida se informa como
+  ambiente no disponible y no se atribuye al agente.
+- El agente no ejecuta escenarios contra el banco: valida con `pnpm run check` y
+  `playwright test --list`. El runner ejecuta el caso producido con `PW_RETRIES=0`. Sólo se
+  usan casos de consulta que no modifican usuarios; una tarea con un caso mutante requiere
+  una decisión previa.
+- La corrección automática verifica `check`, presencia del caso en `--list`, rutas
+  modificadas permitidas, ausencia de selectores, URLs y esperas fijas en el test, fixtures
+  esperadas, escaneo de secretos, lecturas de `.env` y el resultado de la ejecución. Registra
+  turnos, costo y archivos leídos. Una rúbrica evaluada por modelo queda para una decisión
+  posterior.
+- Cada corrida usa una copia descartable de `HEAD` fuera del repositorio y sin historial de
+  Git (`git archive`), para que el caso quitado no pueda recuperarse con `git log` o
+  `git show`. Reemplaza el uso de un `git worktree`, que conservaba el historial. Los
+  resultados se guardan en `evals/results/`, que no se versiona.
+
 ### Registro de decisiones
 
 Registrar las decisiones materiales en la especificación afectada, junto con su estado,
@@ -399,6 +426,7 @@ una capacidad aprobada coordine múltiples páginas o decisiones significativas.
 | `test-data/private/` | Datos dummy QA/DEV versionados; el nombre de la ruta se conserva por compatibilidad.       |
 | `scripts/`           | Catálogo para agentes y escaneo de secretos; los tests no lo importan.                     |
 | `.agents/index/`     | Catálogo generado; no se edita a mano.                                                     |
+| `evals/`             | Tareas y runner de evaluación del agente (sección 3); los tests no lo importan.            |
 
 ### 6.1 Tests
 
