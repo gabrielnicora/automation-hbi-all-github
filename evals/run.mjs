@@ -548,7 +548,11 @@ function evaluate(taskId, options) {
         ],
         { cwd: worktree, logFile: path.join(runDir, 'execution.log') },
       );
-      const summaryLine = execution.output.split('\n').filter((line) => /\d+ (passed|failed|flaky|skipped)/.test(line));
+
+      const summaryLine = execution.output
+        .replace(/\u001b\[[0-9;]*[A-Za-z]/g, '')
+        .split('\n')
+        .filter((line) => /\d+ (passed|failed|flaky|skipped)/.test(line));
       report.execution = { ok: execution.ok, summary: summaryLine.join(' · ') || 'sin resumen (ver execution.log)' };
     }
 
