@@ -4,7 +4,7 @@ import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default tseslint.config(
   {
-    ignores: ['node_modules/', 'playwright-report/', 'test-results/', 'blob-report/'],
+    ignores: ['node_modules/', 'playwright-report/', 'test-results/', 'blob-report/', 'evals/results/'],
   },
   ...tseslint.configs.recommended,
   eslintConfigPrettier,

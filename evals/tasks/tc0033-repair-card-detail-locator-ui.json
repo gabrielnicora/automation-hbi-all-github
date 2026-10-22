@@ -1,0 +1,32 @@
+{
+  "id": "tc0033-repair-card-detail-locator-ui",
+  "summary": "Reparar el locator del enlace al detalle de tarjeta (CreditCardsPage.detailLink) que dejó de matchear, sin tocar el test.",
+  "replace": [
+    {
+      "file": "src/pages/cards/credit-cards.page.ts",
+      "find": "    return this.page.getByRole('link', { name: new RegExp(`${lastDigits}\\\\s+Mostrar más`) });",
+      "replace": "    return this.page.locator(\n      `xpath=//div[@class='card-item']//span[contains(text(),'${lastDigits}')]/ancestor::div[2]//a[@class='btn-more']`,\n    );"
+    }
+  ],
+  "agentMayRun": ["tests/ui/cards/should-consult-credit-cards.ui.spec.ts"],
+  "prompt": [
+    "El test TC0033BERSA (`tests/ui/cards/should-consult-credit-cards.ui.spec.ts`) empezó a fallar contra QA después de un cambio en la pantalla de Tarjetas de crédito.",
+    "",
+    "Diagnosticá la causa y repará el código del framework para que el caso vuelva a pasar. No modifiques el test ni sus expectativas.",
+    "",
+    "Para esta tarea podés ejecutar solamente ese caso contra QA, con:",
+    "`PW_RETRIES=0 pnpm exec playwright test tests/ui/cards/should-consult-credit-cards.ui.spec.ts --grep TC0033BERSA --project=ui`",
+    "No ejecutes otros specs. Seguí las instrucciones del repositorio y terminá con el reporte de la sección Done de AGENTS.md."
+  ],
+  "expected": {
+    "testCaseId": "TC0033BERSA",
+    "project": "ui",
+    "allowedPaths": ["src/pages/cards/credit-cards.page.ts", ".agents/index/"],
+    "unchangedPaths": ["tests/"],
+    "locatorRepair": {
+      "file": "src/pages/cards/credit-cards.page.ts",
+      "brokenMarker": "btn-more"
+    },
+    "run": true
+  }
+}

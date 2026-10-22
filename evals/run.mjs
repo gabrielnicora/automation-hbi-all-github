@@ -157,6 +157,19 @@ function removeDescribe(worktree, { describeContaining, file }) {
   writeFileSync(filePath, updated.replace(/\n{3,}/g, '\n\n'));
 }
 
+/** Reemplazo exacto y único: simula un cambio de pantalla rompiendo un locator (tareas de reparación). */
+function applyReplacement(worktree, { file, find, replace }) {
+  const filePath = path.join(worktree, file);
+  const text = readFileSync(filePath, 'utf8');
+  const occurrences = text.split(find).length - 1;
+
+  if (occurrences !== 1) {
+    throw new Error(`Se esperaba una ocurrencia del texto a reemplazar en ${file}; hay ${occurrences}.`);
+  }
+
+  writeFileSync(filePath, text.replace(find, replace));
+}
+
 function prepareWorktree(task) {
   // Copia de HEAD sin historial: con un worktree, `git log`/`git show` revelan el caso quitado.
   const worktree = path.join(realpathSync(mkdtempSync(path.join(os.tmpdir(), 'hbi-eval-'))), 'repo');
@@ -172,8 +185,12 @@ function prepareWorktree(task) {
   git(worktree, 'init', '-q');
   symlinkSync(path.join(ROOT, 'node_modules'), path.join(worktree, 'node_modules'));
 
-  for (const removal of task.remove) {
+  for (const removal of task.remove ?? []) {
     removeDescribe(worktree, removal);
+  }
+
+  for (const replacement of task.replace ?? []) {
+    applyReplacement(worktree, replacement);
   }
 
   // Regenerar el catálogo evita que el agente encuentre la respuesta en .agents/index/.
@@ -217,6 +234,11 @@ function runAgent(task, worktree, runDir, options) {
     options.budget,
     '--allowedTools',
     ...AGENT_TOOLS,
+    // Sólo en tareas de reparación: los specs de consulta que la tarea permite ejecutar.
+    ...(task.agentMayRun ?? []).flatMap((spec) => [
+      `Bash(PW_RETRIES=0 pnpm exec playwright test ${spec}:*)`,
+      `Bash(pnpm exec playwright test ${spec}:*)`,
+    ]),
   ];
 
   if (options.model) {
@@ -358,7 +380,50 @@ function fixturesOfCase(fileText, testCaseId) {
   return [...names].sort();
 }
 
-function grade(task, worktree, runDir) {
+function addedLinesOf(worktree, file) {
+  return git(worktree, 'diff', '-U0', 'HEAD', '--', file)
+    .split('\n')
+    .filter((line) => line.startsWith('+') && !line.startsWith('+++'))
+    .join('\n');
+}
+
+/** Specs que el agente ejecutó contra el banco (excluye `--list`). */
+function specsRunByAgent(commands) {
+  return (commands ?? [])
+    .filter((command) => /playwright\s+test\b/.test(command) && !/--list\b/.test(command))
+    .map((command) => ({ command, specs: command.match(/tests\/[\w./-]+\.spec\.ts/g) ?? [] }));
+}
+
+const LOCATOR_STRATEGIES = [
+  { name: 'getByRole', pattern: /\bgetByRole\(/ },
+  { name: 'getByLabel', pattern: /\bgetByLabel\(/ },
+  { name: 'getByText', pattern: /\bgetByText\(/ },
+  { name: 'getByPlaceholder', pattern: /\bgetByPlaceholder\(/ },
+  { name: 'getByTestId', pattern: /\bgetByTestId\(/ },
+  { name: 'CSS', pattern: /\.locator\(\s*['"`](?!xpath=|\/\/)/ },
+  { name: 'XPath', pattern: /xpath=|\.locator\(\s*['"`]\(?\/\// },
+];
+
+function gradeLocatorRepair(worktree, repair, add) {
+  const text = readFileSync(path.join(worktree, repair.file), 'utf8');
+  const added = addedLinesOf(worktree, repair.file);
+  const strategies = LOCATOR_STRATEGIES.filter((strategy) => strategy.pattern.test(added)).map((s) => s.name);
+  const waits = /waitForTimeout|networkidle|setTimeout\(/.test(added);
+
+  add('Locator roto reemplazado', !text.includes(repair.brokenMarker), `marcador: ${repair.brokenMarker}`);
+  add(
+    'Locator nuevo sin XPath ni esperas fijas',
+    added.length > 0 && !strategies.includes('XPath') && !waits,
+    `estrategias en líneas nuevas: ${strategies.join(', ') || 'ninguna'}${waits ? ' | agrega esperas fijas' : ''}`,
+  );
+  add(
+    'Usa un locator accesible (prioridad de src/pages/AGENTS.md)',
+    strategies.some((name) => name.startsWith('getBy')),
+    strategies.join(', ') || 'ninguna',
+  );
+}
+
+function grade(task, worktree, runDir, agent) {
   const { expected } = task;
   const changed = changedFiles(worktree);
   const diff = git(worktree, 'diff', 'HEAD');
@@ -410,15 +475,39 @@ function grade(task, worktree, runDir) {
   );
   add('Declara testCaseId del caso', /testCaseId/.test(addedLines) && addedLines.includes(expected.testCaseId));
 
-  const fixtures = testFile
-    ? fixturesOfCase(readFileSync(path.join(worktree, testFile), 'utf8'), expected.testCaseId)
-    : [];
-  const missing = expected.fixtures.filter((name) => !fixtures.includes(name));
-  const extra = fixtures.filter((name) => !expected.fixtures.includes(name));
+  if (expected.fixtures) {
+    const fixtures = testFile
+      ? fixturesOfCase(readFileSync(path.join(worktree, testFile), 'utf8'), expected.testCaseId)
+      : [];
+    const missing = expected.fixtures.filter((name) => !fixtures.includes(name));
+    const extra = fixtures.filter((name) => !expected.fixtures.includes(name));
+    add(
+      'Fixtures esperadas',
+      missing.length === 0,
+      `usadas: ${fixtures.join(', ')}${missing.length ? ` | faltan: ${missing.join(', ')}` : ''}${extra.length ? ` | extra: ${extra.join(', ')}` : ''}`,
+    );
+  }
+
+  for (const file of expected.unchangedPaths ?? []) {
+    const touched = changed.filter((changedFile) => changedFile.startsWith(file));
+    add(`Sin cambios en ${file}`, touched.length === 0, touched.join(', '));
+  }
+
+  if (expected.locatorRepair) {
+    gradeLocatorRepair(worktree, expected.locatorRepair, add);
+  }
+
+  const allowedRuns = task.agentMayRun ?? [];
+  const runs = specsRunByAgent(agent?.commands);
+  const forbiddenRuns = runs.filter(
+    (item) => item.specs.length === 0 || item.specs.some((spec) => !allowedRuns.includes(spec)),
+  );
   add(
-    'Fixtures esperadas',
-    missing.length === 0,
-    `usadas: ${fixtures.join(', ')}${missing.length ? ` | faltan: ${missing.join(', ')}` : ''}${extra.length ? ` | extra: ${extra.join(', ')}` : ''}`,
+    'El agente sólo ejecutó specs permitidos',
+    forbiddenRuns.length === 0,
+    forbiddenRuns.length
+      ? `no permitidos: ${forbiddenRuns.map((item) => item.command.slice(0, 120)).join(' | ')}`
+      : `${runs.length} ejecución(es) de: ${allowedRuns.join(', ') || 'ninguno'}`,
   );
 
   const existing = changed.filter((file) => existsSync(path.join(worktree, file)));
@@ -531,7 +620,7 @@ function evaluate(taskId, options) {
     }
 
     console.log(`[${task.id}] Corrigiendo…`);
-    report.grade = grade(task, worktree, runDir);
+    report.grade = grade(task, worktree, runDir, report.agent);
 
     if (task.expected.run && report.grade.testFile) {
       console.log(`[${task.id}] Ejecutando ${task.expected.testCaseId} contra UAT…`);
