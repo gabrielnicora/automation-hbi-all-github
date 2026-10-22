@@ -10,3 +10,4 @@
 /.playwright-cli/
 /pnpm-lock.yaml
 /mcp-xray/pnpm-lock.yaml
+/evals/results/

@@ -62,6 +62,7 @@ código, buscar en el catálogo generado `.agents/index/` (`SPEC.md`, sección 3
 | Filtro de fondos por UI                               | `specs/investments/fund-risk-filter.ui.plan.md`.                                                                                    |
 | Baja y arrepentimiento por UI                         | `specs/mis-products/should-open-cancellation-page.ui.plan.md`.                                                                      |
 | Instalación o ejecución del proyecto                  | `README.md` y configuración real pertinente.                                                                                        |
+| Evaluación del agente de automatización               | `evals/README.md` y `SPEC.md`, sección 3.                                                                                           |
 | Integración futura con Xray                           | `.agents/docs/integracion-xray.md`; es una propuesta, no una capacidad aprobada.                                                    |
 | Exploración, generación o depuración con Playwright   | `.agents/skills/playwright-cli/SKILL.md` y las referencias que correspondan según esa skill.                                        |
 | Migración acelerada de casos legados                  | `.agents/docs/legacy-migration.md`, `SPEC.md` sección 3, `docs/guides/README.md` y la guía de la familia funcional correspondiente. |
