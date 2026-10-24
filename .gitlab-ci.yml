@@ -128,7 +128,6 @@ quality:
   script:
     - pnpm run check
     - pnpm run typecheck:mcp-xray
-    - pnpm run test:mcp-xray
 
 # =====================================================================
 # 3. Regresión en 3 shards encadenados: 1 -> 2 -> 3

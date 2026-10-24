@@ -203,8 +203,8 @@ La variable debe estar en el entorno del proceso o configurada en CI. El archivo
   `--grep`) acotan la selección.
 - `TEST_ENV=une-dev` ejecuta contra UNE DEV y agrega a `/etc/hosts` los dominios internos de
   `UNE_HOST_ENTRIES`.
-- `quality` valida también el TypeScript y los tests unitarios sin red del servidor opcional
-  `mcp-xray`, sin conectarse a Jira ni requerir credenciales.
+- `quality` valida también el TypeScript del servidor opcional `mcp-xray`, sin conectarse a Jira
+  ni requerir credenciales. No ejecuta tests de `mcp-xray`.
 
 ### Ambientes
 

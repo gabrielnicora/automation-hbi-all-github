@@ -729,7 +729,7 @@ evidencia parcial. Reemplaza el job manual único `ui:login:bersa`.
 - Decisión del usuario, 23 de octubre de 2026: en push y merge request `install_deps` y
   `quality` se ejecutan automáticamente y bloquean ante un fallo; los shards funcionales y
   `merge_reports` permanecen manuales y no bloqueantes. Motivo: impedir que un MR avance con
-  dependencias, formato, lint, typecheck o tests unitarios de tooling rotos sin obligar a ejecutar
+  dependencias, formato, lint o typecheck rotos sin obligar a ejecutar
   la regresión bancaria. Reemplaza la decisión del 21 de octubre que hacía manuales y opcionales
   todos los jobs en push y merge request.
 - Decisión del usuario, 23 de octubre de 2026: cuando una rama tiene un merge request abierto,
@@ -836,9 +836,13 @@ el lockfile raíz. Docker y CI usan pnpm `11.24.0`. El MCP valida entradas, mant
 aplica timeout a Jira, sanitiza errores HTTP y reporta creaciones parciales sin reintentar.
 
 Decisión del usuario, 23 de octubre de 2026: el workspace autoriza explícitamente el script de
-instalación de `esbuild`, dependencia transitiva de `tsx` usada por los tests de `mcp-xray`.
+instalación de `esbuild`, dependencia transitiva de `tsx` usada por el script `dev` de `mcp-xray`.
 La autorización se declara con `allowBuilds` y no desactiva `strictDepBuilds`: cualquier otro
 script de dependencia no aprobado continúa haciendo fallar la instalación en CI.
+
+Decisión del usuario, 23 de octubre de 2026: CI no ejecuta tests de `mcp-xray`; `quality` sólo
+valida su typecheck. Motivo: son tests de la integración con Jira y no aportan a la suite
+Playwright. Reemplaza la exigencia anterior de ejecutar sus tests unitarios en `quality`.
 
 ## 11. Prueba decisiva de simplicidad
 

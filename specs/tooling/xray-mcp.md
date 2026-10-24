@@ -45,7 +45,7 @@ junto con el framework mediante:
 pnpm install --frozen-lockfile
 ```
 
-`tsx`, usado para ejecutar los tests del paquete, depende de `esbuild`. pnpm `11.24.0` tiene
+`tsx`, usado por el script `dev` del paquete, depende de `esbuild`. pnpm `11.24.0` tiene
 `strictDepBuilds` activo por defecto, por lo que `pnpm-workspace.yaml` autoriza exclusivamente el
 script de instalación de `esbuild` mediante `allowBuilds`. No se permite globalmente la ejecución
 de scripts de dependencias.
@@ -60,8 +60,9 @@ Los directorios generados `mcp-xray/node_modules/` y `mcp-xray/dist/` no se vers
 
 ## Validación y CI
 
-- `pnpm --dir mcp-xray run typecheck` y `pnpm --dir mcp-xray test` deben completar sin errores.
-- El job `quality` ejecuta ambos chequeos además de los del framework.
+- `pnpm --dir mcp-xray run typecheck` debe completar sin errores.
+- El job `quality` ejecuta ese chequeo además de los del framework. Por decisión del usuario del
+  23 de octubre de 2026, CI no ejecuta tests de `mcp-xray`.
 - El typecheck no autentica contra Jira ni requiere PAT, VPN o acceso de red a la instancia.
 - La conexión real y las operaciones de escritura no se ejecutan automáticamente en CI.
 
@@ -74,6 +75,7 @@ Los directorios generados `mcp-xray/node_modules/` y `mcp-xray/dist/` no se vers
 3. `.kiro/settings/mcp.json` y los artefactos locales quedan ignorados.
 4. Existe un ejemplo seguro, deshabilitado y sin secretos, con el comando de paquete correcto.
 5. El README distingue el MCP de la futura publicación de resultados.
-6. CI ejecuta typecheck y tests unitarios sin requerir credenciales ni conectarse a Jira.
+6. CI ejecuta el typecheck sin requerir credenciales ni conectarse a Jira, y no ejecuta tests
+   de `mcp-xray`.
 7. Las entradas inválidas, timeouts, errores HTTP y creaciones parciales producen errores
    accionables sin exponer el PAT ni el body completo de Jira.

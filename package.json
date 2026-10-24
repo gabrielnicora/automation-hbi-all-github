@@ -17,7 +17,6 @@
     "report": "playwright show-report",
     "typecheck": "tsc --noEmit",
     "typecheck:mcp-xray": "pnpm --dir mcp-xray run typecheck",
-    "test:mcp-xray": "pnpm --dir mcp-xray test",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
