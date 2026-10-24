@@ -2,7 +2,7 @@
 
 ## Estado
 
-Portado provisionalmente desde el caso legado `TC0027BERSA` bajo la migración acelerada de
+Portado provisionalmente desde el caso legado `TC-001-1-0002-UNE` bajo la migración acelerada de
 `SPEC.md` sección 3. La revisión humana y la validación funcional en BERSA QA están pendientes;
 las dudas están registradas en `docs/guides/ambiguities/tc0027bersa-api.md`.
 
@@ -14,7 +14,7 @@ quedan fuera.
 
 ## Recorrido observado en el legado
 
-1. Carga `TC0027BERSA`, inicia sesión y consulta productos.
+1. Carga `TC-001-1-0002-UNE`, inicia sesión y consulta productos.
 2. Resuelve el número e identificador de la cuenta origen.
 3. Obtiene un código de segundo factor y ejecuta
    `POST /api/v1/execute/atm.generatePullOrder.byAccounts`.
@@ -27,7 +27,7 @@ SMS y ejecuta la mutación una sola vez por intento; no traslada el retry intern
 
 - Cliente funcional en `src/api/accounts/`, con la obtención de productos necesaria y la mutación.
 - Datos tipados del caso y configuración de segundo factor mediante las superficies existentes.
-- Test en `tests/api/accounts/`, sin workflow, gateway ni reintento interno.
+- Test en `tests/api/001-accounts/`, sin workflow, gateway ni reintento interno.
 
 ## Criterios de aceptación propuestos
 
@@ -39,7 +39,7 @@ SMS y ejecuta la mutación una sola vez por intento; no traslada el retry intern
 
 ## Decisiones abiertas
 
-1. Confirmar que la cuenta dummy de `TC0027BERSA` posee saldo suficiente.
+1. Confirmar que la cuenta dummy de `TC-001-1-0002-UNE` posee saldo suficiente.
 2. Confirmar tipo/origen exactos del código SMS en `util.codes`; el legado filtra sólo por el
    sufijo telefónico y la implementación central ahora normaliza el teléfono completo.
 3. Confirmar si `idOrder` literal y `ajax_uuid` estáticos siguen siendo válidos para solicitudes

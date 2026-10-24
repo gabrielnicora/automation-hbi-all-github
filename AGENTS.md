@@ -26,7 +26,7 @@ config, test-data ──► fixtures        models ──► pages / api / workf
 
 | Layer                          | Instructions              | Reference file                                             |
 | ------------------------------ | ------------------------- | ---------------------------------------------------------- |
-| `tests/`                       | `tests/AGENTS.md`         | `tests/api/profile/should-change-phone.api.spec.ts`        |
+| `tests/`                       | `tests/AGENTS.md`         | `tests/api/013-profile/should-change-phone.api.spec.ts`    |
 | `src/pages/`                   | `src/pages/AGENTS.md`     | `src/pages/investments/investment-funds.page.ts`           |
 | `src/api/`                     | `src/api/AGENTS.md`       | `src/api/profile/notification-preferences.api.ts`          |
 | `src/fixtures/`                | `src/fixtures/AGENTS.md`  | `src/fixtures/api-test.ts`, `src/fixtures/ui-test.ts`      |
@@ -63,6 +63,9 @@ Secrets and data (`SPEC.md` section 8):
   passed to `expect` matchers (pass a boolean with a fixed message).
 - Platform secrets (Jira/GitLab PATs, CI variables, `.env` files, local MCP configs) are
   never read, printed or committed. Do not run `printenv`, `env` or `cat .env`.
+- Never invent a test case ID: get it with `pnpm run case:new -- <family> <api|ui>`
+  (`SPEC.md` section 10.1). Only the legacy `java/` sources and cases without tests use previous IDs
+  (`TC<number>BERSA`); translate them with `legacyId` in `test-data/case-ids.json`.
 - Never add production URLs, credentials or personal data. Never invent users, accounts or
   cards: if `bersa.json` lacks the row or field a case needs, stop that case and report the
   exact missing fields.
@@ -107,7 +110,10 @@ Environment variables: `TEST_ENV` (`qa` default, `une-dev`), `UI_BASE_URL`, `API
 - Legacy migration: `.agents/docs/legacy-migration.md` (rules), `specs/migration/migratable-cases.md`.
 - Playwright exploration, generation or debugging: `.agents/skills/playwright-cli/SKILL.md`.
   Do not commit exploration snapshots.
-- Xray: `.agents/docs/integracion-xray.md` is a proposal, not an approved capability.
+- Optional Jira/Xray case-management MCP (`mcp-xray/`): read `specs/tooling/xray-mcp.md` first.
+- Publishing Playwright results to Xray: `.agents/docs/integracion-xray.md` is a proposal, not
+  an approved capability. Resolve its decisions in `specs/` before changing tests, reporters or
+  CI for it.
 - New capabilities outside migration: resolve material decisions in `specs/` first. Examples
   and snippets alone do not approve behavior. Smoke selection and offline checks follow
   `SPEC.md` section 9 before adding tags, scripts or jobs.

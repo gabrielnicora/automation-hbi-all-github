@@ -53,7 +53,7 @@ Clases públicas de `src/pages/`. Reglas en `src/pages/AGENTS.md`.
 - `isTextShown(text: string): Promise<boolean>`
 - `isLabelShown(text: string, element: 'div' | 'span'): Promise<boolean>` — Indica si un `span` o `div` con el texto se ve (etiquetas de filtros del legado).
 - `applyFilters(): Promise<void>`
-- `searchByNumberAndPendingState(echeqNumber: string): Promise<void>` — Busca por número de eCheq y estado "Emitido pendiente" (legado TC124865).
+- `searchByNumberAndPendingState(echeqNumber: string): Promise<void>` — Busca por número de eCheq y estado "Emitido pendiente" (legado TC-001-2-0016-UNE).
 - `openFirstDetail(): Promise<void>`
 - `startAcceptance(): Promise<void>` — Aceptar el eCheq desde el detalle (botón genérico "Aceptar").
 - `continueToSecondFactor(): Promise<void>` — Continuar la aceptación y esperar el segundo factor.
@@ -552,13 +552,13 @@ Otros exports: `OwnAccountTransferDetails`
 ### `src/pages/transfers/transfer-form.page.ts`
 
 **TransferFormPage** — fixture `transferFormPage`
-: Formulario de transferencias inmediatas/programadas, ticket y segundo factor por UI (legado TransferenciasInmediatasSteps, TicketSteps y DobleFactorSteps). Reutiliza los locators validados del testigo TC18088BERSA para importe, descripción, búsqueda y botones; el resto reproduce el legado.
+: Formulario de transferencias inmediatas/programadas, ticket y segundo factor por UI (legado TransferenciasInmediatasSteps, TicketSteps y DobleFactorSteps). Reutiliza los locators validados del testigo TC-015-2-0004-UNE para importe, descripción, búsqueda y botones; el resto reproduce el legado.
 
 - `constructor(page: Page)`
 - `open(): Promise<void>` — Menú lateral → Transferencias; descarta el aviso "Ahora no" si aparece (legado clickBtnAhoraNo).
 - `isTextShown(text: string): Promise<boolean>`
 - `selectTransferType(type: TransferType): Promise<void>`
-- `searchRecipient(cbuOrAlias: string): Promise<void>` — Busca el CBU, CVU o alias y confirma "Son correctos" (recorrido del testigo TC18088BERSA).
+- `searchRecipient(cbuOrAlias: string): Promise<void>` — Busca el CBU, CVU o alias y confirma "Son correctos" (recorrido del testigo TC-015-2-0004-UNE).
 - `readOriginBalanceText(): Promise<string>` — Texto del saldo mostrado para la cuenta origen (legado getCuentaOrigenDesplegableSaldo1).
 - `selectFirstOriginAccount(): Promise<void>` — Abre "Vas a transferir desde" y elige la primera cuenta del menú (legado seleccionarCtaOrigen).
 - `selectOwnDestination(account: string): Promise<void>` — Elige la cuenta propia destino: por "Agenda completa" si está disponible o, si no, desde el carrusel (legado seleccionarCuentaDestinoCuentasPropias).

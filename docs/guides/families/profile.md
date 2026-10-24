@@ -17,9 +17,9 @@ actual contiene teléfono API, domicilio UI y preferencias API.
 
 ## Casos testigo
 
-- TC0001BERSA: cambio de teléfono API con segundo factor y persistencia.
-- TC0004BERSA: cambio de domicilio UI con segundo factor.
-- TC0102BERSA: consulta de preferencias de notificaciones API.
+- TC-013-1-0001-UNE: cambio de teléfono API con segundo factor y persistencia.
+- TC-013-2-0001-UNE: cambio de domicilio UI con segundo factor.
+- TC-013-1-0002-UNE: consulta de preferencias de notificaciones API.
 
 Referencias:
 
@@ -28,10 +28,10 @@ Referencias:
 - specs/profile/notification-preferences.api.plan.md
 - src/api/profile/
 - src/pages/profile/
-- tests/api/profile/
-- tests/ui/profile/
+- tests/api/013-profile/
+- tests/ui/013-profile/
 
-## Cambio de teléfono API — TC0001BERSA
+## Cambio de teléfono API — TC-013-1-0001-UNE
 
 Flujo:
 
@@ -55,7 +55,7 @@ No confundir la autorización de operación con la verificación del teléfono n
 desafíos distintos. El master code autorizado para un OTP no reemplaza automáticamente la
 verificación del nuevo teléfono. Leer la política central antes de extenderlos.
 
-## Cambio de domicilio UI — TC0004BERSA
+## Cambio de domicilio UI — TC-013-2-0001-UNE
 
 Flujo:
 
@@ -82,7 +82,7 @@ Esto no permite repetir la mutación. El testigo tiene timeout de 240 segundos y
 domicilio modificado por decisión explícita; no agregar una restauración por analogía con
 mensajes. En variantes, conservar los datos y efectos de su propio legado.
 
-## Preferencias API — TC0102BERSA
+## Preferencias API — TC-013-1-0002-UNE
 
 Es una consulta de preferencias. Separar lectura de cualquier futura mutación. El cliente
 contiene endpoints y parsing; el test valida la estructura y el resultado funcional aprobado.
@@ -96,7 +96,7 @@ El cliente exige `data.communicationConfigurations` como objeto y devuelve `hasS
 `hasMailPreference` y `hasPushPreference`. El test exige los tres indicadores en `true` porque
 comprueban que `subscribedSMS`, `subscribedMail` y `subscribedPush` son booleanos, no que las
 suscripciones estén activas. Un valor de suscripción `false` es válido. Esta decisión para
-TC0102BERSA reemplaza la expectativa histórica; no inventar campos `message/accepted/userBlock`.
+TC-013-1-0002-UNE reemplaza la expectativa histórica; no inventar campos `message/accepted/userBlock`.
 
 ## Reutilización y límites
 

@@ -1,7 +1,7 @@
-# TC12967BERSA — API — pago Visa por otro importe
+# TC-003-1-0007-UNE — API — pago Visa por otro importe
 
 - Fuentes: `java/api/GP_Individuos_API/src/test/java/EntreRios/tarjetas/TarjetasTest.java`
-  (`TC12967BERSA`), `java/api/GP_Individuos_API/src/test/java/Steps/Tarjetas/TarjetaSteps.java`
+  (`TC-003-1-0007-UNE`), `java/api/GP_Individuos_API/src/test/java/Steps/Tarjetas/TarjetaSteps.java`
   (`creditCardMakePayment`, `realizarPagoOtroImporte`), `java/api/GP_Individuos_API/Requests/Tarjetas/creditCardMakePayment.json`,
   `java/api/GP_Individuos_API/Requests/Compartidos/requestVacio.json` y el log exitoso
   entregado por el usuario.

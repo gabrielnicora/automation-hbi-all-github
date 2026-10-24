@@ -17,13 +17,13 @@ Banking que no pertenecen a una familia transaccional más específica.
 
 ## Caso testigo
 
-TC0159BERSA: consulta anónima de términos y condiciones generales por API.
+TC-005-1-0001-UNE: consulta anónima de términos y condiciones generales por API.
 
 Referencias:
 
 - specs/home/terms-and-conditions.api.plan.md
 - src/api/home/terms-and-conditions.api.ts
-- tests/api/home/should-get-terms-and-conditions.api.spec.ts
+- tests/api/005-home/should-get-terms-and-conditions.api.spec.ts
 
 ## Consulta API testigo
 

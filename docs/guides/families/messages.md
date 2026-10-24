@@ -18,8 +18,8 @@ variantes cuyo legado autoriza otro efecto persistente.
 
 ## Casos testigo
 
-- TC0109BERSA: consulta de mensajes recibidos API.
-- TC0086BERSA: marcar un mensaje leído como no leído UI y restaurarlo.
+- TC-009-1-0003-UNE: consulta de mensajes recibidos API.
+- TC-009-2-0001-UNE: marcar un mensaje leído como no leído UI y restaurarlo.
 
 Referencias:
 
@@ -27,10 +27,10 @@ Referencias:
 - specs/messages/mark-message-unread.ui.plan.md
 - src/api/messages/received-messages.api.ts
 - src/pages/messages/messages.page.ts
-- tests/api/messages/
-- tests/ui/messages/
+- tests/api/009-messages/
+- tests/ui/009-messages/
 
-## Consulta API — TC0109BERSA
+## Consulta API — TC-009-1-0003-UNE
 
 Después del login, ejecutar communications.list con direction BANK_TO_CUSTOMER,
 UUID y versión aprobada. La respuesta exige HTTP 200, objeto JSON y COR000I. data debe ser
@@ -41,7 +41,7 @@ validaciones y efectos. Ante dudas, conservarlas y registrar para después.
 
 No exigir cantidad de mensajes si el test legado no lo verifica. No agregar retry interno.
 
-## Cambio UI — TC0086BERSA
+## Cambio UI — TC-009-2-0001-UNE
 
 Flujo:
 

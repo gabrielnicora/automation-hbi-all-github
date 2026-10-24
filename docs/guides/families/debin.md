@@ -17,14 +17,14 @@ posterior o modalidad recurrente.
 
 ## Caso testigo
 
-TC0013BERSA: generación de una orden DEBIN por API seleccionando CBU.
+TC-011-1-0002-UNE: generación de una orden DEBIN por API seleccionando CBU.
 
 Referencias:
 
 - specs/payments/debin-generation.api.plan.md
 - src/api/payments/debin-generation.api.ts
 - src/test-data/debin-generation-data.ts
-- tests/api/payments/should-generate-debin.api.spec.ts
+- tests/api/011-payments/should-generate-debin.api.spec.ts
 
 ## Flujo testigo
 

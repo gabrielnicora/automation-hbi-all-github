@@ -422,7 +422,7 @@ Otros exports: `TransferHistoryPage`
 - `showAllPayments(user: PaymentServicesUser): Promise<void>` — Legado validarBotonMostrarTodos: deja abierto "Mostrar todos".
 - `ensureService(user: PaymentServicesUser): Promise<void>` — Legado validarServiciosUnisys: agenda y adhiere el servicio si falta; termina con la flecha Volver.
 
-- `paySelectedMercadoLibreServices(payments: PaymentServicesPage): Promise<void>` — Pago simultáneo de los dos primeros servicios Mercado Libre (recorrido de TC110847BERSA).
+- `paySelectedMercadoLibreServices(payments: PaymentServicesPage): Promise<void>` — Pago simultáneo de los dos primeros servicios Mercado Libre (recorrido de TC-011-2-0004-UNE).
 
 Otros exports: `PaymentServicesUser`
 

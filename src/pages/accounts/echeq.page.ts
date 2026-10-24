@@ -67,7 +67,7 @@ export class EcheqPage {
     await this.page.locator("xpath=//span[contains(text(),'Aplicar')]").first().click();
   }
 
-  /** Busca por número de eCheq y estado "Emitido pendiente" (legado TC124865). */
+  /** Busca por número de eCheq y estado "Emitido pendiente" (legado TC-001-2-0016-UNE). */
   public async searchByNumberAndPendingState(echeqNumber: string): Promise<void> {
     await this.page.locator("xpath=//input[contains(@id,'echeq')]").first().pressSequentially(echeqNumber);
     await this.page.locator("xpath=//div[contains(text(), 'Todos')]").first().click();

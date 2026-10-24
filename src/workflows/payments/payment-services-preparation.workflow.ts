@@ -15,7 +15,7 @@ export interface PaymentServicesUser {
   readonly username: string;
 }
 
-/** Pago simultáneo de los dos primeros servicios Mercado Libre (recorrido de TC110847BERSA). */
+/** Pago simultáneo de los dos primeros servicios Mercado Libre (recorrido de TC-011-2-0004-UNE). */
 export async function paySelectedMercadoLibreServices(payments: PaymentServicesPage): Promise<void> {
   await payments.selectServiceToPay(1);
   await payments.selectServiceToPay(2);

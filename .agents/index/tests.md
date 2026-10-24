@@ -6,811 +6,811 @@ Fuente: `playwright test --list` (títulos resueltos, incluidos los parametrizad
 fixtures que cada archivo pide en sus callbacks. Para un caso nuevo, buscar acá un test del
 mismo patrón y la especificación de la capacidad.
 
-## `tests/api/accounts/`
+## `tests/api/001-accounts/`
 
 Especificaciones: `specs/accounts/withdrawal-order.api.plan.md`
 
-### `tests/api/accounts/should-adhere-new-destination.api.spec.ts`
+### `tests/api/001-accounts/should-adhere-new-destination.api.spec.ts`
 
 Fixtures: `accountTransferSearchApi`, `adheredAccountsApi`, `loginApi`, `loginCredentials`, `productWidgetsApi`
 
-- L10: TC0006BERSA - Adherir cuenta - nuevo destinatario de terceros con segundo factor por SMS
+- L10: TC-001-1-0001-UNE - Adherir cuenta - nuevo destinatario de terceros con segundo factor por SMS
 
-### `tests/api/accounts/should-generate-withdrawal-order.api.spec.ts`
+### `tests/api/001-accounts/should-generate-withdrawal-order.api.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`, `withdrawalOrderApi`, `withdrawalOrderData`
 
-- L8: TC0027BERSA - genera una orden de extracción con saldo disponible
+- L8: TC-001-1-0002-UNE - genera una orden de extracción con saldo disponible
 
-### `tests/api/accounts/should-list-echeqs-by-status.api.spec.ts`
+### `tests/api/001-accounts/should-list-echeqs-by-status.api.spec.ts`
 
 Fixtures: `echeqOperationsApi`, `loginApi`, `loginCredentials`
 
-- L15: TC124909BERSA - Consulta del detalle de un eCheq - Estado 'Emitir'
-- L15: TC124913BERSA - Consulta del detalle de un eCheq - Estado Anular
-- L15: TC25610BERSA - Validar el listado de eCheq en el estado 'Todos'
+- L19: TC-001-1-0005-UNE - Validar el listado de eCheq en el estado 'Todos'
+- L19: TC-001-1-0085-UNE - Consulta del detalle de un eCheq - Estado 'Emitir'
+- L19: TC-001-1-0089-UNE - Consulta del detalle de un eCheq - Estado Anular
 
-### `tests/api/accounts/should-operate-received-echeqs.api.spec.ts`
+### `tests/api/001-accounts/should-operate-received-echeqs.api.spec.ts`
 
 Fixtures: `echeqEndorsementData`, `echeqOperationsApi`, `loginApi`, `loginCredentials`, `originAccountData`, `productWidgetsApi`, `secondUserCredentials`
 
-- L47: TC124907BERSA - Consulta del detalle de un eCheq - Estado Aceptar
-- L64: TC124908BERSA - Consulta del detalle de un eCheq - Estado Endosar
-- L86: TC124910BERSA - Consulta del detalle de un eCheq - Estado Repudiar
-- L109: TC124911BERSA - Consulta del detalle de un eCheq - Estado Custodiar
-- L132: TC124912BERSA - Consulta del detalle de un eCheq - Custodiar y rescatar
-- L157: TC128237BERSA - Solicitar devolución de eCheq
-- L190: TC128231BERSA - Depositar eCheq - Variable encendida
+- L47: TC-001-1-0083-UNE - Consulta del detalle de un eCheq - Estado Aceptar
+- L64: TC-001-1-0084-UNE - Consulta del detalle de un eCheq - Estado Endosar
+- L86: TC-001-1-0086-UNE - Consulta del detalle de un eCheq - Estado Repudiar
+- L109: TC-001-1-0087-UNE - Consulta del detalle de un eCheq - Estado Custodiar
+- L132: TC-001-1-0088-UNE - Consulta del detalle de un eCheq - Custodiar y rescatar
+- L157: TC-001-1-0091-UNE - Solicitar devolución de eCheq
+- L190: TC-001-1-0090-UNE - Depositar eCheq - Variable encendida
 
-### `tests/api/accounts/should-reject-invalid-account-transfer-search.api.spec.ts`
+### `tests/api/001-accounts/should-reject-invalid-account-transfer-search.api.spec.ts`
 
 Fixtures: `accountTransferSearchApi`, `loginApi`, `loginCredentials`
 
-- L313: TC29450BERSA - Validar mensaje de error typeAccount con espacio
-- L313: TC29451BERSA - Validar error por typeAccount con acento
-- L313: TC29452BERSA - Validar error por typeAccount con guión
-- L313: TC29453BERSA - Validar error por typeAccount con longitud no permitida
-- L313: TC29454BERSA - Validar error por typeAccount con apóstrofe
-- L313: TC29455BERSA - Validar error por typeAccount vacío
-- L313: TC29456BERSA - Validar error por typeAccount null
-- L313: TC29457BERSA - Validar error por typeAccount alfabético no permitido
-- L313: TC29458BERSA - Validar error por typeAccount numérico
-- L313: TC29459BERSA - Validar error por typeAccount alfanumérico
-- L313: TC29460BERSA - Validar error por typeAccount con caracteres especiales
-- L313: TC29461BERSA - Validar error por typeAccount boolean true
-- L313: TC29462BERSA - Validar error por typeAccount boolean false
-- L313: TC29463BERSA - Validar error por typeAccount en minúsculas
-- L313: TC29464BERSA - Validar error por typeAccount con prefijo y espacio
-- L313: TC29465BERSA - Validar error por account con espacio
-- L313: TC29466BERSA - Validar error por account con acento
-- L313: TC29467BERSA - Validar error por account con guión
-- L313: TC29468BERSA - Validar error por account con longitud no permitida
-- L313: TC29469BERSA - Validar error por account con apóstrofe
-- L313: TC29470BERSA - Validar error por account vacío
-- L313: TC29471BERSA - Validar error por account null
-- L313: TC29472BERSA - Validar error por account CBU con longitud inválida (-1)
-- L313: TC29473BERSA - Validar error por account CBU con longitud inválida (+1)
-- L313: TC29474BERSA - Validar error por account alias con números adicionales
-- L313: TC29475BERSA - Validar error por typeAccount alfanumérico
-- L313: TC29476BERSA - Validar error por account con caracteres especiales
-- L313: TC29477BERSA - Validar error por account boolean true
-- L313: TC29478BERSA - Validar error por account boolean false
-- L313: TC29480BERSA - Validar error por account con formato mixto
-- L313: TC29481BERSA - Validar error cuando typeAccount y account están vacíos
-- L313: TC29482BERSA - Validar error cuando typeAccount y account son inválidos
-- L313: TC29483BERSA - Validar error por inconsistencia typeAccount CBU y account alias
-- L313: TC29484BERSA - Validar error por inconsistencia typeAccount alias y account CBU
-- L313: TC29491BERSA - Validar error por typeAccount CBU vacío
-- L313: TC29492BERSA - Validar error por typeAccount CBU null
-- L313: TC29493BERSA - Validar error por account con espacio
-- L313: TC29494BERSA - Validar error por account con guión
-- L313: TC29495BERSA - Validar error por account con longitud no permitida
-- L313: TC29496BERSA - Validar error por account con apóstrofe
-- L313: TC29497BERSA - Validar error por account vacío
-- L313: TC29498BERSA - Validar error por account null
-- L313: TC29499BERSA - Validar error por account CBU con longitud inválida (-1)
-- L313: TC29500BERSA - Validar error por account cbu con caracteres especiales
-- L313: TC29501BERSA - Validar error por account CBU boolean true
-- L313: TC29502BERSA - Validar error por account CBU boolean false
-- L313: TC29503BERSA - Validar error por typeAccount CVU vacío
-- L313: TC29504BERSA - Validar error por typeAccount CVU null
-- L313: TC29505BERSA - Validar error por account CVU con espacio
-- L313: TC29506BERSA - Validar error por account CVU con guión
-- L313: TC29507BERSA - Validar error por account CVU con longitud no permitida
-- L313: TC29508BERSA - Validar error por account CVU con apóstrofe
-- L313: TC29509BERSA - Validar error por account CVU vacío
-- L313: TC29510BERSA - Validar error por account CVU null
-- L313: TC29511BERSA - Validar error por account CVU con longitud inválida (-1)
-- L313: TC29512BERSA - Validar error por account CVU con longitud inválida (+1)
-- L313: TC29513BERSA - Validar error por account CVU con caracteres especiales
-- L313: TC29514BERSA - Validar error por account CVU boolean true
-- L313: TC29516BERSA - Validar error por account CVU boolean false
+- L327: TC-001-1-0006-UNE - Validar mensaje de error typeAccount con espacio
+- L327: TC-001-1-0007-UNE - Validar error por typeAccount con acento
+- L327: TC-001-1-0008-UNE - Validar error por typeAccount con guión
+- L327: TC-001-1-0009-UNE - Validar error por typeAccount con longitud no permitida
+- L327: TC-001-1-0010-UNE - Validar error por typeAccount con apóstrofe
+- L327: TC-001-1-0011-UNE - Validar error por typeAccount vacío
+- L327: TC-001-1-0012-UNE - Validar error por typeAccount null
+- L327: TC-001-1-0013-UNE - Validar error por typeAccount alfabético no permitido
+- L327: TC-001-1-0014-UNE - Validar error por typeAccount numérico
+- L327: TC-001-1-0015-UNE - Validar error por typeAccount alfanumérico
+- L327: TC-001-1-0016-UNE - Validar error por typeAccount con caracteres especiales
+- L327: TC-001-1-0017-UNE - Validar error por typeAccount boolean true
+- L327: TC-001-1-0018-UNE - Validar error por typeAccount boolean false
+- L327: TC-001-1-0019-UNE - Validar error por typeAccount en minúsculas
+- L327: TC-001-1-0020-UNE - Validar error por typeAccount con prefijo y espacio
+- L327: TC-001-1-0021-UNE - Validar error por account con espacio
+- L327: TC-001-1-0022-UNE - Validar error por account con acento
+- L327: TC-001-1-0023-UNE - Validar error por account con guión
+- L327: TC-001-1-0024-UNE - Validar error por account con longitud no permitida
+- L327: TC-001-1-0025-UNE - Validar error por account con apóstrofe
+- L327: TC-001-1-0026-UNE - Validar error por account vacío
+- L327: TC-001-1-0027-UNE - Validar error por account null
+- L327: TC-001-1-0028-UNE - Validar error por account CBU con longitud inválida (-1)
+- L327: TC-001-1-0029-UNE - Validar error por account CBU con longitud inválida (+1)
+- L327: TC-001-1-0030-UNE - Validar error por account alias con números adicionales
+- L327: TC-001-1-0031-UNE - Validar error por typeAccount alfanumérico
+- L327: TC-001-1-0032-UNE - Validar error por account con caracteres especiales
+- L327: TC-001-1-0033-UNE - Validar error por account boolean true
+- L327: TC-001-1-0034-UNE - Validar error por account boolean false
+- L327: TC-001-1-0035-UNE - Validar error por account con formato mixto
+- L327: TC-001-1-0036-UNE - Validar error cuando typeAccount y account están vacíos
+- L327: TC-001-1-0037-UNE - Validar error cuando typeAccount y account son inválidos
+- L327: TC-001-1-0038-UNE - Validar error por inconsistencia typeAccount CBU y account alias
+- L327: TC-001-1-0039-UNE - Validar error por inconsistencia typeAccount alias y account CBU
+- L327: TC-001-1-0040-UNE - Validar error por typeAccount CBU vacío
+- L327: TC-001-1-0041-UNE - Validar error por typeAccount CBU null
+- L327: TC-001-1-0042-UNE - Validar error por account con espacio
+- L327: TC-001-1-0043-UNE - Validar error por account con guión
+- L327: TC-001-1-0044-UNE - Validar error por account con longitud no permitida
+- L327: TC-001-1-0045-UNE - Validar error por account con apóstrofe
+- L327: TC-001-1-0046-UNE - Validar error por account vacío
+- L327: TC-001-1-0047-UNE - Validar error por account null
+- L327: TC-001-1-0048-UNE - Validar error por account CBU con longitud inválida (-1)
+- L327: TC-001-1-0049-UNE - Validar error por account cbu con caracteres especiales
+- L327: TC-001-1-0050-UNE - Validar error por account CBU boolean true
+- L327: TC-001-1-0051-UNE - Validar error por account CBU boolean false
+- L327: TC-001-1-0052-UNE - Validar error por typeAccount CVU vacío
+- L327: TC-001-1-0053-UNE - Validar error por typeAccount CVU null
+- L327: TC-001-1-0054-UNE - Validar error por account CVU con espacio
+- L327: TC-001-1-0055-UNE - Validar error por account CVU con guión
+- L327: TC-001-1-0056-UNE - Validar error por account CVU con longitud no permitida
+- L327: TC-001-1-0057-UNE - Validar error por account CVU con apóstrofe
+- L327: TC-001-1-0058-UNE - Validar error por account CVU vacío
+- L327: TC-001-1-0059-UNE - Validar error por account CVU null
+- L327: TC-001-1-0060-UNE - Validar error por account CVU con longitud inválida (-1)
+- L327: TC-001-1-0061-UNE - Validar error por account CVU con longitud inválida (+1)
+- L327: TC-001-1-0062-UNE - Validar error por account CVU con caracteres especiales
+- L327: TC-001-1-0063-UNE - Validar error por account CVU boolean true
+- L327: TC-001-1-0064-UNE - Validar error por account CVU boolean false
 
-### `tests/api/accounts/should-reject-invalid-echeq-list-filters.api.spec.ts`
+### `tests/api/001-accounts/should-reject-invalid-echeq-list-filters.api.spec.ts`
 
 Fixtures: `echeqListApi`, `loginApi`, `loginCredentials`
 
-- L113: TC29517BERSA - Validar error por echeqNumber con espacio
-- L113: TC29518BERSA - Validar error por echeqNumber con caracteres especiales
-- L113: TC29519BERSA - Validar error por statement con espacio
-- L113: TC29520BERSA - Validar error por statement con caracteres especiales
-- L113: TC29521BERSA - Validar error por filterCuil con espacio
-- L113: TC29522BERSA - Validar error por filterCuil con caracteres especiales
-- L113: TC29523BERSA - Validar error por operationType con espacio
-- L113: TC29524BERSA - Validar error por operationType con caracteres especiales
-- L113: TC29525BERSA - Validar error por page con espacio
-- L113: TC29526BERSA - Validar error por page con caracteres especiales
-- L113: TC29527BERSA - Validar error por filterCuil boolean true
-- L113: TC29528BERSA - Validar error por filterCuil boolean false
-- L113: TC29529BERSA - Validar error por filterCuil null
-- L113: TC29530BERSA - Validar error por page con guión
-- L113: TC29531BERSA - Validar error por page alfabético no permitido
-- L113: TC29532BERSA - Validar error por page boolean true
-- L113: TC29533BERSA - Validar error por page boolean false
-- L113: TC29534BERSA - Validar error por page con prefijo y espacio
+- L115: TC-001-1-0065-UNE - Validar error por echeqNumber con espacio
+- L115: TC-001-1-0066-UNE - Validar error por echeqNumber con caracteres especiales
+- L115: TC-001-1-0067-UNE - Validar error por statement con espacio
+- L115: TC-001-1-0068-UNE - Validar error por statement con caracteres especiales
+- L115: TC-001-1-0069-UNE - Validar error por filterCuil con espacio
+- L115: TC-001-1-0070-UNE - Validar error por filterCuil con caracteres especiales
+- L115: TC-001-1-0071-UNE - Validar error por operationType con espacio
+- L115: TC-001-1-0072-UNE - Validar error por operationType con caracteres especiales
+- L115: TC-001-1-0073-UNE - Validar error por page con espacio
+- L115: TC-001-1-0074-UNE - Validar error por page con caracteres especiales
+- L115: TC-001-1-0075-UNE - Validar error por filterCuil boolean true
+- L115: TC-001-1-0076-UNE - Validar error por filterCuil boolean false
+- L115: TC-001-1-0077-UNE - Validar error por filterCuil null
+- L115: TC-001-1-0078-UNE - Validar error por page con guión
+- L115: TC-001-1-0079-UNE - Validar error por page alfabético no permitido
+- L115: TC-001-1-0080-UNE - Validar error por page boolean true
+- L115: TC-001-1-0081-UNE - Validar error por page boolean false
+- L115: TC-001-1-0082-UNE - Validar error por page con prefijo y espacio
 
-### `tests/api/accounts/should-request-salary-advance.api.spec.ts`
+### `tests/api/001-accounts/should-request-salary-advance.api.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`, `originAccountData`, `productWidgetsApi`, `salaryAdvanceApi`
 
-- L12: TC0223BERSA - Adelantos de Sueldo - Realizar solicitud de adelanto de sueldo
+- L12: TC-001-1-0003-UNE - Adelantos de Sueldo - Realizar solicitud de adelanto de sueldo
 
-### `tests/api/accounts/should-show-salary-advance-card.api.spec.ts`
+### `tests/api/001-accounts/should-show-salary-advance-card.api.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`, `salaryAdvanceApi`
 
-- L8: TC0229BERSA - Adelantos de Sueldo - Mis adelantos - Validar card de adelantos de sueldo
+- L8: TC-001-1-0004-UNE - Adelantos de Sueldo - Mis adelantos - Validar card de adelantos de sueldo
 
-## `tests/api/authentication/`
+## `tests/api/002-authentication/`
 
 Especificaciones: `specs/authentication/api-login.plan.md`, `specs/authentication/login.plan.md`, `specs/authentication/second-factor-code-inbox.plan.md`
 
-### `tests/api/authentication/should-login-and-capture-bearer.api.spec.ts`
+### `tests/api/002-authentication/should-login-and-capture-bearer.api.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`
 
-- L8: TC0017BERSA - inicia sesión y captura el Bearer token @regression
+- L8: TC-002-1-0001-UNE - inicia sesión y captura el Bearer token @regression
 
-## `tests/api/cards/`
+## `tests/api/003-cards/`
 
 Especificaciones: `specs/cards/credit-card-other-amount-payment.api.plan.md`, `specs/cards/credit-card-total-payment.ui.plan.md`
 
-### `tests/api/cards/should-pay-credit-card-minimum.api.spec.ts`
+### `tests/api/003-cards/should-pay-credit-card-minimum.api.spec.ts`
 
 Fixtures: `creditCardPaymentData`, `creditCardPaymentsApi`, `loginApi`, `loginCredentials`, `productWidgetsApi`
 
-- L18: TC0164BERSA - Tarjeta de Crédito - Pagar mínimo de una Tarjeta de Crédito Visa
-- L18: TC16039BERSA - Tarjetas de crédito - Pagar el importe mínimo de una tarjeta de crédito Mastercard
+- L18: TC-003-1-0002-UNE - Tarjeta de Crédito - Pagar mínimo de una Tarjeta de Crédito Visa
+- L18: TC-003-1-0008-UNE - Tarjetas de crédito - Pagar el importe mínimo de una tarjeta de crédito Mastercard
 
-### `tests/api/cards/should-pay-credit-card-other-amount.api.spec.ts`
+### `tests/api/003-cards/should-pay-credit-card-other-amount.api.spec.ts`
 
 Fixtures: `creditCardOtherAmountPaymentApi`, `creditCardOtherAmountPaymentData`, `loginApi`, `loginCredentials`
 
-- L8: TC12967BERSA - paga ARS 1 de una tarjeta Visa por otro importe @regression
+- L8: TC-003-1-0007-UNE - paga ARS 1 de una tarjeta Visa por otro importe @regression
 
-### `tests/api/cards/should-pay-mastercard-other-amount.api.spec.ts`
+### `tests/api/003-cards/should-pay-mastercard-other-amount.api.spec.ts`
 
 Fixtures: `creditCardPaymentData`, `creditCardPaymentsApi`, `loginApi`, `loginCredentials`, `productWidgetsApi`
 
-- L12: TC0165BERSA - Pagar tarjeta de crédito Master - Otro importe
+- L12: TC-003-1-0003-UNE - Pagar tarjeta de crédito Master - Otro importe
 
-### `tests/api/cards/should-reject-credit-card-request-by-declaration.api.spec.ts`
-
-Fixtures: `creditCardApplicationApi`, `loginApi`, `loginCredentials`, `optionalOriginAccountData`, `paymentLinkSyncApi`, `productWidgetsApi`
-
-- L39: TC0192BERSA - Tarjetas de crédito - Persona expuesta políticamente no permite continuar la solicitud
-- L39: TC0193BERSA - Tarjetas de crédito - Residencia fiscal en el exterior no permite continuar la solicitud
-- L39: TC0194BERSA - Tarjetas de crédito - Sujeto obligado UIF no permite continuar la solicitud
-
-### `tests/api/cards/should-request-credit-card.api.spec.ts`
+### `tests/api/003-cards/should-reject-credit-card-request-by-declaration.api.spec.ts`
 
 Fixtures: `creditCardApplicationApi`, `loginApi`, `loginCredentials`, `optionalOriginAccountData`, `paymentLinkSyncApi`, `productWidgetsApi`
 
-- L9: TC0149BERSA - Tarjeta de Crédito - Solicitar nueva tarjeta de crédito
+- L39: TC-003-1-0004-UNE - Tarjetas de crédito - Persona expuesta políticamente no permite continuar la solicitud
+- L39: TC-003-1-0005-UNE - Tarjetas de crédito - Residencia fiscal en el exterior no permite continuar la solicitud
+- L39: TC-003-1-0006-UNE - Tarjetas de crédito - Sujeto obligado UIF no permite continuar la solicitud
 
-### `tests/api/cards/should-send-applicant-cuil-in-credit-card-request.api.spec.ts`
+### `tests/api/003-cards/should-request-credit-card.api.spec.ts`
 
 Fixtures: `creditCardApplicationApi`, `loginApi`, `loginCredentials`, `optionalOriginAccountData`, `paymentLinkSyncApi`, `productWidgetsApi`
 
-- L22: TC128238BERSA - API - Tarjeta de Crédito - Verificar que el dato cuilSolicitante se envíe en application/create en nueva alta de TC
-- L22: TC128239BERSA - API - Tarjeta de Crédito - Verificar que el dato cuilSolicitante se envíe en application/update en alta de TC ya iniciada
+- L9: TC-003-1-0001-UNE - Tarjeta de Crédito - Solicitar nueva tarjeta de crédito
 
-## `tests/api/home/`
+### `tests/api/003-cards/should-send-applicant-cuil-in-credit-card-request.api.spec.ts`
+
+Fixtures: `creditCardApplicationApi`, `loginApi`, `loginCredentials`, `optionalOriginAccountData`, `paymentLinkSyncApi`, `productWidgetsApi`
+
+- L22: TC-003-1-0009-UNE - API - Tarjeta de Crédito - Verificar que el dato cuilSolicitante se envíe en application/create en nueva alta de TC
+- L22: TC-003-1-0010-UNE - API - Tarjeta de Crédito - Verificar que el dato cuilSolicitante se envíe en application/update en alta de TC ya iniciada
+
+## `tests/api/005-home/`
 
 Especificaciones: `specs/home/terms-and-conditions.api.plan.md`
 
-### `tests/api/home/should-get-terms-and-conditions.api.spec.ts`
+### `tests/api/005-home/should-get-terms-and-conditions.api.spec.ts`
 
 Fixtures: `termsAndConditionsApi`
 
-- L8: TC0159BERSA - obtiene los términos y condiciones generales
+- L8: TC-005-1-0001-UNE - obtiene los términos y condiciones generales
 
-## `tests/api/investments/`
+## `tests/api/007-investments/`
 
 Especificaciones: `specs/investments/fund-risk-filter.ui.plan.md`, `specs/investments/traditional-fixed-term.api.plan.md`
 
-### `tests/api/investments/should-create-traditional-fixed-term.api.spec.ts`
+### `tests/api/007-investments/should-create-traditional-fixed-term.api.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`, `traditionalFixedTermApi`, `traditionalFixedTermData`
 
-- L8: TC0042BERSA - constituye un plazo fijo tradicional en ARS a 30 días
+- L8: TC-007-1-0002-UNE - constituye un plazo fijo tradicional en ARS a 30 días
 
-### `tests/api/investments/should-create-usd-fixed-term.api.spec.ts`
+### `tests/api/007-investments/should-create-usd-fixed-term.api.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`, `originAccountData`, `productWidgetsApi`, `traditionalFixedTermApi`
 
-- L9: TC12973BERSA - Plazo Fijo Tradicional en Dólares
+- L9: TC-007-1-0008-UNE - Plazo Fijo Tradicional en Dólares
 
-### `tests/api/investments/should-exchange-dollars.api.spec.ts`
+### `tests/api/007-investments/should-exchange-dollars.api.spec.ts`
 
 Fixtures: `accountPairData`, `dollarExchangeApi`, `loginApi`, `loginCredentials`, `productWidgetsApi`
 
-- L9: TC0069BERSA - Compra de moneda extranjera (USD)
-- L32: TC0009BERSA - Venta de moneda extranjera (USD)
+- L9: TC-007-1-0003-UNE - Compra de moneda extranjera (USD)
+- L32: TC-007-1-0001-UNE - Venta de moneda extranjera (USD)
 
-### `tests/api/investments/should-list-fund-movements.api.spec.ts`
-
-Fixtures: `investmentFundsApi`, `loginApi`, `loginCredentials`
-
-- L22: TC0129BERSA - FCI - Movimientos
-- L38: TC0130BERSA - FCI - Movimientos con descarga PDF
-
-### `tests/api/investments/should-open-investment-funds.api.spec.ts`
+### `tests/api/007-investments/should-list-fund-movements.api.spec.ts`
 
 Fixtures: `investmentFundsApi`, `loginApi`, `loginCredentials`
 
-- L9: TC0115BERSA - FCI - Simular API (inicio a la funcionalidad)
+- L22: TC-007-1-0006-UNE - FCI - Movimientos
+- L38: TC-007-1-0007-UNE - FCI - Movimientos con descarga PDF
 
-### `tests/api/investments/should-show-commitent-account-closure-form.api.spec.ts`
+### `tests/api/007-investments/should-open-investment-funds.api.spec.ts`
+
+Fixtures: `investmentFundsApi`, `loginApi`, `loginCredentials`
+
+- L9: TC-007-1-0004-UNE - FCI - Simular API (inicio a la funcionalidad)
+
+### `tests/api/007-investments/should-show-commitent-account-closure-form.api.spec.ts`
 
 Fixtures: `commitentAccountApi`, `loginApi`, `loginCredentials`
 
-- L16: TC0125BERSA - FCI - Solicitar baja cuenta comitente - Validación de pantalla
+- L16: TC-007-1-0005-UNE - FCI - Solicitar baja cuenta comitente - Validación de pantalla
 
-## `tests/api/messages/`
+## `tests/api/009-messages/`
 
 Especificaciones: `specs/messages/mark-message-unread.ui.plan.md`, `specs/messages/received-messages.api.plan.md`
 
-### `tests/api/messages/should-filter-messages-by-read-state.api.spec.ts`
+### `tests/api/009-messages/should-filter-messages-by-read-state.api.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`, `receivedMessagesApi`
 
-- L11: TC0094BERSA - Mensajes - Sin Leer
-- L26: TC0098BERSA - Mensajes - Leídos
+- L11: TC-009-1-0001-UNE - Mensajes - Sin Leer
+- L26: TC-009-1-0002-UNE - Mensajes - Leídos
 
-### `tests/api/messages/should-list-received-messages.api.spec.ts`
+### `tests/api/009-messages/should-list-received-messages.api.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`, `receivedMessagesApi`
 
-- L8: TC0109BERSA - consulta los mensajes recibidos
+- L8: TC-009-1-0003-UNE - consulta los mensajes recibidos
 
-## `tests/api/payments/`
+## `tests/api/011-payments/`
 
 Especificaciones: `specs/payments/debin-generation.api.plan.md`
 
-### `tests/api/payments/should-accept-pending-debin.api.spec.ts`
+### `tests/api/011-payments/should-accept-pending-debin.api.spec.ts`
 
 Fixtures: `debinOperationsApi`, `debitCardData`, `loginApi`, `loginCredentials`, `paymentLinkSyncApi`, `productWidgetsApi`
 
-- L10: TC0070BERSA - Aceptación de DEBIN
+- L10: TC-011-1-0004-UNE - Aceptación de DEBIN
 
-### `tests/api/payments/should-adhere-tax-service.api.spec.ts`
+### `tests/api/011-payments/should-adhere-tax-service.api.spec.ts`
 
 Fixtures: `debitCardData`, `loginApi`, `loginCredentials`, `paymentLinkSyncApi`, `productWidgetsApi`, `taxServicesApi`
 
-- L11: TC0074BERSA - Adherir nuevo pago o servicio
+- L11: TC-011-1-0005-UNE - Adherir nuevo pago o servicio
 
-### `tests/api/payments/should-download-payment-receipts-period.api.spec.ts`
+### `tests/api/011-payments/should-download-payment-receipts-period.api.spec.ts`
 
 Fixtures: `debitCardData`, `loginApi`, `loginCredentials`, `paymentLinkSyncApi`, `paymentReceiptsApi`, `productWidgetsApi`, `receivedMessagesApi`
 
-- L26: TC0137BERSA - Pagos - Comprobantes - Descargar periodo en PDF
-- L26: TC0138BERSA - Pagos - Comprobantes - Descargar periodo en XLS
+- L26: TC-011-1-0007-UNE - Pagos - Comprobantes - Descargar periodo en PDF
+- L26: TC-011-1-0008-UNE - Pagos - Comprobantes - Descargar periodo en XLS
 
-### `tests/api/payments/should-generate-debin.api.spec.ts`
+### `tests/api/011-payments/should-generate-debin.api.spec.ts`
 
 Fixtures: `debinGenerationApi`, `debinGenerationData`, `loginApi`, `loginCredentials`
 
-- L8: TC0013BERSA - genera una orden DEBIN seleccionando CBU
+- L8: TC-011-1-0002-UNE - genera una orden DEBIN seleccionando CBU
 
-### `tests/api/payments/should-list-debin-history.api.spec.ts`
+### `tests/api/011-payments/should-list-debin-history.api.spec.ts`
 
 Fixtures: `debinOperationsApi`, `loginApi`, `loginCredentials`, `paymentLinkSyncApi`
 
-- L8: TC0012BERSA - DEBIN Comprador - Consulta DEBINes históricos - Listado
+- L8: TC-011-1-0001-UNE - DEBIN Comprador - Consulta DEBINes históricos - Listado
 
-### `tests/api/payments/should-list-payment-receipts.api.spec.ts`
+### `tests/api/011-payments/should-list-payment-receipts.api.spec.ts`
 
 Fixtures: `debitCardData`, `loginApi`, `loginCredentials`, `paymentLinkSyncApi`, `paymentReceiptsApi`, `productWidgetsApi`
 
-- L12: TC0108BERSA - Pagos - Consulta de comprobantes
+- L12: TC-011-1-0006-UNE - Pagos - Consulta de comprobantes
 
-### `tests/api/payments/should-pay-tax-service-without-base.api.spec.ts`
+### `tests/api/011-payments/should-pay-tax-service-without-base.api.spec.ts`
 
 Fixtures: `debitCardData`, `loginApi`, `loginCredentials`, `originAccountData`, `paymentLinkSyncApi`, `productWidgetsApi`, `taxServicesApi`
 
-- L11: TC12964BERSA - Pagar impuesto/servicio nuevo pago (sin base)
+- L11: TC-011-1-0009-UNE - Pagar impuesto/servicio nuevo pago (sin base)
 
-### `tests/api/payments/should-remove-tax-service.api.spec.ts`
+### `tests/api/011-payments/should-remove-tax-service.api.spec.ts`
 
 Fixtures: `debitCardData`, `loginApi`, `loginCredentials`, `paymentLinkSyncApi`, `productWidgetsApi`, `taxServicesApi`
 
-- L10: TC12966BERSA - Pagar impuesto/servicio - Eliminar servicio
+- L10: TC-011-1-0010-UNE - Pagar impuesto/servicio - Eliminar servicio
 
-### `tests/api/payments/should-subscribe-recurring-debin.api.spec.ts`
+### `tests/api/011-payments/should-subscribe-recurring-debin.api.spec.ts`
 
 Fixtures: `debinOperationsApi`, `loginApi`, `loginCredentials`, `originAccountData`, `paymentLinkSyncApi`, `productWidgetsApi`
 
-- L11: TC0015BERSA - Adherir DEBIN recurrente (Pesos) - segundo factor por SMS
+- L11: TC-011-1-0003-UNE - Adherir DEBIN recurrente (Pesos) - segundo factor por SMS
 
-## `tests/api/procedures/`
+## `tests/api/012-procedures/`
 
 Especificaciones: `specs/procedures/current-online-procedures.api.plan.md`
 
-### `tests/api/procedures/should-list-current-online-procedures.api.spec.ts`
+### `tests/api/012-procedures/should-list-current-online-procedures.api.spec.ts`
 
 Fixtures: `currentOnlineProceduresApi`, `loginApi`, `loginCredentials`
 
-- L8: TC0078BERSA - consulta los trámites vigentes
+- L8: TC-012-1-0001-UNE - consulta los trámites vigentes
 
-## `tests/api/profile/`
+## `tests/api/013-profile/`
 
 Especificaciones: `specs/profile/change-address.ui.plan.md`, `specs/profile/change-phone.api.plan.md`, `specs/profile/notification-preferences.api.plan.md`
 
-### `tests/api/profile/should-change-phone.api.spec.ts`
+### `tests/api/013-profile/should-change-phone.api.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`, `phoneChangeApi`
 
-- L9: TC0001BERSA - cambia el teléfono y verifica que quedó persistido
+- L9: TC-013-1-0001-UNE - cambia el teléfono y verifica que quedó persistido
 
-### `tests/api/profile/should-get-notification-preferences.api.spec.ts`
+### `tests/api/013-profile/should-get-notification-preferences.api.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`, `notificationPreferencesApi`
 
-- L8: TC0102BERSA - consulta la configuración de notificaciones
+- L8: TC-013-1-0002-UNE - consulta la configuración de notificaciones
 
-## `tests/api/transfers/`
+## `tests/api/015-transfers/`
 
 Especificaciones: `specs/transfers/own-account-transfer.api.plan.md`, `specs/transfers/own-account-transfer.ui.plan.md`
 
-### `tests/api/transfers/should-generate-credin.api.spec.ts`
+### `tests/api/015-transfers/should-generate-credin.api.spec.ts`
 
 Fixtures: `credinApi`, `loginApi`, `loginCredentials`, `productWidgetsApi`, `transferCaseData`
 
-- L56: TC0014BERSA - Generar CREDIN - Cuenta propia $ (mismo Banco u otro) - Mas de una cuenta Debito - CBU - Segundo factor por SMS
-- L56: TC12938BERSA - TRANSFERENCIAS - Generar CREDIN - Dolares
-- L73: TC12939BERSA - TRANSFERENCIAS - Consultar CREDIN Originante
-- L73: TC12940BERSA - TRANSFERENCIAS - Consultar CREDIN destinatario
+- L56: TC-015-1-0002-UNE - Generar CREDIN - Cuenta propia $ (mismo Banco u otro) - Mas de una cuenta Debito - CBU - Segundo factor por SMS
+- L56: TC-015-1-0031-UNE - TRANSFERENCIAS - Generar CREDIN - Dolares
+- L73: TC-015-1-0032-UNE - TRANSFERENCIAS - Consultar CREDIN Originante
+- L73: TC-015-1-0033-UNE - TRANSFERENCIAS - Consultar CREDIN destinatario
 
-### `tests/api/transfers/should-list-transfer-history.api.spec.ts`
+### `tests/api/015-transfers/should-list-transfer-history.api.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`, `thirdPartyTransfersApi`, `thirdPartyTransferWorkflow`, `transferCaseData`, `transferHistoryApi`
 
-- L20: TC18100BERSA - Transferencias programadas - Fecha específica agendada - Historial de transferencias
-- L66: TC18101BERSA - Transferencias a contacto agendado - Historial de transferencias
-- L116: TC18102BERSA - Transferencias a CVU - Historial de transferencias
-- L158: TC16759BERSA - Transferencias realizadas - Ver mis transferencias - Filtros
-- L185: TC16765BERSA - Transferencias realizadas - Ver mis transferencias - rango más nombre en buscador
-- L185: TC16768BERSA - Transferencias realizadas - Ver mis transferencias - rango más nombre en buscador
-- L203: TC18104BERSA - Transferencias realizadas - Ver mis transferencias - Búsqueda sin resultados
+- L20: TC-015-1-0045-UNE - Transferencias programadas - Fecha específica agendada - Historial de transferencias
+- L66: TC-015-1-0046-UNE - Transferencias a contacto agendado - Historial de transferencias
+- L116: TC-015-1-0047-UNE - Transferencias a CVU - Historial de transferencias
+- L158: TC-015-1-0036-UNE - Transferencias realizadas - Ver mis transferencias - Filtros
+- L185: TC-015-1-0037-UNE - Transferencias realizadas - Ver mis transferencias - rango más nombre en buscador
+- L185: TC-015-1-0038-UNE - Transferencias realizadas - Ver mis transferencias - rango más nombre en buscador
+- L203: TC-015-1-0048-UNE - Transferencias realizadas - Ver mis transferencias - Búsqueda sin resultados
 
-### `tests/api/transfers/should-manage-transfer-contacts.api.spec.ts`
+### `tests/api/015-transfers/should-manage-transfer-contacts.api.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`, `thirdPartyTransfersApi`, `thirdPartyTransferWorkflow`, `transferCaseData`
 
-- L11: TC0145BERSA - Transferencias - Añadir nuevo destinatario - Con cbu valido
-- L38: TC12981BERSA - Transferencias - Eliminar destinatario de agenda
+- L11: TC-015-1-0004-UNE - Transferencias - Añadir nuevo destinatario - Con cbu valido
+- L38: TC-015-1-0035-UNE - Transferencias - Eliminar destinatario de agenda
 
-### `tests/api/transfers/should-schedule-transfers.api.spec.ts`
+### `tests/api/015-transfers/should-schedule-transfers.api.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`, `productWidgetsApi`, `thirdPartyTransfersApi`, `thirdPartyTransferWorkflow`, `transferCaseData`
 
-- L47: TC0472BERSA - Transferencias Programadas (Fecha especifica) CBU - terceros mismo banco USD - NO AGENDADOS
-- L47: TC0473BERSA - Transferencias Programadas (Fecha especifica) CBU - terceros otros bancos $ - NO AGENDADOS
-- L47: TC0474BERSA - Transferencias Programadas (Fecha especifica) CBU - terceros otros bancos USD - NO AGENDADOS
-- L47: TC0478BERSA - Transferencias Programadas (Fecha especifica) ALIAS - terceros mismo banco USD - NO AGENDADOS
-- L47: TC0479BERSA - Transferencias Programadas (Fecha especifica) ALIAS - terceros otros bancos $ - NO AGENDADOS
-- L47: TC0480BERSA - Transferencias Programadas (Fecha especifica) ALIAS - terceros otros bancos USD - NO AGENDADOS
-- L47: TC0484BERSA - Transferencias Programadas (Fecha especifica) CVU - terceros $ NO AGENDADOS
-- L47: TC0485BERSA - Transferencias Programadas (Fecha especifica) ALIAS de CVU - terceros $ NO AGENDADOS
-- L84: TC0418BERSA - Transferencias CBU - terceros otros bancos USD - NO AGENDADOS
-- L129: TC18090BERSA - Programada (fecha específica) CBU a cuentas propias otro banco $ - NO AGENDADO
-- L129: TC18094BERSA - Programada (fecha específica) CBU a Terceros otro banco $ - NO AGENDADOS
-- L178: TC0465BERSA - Programadas (fecha específica) - terceros mismo banco $ - AGENDADOS
-- L178: TC0467BERSA - Programadas (fecha específica) - terceros otros bancos $ - AGENDADOS
-- L178: TC0468BERSA - Programadas (fecha específica) - terceros otros bancos USD - AGENDADOS
-- L178: TC0483BERSA - Programadas (fecha específica) CVU - terceros $ AGENDADOS
-- L215: TC0008BERSA - Transferencia intrabancaria en pesos - propias - programada
+- L47: TC-015-1-0018-UNE - Transferencias Programadas (Fecha especifica) CBU - terceros mismo banco USD - NO AGENDADOS
+- L47: TC-015-1-0019-UNE - Transferencias Programadas (Fecha especifica) CBU - terceros otros bancos $ - NO AGENDADOS
+- L47: TC-015-1-0020-UNE - Transferencias Programadas (Fecha especifica) CBU - terceros otros bancos USD - NO AGENDADOS
+- L47: TC-015-1-0022-UNE - Transferencias Programadas (Fecha especifica) ALIAS - terceros mismo banco USD - NO AGENDADOS
+- L47: TC-015-1-0023-UNE - Transferencias Programadas (Fecha especifica) ALIAS - terceros otros bancos $ - NO AGENDADOS
+- L47: TC-015-1-0024-UNE - Transferencias Programadas (Fecha especifica) ALIAS - terceros otros bancos USD - NO AGENDADOS
+- L47: TC-015-1-0026-UNE - Transferencias Programadas (Fecha especifica) CVU - terceros $ NO AGENDADOS
+- L47: TC-015-1-0027-UNE - Transferencias Programadas (Fecha especifica) ALIAS de CVU - terceros $ NO AGENDADOS
+- L84: TC-015-1-0010-UNE - Transferencias CBU - terceros otros bancos USD - NO AGENDADOS
+- L129: TC-015-1-0040-UNE - Programada (fecha específica) CBU a cuentas propias otro banco $ - NO AGENDADO
+- L129: TC-015-1-0042-UNE - Programada (fecha específica) CBU a Terceros otro banco $ - NO AGENDADOS
+- L178: TC-015-1-0015-UNE - Programadas (fecha específica) - terceros mismo banco $ - AGENDADOS
+- L178: TC-015-1-0016-UNE - Programadas (fecha específica) - terceros otros bancos $ - AGENDADOS
+- L178: TC-015-1-0017-UNE - Programadas (fecha específica) - terceros otros bancos USD - AGENDADOS
+- L178: TC-015-1-0025-UNE - Programadas (fecha específica) CVU - terceros $ AGENDADOS
+- L215: TC-015-1-0001-UNE - Transferencia intrabancaria en pesos - propias - programada
 
-### `tests/api/transfers/should-transfer-between-own-accounts.api.spec.ts`
+### `tests/api/015-transfers/should-transfer-between-own-accounts.api.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`, `ownAccountTransferApi`, `ownAccountTransferData`
 
-- L8: TC0139BERSA - transfiere entre cuentas propias y valida el ticket @critical
+- L8: TC-015-1-0003-UNE - transfiere entre cuentas propias y valida el ticket @critical
 
-### `tests/api/transfers/should-transfer-to-adhered-contact.api.spec.ts`
-
-Fixtures: `loginApi`, `loginCredentials`, `thirdPartyTransfersApi`, `thirdPartyTransferWorkflow`, `transferCaseData`
-
-- L20: TC0409BERSA - TRANSFERENCIAS - terceros mismo banco $ - AGENDADOS
-- L20: TC0410BERSA - Transferencias - terceros mismo banco USD - AGENDADOS
-- L20: TC0411BERSA - Transferencias - terceros otros bancos $ - AGENDADOS
-- L20: TC0412BERSA - Transferencias - terceros mismo banco USD - AGENDADOS
-- L20: TC0427BERSA - Transferencias CVU - terceros $ AGENDADOS
-
-### `tests/api/transfers/should-transfer-to-third-parties.api.spec.ts`
+### `tests/api/015-transfers/should-transfer-to-adhered-contact.api.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`, `thirdPartyTransfersApi`, `thirdPartyTransferWorkflow`, `transferCaseData`
 
-- L112: TC0344BERSA - A cuentas de terceros ALIAS - otros bancos - Pesos
-- L112: TC0422BERSA - ALIAS - terceros mismo banco USD - NO AGENDADOS
-- L112: TC0424BERSA - ALIAS - terceros otros bancos USD - NO AGENDADOS
-- L112: TC0429BERSA - ALIAS de CVU - terceros $ NO AGENDADOS
-- L112: TC12930BERSA - A cuentas de terceros CBU - mismo banco - Pesos
-- L112: TC12932BERSA - A cuentas de terceros ALIAS - mismo banco - Pesos
-- L112: TC12969BERSA - A cuentas de terceros CVU - otros bancos - Pesos
-- L112: TC18097BERSA - Saldo actualizado - Transferencias a un Alias CVU en pesos
-- L112: TC18098BERSA - Saldo actualizado - Transferencias a un Alias CBU en dólares
-- L169: TC0477BERSA - Transferencias Programadas (Fecha especifica) ALIAS - terceros mismo banco $ - NO AGENDADOS
-- L169: TC12935BERSA - Transferencias Programadas (Fecha especifica) CBU - terceros mismo banco $ - NO AGENDADOS
-- L208: TC18089BERSA - Transferencia a cuentas propias con CBU de otra entidad sin el campo Descripción al agendarse
-- L208: TC18093BERSA - Transferencia a Terceros con CBU de otra entidad sin el campo Descripción
+- L20: TC-015-1-0006-UNE - TRANSFERENCIAS - terceros mismo banco $ - AGENDADOS
+- L20: TC-015-1-0007-UNE - Transferencias - terceros mismo banco USD - AGENDADOS
+- L20: TC-015-1-0008-UNE - Transferencias - terceros otros bancos $ - AGENDADOS
+- L20: TC-015-1-0009-UNE - Transferencias - terceros mismo banco USD - AGENDADOS
+- L20: TC-015-1-0013-UNE - Transferencias CVU - terceros $ AGENDADOS
 
-## `tests/ui/accounts/`
+### `tests/api/015-transfers/should-transfer-to-third-parties.api.spec.ts`
+
+Fixtures: `loginApi`, `loginCredentials`, `thirdPartyTransfersApi`, `thirdPartyTransferWorkflow`, `transferCaseData`
+
+- L117: TC-015-1-0005-UNE - A cuentas de terceros ALIAS - otros bancos - Pesos
+- L117: TC-015-1-0011-UNE - ALIAS - terceros mismo banco USD - NO AGENDADOS
+- L117: TC-015-1-0012-UNE - ALIAS - terceros otros bancos USD - NO AGENDADOS
+- L117: TC-015-1-0014-UNE - ALIAS de CVU - terceros $ NO AGENDADOS
+- L117: TC-015-1-0028-UNE - A cuentas de terceros CBU - mismo banco - Pesos
+- L117: TC-015-1-0029-UNE - A cuentas de terceros ALIAS - mismo banco - Pesos
+- L117: TC-015-1-0034-UNE - A cuentas de terceros CVU - otros bancos - Pesos
+- L117: TC-015-1-0043-UNE - Saldo actualizado - Transferencias a un Alias CVU en pesos
+- L117: TC-015-1-0044-UNE - Saldo actualizado - Transferencias a un Alias CBU en dólares
+- L174: TC-015-1-0021-UNE - Transferencias Programadas (Fecha especifica) ALIAS - terceros mismo banco $ - NO AGENDADOS
+- L174: TC-015-1-0030-UNE - Transferencias Programadas (Fecha especifica) CBU - terceros mismo banco $ - NO AGENDADOS
+- L213: TC-015-1-0039-UNE - Transferencia a cuentas propias con CBU de otra entidad sin el campo Descripción al agendarse
+- L213: TC-015-1-0041-UNE - Transferencia a Terceros con CBU de otra entidad sin el campo Descripción
+
+## `tests/ui/001-accounts/`
 
 Especificaciones: `specs/accounts/withdrawal-order.api.plan.md`
 
-### `tests/ui/accounts/should-enable-new-account-request-continue.ui.spec.ts`
+### `tests/ui/001-accounts/should-enable-new-account-request-continue.ui.spec.ts`
 
 Fixtures: `accountsPage`, `loginCredentials`, `loginPage`, `startPage`
 
-- L13: TC29410BERSA - habilita Continuar al elegir Caja de Ahorro en Pesos
-- L13: TC29411BERSA - habilita Continuar al elegir Caja de Ahorro en Dólares
-- L13: TC29412BERSA - habilita Continuar al elegir Cuenta Corriente en Pesos
+- L13: TC-001-2-0011-UNE - habilita Continuar al elegir Caja de Ahorro en Pesos
+- L13: TC-001-2-0012-UNE - habilita Continuar al elegir Caja de Ahorro en Dólares
+- L13: TC-001-2-0013-UNE - habilita Continuar al elegir Cuenta Corriente en Pesos
 
-### `tests/ui/accounts/should-filter-echeqs.ui.spec.ts`
+### `tests/ui/001-accounts/should-filter-echeqs.ui.spec.ts`
 
 Fixtures: `echeqPage`, `loginCredentials`, `loginPage`, `startPage`
 
-- L10: TC29414BERSA - combina filtros de CUIT, estado y fecha de emisión
+- L10: TC-001-2-0015-UNE - combina filtros de CUIT, estado y fecha de emisión
 
-### `tests/ui/accounts/should-open-salary-advance-contract.ui.spec.ts`
+### `tests/ui/001-accounts/should-open-salary-advance-contract.ui.spec.ts`
 
 Fixtures: `loginCredentials`, `loginPage`, `originAccountUiData`, `salaryAdvancePage`, `startPage`
 
-- L9: TC0227BERSA - redirige al documento del contrato al aceptar
-- L33: TC0228BERSA - vuelve a la solicitud de adelanto al cancelar la redirección
+- L9: TC-001-2-0007-UNE - redirige al documento del contrato al aceptar
+- L33: TC-001-2-0008-UNE - vuelve a la solicitud de adelanto al cancelar la redirección
 
-### `tests/ui/accounts/should-operate-echeqs.ui.spec.ts`
+### `tests/ui/001-accounts/should-operate-echeqs.ui.spec.ts`
 
 Fixtures: `echeqPage`, `loginApi`, `loginCredentials`, `loginPage`, `smsOperationOtpApi`, `startPage`
 
-- L23: TC29413BERSA - muestra los campos del filtro de eCheq
-- L45: TC0026BERSA - muestra el detalle del primer eCheq con todos los estados
-- L70: TC124865BERSA - acepta un eCheq emitido pendiente con segundo factor
+- L23: TC-001-2-0014-UNE - muestra los campos del filtro de eCheq
+- L45: TC-001-2-0001-UNE - muestra el detalle del primer eCheq con todos los estados
+- L70: TC-001-2-0016-UNE - acepta un eCheq emitido pendiente con segundo factor
 
-### `tests/ui/accounts/should-show-account-movement-detail.ui.spec.ts`
+### `tests/ui/001-accounts/should-show-account-movement-detail.ui.spec.ts`
 
 Fixtures: `accountsPage`, `loginCredentials`, `loginPage`, `originAccountUiData`, `startPage`
 
-- L9: TC0040BERSA - muestra fecha, concepto y monto del primer movimiento
+- L9: TC-001-2-0002-UNE - muestra fecha, concepto y monto del primer movimiento
 
-### `tests/ui/accounts/should-transfer-to-scheduled-contact-and-find-movement.ui.spec.ts`
+### `tests/ui/001-accounts/should-transfer-to-scheduled-contact-and-find-movement.ui.spec.ts`
 
 Fixtures: `accountMovementsPage`, `accountMovementsUiData`, `loginCredentials`, `loginPage`, `startPage`
 
-- L8: TC0041BERSA - filtra movimientos por tipo de transacción en una cuenta
+- L8: TC-001-2-0003-UNE - filtra movimientos por tipo de transacción en una cuenta
 
-### `tests/ui/accounts/should-validate-account-alias.ui.spec.ts`
+### `tests/ui/001-accounts/should-validate-account-alias.ui.spec.ts`
 
 Fixtures: `accountAliasPage`, `accountAliasUiData`, `loginCredentials`, `loginPage`, `startPage`
 
-- L11: TC128241BERSA - Web - Modif. Alias - Validar controles del campo mandatorio Alias
+- L11: TC-001-2-0017-UNE - Web - Modif. Alias - Validar controles del campo mandatorio Alias
 
-### `tests/ui/accounts/should-validate-salary-advance-request.ui.spec.ts`
+### `tests/ui/001-accounts/should-validate-salary-advance-request.ui.spec.ts`
 
 Fixtures: `homePage`, `loginCredentials`, `loginPage`, `originAccountUiData`, `salaryAdvancePage`, `startPage`
 
-- L13: TC0222BERSA - muestra la pantalla completa de solicitud de adelanto
-- L35: TC0225BERSA - vuelve a la solicitud al presionar Volver
-- L58: TC0226BERSA - exige aceptar términos y condiciones al confirmar
-- L85: TC0237BERSA - informa error con un importe inferior al mínimo
-- L85: TC0238BERSA - informa error con un importe superior al máximo
+- L13: TC-001-2-0004-UNE - muestra la pantalla completa de solicitud de adelanto
+- L35: TC-001-2-0005-UNE - vuelve a la solicitud al presionar Volver
+- L58: TC-001-2-0006-UNE - exige aceptar términos y condiciones al confirmar
+- L85: TC-001-2-0009-UNE - informa error con un importe inferior al mínimo
+- L85: TC-001-2-0010-UNE - informa error con un importe superior al máximo
 
-## `tests/ui/authentication/`
+## `tests/ui/002-authentication/`
 
 Especificaciones: `specs/authentication/api-login.plan.md`, `specs/authentication/login.plan.md`, `specs/authentication/second-factor-code-inbox.plan.md`
 
-### `tests/ui/authentication/should-login-and-capture-bearer.ui.spec.ts`
+### `tests/ui/002-authentication/should-login-and-capture-bearer.ui.spec.ts`
 
 Fixtures: `loginCredentials`, `loginPage`, `startPage`
 
-- L9: TC0017BERSA - inicia sesión y captura el Bearer token @regression
+- L9: TC-002-2-0001-UNE - inicia sesión y captura el Bearer token @regression
 
-### `tests/ui/authentication/should-login-with-virtual-keyboard.ui.spec.ts`
+### `tests/ui/002-authentication/should-login-with-virtual-keyboard.ui.spec.ts`
 
 Fixtures: `homePage`, `loginCredentials`, `loginPage`, `startPage`
 
-- L9: TC0151BERSA - inicia sesión con el teclado virtual y muestra el saludo
+- L9: TC-002-2-0003-UNE - inicia sesión con el teclado virtual y muestra el saludo
 
-### `tests/ui/authentication/should-recover-username.ui.spec.ts`
+### `tests/ui/002-authentication/should-recover-username.ui.spec.ts`
 
 Fixtures: `homePage`, `loginApi`, `loginCredentials`, `loginPage`, `profileMobilePhoneApi`, `secondFactorChallengeApi`, `startPage`
 
-- L13: TC0048BERSA - envía el usuario por correo y permite volver a ingresar
-- L13: TC128240BERSA - envía el usuario por correo y permite volver a ingresar
+- L13: TC-002-2-0002-UNE - envía el usuario por correo y permite volver a ingresar
+- L13: TC-002-2-0004-UNE - envía el usuario por correo y permite volver a ingresar
 
-## `tests/ui/cards/`
+## `tests/ui/003-cards/`
 
 Especificaciones: `specs/cards/credit-card-other-amount-payment.api.plan.md`, `specs/cards/credit-card-total-payment.ui.plan.md`
 
-### `tests/ui/cards/should-consult-credit-cards.ui.spec.ts`
+### `tests/ui/003-cards/should-consult-credit-cards.ui.spec.ts`
 
 Fixtures: `creditCardDetailUiData`, `creditCardsPage`, `loginCredentials`, `loginPage`, `startPage`
 
-- L8: TC0032BERSA - abre el detalle de una tarjeta Visa por su número
-- L31: TC0033BERSA - abre el detalle de una tarjeta Mastercard
-- L54: TC0062BERSA - muestra descarga de resumen, movimientos del período y solicitud de adicional
+- L8: TC-003-2-0001-UNE - abre el detalle de una tarjeta Visa por su número
+- L31: TC-003-2-0002-UNE - abre el detalle de una tarjeta Mastercard
+- L54: TC-003-2-0003-UNE - muestra descarga de resumen, movimientos del período y solicitud de adicional
 
-### `tests/ui/cards/should-download-credit-card-statement.ui.spec.ts`
+### `tests/ui/003-cards/should-download-credit-card-statement.ui.spec.ts`
 
 Fixtures: `creditCardDetailUiData`, `creditCardsPage`, `loginCredentials`, `loginPage`, `startPage`
 
-- L10: TC0104BERSA - Tarjeta de Crédito - Descarga de resumen
-- L40: TC0167BERSA - Tarjeta de Crédito - Consultar último resumen de una Tarjeta de Crédito
+- L10: TC-003-2-0004-UNE - Tarjeta de Crédito - Descarga de resumen
+- L40: TC-003-2-0011-UNE - Tarjeta de Crédito - Consultar último resumen de una Tarjeta de Crédito
 
-### `tests/ui/cards/should-open-total-credit-card-payment-review.ui.spec.ts`
+### `tests/ui/003-cards/should-open-total-credit-card-payment-review.ui.spec.ts`
 
 Fixtures: `creditCardPaymentPage`, `creditCardTotalPaymentUiData`, `loginCredentials`, `loginPage`, `startPage`
 
-- L11: TC0163BERSA - muestra la revisión del pago total de una tarjeta Mastercard propia
+- L18: TC-003-2-0010-UNE - muestra la revisión del pago total de una tarjeta Mastercard propia
 
-### `tests/ui/cards/should-redirect-new-card-request-to-appointments.ui.spec.ts`
+### `tests/ui/003-cards/should-redirect-new-card-request-to-appointments.ui.spec.ts`
 
 Fixtures: `creditCardsPage`, `loginCredentials`, `loginPage`, `newCreditCardRequestPage`, `optionalOriginAccountData`, `startPage`
 
-- L8: TC0195BERSA - Solicitud de tarjeta de crédito - Sujeto obligado UIF redirige a solicitar turno
+- L8: TC-003-2-0012-UNE - Solicitud de tarjeta de crédito - Sujeto obligado UIF redirige a solicitar turno
 
-### `tests/ui/cards/should-show-credit-card-detail-information.ui.spec.ts`
+### `tests/ui/003-cards/should-show-credit-card-detail-information.ui.spec.ts`
 
 Fixtures: `creditCardPaymentData`, `creditCardsPage`, `loginCredentials`, `loginPage`, `startPage`
 
-- L21: TC128242BERSA - Web - Detalle de TC - Validar la información en Detalle de TC VISA y MASTER
+- L21: TC-003-2-0013-UNE - Web - Detalle de TC - Validar la información en Detalle de TC VISA y MASTER
 
-### `tests/ui/cards/should-show-credit-card-tracking.ui.spec.ts`
+### `tests/ui/003-cards/should-show-credit-card-tracking.ui.spec.ts`
 
 Fixtures: `creditCardTrackingPage`
 
-- L42: TC0153BERSA - Tarjeta de Crédito - Seguimiento de Tarjetas de Crédito
-- L52: TC0155BERSA - Tarjeta de Crédito - Seguimiento de Tarjetas de Crédito - Detalles
-- L68: TC0157BERSA - Tarjeta de Crédito - Seguimiento de Tarjetas de Crédito - Descargar Detalles
-- L85: TC0158BERSA - Tarjeta de Crédito - Seguimiento de Tarjetas de Crédito - Imprimir Detalles
+- L42: TC-003-2-0005-UNE - Tarjeta de Crédito - Seguimiento de Tarjetas de Crédito
+- L52: TC-003-2-0006-UNE - Tarjeta de Crédito - Seguimiento de Tarjetas de Crédito - Detalles
+- L68: TC-003-2-0007-UNE - Tarjeta de Crédito - Seguimiento de Tarjetas de Crédito - Descargar Detalles
+- L85: TC-003-2-0008-UNE - Tarjeta de Crédito - Seguimiento de Tarjetas de Crédito - Imprimir Detalles
 
-### `tests/ui/cards/should-start-credit-card-theft-report.ui.spec.ts`
+### `tests/ui/003-cards/should-start-credit-card-theft-report.ui.spec.ts`
 
 Fixtures: `creditCardDetailUiData`, `creditCardsPage`, `loginCredentials`, `loginPage`, `startPage`
 
-- L9: TC0162BERSA - Tarjeta de Crédito - Denunciar robo o extravío de Tarjeta de Crédito
+- L9: TC-003-2-0009-UNE - Tarjeta de Crédito - Denunciar robo o extravío de Tarjeta de Crédito
 
-## `tests/ui/documents/`
+## `tests/ui/004-documents/`
 
-### `tests/ui/documents/should-download-product-contract.ui.spec.ts`
+### `tests/ui/004-documents/should-download-product-contract.ui.spec.ts`
 
 Fixtures: `loginCredentials`, `loginPage`, `productDocumentsPage`, `startPage`
 
-- L9: TC0077BERSA - descarga el contrato del producto
+- L9: TC-004-2-0001-UNE - descarga el contrato del producto
 
-## `tests/ui/home/`
+## `tests/ui/005-home/`
 
 Especificaciones: `specs/home/terms-and-conditions.api.plan.md`
 
-### `tests/ui/home/should-show-warning-alert.ui.spec.ts`
+### `tests/ui/005-home/should-show-warning-alert.ui.spec.ts`
 
 Fixtures: `homePage`, `loginCredentials`, `loginPage`, `startPage`
 
-- L12: TC128243BERSA - muestra el aviso en formato advertencia
+- L12: TC-005-2-0001-UNE - muestra el aviso en formato advertencia
 
-## `tests/ui/insurance/`
+## `tests/ui/006-insurance/`
 
-### `tests/ui/insurance/should-list-insurance-cards.ui.spec.ts`
-
-Fixtures: `insurancePage`, `loginCredentials`, `loginPage`, `startPage`
-
-- L9: TC0196BERSA - muestra la tarjeta del seguro de Robo
-
-### `tests/ui/insurance/should-open-robbery-insurance-detail.ui.spec.ts`
+### `tests/ui/006-insurance/should-list-insurance-cards.ui.spec.ts`
 
 Fixtures: `insurancePage`, `loginCredentials`, `loginPage`, `startPage`
 
-- L8: TC0197BERSA - muestra el detalle del seguro de Robo
+- L9: TC-006-2-0001-UNE - muestra la tarjeta del seguro de Robo
 
-### `tests/ui/insurance/should-reach-robbery-insurance-confirmation.ui.spec.ts`
+### `tests/ui/006-insurance/should-open-robbery-insurance-detail.ui.spec.ts`
 
 Fixtures: `insurancePage`, `loginCredentials`, `loginPage`, `startPage`
 
-- L8: TC12928BERSA - llega a la confirmación de la solicitud de seguro
+- L8: TC-006-2-0002-UNE - muestra el detalle del seguro de Robo
 
-## `tests/ui/investments/`
+### `tests/ui/006-insurance/should-reach-robbery-insurance-confirmation.ui.spec.ts`
+
+Fixtures: `insurancePage`, `loginCredentials`, `loginPage`, `startPage`
+
+- L8: TC-006-2-0003-UNE - llega a la confirmación de la solicitud de seguro
+
+## `tests/ui/007-investments/`
 
 Especificaciones: `specs/investments/fund-risk-filter.ui.plan.md`, `specs/investments/traditional-fixed-term.api.plan.md`
 
-### `tests/ui/investments/funds-by-risk-filter.ui.spec.ts`
+### `tests/ui/007-investments/funds-by-risk-filter.ui.spec.ts`
 
 Fixtures: `investmentFundsPage`, `loginCredentials`, `loginPage`, `startPage`
 
-- L9: TC0119BERSA - muestra únicamente fondos de riesgo moderado
+- L9: TC-007-2-0004-UNE - muestra únicamente fondos de riesgo moderado
 
-### `tests/ui/investments/should-filter-funds.ui.spec.ts`
-
-Fixtures: `investmentFundsPage`, `loginCredentials`, `loginPage`, `startPage`
-
-- L11: TC0118BERSA - FCI - Filtros - Mi Tenencia - Fondos por Riesgo - Conservador
-- L47: TC0126BERSA - FCI - Filtros: Fondos por moneda - Pesos
-- L47: TC0127BERSA - FCI - Filtros: Fondos por moneda - Dólar
-- L73: TC0128BERSA - FCI - Filtros: Mi Tenencia
-
-### `tests/ui/investments/should-open-fund-more-information.ui.spec.ts`
+### `tests/ui/007-investments/should-filter-funds.ui.spec.ts`
 
 Fixtures: `investmentFundsPage`, `loginCredentials`, `loginPage`, `startPage`
 
-- L11: TC0133BERSA - FCI - Más información - Aceptar modal
-- L36: TC0134BERSA - FCI - Más información - Rechazar modal
+- L11: TC-007-2-0003-UNE - FCI - Filtros - Mi Tenencia - Fondos por Riesgo - Conservador
+- L47: TC-007-2-0005-UNE - FCI - Filtros: Fondos por moneda - Pesos
+- L47: TC-007-2-0006-UNE - FCI - Filtros: Fondos por moneda - Dólar
+- L73: TC-007-2-0007-UNE - FCI - Filtros: Mi Tenencia
 
-### `tests/ui/investments/should-query-fixed-term-rates.ui.spec.ts`
+### `tests/ui/007-investments/should-open-fund-more-information.ui.spec.ts`
+
+Fixtures: `investmentFundsPage`, `loginCredentials`, `loginPage`, `startPage`
+
+- L11: TC-007-2-0008-UNE - FCI - Más información - Aceptar modal
+- L36: TC-007-2-0009-UNE - FCI - Más información - Rechazar modal
+
+### `tests/ui/007-investments/should-query-fixed-term-rates.ui.spec.ts`
 
 Fixtures: `fixedTermsPage`, `loginCredentials`, `loginPage`, `startPage`
 
-- L23: TC0044BERSA - PF - Consulta de Tasas - Tipo - Tradicional en Pesos
-- L23: TC0045BERSA - PF - Consulta de Tasas - Tipo - Tradicional en Dólares
+- L23: TC-007-2-0001-UNE - PF - Consulta de Tasas - Tipo - Tradicional en Pesos
+- L23: TC-007-2-0002-UNE - PF - Consulta de Tasas - Tipo - Tradicional en Dólares
 
-### `tests/ui/investments/should-reach-commitent-account-confirmation.ui.spec.ts`
+### `tests/ui/007-investments/should-reach-commitent-account-confirmation.ui.spec.ts`
 
 Fixtures: `commitentAccountOpeningPage`, `investmentFundsPage`, `loginCredentials`, `loginPage`, `startPage`
 
-- L8: TC0173BERSA - Inversiones - Alta cuenta comitente - Validar pantalla etapa 5 'Confirmación'
+- L8: TC-007-2-0010-UNE - Inversiones - Alta cuenta comitente - Validar pantalla etapa 5 'Confirmación'
 
-### `tests/ui/investments/should-reject-zero-amount-foreign-currency-purchase.ui.spec.ts`
+### `tests/ui/007-investments/should-reject-zero-amount-foreign-currency-purchase.ui.spec.ts`
 
 Fixtures: `foreignCurrencyPurchasePage`, `foreignCurrencyPurchaseUiData`, `loginCredentials`, `loginPage`, `startPage`
 
-- L8: TC0178BERSA - rechaza la compra de dólares con importe cero
+- L8: TC-007-2-0011-UNE - rechaza la compra de dólares con importe cero
 
-### `tests/ui/investments/should-validate-dollar-exchange-form.ui.spec.ts`
+### `tests/ui/007-investments/should-validate-dollar-exchange-form.ui.spec.ts`
 
 Fixtures: `foreignCurrencyPurchasePage`, `loginCredentials`, `loginPage`, `originAccountData`, `startPage`
 
-- L27: TC0179BERSA - Inversiones - Compra de moneda extranjera - Seguir flujo de compra de dólar sin aceptar check
-- L27: TC0188BERSA - Inversiones - Venta de moneda extranjera - Seguir flujo de venta de dólar sin aceptar check
-- L60: TC0187BERSA - Inversiones - Venta de moneda extranjera - Importe 0 - Validar mensaje
-- L124: TC0181BERSA - Inversiones - Compra - Desplegable Cuenta Origen sólo cuentas en pesos
-- L124: TC0182BERSA - Inversiones - Compra - Desplegable Cuenta Destino sólo cuentas en dólares
-- L124: TC0189BERSA - Inversiones - Venta - Desplegable Cuenta Destino sólo cuentas en pesos
-- L124: TC0190BERSA - Inversiones - Venta - Desplegable Cuenta Origen sólo cuentas en dólares
+- L27: TC-007-2-0012-UNE - Inversiones - Compra de moneda extranjera - Seguir flujo de compra de dólar sin aceptar check
+- L27: TC-007-2-0016-UNE - Inversiones - Venta de moneda extranjera - Seguir flujo de venta de dólar sin aceptar check
+- L60: TC-007-2-0015-UNE - Inversiones - Venta de moneda extranjera - Importe 0 - Validar mensaje
+- L124: TC-007-2-0013-UNE - Inversiones - Compra - Desplegable Cuenta Origen sólo cuentas en pesos
+- L124: TC-007-2-0014-UNE - Inversiones - Compra - Desplegable Cuenta Destino sólo cuentas en dólares
+- L124: TC-007-2-0017-UNE - Inversiones - Venta - Desplegable Cuenta Destino sólo cuentas en pesos
+- L124: TC-007-2-0018-UNE - Inversiones - Venta - Desplegable Cuenta Origen sólo cuentas en dólares
 
-### `tests/ui/investments/should-validate-fixed-term-request-continue.ui.spec.ts`
+### `tests/ui/007-investments/should-validate-fixed-term-request-continue.ui.spec.ts`
 
 Fixtures: `accountPairData`, `fixedTermsPage`, `loginCredentials`, `loginPage`, `startPage`
 
-- L24: TC128244BERSA - Web - Alta de PF - Verificar lógica del botón Continuar y mensaje de error en Simulación
+- L24: TC-007-2-0019-UNE - Web - Alta de PF - Verificar lógica del botón Continuar y mensaje de error en Simulación
 
-## `tests/ui/loans/`
+## `tests/ui/008-loans/`
 
-### `tests/ui/loans/should-request-loans.ui.spec.ts`
+### `tests/ui/008-loans/should-request-loans.ui.spec.ts`
 
 Fixtures: `loanRequestPage`, `loginCredentials`, `loginPage`, `startPage`
 
-- L9: TC0206BERSA - llega a la confirmación de un nuevo préstamo
-- L48: TC0220BERSA - llega a la confirmación de un préstamo para cancelar deudas
-- L83: TC0221BERSA - abre el resumen de contrato del préstamo para cancelar deudas
+- L9: TC-008-2-0001-UNE - llega a la confirmación de un nuevo préstamo
+- L48: TC-008-2-0002-UNE - llega a la confirmación de un préstamo para cancelar deudas
+- L83: TC-008-2-0003-UNE - abre el resumen de contrato del préstamo para cancelar deudas
 
-## `tests/ui/messages/`
+## `tests/ui/009-messages/`
 
 Especificaciones: `specs/messages/mark-message-unread.ui.plan.md`, `specs/messages/received-messages.api.plan.md`
 
-### `tests/ui/messages/should-delete-message.ui.spec.ts`
+### `tests/ui/009-messages/should-delete-message.ui.spec.ts`
 
 Fixtures: `loginCredentials`, `loginPage`, `messagesPage`, `startPage`
 
-- L9: TC0090BERSA - elimina el primer mensaje de la bandeja
+- L9: TC-009-2-0002-UNE - elimina el primer mensaje de la bandeja
 
-### `tests/ui/messages/should-mark-message-unread.ui.spec.ts`
+### `tests/ui/009-messages/should-mark-message-unread.ui.spec.ts`
 
 Fixtures: `loginCredentials`, `loginPage`, `messagesPage`, `startPage`
 
-- L8: TC0086BERSA - marca un mensaje como no leído
+- L8: TC-009-2-0001-UNE - marca un mensaje como no leído
 
-## `tests/ui/mis-products/`
+## `tests/ui/010-mis-products/`
 
 Especificaciones: `specs/mis-products/should-open-cancellation-page.ui.plan.md`
 
-### `tests/ui/mis-products/should-open-cancellation-page.ui.spec.ts`
+### `tests/ui/010-mis-products/should-open-cancellation-page.ui.spec.ts`
 
 Fixtures: `cancellationPage`, `loginCredentials`, `loginPage`, `startPage`
 
-- L8: TC0075BERSA - acepta la redirección a Baja y Arrepentimiento
+- L8: TC-010-2-0001-UNE - acepta la redirección a Baja y Arrepentimiento
 
-## `tests/ui/payments/`
+## `tests/ui/011-payments/`
 
 Especificaciones: `specs/payments/debin-generation.api.plan.md`
 
-### `tests/ui/payments/should-pay-and-find-service-receipts.ui.spec.ts`
+### `tests/ui/011-payments/should-pay-and-find-service-receipts.ui.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`, `loginPage`, `paymentReceiptsPage`, `paymentServicesPage`, `paymentServicesPreparationWorkflow`, `startPage`
 
-- L12: TC110847BERSA - muestra el estado de los pagos realizados en simultáneo
-- L44: TC110363BERSA - filtra comprobantes de pago por empresa y descripción
+- L12: TC-011-2-0004-UNE - muestra el estado de los pagos realizados en simultáneo
+- L44: TC-011-2-0003-UNE - filtra comprobantes de pago por empresa y descripción
 
-### `tests/ui/payments/should-require-debin-buyer-identifier.ui.spec.ts`
+### `tests/ui/011-payments/should-require-debin-buyer-identifier.ui.spec.ts`
 
 Fixtures: `debinSellerPage`, `loginCredentials`, `loginPage`, `originAccountUiData`, `startPage`
 
-- L8: TC0183BERSA - exige el CBU del comprador al buscar sin ingresarlo
-- L36: TC0184BERSA - exige el alias del comprador al buscar sin ingresarlo
+- L8: TC-011-2-0001-UNE - exige el CBU del comprador al buscar sin ingresarlo
+- L36: TC-011-2-0002-UNE - exige el alias del comprador al buscar sin ingresarlo
 
-## `tests/ui/procedures/`
+## `tests/ui/012-procedures/`
 
 Especificaciones: `specs/procedures/current-online-procedures.api.plan.md`
 
-### `tests/ui/procedures/should-open-online-appointments.ui.spec.ts`
+### `tests/ui/012-procedures/should-open-online-appointments.ui.spec.ts`
 
 Fixtures: `appointmentsPage`, `loginCredentials`, `loginPage`, `startPage`
 
-- L10: TC0052BERSA - acepta la redirección para solicitar un turno
+- L10: TC-012-2-0001-UNE - acepta la redirección para solicitar un turno
 
-## `tests/ui/profile/`
+## `tests/ui/013-profile/`
 
 Especificaciones: `specs/profile/change-address.ui.plan.md`, `specs/profile/change-phone.api.plan.md`, `specs/profile/notification-preferences.api.plan.md`
 
-### `tests/ui/profile/should-change-address.ui.spec.ts`
+### `tests/ui/013-profile/should-change-address.ui.spec.ts`
 
 Fixtures: `changeAddressPage`, `loginApi`, `loginCredentials`, `loginPage`, `profileMobilePhoneApi`, `secondFactorChallengeApi`, `startPage`
 
-- L10: TC0004BERSA - cambia el domicilio con un segundo factor SMS @regression
+- L10: TC-013-2-0001-UNE - cambia el domicilio con un segundo factor SMS @regression
 
-### `tests/ui/profile/should-change-security-seal.ui.spec.ts`
+### `tests/ui/013-profile/should-change-security-seal.ui.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`, `loginPage`, `securitySealPage`, `smsOperationOtpApi`, `startPage`
 
-- L9: TC0035BERSA - cambia el avatar con segundo factor
+- L9: TC-013-2-0002-UNE - cambia el avatar con segundo factor
 
-## `tests/ui/start-page/`
+## `tests/ui/014-start-page/`
 
-### `tests/ui/start-page/should-open-registration.ui.spec.ts`
+### `tests/ui/014-start-page/should-open-registration.ui.spec.ts`
 
 Fixtures: `identityValidationPage`, `startPage`
 
-- L8: TC0156BERSA - acceso directo ¿No sos cliente aún? Registrarme
+- L8: TC-014-2-0002-UNE - acceso directo ¿No sos cliente aún? Registrarme
 
-### `tests/ui/start-page/should-open-security-information.ui.spec.ts`
-
-Fixtures: `loginPage`, `startPage`
-
-- L9: TC0161BERSA - abre el enlace Información de seguridad
-
-### `tests/ui/start-page/should-open-store-shortcut.ui.spec.ts`
+### `tests/ui/014-start-page/should-open-security-information.ui.spec.ts`
 
 Fixtures: `loginPage`, `startPage`
 
-- L9: TC0152BERSA - abre el acceso directo Tienda.Clic
+- L9: TC-014-2-0003-UNE - abre el enlace Información de seguridad
 
-## `tests/ui/transfers/`
+### `tests/ui/014-start-page/should-open-store-shortcut.ui.spec.ts`
+
+Fixtures: `loginPage`, `startPage`
+
+- L9: TC-014-2-0001-UNE - abre el acceso directo Tienda.Clic
+
+## `tests/ui/015-transfers/`
 
 Especificaciones: `specs/transfers/own-account-transfer.api.plan.md`, `specs/transfers/own-account-transfer.ui.plan.md`
 
-### `tests/ui/transfers/should-reject-invalid-contact.ui.spec.ts`
+### `tests/ui/015-transfers/should-reject-invalid-contact.ui.spec.ts`
 
 Fixtures: `addContactPage`, `contactSearchUiData`, `loginCredentials`, `loginPage`, `startPage`
 
-- L8: TC0146BERSA - informa CBU inválido al agendar un contacto
-- L31: TC0148BERSA - informa alias inválido al agendar un contacto
+- L8: TC-015-2-0001-UNE - informa CBU inválido al agendar un contacto
+- L31: TC-015-2-0002-UNE - informa alias inválido al agendar un contacto
 
-### `tests/ui/transfers/should-send-device-validation-to-fraud-analysis.ui.spec.ts`
+### `tests/ui/015-transfers/should-send-device-validation-to-fraud-analysis.ui.spec.ts`
 
 Fixtures: `contactAgendaPage`, `credinRequestPage`, `loginApi`, `loginCredentials`, `smsOperationOtpApi`, `transferCaseData`, `transferFormPage`, `utilLoggerPage`
 
-- L50: TC128246BERSA - VU Fraud - adhesionAccount envía metodoValidacionFP
-- L87: TC128247BERSA - VU Fraud - transfers.account.makeWithCaps envía metodoValidacionFP
-- L130: TC128248BERSA - VU Fraud - credin.generate envía metodoValidacionFP
-- L178: TC128249BERSA - VU Fraud - transfers.account.scheduleMakeWithCaps envía metodoValidacionFP
+- L50: TC-015-2-0010-UNE - VU Fraud - adhesionAccount envía metodoValidacionFP
+- L87: TC-015-2-0011-UNE - VU Fraud - transfers.account.makeWithCaps envía metodoValidacionFP
+- L130: TC-015-2-0012-UNE - VU Fraud - credin.generate envía metodoValidacionFP
+- L178: TC-015-2-0013-UNE - VU Fraud - transfers.account.scheduleMakeWithCaps envía metodoValidacionFP
 
-### `tests/ui/transfers/should-show-transfer-history.ui.spec.ts`
+### `tests/ui/015-transfers/should-show-transfer-history.ui.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`, `loginPage`, `startPage`, `thirdPartyTransferWorkflow`, `transferCaseData`, `transferFormPage`, `transferHistoryPage`
 
-- L11: TC16756BERSA - Transferencias realizadas - Ver mis transferencias (movimientos de hace dos meses)
-- L50: TC18103BERSA - Transferencias realizadas - Ver mis transferencias (borrar filtros)
-- L94: TC29408BERSA - Transferencias Programadas - Nuevo historial - Visualización
+- L11: TC-015-2-0003-UNE - Transferencias realizadas - Ver mis transferencias (movimientos de hace dos meses)
+- L50: TC-015-2-0008-UNE - Transferencias realizadas - Ver mis transferencias (borrar filtros)
+- L94: TC-015-2-0009-UNE - Transferencias Programadas - Nuevo historial - Visualización
 
-### `tests/ui/transfers/should-transfer-and-show-ticket.ui.spec.ts`
+### `tests/ui/015-transfers/should-transfer-and-show-ticket.ui.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`, `loginPage`, `smsOperationOtpApi`, `startPage`, `thirdPartyTransferWorkflow`, `transferCaseData`, `transferFormPage`, `transferHistoryPage`
 
-- L18: TC18096BERSA - Saldo actualizado - Transferencias a cuentas propias en pesos del mismo banco
-- L59: TC18099BERSA - Transferencias a CBU - Historial de transferencias
-- L115: TC18092BERSA - Cambios en comprobante - TF inmediatas a terceros - Todos los campos - CBU otra entidad
+- L18: TC-015-2-0006-UNE - Saldo actualizado - Transferencias a cuentas propias en pesos del mismo banco
+- L59: TC-015-2-0007-UNE - Transferencias a CBU - Historial de transferencias
+- L115: TC-015-2-0005-UNE - Cambios en comprobante - TF inmediatas a terceros - Todos los campos - CBU otra entidad
 
-### `tests/ui/transfers/should-transfer-to-own-account-by-cbu.ui.spec.ts`
+### `tests/ui/015-transfers/should-transfer-to-own-account-by-cbu.ui.spec.ts`
 
 Fixtures: `loginCredentials`, `loginPage`, `ownAccountTransferPage`, `ownAccountTransferUiData`, `startPage`
 
-- L8: TC18088BERSA - transfiere a cuenta propia por CBU con todos los campos completos @critical
+- L8: TC-015-2-0004-UNE - transfiere a cuenta propia por CBU con todos los campos completos @critical

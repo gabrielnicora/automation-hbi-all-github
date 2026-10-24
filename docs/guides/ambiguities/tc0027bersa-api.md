@@ -1,7 +1,7 @@
-# TC0027BERSA — API — orden de extracción
+# TC-001-1-0002-UNE — API — orden de extracción
 
 - Fuente: `java/api/GP_Individuos_API/src/test/java/EntreRios/cuentas/CuentasTest.java`,
-  método `TC0027BERSA`; `Steps/Cuentas/CuentasSteps.java`, métodos
+  método `TC-001-1-0002-UNE`; `Steps/Cuentas/CuentasSteps.java`, métodos
   `atmGeneratePullOrderByAccounts` y `generarOrdenDeExtracion`; payload
   `Requests/Cuentas/atmGeneratePullOrderByAccounts.json`.
 - Duda: el código legado toma el último OTP del teléfono que coincide por sufijo, no filtra

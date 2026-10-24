@@ -2,7 +2,7 @@
 
 ## Estado
 
-Aprobada para implementación inicial mediante `TC0102BERSA`. Se acepta `COR000I` y se exige que
+Aprobada para implementación inicial mediante `TC-013-1-0002-UNE`. Se acepta `COR000I` y se exige que
 la configuración exponga `subscribedSMS`, `subscribedMail` y `subscribedPush` como booleanos,
 sin imponer que estén activos.
 
@@ -24,7 +24,7 @@ reintentan hasta cuatro veces. Un comentario no ejecutable menciona `message`, `
 ## Diseño propuesto
 
 - Cliente en `src/api/profile/`, separado del de cambio de teléfono salvo duplicación demostrada.
-- Test en `tests/api/profile/`, sin mutaciones, polling ni reintentos internos.
+- Test en `tests/api/013-profile/`, sin mutaciones, polling ni reintentos internos.
 - UUID nuevo por request y cabecera de autorización proveniente de la sesión.
 
 ## Criterios de aceptación propuestos

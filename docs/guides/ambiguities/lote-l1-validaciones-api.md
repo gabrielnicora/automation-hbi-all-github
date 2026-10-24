@@ -9,9 +9,9 @@ y `Requests/Echeq/listEcheqValidaciones.json`. La copia de `pagos/ValidacionesAP
 
 Migrado en:
 
-- `tests/api/accounts/should-reject-invalid-account-transfer-search.api.spec.ts` (L1a, 59 casos) con
+- `tests/api/001-accounts/should-reject-invalid-account-transfer-search.api.spec.ts` (L1a, 59 casos) con
   `src/api/accounts/account-transfer-search.api.ts`.
-- `tests/api/accounts/should-reject-invalid-echeq-list-filters.api.spec.ts` (L1b, 18 casos) con
+- `tests/api/001-accounts/should-reject-invalid-echeq-list-filters.api.spec.ts` (L1b, 18 casos) con
   `src/api/accounts/echeq-list.api.ts`.
 
 Comportamiento conservado: login API del usuario, una request por caso con las entradas exactas del
@@ -20,52 +20,49 @@ legado, HTTP 200 y código de negocio `COR020W` o `API946W` (búsqueda) / `COR02
 la plantilla de búsqueda; la plantilla del listado no envía esos campos. Cada ID es un test
 individual con datos explícitos de la variante.
 
-## L1a/L1b — API — datos de usuario `TCBERSAPRUEBA` ausentes
+## L1a/L1b — API — identidad compartida `TCBERSAPRUEBA`
 
 - Fuente: los 77 métodos llaman `testCaseData.cargaDeDatosTest("TCBERSAPRUEBA")`.
-- Faltante: `test-data/private/bersa.json` no contiene `TCBERSAPRUEBA` ni filas para los 77 IDs. El
-  lector actual exige claves `TC<numero>BERSA` y `tcName` coincidente, por lo que cada test carga su
-  propio ID, conforme a `SPEC.md`, sección 10.
-- Aplicado: no se inventaron credenciales. Los tests fallan al cargar datos con
-  `No se encontró el caso TC…BERSA en el export JSON de BERSA.` (observado para TC29517BERSA, sin
-  llamar al banco).
-- Portado: completado. Ejecución: bloqueada por datos.
-- Revisión humana: pendiente; aportar el usuario QA dummy de `TCBERSAPRUEBA` y agregarlo como fila de
-  cada ID (con `tcName` igual a la clave), o decidir en `SPEC.md` una clave de datos compartida.
+- Decisión del usuario, 22 de octubre de 2026: conservar esa identidad una sola vez como perfil de
+  credenciales compartido y referenciarla explícitamente desde los dos archivos del lote.
+- Aplicado: `test-data/private/bersa.json` declara `TCBERSAPRUEBA` en `credentialProfiles`; ambos
+  archivos usan `credentialsRef: 'TCBERSAPRUEBA'`. El loader no aplica fallback: sin una referencia
+  explícita, un caso ausente continúa fallando.
+- Portado: completado. Bloqueo de datos: resuelto. Ejecución funcional contra el banco: pendiente.
 
-## TC29461BERSA — API — "typeAccount boolean true" envía `false`
+## TC-001-1-0017-UNE — API — "typeAccount boolean true" envía `false`
 
 - Fuente: `ValidacionesAPITest.java:136`, llama `validarErroresAccountTransferSearchTrueFalseAliasCbu(..., false)`.
-- Aplicado: se envía `typeAccount: false`, igual que TC29462BERSA.
+- Aplicado: se envía `typeAccount: false`, igual que TC-001-1-0018-UNE.
 - Revisión humana: pendiente; ¿debe enviar `true`?
 
-## TC29529BERSA — API — "filterCuil null" envía el literal `_filterCuil_`
+## TC-001-1-0077-UNE — API — "filterCuil null" envía el literal `_filterCuil_`
 
 - Fuente: `ValidacionesAPITest.java:680`; `CuentasSteps.listEcheqNull` no reemplaza `_filterCuil_` en la
   plantilla, por lo que el campo viaja como el string `"_filterCuil_"`, no como `null`.
 - Aplicado: se envía `filterCuil: "_filterCuil_"`.
 - Revisión humana: pendiente; ¿debe enviar `null`?
 
-## TC29508BERSA — API — "account CVU con apóstrofe" envía datos de CBU
+## TC-001-1-0057-UNE — API — "account CVU con apóstrofe" envía datos de CBU
 
 - Fuente: `ValidacionesAPITest.java:498`; usa `"'30000062000003554002"` y tipo `CBU`, idénticos a
-  TC29496BERSA.
+  TC-001-1-0045-UNE.
 - Aplicado: se conservan esos valores.
 - Revisión humana: pendiente; ¿debe usar un CVU y tipo `CVU`?
 
-## TC29472/TC29473/TC29499BERSA — API — longitudes de CBU con puntos y tipo `ALIAS`
+## TC-001-1-0028-UNE/TC-001-1-0029-UNE/TC-001-1-0048-UNE — API — longitudes de CBU con puntos y tipo `ALIAS`
 
 - Fuente: líneas 235, 244 y 416. Los títulos hablan de CBU de longitud ±1, pero las cuentas son el CBU
-  seguido de muchos puntos y el tipo es `ALIAS`. TC29499BERSA repite exactamente la entrada de
-  TC29472BERSA.
+  seguido de muchos puntos y el tipo es `ALIAS`. TC-001-1-0048-UNE repite exactamente la entrada de
+  TC-001-1-0028-UNE.
 - Aplicado: se conservan las entradas.
 - Revisión humana: pendiente; confirmar las entradas previstas.
 
 ## Observaciones menores
 
-- TC29475BERSA repite la entrada de TC29459BERSA (`typeAccount: "ALIAS1"`).
-- TC29450BERSA no tiene ID en su `DisplayName`; el título usa el ID del método.
-- TC29483BERSA envía `typeAccount: "VOLPATO.PESOS.BERSA"` y `account: "ALIAS"` por el orden de
+- TC-001-1-0031-UNE repite la entrada de TC-001-1-0015-UNE (`typeAccount: "ALIAS1"`).
+- TC-001-1-0006-UNE no tiene ID en su `DisplayName`; el título usa el ID del método.
+- TC-001-1-0038-UNE envía `typeAccount: "VOLPATO.PESOS.BERSA"` y `account: "ALIAS"` por el orden de
   argumentos del helper; se conserva.
 - `RequestSteps.executeRequest` sólo existe compilado en `dependencies/oslo.2.5.2-SNAPSHOT.jar`; no se
   pudo revisar si reintenta. No se portaron reintentos: aplica el runner de Playwright.

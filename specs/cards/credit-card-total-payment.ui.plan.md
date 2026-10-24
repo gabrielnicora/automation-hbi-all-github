@@ -2,7 +2,7 @@
 
 ## Estado
 
-Aprobada para implementación inicial mediante `TC0163BERSA`, pendiente de validación funcional
+Aprobada para implementación inicial mediante `TC-003-2-0010-UNE`, pendiente de validación funcional
 en BERSA QA una vez que el equipo confirme los datos disponibles.
 
 ## Objetivo y alcance
@@ -13,7 +13,7 @@ abarca Visa, pago mínimo, otro importe, USD ni tarjetas de terceros.
 
 ## Recorrido observado en el legado
 
-El caso `TC0163BERSA` de `GP/EntreRios/front/FrontTest.java` ingresa a la sección `creditCards`,
+El caso `TC-003-2-0010-UNE` de `GP/EntreRios/front/FrontTest.java` ingresa a la sección `creditCards`,
 valida `Tarjetas de crédito`, abre el detalle de `tarjetaCredito`, accede a `Opciones` y elige
 `Pagar mi tarjeta`. En `Pago de tarjeta propia`, selecciona `cuentaOrigen` como tarjeta de débito,
 continúa, vuelve a seleccionar `cuentaOrigen` como cuenta de débito sólo si ese control aparece,
@@ -21,7 +21,7 @@ elige `Pagar el total`, presiona `Pagar` y verifica los campos de la pantalla po
 
 ## Datos de prueba
 
-- Las credenciales se cargan desde el registro `TC0163BERSA` de `test-data/private/bersa.json`.
+- Las credenciales se cargan desde el registro `TC-003-2-0010-UNE` de `test-data/private/bersa.json`.
 - `tarjetaDebito` provee los últimos cuatro dígitos de la tarjeta seleccionada en el primer
   control `Tarjeta de débito`.
 - `ctaOrigen` provee la cuenta usada en el selector posterior obligatorio `Cuenta débito`.
@@ -32,7 +32,7 @@ elige `Pagar el total`, presiona `Pagar` y verifica los campos de la pantalla po
 
 ## Diseño aprobado
 
-- Test UI individual bajo `tests/ui/cards/`, Page Object bajo `src/pages/cards/` y lector tipado
+- Test UI individual bajo `tests/ui/003-cards/`, Page Object bajo `src/pages/cards/` y lector tipado
   bajo `src/test-data/`.
 - La fixture UI compone el Page Object y los datos del caso; no se crea workflow porque el
   recorrido está contenido en una sola página funcional.
@@ -67,7 +67,7 @@ elige `Pagar el total`, presiona `Pagar` y verifica los campos de la pantalla po
 
 ## Criterios de aceptación
 
-- El test se identifica como `TC0163BERSA` y carga exclusivamente sus credenciales, `ctaOrigen`,
+- El test se identifica como `TC-003-2-0010-UNE` y carga exclusivamente sus credenciales, `ctaOrigen`,
   `tarjetaDebito` y `tarjetaOperar`.
 - Tras autenticarse, el menú lateral permite abrir `Tarjetas` y `Tarjeta de crédito`; se
   visualiza la sección `Tarjetas de crédito` y el detalle de la tarjeta configurada permite
@@ -85,13 +85,13 @@ elige `Pagar el total`, presiona `Pagar` y verifica los campos de la pantalla po
 
 ## Decisiones abiertas
 
-La ejecución BERSA QA debe confirmar que los datos de `TC0163BERSA` siguen exponiendo una
+La ejecución BERSA QA debe confirmar que los datos de `TC-003-2-0010-UNE` siguen exponiendo una
 Mastercard y una cuenta seleccionable, y que los selectores heredados continúan representando el
 DOM actual.
 
 Los recorridos de pago mínimo y de otro importe se modelarán como casos UI independientes cuando
 se soliciten, con su propio identificador, datos aprobados y expectativa de importe. No se
-parametrizan dentro de `TC0163BERSA` porque cambia el recorrido funcional y el resultado esperado.
+parametrizan dentro de `TC-003-2-0010-UNE` porque cambia el recorrido funcional y el resultado esperado.
 El caso futuro de otro importe utilizará `input[name=amount]` con el importe específico aprobado.
 
 ## Decisión de arquitectura — 28 de septiembre de 2026

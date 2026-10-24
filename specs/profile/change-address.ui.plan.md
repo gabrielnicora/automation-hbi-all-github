@@ -2,7 +2,7 @@
 
 ## Estado
 
-Comportamiento aprobado y validado para `TC0004BERSA`. La implementación contiene la
+Comportamiento aprobado y validado para `TC-013-2-0001-UNE`. La implementación contiene la
 navegación, carga aleatoria del formulario y reutilización de la política transversal de
 segundo factor. La ejecución del 16 de septiembre de 2026 completó el SMS, confirmó el
 cambio y verificó el mensaje de éxito en QA. No duplica la consulta de `util.codes`.
@@ -15,7 +15,7 @@ dummy generados durante el escenario y confirmando el desafío de segundo factor
 ## Alcance
 
 - Banco: BERSA; ambiente: QA; canal: UI.
-- Caso: `TC0004BERSA`.
+- Caso: `TC-013-2-0001-UNE`.
 - Ruta funcional: Perfil → Modificar domicilio.
 - Efecto persistente autorizado: el domicilio puede quedar modificado. No requiere
   restauración, porque el usuario autorizó datos aleatorios y el domicilio puede cambiar
@@ -72,7 +72,7 @@ Este caso referencia la política transversal de
 
 ## Criterios de aceptación
 
-- El test comienza con `TC0004BERSA` y no contiene selectores, endpoints ni polling.
+- El test comienza con `TC-013-2-0001-UNE` y no contiene selectores, endpoints ni polling.
 - Calle, número, piso y departamento cambian por ejecución y satisfacen los campos
   obligatorios UI; la provincia se fija para el caso y la localidad se toma de las
   opciones disponibles, evitando depender de una localidad inexistente.

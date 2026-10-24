@@ -11,46 +11,46 @@ dependencias (`steps/transferencias/transferenciasinmediatas_programadas/Transfe
 Criterios comunes:
 
 - Login UI real. Para importe, descripción, búsqueda por CBU, "Transferir ahora" y "Confirmar" se usan
-  los locators validados del testigo TC18088BERSA; el resto reproduce el legado y queda pendiente de
+  los locators validados del testigo TC-015-2-0004-UNE; el resto reproduce el legado y queda pendiente de
   validación UI.
 - Segundo factor: el legado UI pide el SMS por API (`DobleFactorAPI.getSecondFactor` → `sendTokenSms` +
   `util.codes`) cuando aparece el campo `#secondFactor`. El port hace lo mismo con
   `SmsOperationOtpApi` y la política central; no se portó el reintento con un segundo código.
 - La limpieza previa por API (`eliminarDestinatarioAgendadoAPI`) reutiliza
   `ThirdPartyTransferWorkflow.findDestinationOutsideAgenda` (L6) con una sesión API del mismo usuario.
-- Ningún caso se ejecutó contra BERSA QA. TC18096, TC18099, TC18092, TC128247, TC128248 y TC128249
-  mueven dinero o generan CREDIN; TC128246/TC128247 agendan y eliminan contactos.
+- Ningún caso se ejecutó contra BERSA QA. TC-015-2-0006-UNE, TC-015-2-0007-UNE, TC-015-2-0005-UNE, TC-015-2-0011-UNE, TC-015-2-0012-UNE y TC-015-2-0013-UNE
+  mueven dinero o generan CREDIN; TC-015-2-0010-UNE/TC-015-2-0011-UNE agendan y eliminan contactos.
 
-Migrado en `tests/ui/transfers/`:
+Migrado en `tests/ui/015-transfers/`:
 
-| Caso(s)                                | Test                                                         | Page Objects                                                                                       |
-| -------------------------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
-| TC18096, TC18099, TC18092              | `should-transfer-and-show-ticket.ui.spec.ts`                 | `transfer-form.page.ts`, `transfer-history.page.ts`                                                |
-| TC16756, TC18103, TC29408              | `should-show-transfer-history.ui.spec.ts`                    | `transfer-form.page.ts`, `transfer-history.page.ts`                                                |
-| TC128246, TC128247, TC128248, TC128249 | `should-send-device-validation-to-fraud-analysis.ui.spec.ts` | `transfer-form.page.ts`, `contact-agenda.page.ts`, `credin-request.page.ts`, `util-logger.page.ts` |
+| Caso(s)                                                                    | Test                                                         | Page Objects                                                                                       |
+| -------------------------------------------------------------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
+| TC-015-2-0006-UNE, TC-015-2-0007-UNE, TC-015-2-0005-UNE                    | `should-transfer-and-show-ticket.ui.spec.ts`                 | `transfer-form.page.ts`, `transfer-history.page.ts`                                                |
+| TC-015-2-0003-UNE, TC-015-2-0008-UNE, TC-015-2-0009-UNE                    | `should-show-transfer-history.ui.spec.ts`                    | `transfer-form.page.ts`, `transfer-history.page.ts`                                                |
+| TC-015-2-0010-UNE, TC-015-2-0011-UNE, TC-015-2-0012-UNE, TC-015-2-0013-UNE | `should-send-device-validation-to-fraud-analysis.ui.spec.ts` | `transfer-form.page.ts`, `contact-agenda.page.ts`, `credin-request.page.ts`, `util-logger.page.ts` |
 
-## TC18096BERSA — UI — saldo actualizado sin comparación
+## TC-015-2-0006-UNE — UI — saldo actualizado sin comparación
 
 - Fuente: `obtenerSaldoInicial` y `saldoActualizado` leen el saldo antes y después y sólo lo adjuntan.
 - Aplicado: se leen ambos valores sin compararlos; el caso exige el ticket "Tu solicitud se realizo con
   exito" (comparación exacta sin acentos, `TicketSteps.validarTicket`).
 - Revisión humana: pendiente; ¿debe exigirse el descuento de 1000?
 
-## TC18092BERSA — UI — valores fijos del ticket
+## TC-015-2-0005-UNE — UI — valores fijos del ticket
 
 - Fuente: el legado exige emisor `REYES, JOSE LUIS`, cuenta `CC $ 035003401876`, CUIT `20119120269`,
   destinatario `PEREZ, ROQUE`, CBU, CUIT y entidad destino fijos, además de fecha `dd/MM/yyyy`.
 - Aplicado: se conservan como valores literales del caso en el test.
 - Revisión humana: pendiente; confirmar que siguen correspondiendo al usuario `berhometest15`.
 
-## TC16756BERSA — UI — búsqueda sin límite
+## TC-015-2-0003-UNE — UI — búsqueda sin límite
 
 - Fuente: `buscarMovimientosConAntiguedadDeDosMeses` avanza páginas en un `while` hasta encontrar
   `/MM/` de hace dos meses, sin condición de salida.
 - Aplicado: se avanza mientras exista "Ir a la siguiente página"; si se agotan las páginas, el caso falla
   con "Debe haber movimientos con dos meses de antigüedad".
 
-## TC128246–TC128249BERSA — UI — utilLogger
+## TC-015-2-0010-UNE–TC-015-2-0013-UNE — UI — utilLogger
 
 - Fuente: `clickBtnUtilLogger` abre la herramienta `utilLogger` (pestaña nueva), "Actualizar", y
   `clickRequestSvc` recorre los requests de `/FraudAnalysis/service/analyze` hasta encontrar el
@@ -58,14 +58,14 @@ Migrado en `tests/ui/transfers/`:
 - Aplicado: misma lógica; los cuerpos se leen en el Page Object y la comparación queda en el test.
 - Dependencia: requiere el acceso `utilLogger` habilitado en QA para estos usuarios.
 
-## TC128248BERSA — UI — CREDIN sin selección explícita
+## TC-015-2-0012-UNE — UI — CREDIN sin selección explícita
 
 - Fuente: `keyDownXParametrosGenerico(0, valor)` sólo exige que el desplegable muestre la cuenta y el
   concepto; no presiona Enter ni selecciona.
 - Aplicado: se conserva (se comprueba la oferta sin seleccionar). Revisión humana: pendiente; ¿debe
   seleccionarse explícitamente cuenta y concepto?
 
-## TC128249BERSA — UI — importe 100 y eliminación condicional
+## TC-015-2-0013-UNE — UI — importe 100 y eliminación condicional
 
 - Aplicado: se elimina el contacto de la agenda sólo si el listado no informa "No se registran cuentas
   agendadas" (legado `eliminaContactoEnAgenda`), luego se programa una transferencia de 100 para una

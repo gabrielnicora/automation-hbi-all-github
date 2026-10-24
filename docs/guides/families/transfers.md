@@ -20,7 +20,7 @@ siendo la fuente del comportamiento aprobado de cada caso.
 
 ## 1. Casos testigo vigentes
 
-### 1.1 Testigo API — `TC0139BERSA`
+### 1.1 Testigo API — `TC-015-1-0003-UNE`
 
 Transferencia inmediata de ARS 1 entre dos cuentas propias mediante API, con recuperación y
 validación del ticket final.
@@ -28,13 +28,13 @@ validación del ticket final.
 Archivos de referencia:
 
 - Especificación: [own-account-transfer.api.plan.md](../../../specs/transfers/own-account-transfer.api.plan.md).
-- Test: [should-transfer-between-own-accounts.api.spec.ts](../../../tests/api/transfers/should-transfer-between-own-accounts.api.spec.ts).
+- Test: [should-transfer-between-own-accounts.api.spec.ts](../../../tests/api/015-transfers/should-transfer-between-own-accounts.api.spec.ts).
 - Cliente: [own-account-transfer.api.ts](../../../src/api/transfers/own-account-transfer.api.ts).
 - Datos: [own-account-transfer-data.ts](../../../src/test-data/own-account-transfer-data.ts).
-- Datos privados: registro `TC0139BERSA` en `test-data/private/bersa.json`.
+- Datos privados: registro `TC-015-1-0003-UNE` en `test-data/private/bersa.json`.
 - Fixture pública: `src/fixtures/api-test.ts`.
 
-### 1.2 Testigo UI — `TC18088BERSA`
+### 1.2 Testigo UI — `TC-015-2-0004-UNE`
 
 Transferencia inmediata de ARS 1 a una cuenta propia buscada por CBU mediante UI, completando
 el formulario, revisando y confirmando la operación, y verificando el ticket exitoso.
@@ -42,16 +42,16 @@ el formulario, revisando y confirmando la operación, y verificando el ticket ex
 Archivos de referencia:
 
 - Especificación: [own-account-transfer.ui.plan.md](../../../specs/transfers/own-account-transfer.ui.plan.md).
-- Test: [should-transfer-to-own-account-by-cbu.ui.spec.ts](../../../tests/ui/transfers/should-transfer-to-own-account-by-cbu.ui.spec.ts).
+- Test: [should-transfer-to-own-account-by-cbu.ui.spec.ts](../../../tests/ui/015-transfers/should-transfer-to-own-account-by-cbu.ui.spec.ts).
 - Page Object: [own-account-transfer.page.ts](../../../src/pages/transfers/own-account-transfer.page.ts).
 - Datos: [own-account-transfer-ui-data.ts](../../../src/test-data/own-account-transfer-ui-data.ts).
-- Datos privados: registro `TC18088BERSA` en `test-data/private/bersa.json`.
+- Datos privados: registro `TC-015-2-0004-UNE` en `test-data/private/bersa.json`.
 - Fixture pública: `src/fixtures/ui-test.ts`.
 
 Esta guía describe el comportamiento aprobado y la implementación actual. Consultar el
-legado local para completar las diferencias: `TC0139BERSA` está en
+legado local para completar las diferencias: `TC-015-1-0003-UNE` está en
 `java/api/GP_Individuos_API/src/test/java/EntreRios/transferencias/TransferenciasTest.java`
-y `TC18088BERSA` en
+y `TC-015-2-0004-UNE` en
 `java/ui/GP_Migracion_Individuos/src/test/java/GP/EntreRios/front/FrontTest.java`.
 Las rutas parten de la raíz del repositorio. No asumir que los testigos cubren todos los
 tipos de transferencia ni que la presencia de estas fuentes demuestra equivalencia validada.
@@ -77,16 +77,16 @@ No se debe concluir que dos casos tienen el mismo flujo sólo porque ambos se ll
 
 ## 3. Mapa de arquitectura
 
-| Necesidad del caso             | Ubicación actual                               | Regla para migrar                                            |
-| ------------------------------ | ---------------------------------------------- | ------------------------------------------------------------ |
-| Escenario y expectativas       | `tests/api/transfers/` o `tests/ui/transfers/` | Mantener lenguaje funcional y `testCaseId`                   |
-| Protocolo HTTP                 | `src/api/transfers/`                           | Endpoints, headers, payloads y respuestas                    |
-| Mecánica UI                    | `src/pages/transfers/`                         | Locators, acciones y esperas observables                     |
-| Datos del caso                 | `src/test-data/`                               | Loader tipado y validaciones de formato                      |
-| Composición técnica            | `src/fixtures/`                                | Cliente, Page Object y datos públicos                        |
-| Coordinación de varias páginas | `src/workflows/transfers/`                     | Crear sólo si el recorrido cruza páginas o decisiones reales |
-| Comportamiento aprobado        | `specs/transfers/`                             | Registrar criterios y decisiones específicas                 |
-| Dudas de migración rápida      | `docs/guides/ambiguities/`                     | Registrar la decisión provisional y su evidencia             |
+| Necesidad del caso             | Ubicación actual                                       | Regla para migrar                                            |
+| ------------------------------ | ------------------------------------------------------ | ------------------------------------------------------------ |
+| Escenario y expectativas       | `tests/api/015-transfers/` o `tests/ui/015-transfers/` | Mantener lenguaje funcional y `testCaseId`                   |
+| Protocolo HTTP                 | `src/api/transfers/`                                   | Endpoints, headers, payloads y respuestas                    |
+| Mecánica UI                    | `src/pages/transfers/`                                 | Locators, acciones y esperas observables                     |
+| Datos del caso                 | `src/test-data/`                                       | Loader tipado y validaciones de formato                      |
+| Composición técnica            | `src/fixtures/`                                        | Cliente, Page Object y datos públicos                        |
+| Coordinación de varias páginas | `src/workflows/transfers/`                             | Crear sólo si el recorrido cruza páginas o decisiones reales |
+| Comportamiento aprobado        | `specs/transfers/`                                     | Registrar criterios y decisiones específicas                 |
+| Dudas de migración rápida      | `docs/guides/ambiguities/`                             | Registrar la decisión provisional y su evidencia             |
 
 No trasladar las capas legacy `banks/`, `contracts/`, `features/`, `support/` o
 `test-setup/`. Tampoco crear un `TransferManager`, `TransferHelper`, gateway o factory sólo
@@ -123,7 +123,7 @@ mediante condiciones que elijan dinámicamente el flujo.
 
 El test actual:
 
-1. fija `TEST_CASE_ID = 'TC0139BERSA'`;
+1. fija `TEST_CASE_ID = 'TC-015-1-0003-UNE'`;
 2. configura `test.use({ testCaseId })`;
 3. recibe `loginApi`, `loginCredentials`, `ownAccountTransferApi` y
    `ownAccountTransferData` desde la fixture;
@@ -181,7 +181,7 @@ confirmar si el legado usa los mismos campos y valores antes de reutilizarlos.
 
 ### 5.3 Datos API del testigo
 
-El loader de `TC0139BERSA` exige:
+El loader de `TC-015-1-0003-UNE` exige:
 
 | Campo lógico      | Campo del registro | Validación actual                    |
 | ----------------- | ------------------ | ------------------------------------ |
@@ -292,7 +292,7 @@ El loader UI sólo entrega:
 En cambio, el Page Object mantiene como constantes:
 
 - importe `1`;
-- descripción `TC18088`;
+- descripción `TC-015-2-0004-UNE`;
 - concepto visible `Varios`;
 - monto mostrado `$ 1,00`.
 
