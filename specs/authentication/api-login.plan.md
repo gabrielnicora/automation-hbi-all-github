@@ -2,17 +2,17 @@
 
 ## Estado
 
-Adaptada a BERSA y validada en QA el 8 de septiembre de 2026 mediante `TC0017BERSA`.
+Adaptada a BERSA y validada en QA el 8 de septiembre de 2026 mediante `TC-002-1-0001-UNE`.
 
 ## Objetivo
 
-Autenticar `TC0017BERSA` mediante `APIRequestContext` y devolver una sesión mínima
+Autenticar `TC-002-1-0001-UNE` mediante `APIRequestContext` y devolver una sesión mínima
 reutilizable sin exponer credenciales, exchange tokens ni access tokens.
 
 ## Alcance
 
 - Banco: Banco Entre Ríos (BERSA).
-- Caso: `TC0017BERSA`.
+- Caso: `TC-002-1-0001-UNE`.
 - Canal: API; tag: `@regression`. Comparte ID con el login UI por representar el mismo caso.
 - Ambiente: QA.
 - Base API: `https://apitest01.bancoentrerios.com`.
@@ -44,7 +44,7 @@ y el protocolo completo fueron validados en BERSA mediante el escenario de login
 Una ejecución sin el fingerprint aprobado llegó hasta step 3 y produjo `API949E`. El
 significado del código continúa sin documentación. El fingerprint Base64 hardcodeado de la
 implementación de referencia completó históricamente el login en BSC y fue validado en
-BERSA mediante `TC0017BERSA`.
+BERSA mediante `TC-002-1-0001-UNE`.
 
 El 8 de septiembre de 2026 se aprobó conservar ese valor hardcodeado: responde
 correctamente en el alcance vigente y no se implementará generación dinámica sin una nueva
@@ -70,7 +70,7 @@ legacy.
 ## Criterios de aceptación
 
 - El test no contiene URL, endpoints, payloads, credenciales ni fingerprint.
-- El título comienza con `TC0017BERSA`.
+- El título comienza con `TC-002-1-0001-UNE`.
 - Cada respuesta HTTP y campo requerido se valida antes de continuar.
 - Cada step exige `COR000I`.
 - El exchange token de step 2 coincide exactamente con el de step 1.

@@ -2,7 +2,7 @@
 
 ## Estado
 
-Aprobada para implementación inicial mediante `TC0109BERSA`. Una casilla vacía es válida; el caso
+Aprobada para implementación inicial mediante `TC-009-1-0003-UNE`. Una casilla vacía es válida; el caso
 verifica `COR000I` y un objeto `data` válido, sin exigir mensajes recibidos.
 
 ## Objetivo y alcance
@@ -20,7 +20,7 @@ comentario menciona cantidad de mensajes, pero no existe una aserción de cantid
 ## Diseño propuesto
 
 - Cliente mínimo en `src/api/messages/` con una única consulta autenticada.
-- Test individual en `tests/api/messages/`, sin datos funcionales adicionales salvo que el
+- Test individual en `tests/api/009-messages/`, sin datos funcionales adicionales salvo que el
   resultado aprobado los requiera.
 - Sin polling ni reintentos internos.
 

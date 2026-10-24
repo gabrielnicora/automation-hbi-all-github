@@ -9,7 +9,7 @@ Antes de implementar, crear y aprobar la especificación correspondiente bajo
 `specs/`, resolviendo las decisiones de este documento.
 
 Actualmente el proyecto utiliza los proyectos Playwright `api` y `ui`, reportes
-list, HTML y JUnit, y títulos con identificadores `TC<numero>BERSA`. No existen
+list, HTML y JUnit, y títulos con identificadores `TC-<FFF>-<C>-<NNNN>-UNE`. No existen
 comandos `xray:upload` ni configuración de publicación de resultados implementados.
 
 El servidor opcional `mcp-xray/`, aprobado en `specs/tooling/xray-mcp.md`, administra casos en
@@ -45,7 +45,7 @@ JUnit. Elegir según trazabilidad y estados requeridos; no añadir dos vías de 
 
 ## Trazabilidad propuesta
 
-Mantener `TC<numero>BERSA` como identidad local y selector de datos privados.
+Mantener `TC-<FFF>-<C>-<NNNN>-UNE` como identidad local y selector de datos privados.
 El identificador Jira es una identidad distinta: no deducirlo del número local.
 
 Los tags nativos con formato `@<PROJECT_KEY>-<numero>` son una opción sencilla para

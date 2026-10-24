@@ -18,14 +18,14 @@ debe conservar su recorrido y comprobaciones propios.
 
 ## Caso testigo
 
-TC0156BERSA: abrir el registro desde el enlace público y llegar a validación de identidad.
+TC-014-2-0002-UNE: abrir el registro desde el enlace público y llegar a validación de identidad.
 
 Referencias:
 
 - specs/main-page/should-open-registration.ui.plan.md
 - src/pages/start-page/start.page.ts
 - src/pages/registration/identity-validation.page.ts
-- tests/ui/start-page/should-open-registration.ui.spec.ts
+- tests/ui/014-start-page/should-open-registration.ui.spec.ts
 
 ## Flujo testigo
 

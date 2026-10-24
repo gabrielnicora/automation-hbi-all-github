@@ -3,7 +3,7 @@
 ## Estado
 
 Adaptada a BERSA bajo `src/pages/investments/` y validada en QA el 8 de septiembre de 2026
-mediante `TC0119BERSA`.
+mediante `TC-007-2-0004-UNE`.
 
 ## Objetivo
 
@@ -13,7 +13,7 @@ fondos”, el listado muestre uno o más fondos y todos correspondan al riesgo m
 ## Alcance
 
 - Banco: Banco Entre Ríos (BERSA).
-- Caso: `TC0119BERSA`.
+- Caso: `TC-007-2-0004-UNE`.
 - Ambiente: QA.
 - Canal: UI.
 - Riesgo esperado: moderado.
@@ -23,7 +23,7 @@ de alcance.
 
 ## Comportamiento esperado
 
-1. Seleccionar las credenciales mediante `TC0119BERSA`.
+1. Seleccionar las credenciales mediante `TC-007-2-0004-UNE`.
 2. Autenticar al usuario mediante el login UI real.
 3. Ingresar por `Inversiones` y luego `Invertí en Fondos`.
 4. Confirmar que “Información de fondos” está disponible.
@@ -91,7 +91,7 @@ el escenario finalizó correctamente.
 
 ## Criterios de aceptación
 
-- `TC0119BERSA` ejecuta el comportamiento aprobado.
+- `TC-007-2-0004-UNE` ejecuta el comportamiento aprobado.
 - La página muestra el título esperado.
 - Sólo el filtro moderado queda seleccionado.
 - El listado contiene al menos una fila.
@@ -102,7 +102,7 @@ el escenario finalizó correctamente.
 - El test no conoce configuración bancaria ni composición de fixtures.
 - La contraseña dummy no se repite en errores; tokens y cookies de sesión no se imprimen ni
   se adjuntan.
-- Formato, lint, typecheck y `TC0119BERSA` finalizan correctamente.
+- Formato, lint, typecheck y `TC-007-2-0004-UNE` finalizan correctamente.
 
 ## Seguridad y datos
 

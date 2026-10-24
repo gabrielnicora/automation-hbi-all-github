@@ -2,18 +2,18 @@
 
 ## Estado
 
-Adaptada a BERSA y validada en QA el 8 de septiembre de 2026 mediante `TC0017BERSA`.
+Adaptada a BERSA y validada en QA el 8 de septiembre de 2026 mediante `TC-002-2-0001-UNE`.
 
 ## Objetivo
 
-Validar que la identidad autorizada `TC0017BERSA` puede iniciar sesión en Banco Entre Ríos
+Validar que la identidad autorizada `TC-002-2-0001-UNE` puede iniciar sesión en Banco Entre Ríos
 mediante la UI y capturar de forma segura el access token emitido durante el login.
 
 ## Alcance
 
 - Banco: Banco Entre Ríos (BERSA).
 - Código de trazabilidad: `BERSA`.
-- Caso: `TC0017BERSA`.
+- Caso: `TC-002-2-0001-UNE`.
 - Ambiente: QA.
 - Base UI: `https://hbtest01.bancoentrerios.com/startPage`.
 - Canal: UI.
@@ -26,7 +26,7 @@ en otra request quedan fuera de alcance.
 
 ## Comportamiento esperado
 
-1. Seleccionar `TC0017BERSA` desde el export JSON privado de BERSA.
+1. Seleccionar `TC-002-2-0001-UNE` desde el export JSON privado de BERSA.
 2. Validar que existe exactamente un registro con usuario y contraseña no vacíos.
 3. Abrir el home banking BERSA de QA.
 4. Seleccionar `Ingresar`.
@@ -61,7 +61,7 @@ Inversiones reutiliza la misma entrada de autenticación; no existe una implemen
 ## Criterios de aceptación
 
 - El test no contiene URL, selectores, endpoints ni credenciales.
-- El título comienza con `TC0017BERSA`.
+- El título comienza con `TC-002-2-0001-UNE`.
 - Las credenciales se leen del export privado BERSA por `tcName`.
 - La captura se prepara antes de la acción que dispara la respuesta.
 - El login no finaliza hasta que la aplicación persiste la sesión.
@@ -77,7 +77,7 @@ Inversiones reutiliza la misma entrada de autenticación; no existe una implemen
 
 ## Seguridad y datos
 
-- Las credenciales pertenecen a `TC0017BERSA` y se leen desde
+- Las credenciales pertenecen a `TC-002-2-0001-UNE` y se leen desde
   `test-data/private/bersa.json`.
 - El export QA contiene datos dummy no productivos y se versiona bajo `test-data/private/`
   para distribuir la versión ejecutable.

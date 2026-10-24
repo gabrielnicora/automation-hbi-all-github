@@ -7,7 +7,7 @@ debe identificar caso y canal para no confundir API y UI del mismo identificador
 Plantilla breve:
 
 ```markdown
-## TC<numero>BERSA — API/UI — duda breve
+## TC-<FFF>-<C>-<NNNN>-UNE — API/UI — duda breve
 
 - Fuente: ruta legada y método, más línea o revisión cuando esté disponible.
 - Duda: diferencia o intención incierta.

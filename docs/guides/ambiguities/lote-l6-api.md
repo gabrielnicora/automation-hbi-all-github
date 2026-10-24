@@ -23,16 +23,16 @@ Criterios comunes:
 - Ningún caso se ejecutó contra BERSA QA. Todos los casos con transferencia, agenda o CREDIN mutan
   datos reales de los usuarios dummy.
 
-Migrado en `tests/api/transfers/`:
+Migrado en `tests/api/015-transfers/`:
 
-| Sub-lote | Casos                                                                                                                            | Test                                             |
-| -------- | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| L6a      | TC12930, TC12969, TC12932, TC0429, TC0344, TC0424, TC0422, TC12935, TC0477, TC18097, TC18098, TC18089, TC18093                   | `should-transfer-to-third-parties.api.spec.ts`   |
-| L6a      | TC0409, TC0411, TC0427, TC0410, TC0412                                                                                           | `should-transfer-to-adhered-contact.api.spec.ts` |
-| L6b/L6c  | TC0473, TC0484, TC0472, TC0474, TC0485, TC0478, TC0479, TC0480, TC0418, TC18090, TC18094, TC0465, TC0468, TC0467, TC0483, TC0008 | `should-schedule-transfers.api.spec.ts`          |
-| L6d      | TC0014, TC12938, TC12939, TC12940                                                                                                | `should-generate-credin.api.spec.ts`             |
-| L6e      | TC0145, TC12981                                                                                                                  | `should-manage-transfer-contacts.api.spec.ts`    |
-| L6e      | TC18100, TC18101, TC18102, TC16759, TC16765, TC16768, TC18104                                                                    | `should-list-transfer-history.api.spec.ts`       |
+| Sub-lote | Casos                                                                                                                                                                                                                                                                                                          | Test                                             |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| L6a      | TC-015-1-0028-UNE, TC-015-1-0034-UNE, TC-015-1-0029-UNE, TC-015-1-0014-UNE, TC-015-1-0005-UNE, TC-015-1-0012-UNE, TC-015-1-0011-UNE, TC-015-1-0030-UNE, TC-015-1-0021-UNE, TC-015-1-0043-UNE, TC-015-1-0044-UNE, TC-015-1-0039-UNE, TC-015-1-0041-UNE                                                          | `should-transfer-to-third-parties.api.spec.ts`   |
+| L6a      | TC-015-1-0006-UNE, TC-015-1-0008-UNE, TC-015-1-0013-UNE, TC-015-1-0007-UNE, TC-015-1-0009-UNE                                                                                                                                                                                                                  | `should-transfer-to-adhered-contact.api.spec.ts` |
+| L6b/L6c  | TC-015-1-0019-UNE, TC-015-1-0026-UNE, TC-015-1-0018-UNE, TC-015-1-0020-UNE, TC-015-1-0027-UNE, TC-015-1-0022-UNE, TC-015-1-0023-UNE, TC-015-1-0024-UNE, TC-015-1-0010-UNE, TC-015-1-0040-UNE, TC-015-1-0042-UNE, TC-015-1-0015-UNE, TC-015-1-0017-UNE, TC-015-1-0016-UNE, TC-015-1-0025-UNE, TC-015-1-0001-UNE | `should-schedule-transfers.api.spec.ts`          |
+| L6d      | TC-015-1-0002-UNE, TC-015-1-0031-UNE, TC-015-1-0032-UNE, TC-015-1-0033-UNE                                                                                                                                                                                                                                     | `should-generate-credin.api.spec.ts`             |
+| L6e      | TC-015-1-0004-UNE, TC-015-1-0035-UNE                                                                                                                                                                                                                                                                           | `should-manage-transfer-contacts.api.spec.ts`    |
+| L6e      | TC-015-1-0045-UNE, TC-015-1-0046-UNE, TC-015-1-0047-UNE, TC-015-1-0036-UNE, TC-015-1-0037-UNE, TC-015-1-0038-UNE, TC-015-1-0048-UNE                                                                                                                                                                            | `should-list-transfer-history.api.spec.ts`       |
 
 ## L6 — API — descuento de saldo sin la pausa legada
 
@@ -43,9 +43,9 @@ Migrado en `tests/api/transfers/`:
   6.2.1). No hay polling aprobado para la propagación del saldo.
 - Efecto: si el saldo tarda en actualizarse, el test falla por la comparación.
 - Revisión humana: pendiente; aprobar un `expect.poll` acotado o reemplazar la validación (como se
-  decidió para TC0139BERSA en `specs/transfers/own-account-transfer.api.plan.md`).
+  decidió para TC-015-1-0003-UNE en `specs/transfers/own-account-transfer.api.plan.md`).
 
-## TC18097BERSA / TC18098BERSA — API — incremento en destino nunca medido
+## TC-015-1-0043-UNE / TC-015-1-0044-UNE — API — incremento en destino nunca medido
 
 - Fuente: `validarIncrementoEnCuenta` compara `Settings.montoActualDestino + 1 ≤
 Settings.montoActualizadoDestino`, pero estos casos no leen saldos de destino: en ejecución aislada
@@ -54,9 +54,9 @@ Settings.montoActualizadoDestino`, pero estos casos no leen saldos de destino: e
 - Efecto: ambos casos fallan en esa assertion.
 - Revisión humana: pendiente; ¿medir el saldo de `ctaDestino` antes y después?
 
-## TC12938BERSA — API — tarjeta de débito no resuelta
+## TC-015-1-0031-UNE — API — tarjeta de débito no resuelta
 
-- Fuente: `TC12938BERSA` tiene comentada la línea `compartidosAPI.obtenerIdDeTarjeta(...)`, pero
+- Fuente: `TC-015-1-0031-UNE` tiene comentada la línea `compartidosAPI.obtenerIdDeTarjeta(...)`, pero
   `credinGenerate.json` usa `Settings.idDebitCard`: en ejecución aislada el reemplazo con `null`
   lanza `NullPointerException`; en una corrida completa usa la tarjeta de un test anterior.
 - Aplicado: se resuelve la tarjeta `tarjetaDebito` del propio registro (5015, mismo usuario).
@@ -64,34 +64,34 @@ Settings.montoActualizadoDestino`, pero estos casos no leen saldos de destino: e
 
 ## Títulos que no coinciden con el recorrido ejecutable
 
-- TC12935BERSA y TC0477BERSA se titulan "Programadas" pero ejecutan una transferencia inmediata.
-- TC0418BERSA se titula como inmediata "NO AGENDADOS" pero programa la transferencia y luego valida
+- TC-015-1-0030-UNE y TC-015-1-0021-UNE se titulan "Programadas" pero ejecutan una transferencia inmediata.
+- TC-015-1-0010-UNE se titula como inmediata "NO AGENDADOS" pero programa la transferencia y luego valida
   el descuento de saldo (que una programada para mañana no debería producir).
-- TC0424BERSA y TC18098BERSA son USD pero usan la variante estándar; sólo TC0422BERSA usa la USD.
-- TC18089BERSA dice "cuentas propias" pero ejecuta la transferencia a terceros sin descripción.
+- TC-015-1-0012-UNE y TC-015-1-0044-UNE son USD pero usan la variante estándar; sólo TC-015-1-0011-UNE usa la USD.
+- TC-015-1-0039-UNE dice "cuentas propias" pero ejecuta la transferencia a terceros sin descripción.
 - Aplicado: se porta el recorrido ejecutable con el título legado. Revisión humana: pendiente.
 
-## TC0008BERSA — API — CBU destino de la cuenta origen
+## TC-015-1-0001-UNE — API — CBU destino de la cuenta origen
 
 - Fuente: `trasnferenciasProgramadaEntreCuentaPropias` envía `cbuTarget` con
   `Settings.cbuTarget`, que el caso obtiene con `obtenerCbuCuenta(cuentaOrigen)` (CBU de la cuenta
   origen). La plantilla además fija labels, CUIT y banco de otra persona.
 - Aplicado: se conserva. Revisión humana: pendiente.
 
-## TC12981BERSA / TC0145BERSA — API — agenda sin assertion de estado final
+## TC-015-1-0035-UNE / TC-015-1-0004-UNE — API — agenda sin assertion de estado final
 
-- Fuente: tras eliminar, TC12981 vuelve a buscar el CBU pero no afirma que ya no esté agendado;
-  TC0145 tampoco afirma que quedó agendado.
+- Fuente: tras eliminar, TC-015-1-0035-UNE vuelve a buscar el CBU pero no afirma que ya no esté agendado;
+  TC-015-1-0004-UNE tampoco afirma que quedó agendado.
 - Aplicado: se conservan los pasos sin agregar assertions.
 
 ## L6e — API — historial
 
 - `validaHistorialDeTransferencias` lee `transfers[9]`: exige al menos diez transferencias en la
   página y no más de diez. Se expresa como assertions explícitas.
-- TC18100BERSA agenda el contacto pero luego programa una transferencia por CBU con OTP (no la
+- TC-015-1-0045-UNE agenda el contacto pero luego programa una transferencia por CBU con OTP (no la
   variante a contacto agendado), como el legado.
 
-## TC12939BERSA / TC12940BERSA — API — fecha de búsqueda CREDIN
+## TC-015-1-0032-UNE / TC-015-1-0033-UNE — API — fecha de búsqueda CREDIN
 
 - Fuente: `consultarCredin` usa el patrón `YYYY-MM-dd` (año de semana ISO en Java); difiere del año
   calendario sólo en los últimos/primeros días del año.

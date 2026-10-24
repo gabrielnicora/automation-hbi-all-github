@@ -2,7 +2,7 @@
 
 ## Estado
 
-Aprobada para implementación inicial mediante `TC0078BERSA`. Una lista vacía es válida; el caso
+Aprobada para implementación inicial mediante `TC-012-1-0001-UNE`. Una lista vacía es válida; el caso
 verifica `COR000I` y el objeto JSON de respuesta sin exigir un trámite vigente.
 
 ## Objetivo y alcance
@@ -12,13 +12,13 @@ modificaciones, detalle de un trámite y otros bancos quedan fuera.
 
 ## Recorrido observado en el legado
 
-Carga `TC0078BERSA`, inicia sesión y ejecuta
+Carga `TC-012-1-0001-UNE`, inicia sesión y ejecuta
 `POST /api/v1/execute/onlineProcedure.list` con un request vacío que contiene UUID y
 `xAppVersion: 1.95.0`. Sólo aplica el validador técnico común.
 
 ## Diseño propuesto
 
-- Cliente pequeño en `src/api/procedures/` y test individual en `tests/api/procedures/`.
+- Cliente pequeño en `src/api/procedures/` y test individual en `tests/api/012-procedures/`.
 - Sin fixture de datos específica, salvo que la aserción funcional dependa de un trámite known-good.
 - Sin polling ni reintentos internos.
 

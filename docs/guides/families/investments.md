@@ -17,8 +17,8 @@ fondos comunes y plazo fijo tienen recorridos, datos y resultados distintos.
 
 ## Casos testigo
 
-- TC0042BERSA: constitución de plazo fijo tradicional API.
-- TC0119BERSA: filtro de fondos por riesgo moderado UI.
+- TC-007-1-0002-UNE: constitución de plazo fijo tradicional API.
+- TC-007-2-0004-UNE: filtro de fondos por riesgo moderado UI.
 
 Referencias:
 
@@ -26,10 +26,10 @@ Referencias:
 - specs/investments/fund-risk-filter.ui.plan.md
 - src/api/investments/
 - src/pages/investments/
-- tests/api/investments/
-- tests/ui/investments/
+- tests/api/007-investments/
+- tests/ui/007-investments/
 
-## Plazo fijo API — TC0042BERSA
+## Plazo fijo API — TC-007-1-0002-UNE
 
 Flujo:
 
@@ -48,7 +48,7 @@ que el test exige en `true`. La señal actual es COR000I: no inferir ticket, ide
 estado. Si otra variante legada sí los comprueba, migrar esas assertions sin esperar otra
 definición de QA; registrar sólo las dudas de interpretación.
 
-## Fondos UI — TC0119BERSA
+## Fondos UI — TC-007-2-0004-UNE
 
 Flujo:
 

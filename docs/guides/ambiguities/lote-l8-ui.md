@@ -6,34 +6,34 @@ dependencias (`steps/tarjetasdecredito/TarjetasDeCreditoSteps`, `pages/tarjetasd
 `steps/botonesgenericos/BotonesGenericosSteps`, `pages/botonesgenericos/BotonesGenericosPage` y `utils/UtilsGP`).
 
 Criterios comunes: login UI real; apertura del listado y del detalle con el testigo validado
-`CreditCardsPage.open()`/`openDetail()` (TC0032/TC0033/TC0062BERSA); `isDisplayed()` sin assertion se
+`CreditCardsPage.open()`/`openDetail()` (TC-003-2-0001-UNE/TC-003-2-0002-UNE/TC-003-2-0003-UNE); `isDisplayed()` sin assertion se
 exige como visibilidad (criterio de `lote-base-ui.md`); el resto de los locators reproduce el legado y
 queda pendiente de validación UI. Ningún caso se ejecutó contra BERSA QA.
 
-Migrado en `tests/ui/cards/`:
+Migrado en `tests/ui/003-cards/`:
 
-| Caso(s)                        | Test                                                          | Page Object                       |
-| ------------------------------ | ------------------------------------------------------------- | --------------------------------- |
-| TC0104, TC0167                 | `should-download-credit-card-statement.ui.spec.ts`            | `credit-cards.page.ts` (ampliado) |
-| TC0153, TC0155, TC0157, TC0158 | `should-show-credit-card-tracking.ui.spec.ts`                 | `credit-card-tracking.page.ts`    |
-| TC0195                         | `should-redirect-new-card-request-to-appointments.ui.spec.ts` | `new-credit-card-request.page.ts` |
-| TC0162                         | `should-start-credit-card-theft-report.ui.spec.ts`            | `credit-cards.page.ts`            |
-| TC128242                       | `should-show-credit-card-detail-information.ui.spec.ts`       | `credit-cards.page.ts`            |
+| Caso(s)                                                                    | Test                                                          | Page Object                       |
+| -------------------------------------------------------------------------- | ------------------------------------------------------------- | --------------------------------- |
+| TC-003-2-0004-UNE, TC-003-2-0011-UNE                                       | `should-download-credit-card-statement.ui.spec.ts`            | `credit-cards.page.ts` (ampliado) |
+| TC-003-2-0005-UNE, TC-003-2-0006-UNE, TC-003-2-0007-UNE, TC-003-2-0008-UNE | `should-show-credit-card-tracking.ui.spec.ts`                 | `credit-card-tracking.page.ts`    |
+| TC-003-2-0012-UNE                                                          | `should-redirect-new-card-request-to-appointments.ui.spec.ts` | `new-credit-card-request.page.ts` |
+| TC-003-2-0009-UNE                                                          | `should-start-credit-card-theft-report.ui.spec.ts`            | `credit-cards.page.ts`            |
+| TC-003-2-0013-UNE                                                          | `should-show-credit-card-detail-information.ui.spec.ts`       | `credit-cards.page.ts`            |
 
-## TC0104/TC0167/TC0157BERSA — UI — validación de descargas
+## TC-003-2-0004-UNE/TC-003-2-0011-UNE/TC-003-2-0007-UNE — UI — validación de descargas
 
 - Fuente: `validarDescarga(nombre)` espera 3 s y busca en `C:\Users\<usuario>\Downloads` un archivo cuyo
   nombre contenga el texto (`Estado` o `Detalle de seguimiento de tarjeta.pdf`) y lo borra.
 - Aplicado: se espera el evento de descarga de Playwright al hacer clic y se exige que el nombre
   sugerido contenga el mismo texto. No depende de la carpeta del sistema ni de pausas.
 
-## TC0158BERSA — UI — imprimir sin assertion
+## TC-003-2-0008-UNE — UI — imprimir sin assertion
 
 - Fuente: tras `clickImprimir`, `ManageTab` cambia de pestaña sin afirmar nada.
 - Aplicado: se presiona imprimir y se cierra la pestaña nueva si aparece; el caso sólo valida que el
   seguimiento, su detalle y el icono de imprimir estén operables.
 
-## TC0195BERSA — UI — cuenta débito y pestaña de Citas
+## TC-003-2-0012-UNE — UI — cuenta débito y pestaña de Citas
 
 - Fuente: `seleccionarCuentaDebitoSiEstaPresente(cuentaOrigen)` descarta cualquier error; el registro
   tiene `ctaOrigen` `sinDatos`. Tras "Aceptar", `ManageTab` cambia a la pestaña nueva si existe y
@@ -42,7 +42,7 @@ Migrado en `tests/ui/cards/`:
   pestaña nueva y, si no aparece, se busca el texto en la pestaña actual, como `ManageTab`.
 - Revisión humana: pendiente; confirmar si la solicitud requiere cuenta débito.
 
-## TC128242BERSA — UI — tarjetas identificadas por etiqueta
+## TC-003-2-0013-UNE — UI — tarjetas identificadas por etiqueta
 
 - Fuente: el caso abre la tarjeta `tarjetaAOperar` (`Tarjeta Master`) y luego la de `tarjetaDebito`
   (`Tarjeta Visa`), con el comentario legado de que ese campo contiene otra tarjeta de crédito.
@@ -50,7 +50,7 @@ Migrado en `tests/ui/cards/`:
   porque el dato no son dígitos. Se exigen los diez textos del detalle en ambas tarjetas.
 - Revisión humana: pendiente; confirmar los datos del registro.
 
-## TC0162BERSA — UI — denuncia sin confirmar
+## TC-003-2-0009-UNE — UI — denuncia sin confirmar
 
 - Aplicado: detalle → Opciones → Denunciar robo o extravío → Robo → Continuar; se exige la pantalla
   "Confirmar denuncia por robo o extrav…". No se confirma la denuncia, como el legado.

@@ -2,7 +2,7 @@
 
 ## Estado
 
-Aprobada, implementada y validada mediante `TC18088BERSA`. La ejecución UI en BERSA QA
+Aprobada, implementada y validada mediante `TC-015-2-0004-UNE`. La ejecución UI en BERSA QA
 completó la transferencia y verificó el ticket exitoso. El caso reutiliza el CBU propio ya
 disponible en los datos BERSA; no agrega ni elimina destinatarios.
 
@@ -15,10 +15,10 @@ formulario y validando el ticket final exitoso.
 ## Alcance
 
 - Banco: Banco Entre Ríos (BERSA); ambiente: QA; canal: UI.
-- Caso: `TC18088BERSA`.
+- Caso: `TC-015-2-0004-UNE`.
 - Cuenta origen y CBU destino: los definidos en `test-data/private/bersa.json`.
 - Importe dummy: ARS 1.
-- Concepto: `Varios`; descripción: `TC18088`.
+- Concepto: `Varios`; descripción: `TC-015-2-0004-UNE`.
 - El caso no elimina destinatarios mediante API porque el CBU ya está marcado como cuenta propia.
 
 ## Comportamiento esperado
@@ -35,14 +35,14 @@ formulario y validando el ticket final exitoso.
 - `src/pages/transfers/own-account-transfer.page.ts` contiene navegación, locators,
   mecánica del formulario, sincronización de pantallas y lectura de la revisión y el ticket.
 - `src/test-data/own-account-transfer-ui-data.ts` carga y valida los campos UI del caso.
-- `tests/ui/transfers/should-transfer-to-own-account-by-cbu.ui.spec.ts` expresa el flujo.
+- `tests/ui/015-transfers/should-transfer-to-own-account-by-cbu.ui.spec.ts` expresa el flujo.
 - No se crea workflow: el recorrido está contenido en un único Page Object.
 - No se duplica la política transversal de segundo factor; si BERSA agrega un desafío al
   recorrido, deberá integrarse mediante la política común ya aprobada.
 
 ## Criterios de aceptación
 
-- El test comienza con `TC18088BERSA` y no contiene credenciales, URLs ni selectores.
+- El test comienza con `TC-015-2-0004-UNE` y no contiene credenciales, URLs ni selectores.
 - El CBU se lee desde el export privado y se valida con formato de 22 dígitos.
 - Se completan importe, concepto y descripción antes de confirmar.
 - El ticket muestra éxito, cuenta origen, cuenta destino y monto esperado.

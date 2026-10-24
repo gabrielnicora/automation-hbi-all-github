@@ -21,7 +21,7 @@ variables:
     description: 'qa = BERSA QA; une-dev = UNE DEV (contraseña y OTP fijos).'
   TEST_PATH:
     value: ''
-    description: 'Opcional: rutas de tests separadas por espacio (por ejemplo tests/ui/authentication).'
+    description: 'Opcional: rutas de tests separadas por espacio (por ejemplo tests/ui/002-authentication).'
   TEST_FILTER:
     value: ''
     description: 'Opcional: expresión para --grep.'

@@ -14,7 +14,7 @@ Esta capacidad permite:
 - actualizar el campo `Automatizado`.
 
 No publica resultados de Playwright, no modifica reporters ni vincula automáticamente los IDs
-`TC<numero>BERSA` con claves Jira. Esa integración continúa fuera de alcance y se documenta en
+`TC-<FFF>-<C>-<NNNN>-UNE` con claves Jira. Esa integración continúa fuera de alcance y se documenta en
 `.agents/docs/integracion-xray.md`.
 
 ## Configuración y seguridad

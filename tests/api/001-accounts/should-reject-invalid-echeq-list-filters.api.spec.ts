@@ -106,6 +106,8 @@ const INVALID_FILTERS: readonly InvalidFilterCase[] = [
 ];
 
 test.describe('Listado de eCheq API de Banco Entre Ríos — filtros inválidos', () => {
+  test.use({ credentialsRef: 'TCBERSAPRUEBA' });
+
   for (const testCase of INVALID_FILTERS) {
     test.describe(testCase.id, () => {
       test.use({ testCaseId: testCase.id });

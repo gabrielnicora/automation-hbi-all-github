@@ -6,19 +6,19 @@ migradas.
 
 ## Familias actuales
 
-- [Autenticación](authentication.md) — `TC0017BERSA` API/UI.
-- [Transferencias](transfers.md) — `TC0139BERSA` API y `TC18088BERSA` UI.
-- [Pago de tarjeta de crédito](credit-card-payment.md) — `TC0163BERSA` UI.
-- [DEBIN](debin.md) — `TC0013BERSA` API.
-- [Perfil](profile.md) — `TC0001BERSA`, `TC0004BERSA`, `TC0102BERSA`.
-- [Inversiones](investments.md) — `TC0042BERSA`, `TC0119BERSA`.
-- [Mensajes](messages.md) — `TC0109BERSA`, `TC0086BERSA`.
-- [Trámites](procedures.md) — `TC0078BERSA`, `TC0052BERSA`.
-- [Registro](registration.md) — `TC0156BERSA`.
-- [Mis Productos](mis-products.md) — `TC0075BERSA`.
-- [Seguros](insurance.md) — `TC0197BERSA`.
-- [Home](home.md) — `TC0159BERSA`.
-- [Cuentas](accounts.md) — `TC0027BERSA` API y `TC0041BERSA` UI.
+- [Autenticación](authentication.md) — `TC-002-1-0001-UNE (API) / TC-002-2-0001-UNE (UI)` API/UI.
+- [Transferencias](transfers.md) — `TC-015-1-0003-UNE` API y `TC-015-2-0004-UNE` UI.
+- [Pago de tarjeta de crédito](credit-card-payment.md) — `TC-003-2-0010-UNE` UI.
+- [DEBIN](debin.md) — `TC-011-1-0002-UNE` API.
+- [Perfil](profile.md) — `TC-013-1-0001-UNE`, `TC-013-2-0001-UNE`, `TC-013-1-0002-UNE`.
+- [Inversiones](investments.md) — `TC-007-1-0002-UNE`, `TC-007-2-0004-UNE`.
+- [Mensajes](messages.md) — `TC-009-1-0003-UNE`, `TC-009-2-0001-UNE`.
+- [Trámites](procedures.md) — `TC-012-1-0001-UNE`, `TC-012-2-0001-UNE`.
+- [Registro](registration.md) — `TC-014-2-0002-UNE`.
+- [Mis Productos](mis-products.md) — `TC-010-2-0001-UNE`.
+- [Seguros](insurance.md) — `TC-006-2-0002-UNE`.
+- [Home](home.md) — `TC-005-1-0001-UNE`.
+- [Cuentas](accounts.md) — `TC-001-1-0002-UNE` API y `TC-001-2-0003-UNE` UI.
 
 Leer primero la [guía general](../README.md). Las familias explican patrones y límites de
 los testigos; no reemplazan las assertions del caso legado por las de un ejemplo más corto.

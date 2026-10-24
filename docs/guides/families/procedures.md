@@ -17,18 +17,18 @@ un turno. Cada variante debe conservar su resultado observable.
 
 ## Casos testigo
 
-- TC0078BERSA: lista de trámites online vigentes API.
-- TC0052BERSA: acceso UI a turnos online.
+- TC-012-1-0001-UNE: lista de trámites online vigentes API.
+- TC-012-2-0001-UNE: acceso UI a turnos online.
 
 Referencias:
 
 - specs/procedures/current-online-procedures.api.plan.md
 - src/api/procedures/current-online-procedures.api.ts
 - src/pages/procedures/appointments.page.ts
-- tests/api/procedures/should-list-current-online-procedures.api.spec.ts
-- tests/ui/procedures/should-open-online-appointments.ui.spec.ts
+- tests/api/012-procedures/should-list-current-online-procedures.api.spec.ts
+- tests/ui/012-procedures/should-open-online-appointments.ui.spec.ts
 
-## Consulta API — TC0078BERSA
+## Consulta API — TC-012-1-0001-UNE
 
 1. Login API.
 2. Ejecutar onlineProcedure.list con request vacío, UUID y versión aprobada.
@@ -39,7 +39,7 @@ Referencias:
 El testigo no agrega detalle, alta, baja ni modificación. Portar esas acciones si pertenecen
 a otra variante legada; no portar retries internos.
 
-## Turnos UI — TC0052BERSA
+## Turnos UI — TC-012-2-0001-UNE
 
 Después del login UI, `appointmentsPage.openExternalAppointments()` abre Trámites → Turnos
 online, comprueba el encabezado y prepara la espera de nueva página antes de Aceptar.

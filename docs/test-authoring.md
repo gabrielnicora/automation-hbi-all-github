@@ -29,7 +29,7 @@ No debe haber más de uno o dos saltos entre el test y el código que realiza la
 ## Conceptos mínimos
 
 - Banco Entre Ríos (BERSA) es el único banco soportado.
-- Cada título comienza con `TC<numero>BERSA`.
+- Cada título comienza con el ID del caso, `TC-<FFF>-<C>-<NNNN>-UNE` (`SPEC.md`, sección 10.1).
 - Cada caso declara su propio `testCaseId`.
 - El identificador selecciona los datos propios del caso; no selecciona banco ni factory.
 - Cuando el legado comparte deliberadamente una identidad, el test declara `credentialsRef` de
@@ -67,7 +67,7 @@ Ejemplo de login UI con las fixtures y métodos disponibles:
 ```ts
 import { expect, test } from '../../../src/fixtures/ui-test';
 
-const TEST_CASE_ID = 'TC0017BERSA';
+const TEST_CASE_ID = 'TC-002-2-0001-UNE';
 
 test.describe('Login UI de Banco Entre Ríos', () => {
   test.use({ testCaseId: TEST_CASE_ID });
@@ -118,7 +118,7 @@ Ejemplo de login API con las fixtures y métodos disponibles:
 ```ts
 import { expect, test } from '../../../src/fixtures/api-test';
 
-const TEST_CASE_ID = 'TC0017BERSA';
+const TEST_CASE_ID = 'TC-002-1-0001-UNE';
 
 test.describe('Login API de Banco Entre Ríos', () => {
   test.use({ testCaseId: TEST_CASE_ID });

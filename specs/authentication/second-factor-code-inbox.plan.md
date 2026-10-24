@@ -18,7 +18,7 @@ en perfiles, transferencias, préstamos, tarjetas u otras capacidades.
 - Endpoint de consulta: `/api/v1/execute/util.codes`.
 - Payload aprobado: el request común de BERSA con `ajax_uuid` y `xAppVersion`; el Bearer
   de la sesión se envía únicamente en el header `Authorization`. Este contrato coincide
-  con el flujo legado validado para TC0001BERSA.
+  con el flujo legado validado para TC-013-1-0001-UNE.
 - Canales: SMS y email, identificados por `channel` (normalizado internamente como tipo) y
   `origen`.
 - El código se mantiene sólo en memoria y se entrega al flujo que debe ingresarlo o usarlo.
@@ -80,7 +80,7 @@ mismo código, versionado como `secondFactorCode` en `test-data/private/une-dev.
   requiera; no contiene locators ni endpoints.
 - Desafío sin reenvío (`requestSingleCode`, migración acelerada L11, 21 de octubre de 2026):
   cuando el disparo no puede repetirse desde la misma pantalla (correo de recupero de
-  usuario, TC0048/TC128240BERSA), la bandeja toma la línea base, el flujo dispara una sola vez
+  usuario, TC-002-2-0002-UNE/TC-002-2-0004-UNE), la bandeja toma la línea base, el flujo dispara una sola vez
   y se esperan las 12 consultas iniciales; si no llega, falla con el mismo diagnóstico. El
   criterio puede pedir la propiedad `codeNoFormat` cuando el registro es un mensaje y no un
   código. Detalle en `docs/guides/ambiguities/lote-l11-ui.md`.

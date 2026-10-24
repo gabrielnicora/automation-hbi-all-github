@@ -35,7 +35,7 @@ posibilidad.
 - Estado: aprobado por el usuario el 21 de octubre de 2026; ejecución pendiente de validar.
 - Decisión: durante la transición conviven dos ambientes de ejecución de la misma suite,
   elegidos con `TEST_ENV`: `qa` (BERSA QA, valor por defecto) y `une-dev` (UNE DEV).
-- `une-dev` usa las mismas identidades, IDs `TC<numero>BERSA` y datos de
+- `une-dev` usa las mismas identidades, IDs (sección 10.1) y datos de
   `test-data/private/bersa.json`. Sólo cambian las URLs base y dos valores comunes a todos los
   usuarios —contraseña y código de segundo factor— versionados en
   `test-data/private/une-dev.json`.
@@ -103,7 +103,7 @@ exigencia de una especificación individual aprobada antes de portar un caso exi
   la duda en `docs/guides/ambiguities/` y continuar el lote. No sustituir una assertion por otra
   más débil ni agregar una expectativa inventada porque el testigo tenga otro alcance.
 - Respetar las decisiones explícitas que ya reemplazaron el legado para un caso concreto
-  (por ejemplo, registro TC0156BERSA). Una diferencia no resuelta con documentación se conserva
+  (por ejemplo, registro TC-014-2-0002-UNE). Una diferencia no resuelta con documentación se conserva
   como comportamiento legado provisional y se registra para revisión; no cambia silenciosamente
   los testigos ya migrados.
 - Adaptar lenguaje, arquitectura, esperas y seguridad. No trasladar bucles internos de retry de
@@ -234,7 +234,7 @@ Estado: aprobado. Motivo: validar el contexto para agentes con evidencia y no po
   al agente que lo automatice desde una descripción funcional y corrige el resultado.
 - Ambiente: UAT es el ambiente `qa` de la sección 1 (BERSA QA, URLs por defecto) con los
   datos de `test-data/private/`. No se agregan ambientes ni variables.
-- Antes del agente se ejecuta el login UI `TC0017BERSA`; si falla, la corrida se informa como
+- Antes del agente se ejecuta el login UI `TC-002-2-0001-UNE`; si falla, la corrida se informa como
   ambiente no disponible y no se atribuye al agente.
 - En las tareas de autoría el agente no ejecuta escenarios contra el banco: valida con
   `pnpm run check` y `playwright test --list`. El runner ejecuta el caso producido con
@@ -632,7 +632,7 @@ No existen ni se permiten dependencias hacia `banks/shared`, `BankConfig`,
 ## 8. Datos de prueba y seguridad de ejecución
 
 El origen de credenciales es `test-data/private/bersa.json`. El documento contiene el objeto
-`testCases`, indexado directamente por cada `testCaseId` BERSA. Cada registro conserva `tcName`
+`testCases`, indexado directamente por cada `testCaseId` BERSA (numeración de la sección 10.1). Cada registro conserva `tcName`
 con el mismo valor de su clave, y el lector valida esa coincidencia antes de devolverlo. Esta
 decisión reemplaza el export legado indexado por el texto de una consulta SQL y evita recorridos
 lineales para localizar un caso.
@@ -649,8 +649,9 @@ Con `TEST_ENV=une-dev`, la contraseña de todos los usuarios proviene de
 `test-data/private/une-dev.json`; el usuario sigue proviniendo de la fila del caso o del perfil de
 credenciales seleccionado explícitamente.
 
-El sufijo `BERSA` se conserva por trazabilidad, pero no selecciona un banco ni una factory.
-Un sufijo diferente debe considerarse inválido para este proyecto.
+El sufijo de los IDs no selecciona un banco ni una factory. Desde el 23 de octubre de 2026 los
+IDs llevan el sufijo `UNE` (sección 10.1); reemplaza la regla que consideraba inválido todo
+sufijo distinto de `BERSA`.
 
 El 8 de septiembre de 2026 se aprobó versionar `test-data/private/` para distribuir una
 versión ejecutable con los datos necesarios. Esta decisión reemplaza la regla anterior que
@@ -693,7 +694,8 @@ Playwright. Los datos de sesión y autenticación indicados arriba continúan ex
 - `PW_WORKERS` controla el paralelismo de archivos y utiliza `1` por defecto.
 - `fullyParallel` permanece desactivado mientras existan identidades compartidas.
 - Dos escenarios que modifican el mismo usuario no se ejecutan simultáneamente.
-- Los logins API y UI que reutilizan `TC0017BERSA` se ejecutan secuencialmente.
+- Los logins API (`TC-002-1-0001-UNE`) y UI (`TC-002-2-0001-UNE`) comparten usuario y se ejecutan
+  secuencialmente. Corrige la mención anterior a `TC-011-1-0001-UNE`, que es un caso DEBIN.
 - Sólo se aplica polling a consultas de estado expresamente aprobadas.
 - Se permite reintentar escenarios fallidos completos, incluido el cambio de teléfono,
   mediante el runner y con los intentos visibles en el reporte. Esto reemplaza la
@@ -768,13 +770,52 @@ del banco. Esta política no incorpora scripts, jobs ni una suite permanente adi
 - Variables y funciones: `camelCase`.
 - Clases, tipos e interfaces: `PascalCase`.
 - Tests: `<behavior-name>.<channel>.spec.ts`.
-- Cada título comienza con `TC<numero>BERSA`.
-- El mismo caso funcional conserva su ID entre API y UI; la identidad del escenario
-  se distingue por caso y canal. `testCaseId` selecciona los datos propios del caso; una
-  `credentialsRef` explícita puede seleccionar únicamente una identidad compartida.
-- Ambos logins `TC0017BERSA` pertenecen a la selección `@regression` por su importancia.
+- Cada título comienza con el ID del caso (sección 10.1). `testCaseId` selecciona los datos
+  propios del caso; una `credentialsRef` explícita puede seleccionar únicamente una identidad
+  compartida.
+
+### 10.1 Numeración de casos
+
+Decisión del usuario, 22 y 23 de octubre de 2026. Estado: aprobado. Motivo: la numeración
+heredada proviene de una lista única que luego se separó por familia funcional y por canal, por
+lo que no es lineal y no permite asignar un número nuevo sin riesgo de choque. Un agente
+necesita una regla determinística para numerar casos nuevos.
+
+- Formato: `TC-<FFF>-<C>-<NNNN>-UNE`. `FFF` es el código de familia (3 dígitos), `C` el canal
+  (`1` API, `2` UI) y `NNNN` la secuencia dentro de esa familia y canal. Ejemplo: tarjetas por
+  UI `TC-003-2-0002-UNE`.
+- Sufijo `UNE`: decisión del 23 de octubre de 2026 para no renumerar al completar la transición
+  de la sección 1. El sufijo no selecciona banco, ambiente ni datos: el banco activo sigue siendo
+  BERSA y los tests se ejecutan contra BERSA QA salvo `TEST_ENV=une-dev`. Reemplaza la regla de
+  la sección 8 que exigía el sufijo `BERSA`.
+- Familia = carpeta del test, nombrada `tests/<canal>/<FFF>-<familia>/` (por ejemplo
+  `tests/ui/003-cards/`). El nombre de la carpeta indica la familia de cada test. Los códigos y
+  todos los IDs asignados viven en `test-data/case-ids.json`, junto con el ID anterior
+  (`legacyId`) de cada caso migrado. Ese archivo es la única fuente de trazabilidad hacia los IDs
+  anteriores.
+- Cada canal tiene su propio ID: el mismo caso funcional por API y por UI recibe dos números.
+  Reemplaza la regla anterior que conservaba el ID entre API y UI.
+- Un ID nuevo se obtiene con `pnpm run case:new -- <familia> <api|ui>`, que toma el próximo
+  número libre y lo registra. Nadie, ni personas ni agentes, inventa o calcula un ID a mano.
+  Una familia nueva se registra con `--new-family`, que asigna el siguiente código libre, y su
+  carpeta se crea como `tests/<canal>/<FFF>-<familia>/`.
+- `pnpm run check` y el hook de pre-commit fallan si una carpeta de tests no corresponde a una
+  familia registrada, o si un
+  test usa un ID no registrado, un ID anterior en lugar del nuevo, o un ID cuya familia o canal no
+  corresponde a su carpeta.
+- Migración del 22 y 23 de octubre de 2026: se renombraron las carpetas de tests por familia y
+  se renumeraron los tests y las filas de `test-data/private/bersa.json`, asignando la secuencia
+  en el orden de los IDs anteriores. La fila del único ID compartido entre canales
+  (`TC0017BERSA`) se duplicó para sus dos IDs. Las filas sin test conservan su ID anterior y el
+  lector no las carga. Se actualizaron las rutas a tests y, el 23 de octubre de 2026, las menciones de
+  IDs en `specs/`, este documento, `README.md`, `docs/`, `.agents/` y los comentarios de `src/`.
+  Sólo el legado `java/` y los casos sin test (excluidos, sin fuente o filas de datos sin test)
+  conservan el ID anterior; se traducen con el mapeo. Los ejemplos de esta sección citan IDs
+  anteriores a propósito.
+- Ambos logins (`TC-002-1-0001-UNE` y `TC-002-2-0001-UNE`) pertenecen a la selección `@regression`
+  por su importancia.
   Esta etiqueta no implica pertenencia a smoke ni una vinculación con Xray.
-- `TC0139BERSA` pertenece a `@critical`; la etiqueta expresa criticidad funcional y no
+- `TC-015-1-0003-UNE` pertenece a `@critical`; la etiqueta expresa criticidad funcional y no
   define una selección smoke ni una vinculación con Xray.
 - Un archivo agrupa casos del mismo comportamiento y canal.
 - No usar `any` salvo una frontera externa justificada y validada inmediatamente.

@@ -18,14 +18,14 @@ demuestra que el pago haya sido acreditado.
 
 ## Caso testigo
 
-TC0163BERSA: pago total de una tarjeta Mastercard propia por UI.
+TC-003-2-0010-UNE: pago total de una tarjeta Mastercard propia por UI.
 
 Referencias:
 
 - specs/cards/credit-card-total-payment.ui.plan.md
 - src/pages/cards/credit-card-payment.page.ts
 - src/test-data/credit-card-total-payment-ui-data.ts
-- tests/ui/cards/should-open-total-credit-card-payment-review.ui.spec.ts
+- tests/ui/003-cards/should-open-total-credit-card-payment-review.ui.spec.ts
 
 ## Flujo del testigo
 
@@ -59,7 +59,7 @@ portar también las comprobaciones adicionales que sí ejecute el legado.
 
 ## Datos del caso
 
-El loader usa los datos del registro TC0163BERSA:
+El loader usa los datos del registro TC-003-2-0010-UNE:
 
 - tarjetaDebito: últimos cuatro dígitos de la tarjeta de débito;
 - ctaOrigen: cuenta utilizada en Cuenta débito;
@@ -72,7 +72,7 @@ valores ni asumir que QA conserva una Mastercard disponible.
 
 ## Arquitectura
 
-- Test: tests/ui/cards/.
+- Test: tests/ui/003-cards/.
 - Page Object: src/pages/cards/credit-card-payment.page.ts.
 - Datos: src/test-data/credit-card-total-payment-ui-data.ts.
 - Sin workflow: el recorrido está contenido en un Page Object.
