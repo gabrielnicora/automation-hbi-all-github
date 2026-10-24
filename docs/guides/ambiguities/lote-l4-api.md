@@ -11,7 +11,7 @@ de cada plantilla, OTP por SMS con la política central, y tarjetas buscadas com
 débito por label `Visa Débito **** **** **** <tarjetaDebito>` y crédito por número
 `**** **** **** <tarjetaOperar>`. Ningún caso se ejecutó contra BERSA QA.
 
-Migrado en `tests/api/cards/`:
+Migrado en `tests/api/003-cards/`:
 
 | Caso(s)                | Test                                                            |
 | ---------------------- | --------------------------------------------------------------- |

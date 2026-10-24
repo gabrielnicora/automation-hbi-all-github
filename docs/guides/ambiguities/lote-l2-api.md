@@ -20,17 +20,17 @@ Criterios comunes aplicados:
 
 Migrado en:
 
-| Caso(s)        | Test                                                                           |
-| -------------- | ------------------------------------------------------------------------------ |
-| TC0094, TC0098 | `tests/api/messages/should-filter-messages-by-read-state.api.spec.ts`          |
-| TC0006         | `tests/api/accounts/should-adhere-new-destination.api.spec.ts`                 |
-| TC0229         | `tests/api/accounts/should-show-salary-advance-card.api.spec.ts`               |
-| TC0223         | `tests/api/accounts/should-request-salary-advance.api.spec.ts`                 |
-| TC12973        | `tests/api/investments/should-create-usd-fixed-term.api.spec.ts`               |
-| TC0115         | `tests/api/investments/should-open-investment-funds.api.spec.ts`               |
-| TC0125         | `tests/api/investments/should-show-commitent-account-closure-form.api.spec.ts` |
-| TC0129, TC0130 | `tests/api/investments/should-list-fund-movements.api.spec.ts`                 |
-| TC0069, TC0009 | `tests/api/investments/should-exchange-dollars.api.spec.ts`                    |
+| Caso(s)        | Test                                                                               |
+| -------------- | ---------------------------------------------------------------------------------- |
+| TC0094, TC0098 | `tests/api/009-messages/should-filter-messages-by-read-state.api.spec.ts`          |
+| TC0006         | `tests/api/001-accounts/should-adhere-new-destination.api.spec.ts`                 |
+| TC0229         | `tests/api/001-accounts/should-show-salary-advance-card.api.spec.ts`               |
+| TC0223         | `tests/api/001-accounts/should-request-salary-advance.api.spec.ts`                 |
+| TC12973        | `tests/api/007-investments/should-create-usd-fixed-term.api.spec.ts`               |
+| TC0115         | `tests/api/007-investments/should-open-investment-funds.api.spec.ts`               |
+| TC0125         | `tests/api/007-investments/should-show-commitent-account-closure-form.api.spec.ts` |
+| TC0129, TC0130 | `tests/api/007-investments/should-list-fund-movements.api.spec.ts`                 |
+| TC0069, TC0009 | `tests/api/007-investments/should-exchange-dollars.api.spec.ts`                    |
 
 ## TC0094BERSA / TC0098BERSA — API — comparación de `userRead` con texto
 

@@ -24,7 +24,7 @@ reintentan hasta cuatro veces. Un comentario no ejecutable menciona `message`, `
 ## Diseño propuesto
 
 - Cliente en `src/api/profile/`, separado del de cambio de teléfono salvo duplicación demostrada.
-- Test en `tests/api/profile/`, sin mutaciones, polling ni reintentos internos.
+- Test en `tests/api/013-profile/`, sin mutaciones, polling ni reintentos internos.
 - UUID nuevo por request y cabecera de autorización proveniente de la sesión.
 
 ## Criterios de aceptación propuestos

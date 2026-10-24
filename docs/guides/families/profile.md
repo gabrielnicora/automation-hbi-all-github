@@ -28,8 +28,8 @@ Referencias:
 - specs/profile/notification-preferences.api.plan.md
 - src/api/profile/
 - src/pages/profile/
-- tests/api/profile/
-- tests/ui/profile/
+- tests/api/013-profile/
+- tests/ui/013-profile/
 
 ## Cambio de teléfono API — TC0001BERSA
 

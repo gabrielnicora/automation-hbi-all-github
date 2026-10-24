@@ -26,7 +26,7 @@ config, test-data ──► fixtures        models ──► pages / api / workf
 
 | Layer                          | Instructions              | Reference file                                             |
 | ------------------------------ | ------------------------- | ---------------------------------------------------------- |
-| `tests/`                       | `tests/AGENTS.md`         | `tests/api/profile/should-change-phone.api.spec.ts`        |
+| `tests/`                       | `tests/AGENTS.md`         | `tests/api/013-profile/should-change-phone.api.spec.ts`    |
 | `src/pages/`                   | `src/pages/AGENTS.md`     | `src/pages/investments/investment-funds.page.ts`           |
 | `src/api/`                     | `src/api/AGENTS.md`       | `src/api/profile/notification-preferences.api.ts`          |
 | `src/fixtures/`                | `src/fixtures/AGENTS.md`  | `src/fixtures/api-test.ts`, `src/fixtures/ui-test.ts`      |

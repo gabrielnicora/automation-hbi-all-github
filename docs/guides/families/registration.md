@@ -25,7 +25,7 @@ Referencias:
 - specs/main-page/should-open-registration.ui.plan.md
 - src/pages/start-page/start.page.ts
 - src/pages/registration/identity-validation.page.ts
-- tests/ui/start-page/should-open-registration.ui.spec.ts
+- tests/ui/014-start-page/should-open-registration.ui.spec.ts
 
 ## Flujo testigo
 

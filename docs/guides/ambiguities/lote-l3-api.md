@@ -20,7 +20,7 @@ Criterios comunes aplicados:
   `src/test-data/payment-services-data.ts`.
 - Ningún caso se ejecutó contra BERSA QA.
 
-Migrado en `tests/api/payments/`:
+Migrado en `tests/api/011-payments/`:
 
 | Caso(s)        | Test                                                  |
 | -------------- | ----------------------------------------------------- |

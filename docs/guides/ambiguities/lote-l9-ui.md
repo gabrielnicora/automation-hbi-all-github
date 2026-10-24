@@ -21,7 +21,7 @@ Criterios comunes:
 - Ningún caso se ejecutó contra BERSA QA. TC18096, TC18099, TC18092, TC128247, TC128248 y TC128249
   mueven dinero o generan CREDIN; TC128246/TC128247 agendan y eliminan contactos.
 
-Migrado en `tests/ui/transfers/`:
+Migrado en `tests/ui/015-transfers/`:
 
 | Caso(s)                                | Test                                                         | Page Objects                                                                                       |
 | -------------------------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |

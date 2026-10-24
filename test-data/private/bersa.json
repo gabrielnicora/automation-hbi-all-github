@@ -1,9 +1,9 @@
 {
   "testCases": {
-    "TC1110001BERSA": {
+    "TC-011-1-0001-UNE": {
       "idSeccion": "1",
       "idBanco": "2",
-      "tcName": "TC1110001BERSA",
+      "tcName": "TC-011-1-0001-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -18,10 +18,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1110002BERSA": {
+    "TC-011-1-0002-UNE": {
       "idSeccion": "1",
       "idBanco": "2",
-      "tcName": "TC1110002BERSA",
+      "tcName": "TC-011-1-0002-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -36,10 +36,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1110003BERSA": {
+    "TC-011-1-0003-UNE": {
       "idSeccion": "1",
       "idBanco": "2",
-      "tcName": "TC1110003BERSA",
+      "tcName": "TC-011-1-0003-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -54,10 +54,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC1110004BERSA": {
+    "TC-011-1-0004-UNE": {
       "idSeccion": "1",
       "idBanco": "2",
-      "tcName": "TC1110004BERSA",
+      "tcName": "TC-011-1-0004-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -72,10 +72,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1110005BERSA": {
+    "TC-011-1-0005-UNE": {
       "idSeccion": "1",
       "idBanco": "2",
-      "tcName": "TC1110005BERSA",
+      "tcName": "TC-011-1-0005-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -90,10 +90,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1110006BERSA": {
+    "TC-011-1-0006-UNE": {
       "idSeccion": "1",
       "idBanco": "2",
-      "tcName": "TC1110006BERSA",
+      "tcName": "TC-011-1-0006-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -108,10 +108,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC1110008BERSA": {
+    "TC-011-1-0008-UNE": {
       "idSeccion": "1",
       "idBanco": "2",
-      "tcName": "TC1110008BERSA",
+      "tcName": "TC-011-1-0008-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -126,10 +126,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC1120002BERSA": {
+    "TC-011-2-0002-UNE": {
       "idSeccion": "1",
       "idBanco": "2",
-      "tcName": "TC1120002BERSA",
+      "tcName": "TC-011-2-0002-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": "sinDatos",
@@ -162,10 +162,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1120003BERSA": {
+    "TC-011-2-0003-UNE": {
       "idSeccion": "1",
       "idBanco": "2",
-      "tcName": "TC1120003BERSA",
+      "tcName": "TC-011-2-0003-UNE",
       "user": "berhometest15",
       "pass": "Mayo2030",
       "user1": null,
@@ -180,10 +180,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1110009BERSA": {
+    "TC-011-1-0009-UNE": {
       "idSeccion": "1",
       "idBanco": "2",
-      "tcName": "TC1110009BERSA",
+      "tcName": "TC-011-1-0009-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -198,10 +198,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1110010BERSA": {
+    "TC-011-1-0010-UNE": {
       "idSeccion": "1",
       "idBanco": "2",
-      "tcName": "TC1110010BERSA",
+      "tcName": "TC-011-1-0010-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -252,10 +252,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0820001BERSA": {
+    "TC-008-2-0001-UNE": {
       "idSeccion": "10",
       "idBanco": "2",
-      "tcName": "TC0820001BERSA",
+      "tcName": "TC-008-2-0001-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -270,10 +270,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0820002BERSA": {
+    "TC-008-2-0002-UNE": {
       "idSeccion": "10",
       "idBanco": "2",
-      "tcName": "TC0820002BERSA",
+      "tcName": "TC-008-2-0002-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -288,10 +288,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0820003BERSA": {
+    "TC-008-2-0003-UNE": {
       "idSeccion": "10",
       "idBanco": "2",
-      "tcName": "TC0820003BERSA",
+      "tcName": "TC-008-2-0003-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -306,10 +306,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0620001BERSA": {
+    "TC-006-2-0001-UNE": {
       "idSeccion": "11",
       "idBanco": "2",
-      "tcName": "TC0620001BERSA",
+      "tcName": "TC-006-2-0001-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -324,10 +324,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0620002BERSA": {
+    "TC-006-2-0002-UNE": {
       "idSeccion": "11",
       "idBanco": "2",
-      "tcName": "TC0620002BERSA",
+      "tcName": "TC-006-2-0002-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -342,10 +342,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0620003BERSA": {
+    "TC-006-2-0003-UNE": {
       "idSeccion": "11",
       "idBanco": "2",
-      "tcName": "TC0620003BERSA",
+      "tcName": "TC-006-2-0003-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -360,10 +360,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510001BERSA": {
+    "TC-015-1-0001-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510001BERSA",
+      "tcName": "TC-015-1-0001-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -378,10 +378,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510002BERSA": {
+    "TC-015-1-0002-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510002BERSA",
+      "tcName": "TC-015-1-0002-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -396,10 +396,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510003BERSA": {
+    "TC-015-1-0003-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510003BERSA",
+      "tcName": "TC-015-1-0003-UNE",
       "user": "ecarina27",
       "pass": "Practia2030",
       "user1": null,
@@ -415,10 +415,10 @@
       "tarjetaOperar": "9041",
       "ambiente": "sinDatos"
     },
-    "TC1510004BERSA": {
+    "TC-015-1-0004-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510004BERSA",
+      "tcName": "TC-015-1-0004-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -451,10 +451,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510006BERSA": {
+    "TC-015-1-0006-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510006BERSA",
+      "tcName": "TC-015-1-0006-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -469,10 +469,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510008BERSA": {
+    "TC-015-1-0008-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510008BERSA",
+      "tcName": "TC-015-1-0008-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -487,10 +487,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510010BERSA": {
+    "TC-015-1-0010-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510010BERSA",
+      "tcName": "TC-015-1-0010-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -505,10 +505,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC1510013BERSA": {
+    "TC-015-1-0013-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510013BERSA",
+      "tcName": "TC-015-1-0013-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -523,10 +523,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510014BERSA": {
+    "TC-015-1-0014-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510014BERSA",
+      "tcName": "TC-015-1-0014-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -559,10 +559,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510015BERSA": {
+    "TC-015-1-0015-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510015BERSA",
+      "tcName": "TC-015-1-0015-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -577,10 +577,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510016BERSA": {
+    "TC-015-1-0016-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510016BERSA",
+      "tcName": "TC-015-1-0016-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -595,10 +595,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510018BERSA": {
+    "TC-015-1-0018-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510018BERSA",
+      "tcName": "TC-015-1-0018-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -613,10 +613,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC1510019BERSA": {
+    "TC-015-1-0019-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510019BERSA",
+      "tcName": "TC-015-1-0019-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -631,10 +631,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510021BERSA": {
+    "TC-015-1-0021-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510021BERSA",
+      "tcName": "TC-015-1-0021-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -649,10 +649,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510025BERSA": {
+    "TC-015-1-0025-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510025BERSA",
+      "tcName": "TC-015-1-0025-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -667,10 +667,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510026BERSA": {
+    "TC-015-1-0026-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510026BERSA",
+      "tcName": "TC-015-1-0026-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -685,10 +685,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510027BERSA": {
+    "TC-015-1-0027-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510027BERSA",
+      "tcName": "TC-015-1-0027-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -721,10 +721,10 @@
       "tarjetaOperar": "Tarjeta Master",
       "ambiente": "sinDatos"
     },
-    "TC0320013BERSA": {
+    "TC-003-2-0013-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC0320013BERSA",
+      "tcName": "TC-003-2-0013-UNE",
       "user": "uathb04",
       "pass": "Practia2026",
       "user1": null,
@@ -739,10 +739,10 @@
       "tarjetaOperar": "Tarjeta Master",
       "ambiente": "sinDatos"
     },
-    "TC1520010BERSA": {
+    "TC-015-2-0010-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1520010BERSA",
+      "tcName": "TC-015-2-0010-UNE",
       "user": "uathb04",
       "pass": "Practia2026",
       "user1": null,
@@ -757,10 +757,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1520011BERSA": {
+    "TC-015-2-0011-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1520011BERSA",
+      "tcName": "TC-015-2-0011-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -775,10 +775,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC1520012BERSA": {
+    "TC-015-2-0012-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1520012BERSA",
+      "tcName": "TC-015-2-0012-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -793,10 +793,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1520013BERSA": {
+    "TC-015-2-0013-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1520013BERSA",
+      "tcName": "TC-015-2-0013-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -811,10 +811,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC1510028BERSA": {
+    "TC-015-1-0028-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510028BERSA",
+      "tcName": "TC-015-1-0028-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -829,10 +829,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510029BERSA": {
+    "TC-015-1-0029-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510029BERSA",
+      "tcName": "TC-015-1-0029-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -847,10 +847,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510030BERSA": {
+    "TC-015-1-0030-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510030BERSA",
+      "tcName": "TC-015-1-0030-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -865,10 +865,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510031BERSA": {
+    "TC-015-1-0031-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510031BERSA",
+      "tcName": "TC-015-1-0031-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -883,10 +883,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510032BERSA": {
+    "TC-015-1-0032-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510032BERSA",
+      "tcName": "TC-015-1-0032-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -901,10 +901,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510033BERSA": {
+    "TC-015-1-0033-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510033BERSA",
+      "tcName": "TC-015-1-0033-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -919,10 +919,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC1510034BERSA": {
+    "TC-015-1-0034-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510034BERSA",
+      "tcName": "TC-015-1-0034-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -937,10 +937,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510035BERSA": {
+    "TC-015-1-0035-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510035BERSA",
+      "tcName": "TC-015-1-0035-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -973,10 +973,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1520003BERSA": {
+    "TC-015-2-0003-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1520003BERSA",
+      "tcName": "TC-015-2-0003-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -991,10 +991,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC1510036BERSA": {
+    "TC-015-1-0036-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510036BERSA",
+      "tcName": "TC-015-1-0036-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1009,10 +1009,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510037BERSA": {
+    "TC-015-1-0037-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510037BERSA",
+      "tcName": "TC-015-1-0037-UNE",
       "user": "berhometest20",
       "pass": "Practia25",
       "user1": null,
@@ -1027,10 +1027,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510038BERSA": {
+    "TC-015-1-0038-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510038BERSA",
+      "tcName": "TC-015-1-0038-UNE",
       "user": "berhometest15",
       "pass": "Mayo2030",
       "user1": null,
@@ -1045,10 +1045,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1520004BERSA": {
+    "TC-015-2-0004-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1520004BERSA",
+      "tcName": "TC-015-2-0004-UNE",
       "user": "ecarina27",
       "pass": "Practia2030",
       "user1": null,
@@ -1063,10 +1063,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510039BERSA": {
+    "TC-015-1-0039-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510039BERSA",
+      "tcName": "TC-015-1-0039-UNE",
       "user": "transpull1",
       "pass": "Banco045",
       "user1": null,
@@ -1081,10 +1081,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510040BERSA": {
+    "TC-015-1-0040-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510040BERSA",
+      "tcName": "TC-015-1-0040-UNE",
       "user": "transpull1",
       "pass": "Banco045",
       "user1": null,
@@ -1099,10 +1099,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1520005BERSA": {
+    "TC-015-2-0005-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1520005BERSA",
+      "tcName": "TC-015-2-0005-UNE",
       "user": "berhometest15",
       "pass": "Mayo2030",
       "user1": null,
@@ -1117,10 +1117,10 @@
       "tarjetaOperar": "3427",
       "ambiente": null
     },
-    "TC1510041BERSA": {
+    "TC-015-1-0041-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510041BERSA",
+      "tcName": "TC-015-1-0041-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1135,10 +1135,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510042BERSA": {
+    "TC-015-1-0042-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510042BERSA",
+      "tcName": "TC-015-1-0042-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1153,10 +1153,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1520006BERSA": {
+    "TC-015-2-0006-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1520006BERSA",
+      "tcName": "TC-015-2-0006-UNE",
       "user": "ecarina27",
       "pass": "Practia2030",
       "user1": null,
@@ -1171,10 +1171,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC1510043BERSA": {
+    "TC-015-1-0043-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510043BERSA",
+      "tcName": "TC-015-1-0043-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1189,10 +1189,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510044BERSA": {
+    "TC-015-1-0044-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510044BERSA",
+      "tcName": "TC-015-1-0044-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1207,10 +1207,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1520007BERSA": {
+    "TC-015-2-0007-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1520007BERSA",
+      "tcName": "TC-015-2-0007-UNE",
       "user": "berhometest22",
       "pass": "Practia134",
       "user1": null,
@@ -1225,10 +1225,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510045BERSA": {
+    "TC-015-1-0045-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510045BERSA",
+      "tcName": "TC-015-1-0045-UNE",
       "user": "berhometest15",
       "pass": "Mayo2030",
       "user1": null,
@@ -1243,10 +1243,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510046BERSA": {
+    "TC-015-1-0046-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510046BERSA",
+      "tcName": "TC-015-1-0046-UNE",
       "user": "berhometest15",
       "pass": "Mayo2030",
       "user1": null,
@@ -1261,10 +1261,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510047BERSA": {
+    "TC-015-1-0047-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510047BERSA",
+      "tcName": "TC-015-1-0047-UNE",
       "user": "berhometest15",
       "pass": "Mayo2030",
       "user1": null,
@@ -1279,10 +1279,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1520008BERSA": {
+    "TC-015-2-0008-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1520008BERSA",
+      "tcName": "TC-015-2-0008-UNE",
       "user": "berhometest20",
       "pass": "Practia25",
       "user1": null,
@@ -1297,10 +1297,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510048BERSA": {
+    "TC-015-1-0048-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1510048BERSA",
+      "tcName": "TC-015-1-0048-UNE",
       "user": "berhometest20",
       "pass": "Practia25",
       "user1": null,
@@ -1315,10 +1315,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1520009BERSA": {
+    "TC-015-2-0009-UNE": {
       "idSeccion": "12",
       "idBanco": "2",
-      "tcName": "TC1520009BERSA",
+      "tcName": "TC-015-2-0009-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1333,10 +1333,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0310001BERSA": {
+    "TC-003-1-0001-UNE": {
       "idSeccion": "13",
       "idBanco": "2",
-      "tcName": "TC0310001BERSA",
+      "tcName": "TC-003-1-0001-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1351,10 +1351,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0310002BERSA": {
+    "TC-003-1-0002-UNE": {
       "idSeccion": "13",
       "idBanco": "2",
-      "tcName": "TC0310002BERSA",
+      "tcName": "TC-003-1-0002-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1369,10 +1369,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC0310003BERSA": {
+    "TC-003-1-0003-UNE": {
       "idSeccion": "13",
       "idBanco": "2",
-      "tcName": "TC0310003BERSA",
+      "tcName": "TC-003-1-0003-UNE",
       "user": "uathb04",
       "pass": "Practia2026",
       "user1": null,
@@ -1387,10 +1387,10 @@
       "tarjetaOperar": "Tarjeta Master",
       "ambiente": null
     },
-    "TC0310004BERSA": {
+    "TC-003-1-0004-UNE": {
       "idSeccion": "13",
       "idBanco": "2",
-      "tcName": "TC0310004BERSA",
+      "tcName": "TC-003-1-0004-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1405,10 +1405,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0310005BERSA": {
+    "TC-003-1-0005-UNE": {
       "idSeccion": "13",
       "idBanco": "2",
-      "tcName": "TC0310005BERSA",
+      "tcName": "TC-003-1-0005-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1423,10 +1423,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0310006BERSA": {
+    "TC-003-1-0006-UNE": {
       "idSeccion": "13",
       "idBanco": "2",
-      "tcName": "TC0310006BERSA",
+      "tcName": "TC-003-1-0006-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1441,10 +1441,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0320012BERSA": {
+    "TC-003-2-0012-UNE": {
       "idSeccion": "13",
       "idBanco": "2",
-      "tcName": "TC0320012BERSA",
+      "tcName": "TC-003-2-0012-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1459,10 +1459,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0310009BERSA": {
+    "TC-003-1-0009-UNE": {
       "idSeccion": "13",
       "idBanco": "2",
-      "tcName": "TC0310009BERSA",
+      "tcName": "TC-003-1-0009-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1477,10 +1477,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC0310010BERSA": {
+    "TC-003-1-0010-UNE": {
       "idSeccion": "13",
       "idBanco": "2",
-      "tcName": "TC0310010BERSA",
+      "tcName": "TC-003-1-0010-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1495,10 +1495,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0310007BERSA": {
+    "TC-003-1-0007-UNE": {
       "idSeccion": "13",
       "idBanco": "2",
-      "tcName": "TC0310007BERSA",
+      "tcName": "TC-003-1-0007-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1513,10 +1513,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC0310008BERSA": {
+    "TC-003-1-0008-UNE": {
       "idSeccion": "13",
       "idBanco": "2",
-      "tcName": "TC0310008BERSA",
+      "tcName": "TC-003-1-0008-UNE",
       "user": "uathb04",
       "pass": "Practia2026",
       "user1": null,
@@ -1657,10 +1657,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1220001BERSA": {
+    "TC-012-2-0001-UNE": {
       "idSeccion": "15",
       "idBanco": "2",
-      "tcName": "TC1220001BERSA",
+      "tcName": "TC-012-2-0001-UNE",
       "user": "Transpull1",
       "pass": "Banco045",
       "user1": null,
@@ -1675,10 +1675,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": "sinDatos"
     },
-    "TC1210001BERSA": {
+    "TC-012-1-0001-UNE": {
       "idSeccion": "15",
       "idBanco": "2",
-      "tcName": "TC1210001BERSA",
+      "tcName": "TC-012-1-0001-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1693,10 +1693,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": "sinDatos"
     },
-    "TC0110001BERSA": {
+    "TC-001-1-0001-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0110001BERSA",
+      "tcName": "TC-001-1-0001-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1711,10 +1711,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0210001BERSA": {
+    "TC-002-1-0001-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0210001BERSA",
+      "tcName": "TC-002-1-0001-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1729,10 +1729,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC0220001BERSA": {
+    "TC-002-2-0001-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0220001BERSA",
+      "tcName": "TC-002-2-0001-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1765,10 +1765,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0120001BERSA": {
+    "TC-001-2-0001-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0120001BERSA",
+      "tcName": "TC-001-2-0001-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1783,10 +1783,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC0110002BERSA": {
+    "TC-001-1-0002-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0110002BERSA",
+      "tcName": "TC-001-1-0002-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1801,10 +1801,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0320001BERSA": {
+    "TC-003-2-0001-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0320001BERSA",
+      "tcName": "TC-003-2-0001-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1819,10 +1819,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC0320002BERSA": {
+    "TC-003-2-0002-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0320002BERSA",
+      "tcName": "TC-003-2-0002-UNE",
       "user": "ecarina27",
       "pass": "Practia2030",
       "user1": null,
@@ -1837,10 +1837,10 @@
       "tarjetaOperar": "0107",
       "ambiente": null
     },
-    "TC0120002BERSA": {
+    "TC-001-2-0002-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0120002BERSA",
+      "tcName": "TC-001-2-0002-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1855,10 +1855,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC0120003BERSA": {
+    "TC-001-2-0003-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0120003BERSA",
+      "tcName": "TC-001-2-0003-UNE",
       "user": "transpull1",
       "pass": "Banco045",
       "user1": null,
@@ -1873,10 +1873,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0320003BERSA": {
+    "TC-003-2-0003-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0320003BERSA",
+      "tcName": "TC-003-2-0003-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1891,10 +1891,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC0320004BERSA": {
+    "TC-003-2-0004-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0320004BERSA",
+      "tcName": "TC-003-2-0004-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1909,10 +1909,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC1110007BERSA": {
+    "TC-011-1-0007-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC1110007BERSA",
+      "tcName": "TC-011-1-0007-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1927,10 +1927,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC1520001BERSA": {
+    "TC-015-2-0001-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC1520001BERSA",
+      "tcName": "TC-015-2-0001-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1945,10 +1945,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1520002BERSA": {
+    "TC-015-2-0002-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC1520002BERSA",
+      "tcName": "TC-015-2-0002-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1963,10 +1963,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0320005BERSA": {
+    "TC-003-2-0005-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0320005BERSA",
+      "tcName": "TC-003-2-0005-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1981,10 +1981,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0320006BERSA": {
+    "TC-003-2-0006-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0320006BERSA",
+      "tcName": "TC-003-2-0006-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -1999,10 +1999,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0320007BERSA": {
+    "TC-003-2-0007-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0320007BERSA",
+      "tcName": "TC-003-2-0007-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2017,10 +2017,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC0320008BERSA": {
+    "TC-003-2-0008-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0320008BERSA",
+      "tcName": "TC-003-2-0008-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2035,10 +2035,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC0320009BERSA": {
+    "TC-003-2-0009-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0320009BERSA",
+      "tcName": "TC-003-2-0009-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2053,10 +2053,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC0320010BERSA": {
+    "TC-003-2-0010-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0320010BERSA",
+      "tcName": "TC-003-2-0010-UNE",
       "user": "ecarina27",
       "pass": "Practia2030",
       "user1": null,
@@ -2071,10 +2071,10 @@
       "tarjetaOperar": "0107",
       "ambiente": null
     },
-    "TC0320011BERSA": {
+    "TC-003-2-0011-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0320011BERSA",
+      "tcName": "TC-003-2-0011-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2089,10 +2089,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC1120001BERSA": {
+    "TC-011-2-0001-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC1120001BERSA",
+      "tcName": "TC-011-2-0001-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2107,10 +2107,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC0120004BERSA": {
+    "TC-001-2-0004-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0120004BERSA",
+      "tcName": "TC-001-2-0004-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2125,10 +2125,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0110003BERSA": {
+    "TC-001-1-0003-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0110003BERSA",
+      "tcName": "TC-001-1-0003-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2143,10 +2143,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0120005BERSA": {
+    "TC-001-2-0005-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0120005BERSA",
+      "tcName": "TC-001-2-0005-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2161,10 +2161,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0120006BERSA": {
+    "TC-001-2-0006-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0120006BERSA",
+      "tcName": "TC-001-2-0006-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2179,10 +2179,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0120007BERSA": {
+    "TC-001-2-0007-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0120007BERSA",
+      "tcName": "TC-001-2-0007-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2197,10 +2197,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0120008BERSA": {
+    "TC-001-2-0008-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0120008BERSA",
+      "tcName": "TC-001-2-0008-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2215,10 +2215,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0110004BERSA": {
+    "TC-001-1-0004-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0110004BERSA",
+      "tcName": "TC-001-1-0004-UNE",
       "user": "uattesthb09",
       "pass": "Practia234",
       "user1": null,
@@ -2233,10 +2233,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0120009BERSA": {
+    "TC-001-2-0009-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0120009BERSA",
+      "tcName": "TC-001-2-0009-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2251,10 +2251,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0120010BERSA": {
+    "TC-001-2-0010-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0120010BERSA",
+      "tcName": "TC-001-2-0010-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2287,10 +2287,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510005BERSA": {
+    "TC-015-1-0005-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC1510005BERSA",
+      "tcName": "TC-015-1-0005-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2305,10 +2305,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510007BERSA": {
+    "TC-015-1-0007-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC1510007BERSA",
+      "tcName": "TC-015-1-0007-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2323,10 +2323,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510009BERSA": {
+    "TC-015-1-0009-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC1510009BERSA",
+      "tcName": "TC-015-1-0009-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2377,10 +2377,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510011BERSA": {
+    "TC-015-1-0011-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC1510011BERSA",
+      "tcName": "TC-015-1-0011-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2395,10 +2395,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC1510012BERSA": {
+    "TC-015-1-0012-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC1510012BERSA",
+      "tcName": "TC-015-1-0012-UNE",
       "user": "bersa2102",
       "pass": "Banco045",
       "user1": null,
@@ -2413,10 +2413,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510017BERSA": {
+    "TC-015-1-0017-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC1510017BERSA",
+      "tcName": "TC-015-1-0017-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2449,10 +2449,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510020BERSA": {
+    "TC-015-1-0020-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC1510020BERSA",
+      "tcName": "TC-015-1-0020-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2467,10 +2467,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC1510022BERSA": {
+    "TC-015-1-0022-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC1510022BERSA",
+      "tcName": "TC-015-1-0022-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2485,10 +2485,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC1510023BERSA": {
+    "TC-015-1-0023-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC1510023BERSA",
+      "tcName": "TC-015-1-0023-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2503,10 +2503,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1510024BERSA": {
+    "TC-015-1-0024-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC1510024BERSA",
+      "tcName": "TC-015-1-0024-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2521,10 +2521,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC1120004BERSA": {
+    "TC-011-2-0004-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC1120004BERSA",
+      "tcName": "TC-011-2-0004-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2593,10 +2593,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0120016BERSA": {
+    "TC-001-2-0016-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0120016BERSA",
+      "tcName": "TC-001-2-0016-UNE",
       "user": "berhometest20",
       "pass": "Practia25",
       "user1": null,
@@ -2611,10 +2611,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0110083BERSA": {
+    "TC-001-1-0083-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0110083BERSA",
+      "tcName": "TC-001-1-0083-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2629,10 +2629,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0110084BERSA": {
+    "TC-001-1-0084-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0110084BERSA",
+      "tcName": "TC-001-1-0084-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2647,10 +2647,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0110085BERSA": {
+    "TC-001-1-0085-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0110085BERSA",
+      "tcName": "TC-001-1-0085-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2665,10 +2665,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0110086BERSA": {
+    "TC-001-1-0086-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0110086BERSA",
+      "tcName": "TC-001-1-0086-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2683,10 +2683,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0110087BERSA": {
+    "TC-001-1-0087-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0110087BERSA",
+      "tcName": "TC-001-1-0087-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2701,10 +2701,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0110088BERSA": {
+    "TC-001-1-0088-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0110088BERSA",
+      "tcName": "TC-001-1-0088-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2719,10 +2719,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0110089BERSA": {
+    "TC-001-1-0089-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0110089BERSA",
+      "tcName": "TC-001-1-0089-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2737,10 +2737,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0110090BERSA": {
+    "TC-001-1-0090-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0110090BERSA",
+      "tcName": "TC-001-1-0090-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2755,10 +2755,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0110091BERSA": {
+    "TC-001-1-0091-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0110091BERSA",
+      "tcName": "TC-001-1-0091-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": "ecarina27",
@@ -2773,10 +2773,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0120017BERSA": {
+    "TC-001-2-0017-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0120017BERSA",
+      "tcName": "TC-001-2-0017-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2809,10 +2809,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0110005BERSA": {
+    "TC-001-1-0005-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0110005BERSA",
+      "tcName": "TC-001-1-0005-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2827,10 +2827,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0120011BERSA": {
+    "TC-001-2-0011-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0120011BERSA",
+      "tcName": "TC-001-2-0011-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2845,10 +2845,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0120012BERSA": {
+    "TC-001-2-0012-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0120012BERSA",
+      "tcName": "TC-001-2-0012-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2863,10 +2863,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0120013BERSA": {
+    "TC-001-2-0013-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0120013BERSA",
+      "tcName": "TC-001-2-0013-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2881,10 +2881,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0120014BERSA": {
+    "TC-001-2-0014-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0120014BERSA",
+      "tcName": "TC-001-2-0014-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -2899,10 +2899,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0120015BERSA": {
+    "TC-001-2-0015-UNE": {
       "idSeccion": "3",
       "idBanco": "2",
-      "tcName": "TC0120015BERSA",
+      "tcName": "TC-001-2-0015-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3007,10 +3007,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0710001BERSA": {
+    "TC-007-1-0001-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0710001BERSA",
+      "tcName": "TC-007-1-0001-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3025,10 +3025,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC0710002BERSA": {
+    "TC-007-1-0002-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0710002BERSA",
+      "tcName": "TC-007-1-0002-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3061,10 +3061,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0720001BERSA": {
+    "TC-007-2-0001-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0720001BERSA",
+      "tcName": "TC-007-2-0001-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3079,10 +3079,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0720002BERSA": {
+    "TC-007-2-0002-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0720002BERSA",
+      "tcName": "TC-007-2-0002-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3133,10 +3133,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0710003BERSA": {
+    "TC-007-1-0003-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0710003BERSA",
+      "tcName": "TC-007-1-0003-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3187,10 +3187,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0710004BERSA": {
+    "TC-007-1-0004-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0710004BERSA",
+      "tcName": "TC-007-1-0004-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3223,10 +3223,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0720003BERSA": {
+    "TC-007-2-0003-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0720003BERSA",
+      "tcName": "TC-007-2-0003-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3241,10 +3241,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0720004BERSA": {
+    "TC-007-2-0004-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0720004BERSA",
+      "tcName": "TC-007-2-0004-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3277,10 +3277,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0710005BERSA": {
+    "TC-007-1-0005-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0710005BERSA",
+      "tcName": "TC-007-1-0005-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3295,10 +3295,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0720005BERSA": {
+    "TC-007-2-0005-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0720005BERSA",
+      "tcName": "TC-007-2-0005-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3313,10 +3313,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0720006BERSA": {
+    "TC-007-2-0006-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0720006BERSA",
+      "tcName": "TC-007-2-0006-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3331,10 +3331,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0720007BERSA": {
+    "TC-007-2-0007-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0720007BERSA",
+      "tcName": "TC-007-2-0007-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3349,10 +3349,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0710006BERSA": {
+    "TC-007-1-0006-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0710006BERSA",
+      "tcName": "TC-007-1-0006-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3367,10 +3367,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0710007BERSA": {
+    "TC-007-1-0007-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0710007BERSA",
+      "tcName": "TC-007-1-0007-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3385,10 +3385,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0720008BERSA": {
+    "TC-007-2-0008-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0720008BERSA",
+      "tcName": "TC-007-2-0008-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3403,10 +3403,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0720009BERSA": {
+    "TC-007-2-0009-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0720009BERSA",
+      "tcName": "TC-007-2-0009-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3457,10 +3457,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0720010BERSA": {
+    "TC-007-2-0010-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0720010BERSA",
+      "tcName": "TC-007-2-0010-UNE",
       "user": "berhometest22",
       "pass": "Practia134",
       "user1": null,
@@ -3475,10 +3475,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC0720011BERSA": {
+    "TC-007-2-0011-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0720011BERSA",
+      "tcName": "TC-007-2-0011-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3493,10 +3493,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0720012BERSA": {
+    "TC-007-2-0012-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0720012BERSA",
+      "tcName": "TC-007-2-0012-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3511,10 +3511,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0720013BERSA": {
+    "TC-007-2-0013-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0720013BERSA",
+      "tcName": "TC-007-2-0013-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3529,10 +3529,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0720014BERSA": {
+    "TC-007-2-0014-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0720014BERSA",
+      "tcName": "TC-007-2-0014-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3547,10 +3547,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0720015BERSA": {
+    "TC-007-2-0015-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0720015BERSA",
+      "tcName": "TC-007-2-0015-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3565,10 +3565,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0720016BERSA": {
+    "TC-007-2-0016-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0720016BERSA",
+      "tcName": "TC-007-2-0016-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3583,10 +3583,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0720017BERSA": {
+    "TC-007-2-0017-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0720017BERSA",
+      "tcName": "TC-007-2-0017-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3601,10 +3601,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0720018BERSA": {
+    "TC-007-2-0018-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0720018BERSA",
+      "tcName": "TC-007-2-0018-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3619,10 +3619,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC0720019BERSA": {
+    "TC-007-2-0019-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0720019BERSA",
+      "tcName": "TC-007-2-0019-UNE",
       "user": "ecarina27",
       "pass": "Practia2030",
       "user1": null,
@@ -3637,10 +3637,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": "sinDatos"
     },
-    "TC0710008BERSA": {
+    "TC-007-1-0008-UNE": {
       "idSeccion": "4",
       "idBanco": "2",
-      "tcName": "TC0710008BERSA",
+      "tcName": "TC-007-1-0008-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3673,10 +3673,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0220002BERSA": {
+    "TC-002-2-0002-UNE": {
       "idSeccion": "5",
       "idBanco": "2",
-      "tcName": "TC0220002BERSA",
+      "tcName": "TC-002-2-0002-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3691,10 +3691,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0220003BERSA": {
+    "TC-002-2-0003-UNE": {
       "idSeccion": "5",
       "idBanco": "2",
-      "tcName": "TC0220003BERSA",
+      "tcName": "TC-002-2-0003-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3709,10 +3709,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0220004BERSA": {
+    "TC-002-2-0004-UNE": {
       "idSeccion": "5",
       "idBanco": "2",
-      "tcName": "TC0220004BERSA",
+      "tcName": "TC-002-2-0004-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3727,10 +3727,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": "sinDatos"
     },
-    "TC0520001BERSA": {
+    "TC-005-2-0001-UNE": {
       "idSeccion": "5",
       "idBanco": "2",
-      "tcName": "TC0520001BERSA",
+      "tcName": "TC-005-2-0001-UNE",
       "user": "uathb04",
       "pass": "Practia2026",
       "user1": null,
@@ -3763,10 +3763,10 @@
       "tarjetaOperar": "Tarjeta Visa",
       "ambiente": "sinDatos"
     },
-    "TC0920001BERSA": {
+    "TC-009-2-0001-UNE": {
       "idSeccion": "6",
       "idBanco": "2",
-      "tcName": "TC0920001BERSA",
+      "tcName": "TC-009-2-0001-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3781,10 +3781,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0920002BERSA": {
+    "TC-009-2-0002-UNE": {
       "idSeccion": "6",
       "idBanco": "2",
-      "tcName": "TC0920002BERSA",
+      "tcName": "TC-009-2-0002-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3799,10 +3799,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0910001BERSA": {
+    "TC-009-1-0001-UNE": {
       "idSeccion": "6",
       "idBanco": "2",
-      "tcName": "TC0910001BERSA",
+      "tcName": "TC-009-1-0001-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3817,10 +3817,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": "sinDatos"
     },
-    "TC0910002BERSA": {
+    "TC-009-1-0002-UNE": {
       "idSeccion": "6",
       "idBanco": "2",
-      "tcName": "TC0910002BERSA",
+      "tcName": "TC-009-1-0002-UNE",
       "user": "angela01",
       "pass": "Luna2026",
       "user1": null,
@@ -3835,10 +3835,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": "sinDatos"
     },
-    "TC0910003BERSA": {
+    "TC-009-1-0003-UNE": {
       "idSeccion": "6",
       "idBanco": "2",
-      "tcName": "TC0910003BERSA",
+      "tcName": "TC-009-1-0003-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3853,10 +3853,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1020001BERSA": {
+    "TC-010-2-0001-UNE": {
       "idSeccion": "7",
       "idBanco": "2",
-      "tcName": "TC1020001BERSA",
+      "tcName": "TC-010-2-0001-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3871,10 +3871,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC0420001BERSA": {
+    "TC-004-2-0001-UNE": {
       "idSeccion": "7",
       "idBanco": "2",
-      "tcName": "TC0420001BERSA",
+      "tcName": "TC-004-2-0001-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3889,10 +3889,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1310001BERSA": {
+    "TC-013-1-0001-UNE": {
       "idSeccion": "9",
       "idBanco": "2",
-      "tcName": "TC1310001BERSA",
+      "tcName": "TC-013-1-0001-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3925,10 +3925,10 @@
       "tarjetaOperar": "2605",
       "ambiente": null
     },
-    "TC1320001BERSA": {
+    "TC-013-2-0001-UNE": {
       "idSeccion": "9",
       "idBanco": "2",
-      "tcName": "TC1320001BERSA",
+      "tcName": "TC-013-2-0001-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,
@@ -3943,10 +3943,10 @@
       "tarjetaOperar": "9041",
       "ambiente": null
     },
-    "TC1320002BERSA": {
+    "TC-013-2-0002-UNE": {
       "idSeccion": "9",
       "idBanco": "2",
-      "tcName": "TC1320002BERSA",
+      "tcName": "TC-013-2-0002-UNE",
       "user": "Transpull4",
       "pass": "Banco045",
       "user1": null,
@@ -3961,10 +3961,10 @@
       "tarjetaOperar": "sinDatos",
       "ambiente": null
     },
-    "TC1310002BERSA": {
+    "TC-013-1-0002-UNE": {
       "idSeccion": "9",
       "idBanco": "2",
-      "tcName": "TC1310002BERSA",
+      "tcName": "TC-013-1-0002-UNE",
       "user": "berhometest17",
       "pass": "Fifa3028",
       "user1": null,

@@ -22,7 +22,7 @@ TC0197BERSA: abrir la tarjeta Bolso (seguro de Robo) y validar el detalle de Bol
 Referencias:
 
 - src/pages/insurance/insurance.page.ts
-- tests/ui/insurance/should-open-robbery-insurance-detail.ui.spec.ts
+- tests/ui/006-insurance/should-open-robbery-insurance-detail.ui.spec.ts
 - src/fixtures/ui-test.ts
 
 No hay especificación específica en specs/. Esto no bloquea portar casos existentes:

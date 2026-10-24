@@ -45,7 +45,7 @@ legado. No se agrega polling ni reintento interno; los reintentos pertenecen al 
 - `src/api/home/terms-and-conditions.api.ts` contiene endpoint, payload y lectura de la
   respuesta.
 - `src/fixtures/api-test.ts` entrega el cliente.
-- `tests/api/home/should-get-terms-and-conditions.api.spec.ts` conserva la expectativa
+- `tests/api/005-home/should-get-terms-and-conditions.api.spec.ts` conserva la expectativa
   funcional.
 - No se agregan credenciales, datos específicos del caso, workflow ni capas genéricas.
 

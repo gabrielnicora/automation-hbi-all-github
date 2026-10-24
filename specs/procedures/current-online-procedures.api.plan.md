@@ -18,7 +18,7 @@ Carga `TC0078BERSA`, inicia sesión y ejecuta
 
 ## Diseño propuesto
 
-- Cliente pequeño en `src/api/procedures/` y test individual en `tests/api/procedures/`.
+- Cliente pequeño en `src/api/procedures/` y test individual en `tests/api/012-procedures/`.
 - Sin fixture de datos específica, salvo que la aserción funcional dependa de un trámite known-good.
 - Sin polling ni reintentos internos.
 

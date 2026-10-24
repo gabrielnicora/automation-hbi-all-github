@@ -190,7 +190,7 @@ La variable debe estar en el entorno del proceso o configurada en CI. El archivo
 - En schedules y en pipelines lanzados con _Run pipeline_, `REGRESSION_MODE` elige:
   `manual` (por defecto, igual que en push) o `auto` (todo encadenado; cada shard corre
   aunque el anterior falle).
-- `TEST_PATH` (por ejemplo `tests/ui/authentication`) y `TEST_FILTER` (expresión para
+- `TEST_PATH` (por ejemplo `tests/ui/002-authentication`) y `TEST_FILTER` (expresión para
   `--grep`) acotan la selección.
 - `TEST_ENV=une-dev` ejecuta contra UNE DEV y agrega a `/etc/hosts` los dominios internos de
   `UNE_HOST_ENTRIES`.

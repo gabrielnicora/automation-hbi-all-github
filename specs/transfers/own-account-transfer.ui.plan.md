@@ -35,7 +35,7 @@ formulario y validando el ticket final exitoso.
 - `src/pages/transfers/own-account-transfer.page.ts` contiene navegación, locators,
   mecánica del formulario, sincronización de pantallas y lectura de la revisión y el ticket.
 - `src/test-data/own-account-transfer-ui-data.ts` carga y valida los campos UI del caso.
-- `tests/ui/transfers/should-transfer-to-own-account-by-cbu.ui.spec.ts` expresa el flujo.
+- `tests/ui/015-transfers/should-transfer-to-own-account-by-cbu.ui.spec.ts` expresa el flujo.
 - No se crea workflow: el recorrido está contenido en un único Page Object.
 - No se duplica la política transversal de segundo factor; si BERSA agrega un desafío al
   recorrido, deberá integrarse mediante la política común ya aprobada.

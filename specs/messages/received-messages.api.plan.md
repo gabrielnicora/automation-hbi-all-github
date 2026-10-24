@@ -20,7 +20,7 @@ comentario menciona cantidad de mensajes, pero no existe una aserción de cantid
 ## Diseño propuesto
 
 - Cliente mínimo en `src/api/messages/` con una única consulta autenticada.
-- Test individual en `tests/api/messages/`, sin datos funcionales adicionales salvo que el
+- Test individual en `tests/api/009-messages/`, sin datos funcionales adicionales salvo que el
   resultado aprobado los requiera.
 - Sin polling ni reintentos internos.
 

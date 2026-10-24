@@ -9,9 +9,9 @@ y `Requests/Echeq/listEcheqValidaciones.json`. La copia de `pagos/ValidacionesAP
 
 Migrado en:
 
-- `tests/api/accounts/should-reject-invalid-account-transfer-search.api.spec.ts` (L1a, 59 casos) con
+- `tests/api/001-accounts/should-reject-invalid-account-transfer-search.api.spec.ts` (L1a, 59 casos) con
   `src/api/accounts/account-transfer-search.api.ts`.
-- `tests/api/accounts/should-reject-invalid-echeq-list-filters.api.spec.ts` (L1b, 18 casos) con
+- `tests/api/001-accounts/should-reject-invalid-echeq-list-filters.api.spec.ts` (L1b, 18 casos) con
   `src/api/accounts/echeq-list.api.ts`.
 
 Comportamiento conservado: login API del usuario, una request por caso con las entradas exactas del

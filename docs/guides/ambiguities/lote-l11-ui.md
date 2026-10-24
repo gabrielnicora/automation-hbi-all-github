@@ -10,13 +10,13 @@ Criterios comunes: login UI real; `isDisplayed()`/`isEnabled()` sin assertion se
 (`lote-base-ui.md`); los locators reproducen el legado y quedan pendientes de validación UI, salvo la
 apertura de Seguros (testigo `InsurancePage`). Ningún caso se ejecutó contra BERSA QA.
 
-| Caso(s)            | Test                                                                  | Page Object / workflow                                                                                                     |
-| ------------------ | --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| TC0048, TC128240   | `ui/authentication/should-recover-username.ui.spec.ts`                | `login.page.ts` (ampliado)                                                                                                 |
-| TC0035             | `ui/profile/should-change-security-seal.ui.spec.ts`                   | `profile/security-seal.page.ts` (nuevo)                                                                                    |
-| TC12928            | `ui/insurance/should-reach-robbery-insurance-confirmation.ui.spec.ts` | `insurance.page.ts` (ampliado)                                                                                             |
-| TC0077             | `ui/documents/should-download-product-contract.ui.spec.ts`            | `documents/product-documents.page.ts` (nuevo)                                                                              |
-| TC110847, TC110363 | `ui/payments/should-pay-and-find-service-receipts.ui.spec.ts`         | `payment-services`, `service-adhesion`, `payment-receipts` y `workflows/payments/payment-services-preparation.workflow.ts` |
+| Caso(s)            | Test                                                                      | Page Object / workflow                                                                                                     |
+| ------------------ | ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| TC0048, TC128240   | `ui/002-authentication/should-recover-username.ui.spec.ts`                | `login.page.ts` (ampliado)                                                                                                 |
+| TC0035             | `ui/013-profile/should-change-security-seal.ui.spec.ts`                   | `profile/security-seal.page.ts` (nuevo)                                                                                    |
+| TC12928            | `ui/006-insurance/should-reach-robbery-insurance-confirmation.ui.spec.ts` | `insurance.page.ts` (ampliado)                                                                                             |
+| TC0077             | `ui/004-documents/should-download-product-contract.ui.spec.ts`            | `documents/product-documents.page.ts` (nuevo)                                                                              |
+| TC110847, TC110363 | `ui/011-payments/should-pay-and-find-service-receipts.ui.spec.ts`         | `payment-services`, `service-adhesion`, `payment-receipts` y `workflows/payments/payment-services-preparation.workflow.ts` |
 
 ## TC0048/TC128240BERSA — UI — correo de recupero
 

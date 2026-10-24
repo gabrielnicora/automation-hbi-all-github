@@ -25,8 +25,8 @@ Referencias:
 - specs/procedures/current-online-procedures.api.plan.md
 - src/api/procedures/current-online-procedures.api.ts
 - src/pages/procedures/appointments.page.ts
-- tests/api/procedures/should-list-current-online-procedures.api.spec.ts
-- tests/ui/procedures/should-open-online-appointments.ui.spec.ts
+- tests/api/012-procedures/should-list-current-online-procedures.api.spec.ts
+- tests/ui/012-procedures/should-open-online-appointments.ui.spec.ts
 
 ## Consulta API — TC0078BERSA
 

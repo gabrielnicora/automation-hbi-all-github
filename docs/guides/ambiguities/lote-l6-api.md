@@ -23,7 +23,7 @@ Criterios comunes:
 - Ningún caso se ejecutó contra BERSA QA. Todos los casos con transferencia, agenda o CREDIN mutan
   datos reales de los usuarios dummy.
 
-Migrado en `tests/api/transfers/`:
+Migrado en `tests/api/015-transfers/`:
 
 | Sub-lote | Casos                                                                                                                            | Test                                             |
 | -------- | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |

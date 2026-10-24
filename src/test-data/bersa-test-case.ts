@@ -3,7 +3,8 @@ import path from 'node:path';
 
 export type BersaTestCaseRow = Record<string, unknown>;
 
-const BERSA_TEST_CASE_PATTERN = /^TC\d+BERSA$/;
+// Formato de SPEC.md, sección 10.1: TC-<familia>-<canal>-<secuencia>-UNE.
+const TEST_CASE_ID_PATTERN = /^TC-\d{3}-[12]-\d{4}-UNE$/;
 
 function isJsonObject(value: unknown): value is BersaTestCaseRow {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
@@ -12,8 +13,8 @@ function isJsonObject(value: unknown): value is BersaTestCaseRow {
 function normalizeTestCaseId(value: string): string {
   const normalizedValue = value.trim().toUpperCase();
 
-  if (!BERSA_TEST_CASE_PATTERN.test(normalizedValue)) {
-    throw new Error(`Identificador de caso inválido: "${value}". Formato esperado: TC<numero>BERSA.`);
+  if (!TEST_CASE_ID_PATTERN.test(normalizedValue)) {
+    throw new Error(`Identificador de caso inválido: "${value}". Formato esperado: TC-<FFF>-<C>-<NNNN>-UNE.`);
   }
 
   return normalizedValue;

@@ -26,8 +26,8 @@ Referencias:
 - specs/investments/fund-risk-filter.ui.plan.md
 - src/api/investments/
 - src/pages/investments/
-- tests/api/investments/
-- tests/ui/investments/
+- tests/api/007-investments/
+- tests/ui/007-investments/
 
 ## Plazo fijo API — TC0042BERSA
 

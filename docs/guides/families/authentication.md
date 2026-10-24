@@ -27,8 +27,8 @@ Referencias:
 - specs/authentication/second-factor-code-inbox.plan.md
 - src/api/authentication/login.api.ts
 - src/pages/authentication/login.page.ts
-- tests/api/authentication/should-login-and-capture-bearer.api.spec.ts
-- tests/ui/authentication/should-login-and-capture-bearer.ui.spec.ts
+- tests/api/002-authentication/should-login-and-capture-bearer.api.spec.ts
+- tests/ui/002-authentication/should-login-and-capture-bearer.ui.spec.ts
 
 ## Flujo API testigo
 

@@ -26,7 +26,7 @@ Usa un UUID literal y hasta cuatro reintentos internos; ese comportamiento no se
 
 - Cliente bajo `src/api/payments/` con endpoint, payload, UUID por request y validación técnica.
 - Datos tipados bajo `src/test-data/`, leídos del registro versionado del caso.
-- Fixture API y test en `tests/api/payments/`; sin workflow ni capa genérica.
+- Fixture API y test en `tests/api/011-payments/`; sin workflow ni capa genérica.
 - Una única mutación por intento; los reintentos, si se habilitan, pertenecen al runner.
 
 ## Criterios de aceptación propuestos
