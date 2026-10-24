@@ -35,7 +35,7 @@ posibilidad.
 - Estado: aprobado por el usuario el 21 de octubre de 2026; ejecución pendiente de validar.
 - Decisión: durante la transición conviven dos ambientes de ejecución de la misma suite,
   elegidos con `TEST_ENV`: `qa` (BERSA QA, valor por defecto) y `une-dev` (UNE DEV).
-- `une-dev` usa las mismas identidades, IDs (sección 10.1) y datos de
+- `une-dev` usa las mismas identidades, IDs `TC<numero>BERSA` y datos de
   `test-data/private/bersa.json`. Sólo cambian las URLs base y dos valores comunes a todos los
   usuarios —contraseña y código de segundo factor— versionados en
   `test-data/private/une-dev.json`.
@@ -632,17 +632,25 @@ No existen ni se permiten dependencias hacia `banks/shared`, `BankConfig`,
 ## 8. Datos de prueba y seguridad de ejecución
 
 El origen de credenciales es `test-data/private/bersa.json`. El documento contiene el objeto
-`testCases`, indexado directamente por cada `testCaseId` BERSA (numeración de la sección 10.1). Cada registro conserva `tcName`
+`testCases`, indexado directamente por cada `testCaseId` BERSA. Cada registro conserva `tcName`
 con el mismo valor de su clave, y el lector valida esa coincidencia antes de devolverlo. Esta
 decisión reemplaza el export legado indexado por el texto de una consulta SQL y evita recorridos
 lineales para localizar un caso.
 
-Con `TEST_ENV=une-dev`, la contraseña de todos los usuarios proviene de
-`test-data/private/une-dev.json`; el usuario sigue proviniendo del caso.
+Decisión del usuario, 22 de octubre de 2026: cuando varios casos legados usan deliberadamente la
+misma identidad, el documento puede declarar esa identidad una sola vez en `credentialProfiles`.
+El perfil se indexa por su nombre legado y conserva un `tcName` coincidente. Los tests que lo usan
+declaran explícitamente `credentialsRef`; el loader sólo consulta el perfil solicitado y nunca lo
+usa como fallback de un caso ausente. El `testCaseId` continúa identificando al escenario y
+seleccionando sus restantes datos. Esta decisión reemplaza, únicamente para credenciales
+compartidas declaradas, la exigencia anterior de duplicar una fila completa por cada caso.
 
-El sufijo de los IDs no selecciona un banco ni una factory. Desde el 23 de octubre de 2026 los
-IDs llevan el sufijo `UNE` (sección 10.1); reemplaza la regla que consideraba inválido todo
-sufijo distinto de `BERSA`.
+Con `TEST_ENV=une-dev`, la contraseña de todos los usuarios proviene de
+`test-data/private/une-dev.json`; el usuario sigue proviniendo de la fila del caso o del perfil de
+credenciales seleccionado explícitamente.
+
+El sufijo `BERSA` se conserva por trazabilidad, pero no selecciona un banco ni una factory.
+Un sufijo diferente debe considerarse inválido para este proyecto.
 
 El 8 de septiembre de 2026 se aprobó versionar `test-data/private/` para distribuir una
 versión ejecutable con los datos necesarios. Esta decisión reemplaza la regla anterior que
@@ -685,7 +693,7 @@ Playwright. Los datos de sesión y autenticación indicados arriba continúan ex
 - `PW_WORKERS` controla el paralelismo de archivos y utiliza `1` por defecto.
 - `fullyParallel` permanece desactivado mientras existan identidades compartidas.
 - Dos escenarios que modifican el mismo usuario no se ejecutan simultáneamente.
-- Los logins API y UI que reutilizan `TC0012BERSA` se ejecutan secuencialmente.
+- Los logins API y UI que reutilizan `TC0017BERSA` se ejecutan secuencialmente.
 - Sólo se aplica polling a consultas de estado expresamente aprobadas.
 - Se permite reintentar escenarios fallidos completos, incluido el cambio de teléfono,
   mediante el runner y con los intentos visibles en el reporte. Esto reemplaza la
@@ -716,9 +724,18 @@ evidencia parcial. Reemplaza el job manual único `ui:login:bersa`.
 - Decisión del usuario, 21 de octubre de 2026: un único pipeline con los mismos jobs en todo
   modo, en este orden: `install_deps`, `quality`, `shard_1` → `shard_2` → `shard_3` y
   `merge_reports`. Reemplaza el pipeline hijo de regresión y `RUN_REGRESSION`.
-- En push y merge request todos los jobs son manuales y no bloquean el pipeline. En schedules
-  y pipelines ad hoc, `REGRESSION_MODE=manual|auto` (por defecto `manual`) elige entre ese
-  modo manual y la ejecución encadenada.
+- Decisión del usuario, 23 de octubre de 2026: en push y merge request `install_deps` y
+  `quality` se ejecutan automáticamente y bloquean ante un fallo; los shards funcionales y
+  `merge_reports` permanecen manuales y no bloqueantes. Motivo: impedir que un MR avance con
+  dependencias, formato, lint, typecheck o tests unitarios de tooling rotos sin obligar a ejecutar
+  la regresión bancaria. Reemplaza la decisión del 21 de octubre que hacía manuales y opcionales
+  todos los jobs en push y merge request.
+- Decisión del usuario, 23 de octubre de 2026: cuando una rama tiene un merge request abierto,
+  GitLab crea únicamente el pipeline de `merge_request_event` y omite el pipeline duplicado de
+  `push`. Los pushes sin MR, schedules y pipelines ad hoc continúan habilitados. Esta selección
+  no cambia qué jobs son automáticos, manuales o bloqueantes.
+- En schedules y pipelines ad hoc, `REGRESSION_MODE=manual|auto` (por defecto `manual`) elige
+  entre todos los jobs manuales o la ejecución encadenada completa.
 - En modo manual, `merge_reports` puede ejecutarse con al menos un shard corrido.
 - En modo automático, `quality` corre si `install_deps` termina bien y la regresión si
   `quality` termina bien. Después, los shards corren en serie sin depender del resultado del
@@ -751,45 +768,11 @@ del banco. Esta política no incorpora scripts, jobs ni una suite permanente adi
 - Variables y funciones: `camelCase`.
 - Clases, tipos e interfaces: `PascalCase`.
 - Tests: `<behavior-name>.<channel>.spec.ts`.
-- Cada título comienza con el ID del caso (sección 10.1). `testCaseId` también selecciona los
-  datos de prueba.
-
-### 10.1 Numeración de casos
-
-Decisión del usuario, 22 y 23 de octubre de 2026. Estado: aprobado. Motivo: la numeración
-heredada proviene de una lista única que luego se separó por familia funcional y por canal, por
-lo que no es lineal y no permite asignar un número nuevo sin riesgo de choque. Un agente
-necesita una regla determinística para numerar casos nuevos.
-
-- Formato: `TC-<FFF>-<C>-<NNNN>-UNE`. `FFF` es el código de familia (3 dígitos), `C` el canal
-  (`1` API, `2` UI) y `NNNN` la secuencia dentro de esa familia y canal. Ejemplo: tarjetas por
-  UI `TC-003-2-0002-UNE`.
-- Sufijo `UNE`: decisión del 23 de octubre de 2026 para no renumerar al completar la transición
-  de la sección 1. El sufijo no selecciona banco, ambiente ni datos: el banco activo sigue siendo
-  BERSA y los tests se ejecutan contra BERSA QA salvo `TEST_ENV=une-dev`. Reemplaza la regla de
-  la sección 8 que exigía el sufijo `BERSA`.
-- Familia = carpeta del test, nombrada `tests/<canal>/<FFF>-<familia>/` (por ejemplo
-  `tests/ui/003-cards/`). El nombre de la carpeta indica la familia de cada test. Los códigos y
-  todos los IDs asignados viven en `test-data/case-ids.json`, junto con el ID anterior
-  (`legacyId`) de cada caso migrado. Ese archivo es la única fuente de trazabilidad hacia los IDs
-  anteriores.
-- Cada canal tiene su propio ID: el mismo caso funcional por API y por UI recibe dos números.
-  Reemplaza la regla anterior que conservaba el ID entre API y UI.
-- Un ID nuevo se obtiene con `pnpm run case:new -- <familia> <api|ui>`, que toma el próximo
-  número libre y lo registra. Nadie, ni personas ni agentes, inventa o calcula un ID a mano.
-  Una familia nueva se registra con `--new-family`, que asigna el siguiente código libre, y su
-  carpeta se crea como `tests/<canal>/<FFF>-<familia>/`.
-- `pnpm run check` falla si una carpeta de tests no corresponde a una familia registrada, o si un
-  test usa un ID no registrado, un ID anterior en lugar del nuevo, o un ID cuya familia o canal no
-  corresponde a su carpeta.
-- Migración del 22 y 23 de octubre de 2026: se renombraron las carpetas de tests por familia y
-  se renumeraron los tests y las filas de `test-data/private/bersa.json`, asignando la secuencia
-  en el orden de los IDs anteriores. La fila del único ID compartido entre canales
-  (`TC0017BERSA`) se duplicó para sus dos IDs. Las filas sin test conservan su ID anterior y el
-  lector no las carga. Se actualizaron las rutas a tests citadas en todo el repositorio, pero
-  `specs/`, este documento, `README.md`, `docs/` y el legado `java/` conservan los IDs anteriores
-  y se leen con el mapeo; los IDs citados en otras secciones de este documento son anteriores.
-- Ambos logins `TC0012BERSA` pertenecen a la selección `@regression` por su importancia.
+- Cada título comienza con `TC<numero>BERSA`.
+- El mismo caso funcional conserva su ID entre API y UI; la identidad del escenario
+  se distingue por caso y canal. `testCaseId` selecciona los datos propios del caso; una
+  `credentialsRef` explícita puede seleccionar únicamente una identidad compartida.
+- Ambos logins `TC0017BERSA` pertenecen a la selección `@regression` por su importancia.
   Esta etiqueta no implica pertenencia a smoke ni una vinculación con Xray.
 - `TC0139BERSA` pertenece a `@critical`; la etiqueta expresa criticidad funcional y no
   define una selección smoke ni una vinculación con Xray.
@@ -798,6 +781,23 @@ necesita una regla determinística para numerar casos nuevos.
 - No usar estado global mutable.
 - Evitar nombres arquitectónicos genéricos como `manager`, `service`, `helper`, `utils`,
   `base`, `shared`, `factory` o `gateway` cuando exista un nombre funcional más claro.
+
+### Herramienta MCP para Jira/Xray
+
+Decisión del usuario, 22 de octubre de 2026: `mcp-xray/` se conserva como herramienta opcional y
+aislada para consultar, crear y actualizar casos de prueba en Jira Server/DC con Xray. No forma
+parte del runtime Playwright ni implementa la publicación de resultados de la suite. Su contrato,
+configuración segura y validación se definen en `specs/tooling/xray-mcp.md`; la publicación de
+resultados continúa como propuesta futura en `.agents/docs/integracion-xray.md`.
+
+Decisión del usuario, 22 de octubre de 2026: el paquete forma parte del workspace pnpm y comparte
+el lockfile raíz. Docker y CI usan pnpm `11.24.0`. El MCP valida entradas, mantiene TLS activo,
+aplica timeout a Jira, sanitiza errores HTTP y reporta creaciones parciales sin reintentar.
+
+Decisión del usuario, 23 de octubre de 2026: el workspace autoriza explícitamente el script de
+instalación de `esbuild`, dependencia transitiva de `tsx` usada por los tests de `mcp-xray`.
+La autorización se declara con `allowBuilds` y no desactiva `strictDepBuilds`: cualquier otro
+script de dependencia no aprobado continúa haciendo fallar la instalación en CI.
 
 ## 11. Prueba decisiva de simplicidad
 

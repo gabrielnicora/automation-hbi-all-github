@@ -45,7 +45,7 @@ se declara ni verifica directamente en el test.
 - `src/pages/registration/identity-validation.page.ts` contiene los locators y lecturas de
   la pantalla de validación de identidad.
 - `src/fixtures/ui-test.ts` entrega `startPage` e `identityValidationPage`.
-- `tests/ui/014-start-page/should-open-registration.ui.spec.ts` expresa el recorrido y sus
+- `tests/ui/start-page/should-open-registration.ui.spec.ts` expresa el recorrido y sus
   expectativas funcionales.
 - No se crea workflow ni se agregan datos de prueba: un workflow sólo delegaría el click
   entre dos Page Objects.

@@ -29,6 +29,8 @@ Leer sólo lo que la tabla asigna al trabajo, y leerlo completo. Para archivos l
 el protocolo de rangos consecutivos y control de truncación de `AGENTS.md`. Antes de abrir
 código, buscar en el catálogo generado `.agents/index/` (`SPEC.md`, sección 3).
 
+<<<<<<< HEAD
+
 | Alcance del trabajo                                   | Lecturas requeridas                                                                                                                 |
 | ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | Cualquier tarea del repositorio                       | `AGENTS.md`, este índice e instrucciones anidadas aplicables.                                                                       |
@@ -39,7 +41,6 @@ código, buscar en el catálogo generado `.agents/index/` (`SPEC.md`, sección 3
 | Registrar fixtures                                    | `src/fixtures/AGENTS.md`.                                                                                                           |
 | Crear o modificar workflows                           | `src/workflows/AGENTS.md`.                                                                                                          |
 | Datos de prueba y sus loaders                         | `test-data/AGENTS.md`.                                                                                                              |
-| Numeración de casos o IDs citados en specs/docs       | `SPEC.md`, sección 10.1, y `test-data/case-ids.json`.                                                                               |
 | Arquitectura, dependencias, configuración global o CI | `SPEC.md` completo.                                                                                                                 |
 | Cierre transversal de encuesta opcional por UI        | `specs/ui/optional-satisfaction-survey.md`.                                                                                         |
 | Autoría o revisión de tests                           | `docs/test-authoring.md` y especificaciones de las capacidades afectadas.                                                           |
@@ -69,6 +70,41 @@ código, buscar en el catálogo generado `.agents/index/` (`SPEC.md`, sección 3
 | Migración acelerada de casos legados                  | `.agents/docs/legacy-migration.md`, `SPEC.md` sección 3, `docs/guides/README.md` y la guía de la familia funcional correspondiente. |
 | Elegibilidad y canal de casos a migrar                | `specs/migration/migratable-cases.md`; catálogo cerrado previo a leer o portar cada caso.                                           |
 | Avance y lote de cada caso a migrar                   | `docs/guides/migration-status.md`; punto de entrada operativo, subordinado al catálogo.                                             |
+| =======                                               |
+| Alcance del trabajo                                   | Lecturas requeridas                                                                                                                 |
+| ---------------------------------------------------   | --------------------------------------------------------------------------------------------                                        |
+| Cualquier tarea del repositorio                       | `AGENTS.md`, este índice e instrucciones anidadas aplicables.                                                                       |
+| Análisis o cambios del framework                      | `SPEC.md`.                                                                                                                          |
+| Cierre transversal de encuesta opcional por UI        | `specs/ui/optional-satisfaction-survey.md`.                                                                                         |
+| Autoría o revisión de tests                           | `docs/test-authoring.md` y especificaciones de las capacidades afectadas.                                                           |
+| Diagnóstico transversal de API y errores UI `¡Ups!`   | `specs/api/failure-diagnostics.plan.md`.                                                                                            |
+| Login UI                                              | `specs/authentication/login.plan.md`.                                                                                               |
+| Segundo factor por API/UI                             | `specs/authentication/second-factor-code-inbox.plan.md`.                                                                            |
+| Login API                                             | `specs/authentication/api-login.plan.md`.                                                                                           |
+| Cambio de teléfono por API                            | `specs/profile/change-phone.api.plan.md`.                                                                                           |
+| Cambio de domicilio por UI                            | `specs/profile/change-address.ui.plan.md`.                                                                                          |
+| Transferencia entre cuentas propias por API           | `specs/transfers/own-account-transfer.api.plan.md`.                                                                                 |
+| Términos y condiciones de Home Banking por API        | `specs/home/terms-and-conditions.api.plan.md`.                                                                                      |
+| Generación de DEBIN por API                           | `specs/payments/debin-generation.api.plan.md`.                                                                                      |
+| Orden de extracción por API                           | `specs/accounts/withdrawal-order.api.plan.md`.                                                                                      |
+| Plazo fijo tradicional por API                        | `specs/investments/traditional-fixed-term.api.plan.md`.                                                                             |
+| Mensajes recibidos por API                            | `specs/messages/received-messages.api.plan.md`.                                                                                     |
+| Preferencias de notificaciones por API                | `specs/profile/notification-preferences.api.plan.md`.                                                                               |
+| Pago de tarjeta Visa por otro importe por API         | `specs/cards/credit-card-other-amount-payment.api.plan.md`.                                                                         |
+| Pago total de tarjeta Mastercard por UI               | `specs/cards/credit-card-total-payment.ui.plan.md`.                                                                                 |
+| Trámites vigentes por API                             | `specs/procedures/current-online-procedures.api.plan.md`.                                                                           |
+| Registro desde pantalla principal por UI              | `specs/main-page/should-open-registration.ui.plan.md`.                                                                              |
+| Filtro de fondos por UI                               | `specs/investments/fund-risk-filter.ui.plan.md`.                                                                                    |
+| Baja y arrepentimiento por UI                         | `specs/mis-products/should-open-cancellation-page.ui.plan.md`.                                                                      |
+| Instalación o ejecución del proyecto                  | `README.md` y configuración real pertinente.                                                                                        |
+| MCP opcional para administrar casos en Xray           | `specs/tooling/xray-mcp.md`.                                                                                                        |
+| Publicación futura de resultados en Xray              | `.agents/docs/integracion-xray.md`; es una propuesta, no una capacidad aprobada.                                                    |
+| Exploración, generación o depuración con Playwright   | `.agents/skills/playwright-cli/SKILL.md` y las referencias que correspondan según esa skill.                                        |
+| Migración acelerada de casos legados                  | `docs/guides/README.md` y la guía de la familia funcional correspondiente.                                                          |
+| Elegibilidad y canal de casos a migrar                | `specs/migration/migratable-cases.md`; catálogo cerrado previo a leer o portar cada caso.                                           |
+| Avance y lote de cada caso a migrar                   | `docs/guides/migration-status.md`; punto de entrada operativo, subordinado al catálogo.                                             |
+
+> > > > > > > dev
 
 Si una capacidad usa otra como precondición y el cambio afecta esa dependencia, leer
 también su especificación. Para capacidades nuevas o rutas renombradas, buscar en

@@ -96,7 +96,7 @@ suite smoke, no implica integración con Xray y no modifica la política smoke p
   de productos, metadata y validación técnica.
 - `src/test-data/own-account-transfer-data.ts` valida los datos funcionales del caso.
 - `src/fixtures/api-test.ts` entrega el cliente y la fixture de datos.
-- `tests/api/015-transfers/should-transfer-between-own-accounts.api.spec.ts` conserva las
+- `tests/api/transfers/should-transfer-between-own-accounts.api.spec.ts` conserva las
   expectativas funcionales.
 - No se crea workflow, gateway, factory, perfil bancario ni capa compartida genérica.
 

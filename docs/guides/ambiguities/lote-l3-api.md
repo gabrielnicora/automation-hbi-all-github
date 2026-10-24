@@ -20,7 +20,7 @@ Criterios comunes aplicados:
   `src/test-data/payment-services-data.ts`.
 - Ningún caso se ejecutó contra BERSA QA.
 
-Migrado en `tests/api/011-payments/`:
+Migrado en `tests/api/payments/`:
 
 | Caso(s)        | Test                                                  |
 | -------------- | ----------------------------------------------------- |
@@ -85,10 +85,13 @@ Migrado en `tests/api/011-payments/`:
   plantilla `firstPaymentRequest.json` no envía `ajax_uuid` ni `xAppVersion`; se respeta.
 - Efecto: realiza un pago real.
 
-## TC0012BERSA — API — identidad compartida con el login
+## TC0012BERSA — API — identidad distinta de los logins
 
-- `SPEC.md`, sección 9, menciona logins con `TC0012BERSA`; este caso es la consulta de DEBIN
-  histórico (rango fijo desde `2022-12-01T12:47:54.000Z` hasta ahora) y exige al menos un elemento.
+- Este caso es la consulta de DEBIN histórico (rango fijo desde
+  `2022-12-01T12:47:54.000Z` hasta ahora) y exige al menos un elemento.
+- Resolución del 23 de octubre de 2026: `SPEC.md` y `README.md` se corrigieron para identificar
+  `TC0017BERSA` como la identidad compartida por los logins API y UI. `TC0012BERSA` permanece
+  exclusivamente asociado a este escenario DEBIN.
 
 ## Etiquetas `Criticos`
 

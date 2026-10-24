@@ -27,8 +27,8 @@ Referencias:
 - specs/messages/mark-message-unread.ui.plan.md
 - src/api/messages/received-messages.api.ts
 - src/pages/messages/messages.page.ts
-- tests/api/009-messages/
-- tests/ui/009-messages/
+- tests/api/messages/
+- tests/ui/messages/
 
 ## Consulta API — TC0109BERSA
 

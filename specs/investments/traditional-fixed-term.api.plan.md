@@ -21,7 +21,7 @@ El Java reintenta la mutación hasta cuatro veces; no se traslada.
 ## Diseño propuesto
 
 - Cliente en `src/api/investments/` y datos específicos en `src/test-data/`.
-- Test individual en `tests/api/007-investments/`, marcado crítico sólo si se aprueba ese criterio.
+- Test individual en `tests/api/investments/`, marcado crítico sólo si se aprueba ese criterio.
 - Una mutación por intento, sin polling ni consulta de saldos salvo nueva decisión.
 
 ## Criterios de aceptación propuestos

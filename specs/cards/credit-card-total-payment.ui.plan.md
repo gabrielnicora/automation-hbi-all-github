@@ -32,7 +32,7 @@ elige `Pagar el total`, presiona `Pagar` y verifica los campos de la pantalla po
 
 ## Diseño aprobado
 
-- Test UI individual bajo `tests/ui/003-cards/`, Page Object bajo `src/pages/cards/` y lector tipado
+- Test UI individual bajo `tests/ui/cards/`, Page Object bajo `src/pages/cards/` y lector tipado
   bajo `src/test-data/`.
 - La fixture UI compone el Page Object y los datos del caso; no se crea workflow porque el
   recorrido está contenido en una sola página funcional.

@@ -23,7 +23,7 @@ Referencias:
 
 - specs/mis-products/should-open-cancellation-page.ui.plan.md
 - src/pages/mis-products/cancellation.page.ts
-- tests/ui/010-mis-products/should-open-cancellation-page.ui.spec.ts
+- tests/ui/mis-products/should-open-cancellation-page.ui.spec.ts
 
 ## Flujo testigo
 

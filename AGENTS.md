@@ -26,7 +26,7 @@ config, test-data ──► fixtures        models ──► pages / api / workf
 
 | Layer                          | Instructions              | Reference file                                             |
 | ------------------------------ | ------------------------- | ---------------------------------------------------------- |
-| `tests/`                       | `tests/AGENTS.md`         | `tests/api/013-profile/should-change-phone.api.spec.ts`    |
+| `tests/`                       | `tests/AGENTS.md`         | `tests/api/profile/should-change-phone.api.spec.ts`        |
 | `src/pages/`                   | `src/pages/AGENTS.md`     | `src/pages/investments/investment-funds.page.ts`           |
 | `src/api/`                     | `src/api/AGENTS.md`       | `src/api/profile/notification-preferences.api.ts`          |
 | `src/fixtures/`                | `src/fixtures/AGENTS.md`  | `src/fixtures/api-test.ts`, `src/fixtures/ui-test.ts`      |
@@ -37,7 +37,19 @@ config, test-data ──► fixtures        models ──► pages / api / workf
 `src/models/` holds small types shared by more than one layer. `src/config/` holds only
 values that change per environment or run; never selectors, endpoints or payloads.
 
+<<<<<<< HEAD
+
 ## Hard rules
+
+=======
+
+- For the optional Jira/Xray case-management MCP, read `specs/tooling/xray-mcp.md` first.
+- For future Playwright result publication to Xray, read `.agents/docs/integracion-xray.md` first.
+  It records the proposed design and unresolved decisions, not an implemented or approved
+  capability. Resolve those decisions in `specs/` before changing tests, reporters or result
+  publication CI for Xray.
+
+> > > > > > > dev
 
 Architecture (`SPEC.md` sections 5–7):
 
@@ -63,9 +75,6 @@ Secrets and data (`SPEC.md` section 8):
   passed to `expect` matchers (pass a boolean with a fixed message).
 - Platform secrets (Jira/GitLab PATs, CI variables, `.env` files, local MCP configs) are
   never read, printed or committed. Do not run `printenv`, `env` or `cat .env`.
-- Never invent a test case ID: get it with `pnpm run case:new -- <family> <api|ui>`
-  (`SPEC.md` section 10.1). IDs cited in `specs/` and `docs/` are previous IDs; translate them
-  with `legacyId` in `test-data/case-ids.json`.
 - Never add production URLs, credentials or personal data. Never invent users, accounts or
   cards: if `bersa.json` lacks the row or field a case needs, stop that case and report the
   exact missing fields.

@@ -85,6 +85,11 @@ credenciales o datos personales provenientes de producción.
 Cada test declara un identificador como `TC0012BERSA`. El sufijo BERSA se conserva por
 trazabilidad, pero ya no seleccionará un banco ni una factory.
 
+Normalmente las credenciales pertenecen a la fila del caso dentro de `testCases`. Cuando varios
+casos legados comparten deliberadamente una identidad, `bersa.json` puede declararla una sola vez
+en `credentialProfiles` y el test debe seleccionarla explícitamente mediante `credentialsRef`.
+No existe fallback automático a un perfil compartido.
+
 Por claridad de los resultados, passwords y códigos dummy no se repiten en errores. Los
 tokens y cookies generados durante la ejecución no se imprimen ni se adjuntan al reporte.
 
@@ -163,7 +168,7 @@ cookies y códigos se excluyen, y los campos Base64 grandes se reemplazan por su
 Todo test API o UI que carga credenciales muestra el usuario dummy como anotación.
 
 La suite usa un worker por defecto porque login API y UI reutilizan la identidad
-`TC0012BERSA`. `PW_WORKERS` sólo debe aumentarse cuando los escenarios seleccionados tengan
+`TC0017BERSA`. `PW_WORKERS` sólo debe aumentarse cuando los escenarios seleccionados tengan
 identidades independientes y no modifiquen estado compartido.
 
 Los escenarios fallidos tienen un reintento por defecto en local y CI (hasta dos
@@ -185,15 +190,20 @@ La variable debe estar en el entorno del proceso o configurada en CI. El archivo
 `shard_2` → `shard_3` → `merge_reports`. Los shards corren uno por vez y con un worker;
 `merge_reports` une los resultados en `playwright-report/` y `test-results/junit-report.xml`.
 
-- En push y merge request todos los jobs son manuales y se ejecutan en ese orden. Para ver
-  resultados alcanza con correr al menos un shard y después `merge_reports`.
+- En push y merge request, `install_deps` y `quality` se ejecutan automáticamente y bloquean el
+  pipeline si fallan. Los shards y `merge_reports` permanecen manuales y no bloqueantes; para ver
+  resultados funcionales alcanza con correr al menos un shard y después `merge_reports`.
+- Si una rama tiene un merge request abierto, el push usa únicamente el pipeline del MR para
+  evitar ejecutar dos veces los mismos jobs. Los pushes sin MR continúan usando un pipeline de rama.
 - En schedules y en pipelines lanzados con _Run pipeline_, `REGRESSION_MODE` elige:
-  `manual` (por defecto, igual que en push) o `auto` (todo encadenado; cada shard corre
-  aunque el anterior falle).
-- `TEST_PATH` (por ejemplo `tests/ui/002-authentication`) y `TEST_FILTER` (expresión para
+  `manual` (por defecto, todos los jobs a mano) o `auto` (todo encadenado; cada shard corre aunque
+  el anterior falle).
+- `TEST_PATH` (por ejemplo `tests/ui/authentication`) y `TEST_FILTER` (expresión para
   `--grep`) acotan la selección.
 - `TEST_ENV=une-dev` ejecuta contra UNE DEV y agrega a `/etc/hosts` los dominios internos de
   `UNE_HOST_ENTRIES`.
+- `quality` valida también el TypeScript y los tests unitarios sin red del servidor opcional
+  `mcp-xray`, sin conectarse a Jira ni requerir credenciales.
 
 ### Ambientes
 
@@ -212,6 +222,23 @@ $env:TEST_ENV = 'une-dev'
 pnpm run test:api:login
 Remove-Item Env:TEST_ENV
 ```
+
+## Herramienta opcional para Jira/Xray
+
+`mcp-xray/` contiene un servidor MCP aislado para consultar, crear y actualizar casos de prueba en
+Jira Server/DC con Xray. No publica resultados de Playwright y no participa de la ejecución de la
+suite. Su contrato está en [specs/tooling/xray-mcp.md](./specs/tooling/xray-mcp.md) y la instalación
+detallada en [mcp-xray/README.md](./mcp-xray/README.md).
+
+El paquete pertenece al workspace pnpm y comparte el lockfile raíz; `pnpm install --frozen-lockfile`
+instala tanto el framework como la herramienta opcional.
+
+La configuración real de cada usuario vive en `.kiro/settings/mcp.json`, está ignorada por Git y se
+crea a partir de `.kiro/settings/mcp.example.json`. El ejemplo queda deshabilitado, no contiene un
+PAT real y conserva la validación TLS.
+
+La futura publicación de resultados de Playwright en Xray es una capacidad diferente y continúa
+pendiente de las decisiones registradas en `.agents/docs/integracion-xray.md`.
 
 ## Cómo contribuir
 

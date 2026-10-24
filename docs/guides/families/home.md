@@ -23,7 +23,7 @@ Referencias:
 
 - specs/home/terms-and-conditions.api.plan.md
 - src/api/home/terms-and-conditions.api.ts
-- tests/api/005-home/should-get-terms-and-conditions.api.spec.ts
+- tests/api/home/should-get-terms-and-conditions.api.spec.ts
 
 ## Consulta API testigo
 

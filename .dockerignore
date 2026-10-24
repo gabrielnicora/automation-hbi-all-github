@@ -6,4 +6,6 @@ blob-report
 *.log
 .pnpm-store
 .git
-test-data/private
+.kiro/settings/mcp.json
+.playwright-mcp
+mcp-xray/dist

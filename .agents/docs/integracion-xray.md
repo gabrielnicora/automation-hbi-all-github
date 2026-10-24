@@ -1,16 +1,20 @@
-# Integración futura con Xray — Banco Santa Cruz
+# Publicación futura de resultados en Xray — Banco Entre Ríos
 
 ## Propósito y autoridad
 
-Definir el diseño y las decisiones necesarias para integrar el framework BSC con Xray.
+Definir el diseño y las decisiones necesarias para publicar resultados del framework BERSA en Xray.
 Esta guía orienta el trabajo futuro desde `.agents`; no reemplaza
 `SPEC.md` ni aprueba contratos de integración.
 Antes de implementar, crear y aprobar la especificación correspondiente bajo
 `specs/`, resolviendo las decisiones de este documento.
 
 Actualmente el proyecto utiliza los proyectos Playwright `api` y `ui`, reportes
-list, HTML y JUnit, y títulos con identificadores `TC<numero>BSC`. No existen
-comandos `xray:upload` ni configuración Xray implementados.
+list, HTML y JUnit, y títulos con identificadores `TC<numero>BERSA`. No existen
+comandos `xray:upload` ni configuración de publicación de resultados implementados.
+
+El servidor opcional `mcp-xray/`, aprobado en `specs/tooling/xray-mcp.md`, administra casos en
+Jira/Xray y es una capacidad distinta: no publica resultados de Playwright ni resuelve las
+decisiones de esta guía.
 
 ## Diseño recomendado
 
@@ -41,7 +45,7 @@ JUnit. Elegir según trazabilidad y estados requeridos; no añadir dos vías de 
 
 ## Trazabilidad propuesta
 
-Mantener `TC<numero>BSC` como identidad local y selector de datos privados.
+Mantener `TC<numero>BERSA` como identidad local y selector de datos privados.
 El identificador Jira es una identidad distinta: no deducirlo del número local.
 
 Los tags nativos con formato `@<PROJECT_KEY>-<numero>` son una opción sencilla para
@@ -62,7 +66,7 @@ un caso también incluya claves con el mismo prefijo numérico.
 | Cloud y Server/DC   | Tienen contratos y autenticación diferentes. No asumir que cambiar una variable de tipo basta ni implementar ambos sin necesidad confirmada.                   |
 | Generación JSON     | `--reporter=json` por sí solo no garantiza el archivo esperado. Configurar `outputFile` o la variable oficial de salida y preservar los otros reportes.        |
 | Campos Jira         | Versión, Dispositivo, Banco, IDs de campos y opciones dependen de la instancia. Confirmar cuáles son obligatorios.                                             |
-| Banco y proyectos   | El alcance es exclusivamente BSC, con los proyectos Playwright `api` y `ui` y la estructura de fixtures vigente.                                               |
+| Banco y proyectos   | El alcance es exclusivamente BERSA, con los proyectos Playwright `api` y `ui` y la estructura de fixtures vigente.                                             |
 | Estados             | Confirmar los estados válidos de la instancia antes de definir el mapeo de resultados.                                                                         |
 | Retries             | No alcanza con mapear el estado de un intento. Resolver resultado final, flaky, fallos esperados, interrupciones, skips y errores globales.                    |
 | Seguridad TLS       | Mantener validación TLS y configurar la CA interna cuando corresponda; no copiar la desactivación de certificados como solución habitual.                      |

@@ -11,7 +11,7 @@ política central y plantillas legadas copiadas sin cambios en `src/api/accounts
 (sólo se reemplazan los marcadores, como hace el legado sobre el body). Ningún caso se ejecutó contra
 BERSA QA.
 
-Migrado en `tests/api/001-accounts/`:
+Migrado en `tests/api/accounts/`:
 
 | Caso(s)                                                              | Test                                         |
 | -------------------------------------------------------------------- | -------------------------------------------- |

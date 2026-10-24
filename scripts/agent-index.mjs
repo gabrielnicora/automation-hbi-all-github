@@ -417,8 +417,7 @@ function renderTests(testsByFile, program) {
   for (const file of [...testsByFile.keys()].sort(byText)) {
     const area = file.split('/').slice(0, 3).join('/');
     if (area !== currentArea) {
-      // Carpeta <FFF>-<familia>: las especificaciones se agrupan por el nombre de la familia.
-      const areaName = area.split('/')[2].replace(/^\d{3}-/, '');
+      const areaName = area.split('/')[2];
       const areaSpecs = specs.filter((spec) => spec.startsWith(`specs/${areaName}/`));
       lines.push(`## \`${area}/\``, '');
       if (areaSpecs.length > 0) {
@@ -447,7 +446,7 @@ function renderTestData(caseFields, testsByFile, loaderLines) {
 
   for (const [file, entries] of testsByFile) {
     for (const entry of entries) {
-      for (const id of entry.title.match(/TC-\d{3}-[12]-\d{4}-UNE/g) ?? []) {
+      for (const id of entry.title.match(/TC\d+BERSA/g) ?? []) {
         const files = usage.get(id) ?? new Set();
         files.add(file);
         usage.set(id, files);

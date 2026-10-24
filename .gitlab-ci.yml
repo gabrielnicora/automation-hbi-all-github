@@ -1,22 +1,31 @@
 image: mcr.microsoft.com/playwright:v1.60.0-noble
 
+# Prioriza el pipeline del MR cuando una rama ya tiene uno abierto. Los pipelines de
+# schedule, Run pipeline y demás fuentes continúan habilitados.
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_OPEN_MERGE_REQUESTS'
+      when: never
+    - when: always
+
 # Variables visibles al lanzar un pipeline a mano (Run pipeline) o en un schedule.
 variables:
   REGRESSION_MODE:
     value: 'manual'
     options: ['manual', 'auto']
-    description: 'Schedules y pipelines ad hoc: manual (cada job a mano) o auto (todo encadenado). En push y MR siempre es manual.'
+    description: 'Schedules y pipelines ad hoc: manual (cada job a mano) o auto (todo encadenado). En push y MR la calidad es automática y la regresión manual.'
   TEST_ENV:
     value: 'qa'
     options: ['qa', 'une-dev']
     description: 'qa = BERSA QA; une-dev = UNE DEV (contraseña y OTP fijos).'
   TEST_PATH:
     value: ''
-    description: 'Opcional: rutas de tests separadas por espacio (por ejemplo tests/ui/002-authentication).'
+    description: 'Opcional: rutas de tests separadas por espacio (por ejemplo tests/ui/authentication).'
   TEST_FILTER:
     value: ''
     description: 'Opcional: expresión para --grep.'
-  PNPM_VERSION: '11.19.0'
+  PNPM_VERSION: '11.24.0'
   PW_WORKERS: '1'
   # Recursos base moderados para 1 worker de Playwright
   KUBERNETES_CPU_REQUEST: '2'
@@ -49,13 +58,23 @@ default:
     - application
 
 # =====================================================================
-# Modo de ejecución, igual para todos los jobs:
-# - push y MR: siempre manual; cada job se lanza a mano.
-# - schedule o pipeline ad hoc: REGRESSION_MODE=manual (a mano) o auto
+# Modos de ejecución:
+# - push sin MR abierto o pipeline de MR: install_deps + quality automáticos y
+#   bloqueantes; regresión manual. Un push con MR abierto no crea otro pipeline de rama.
+# - schedule o pipeline ad hoc: REGRESSION_MODE=manual (todo a mano) o auto
 #   (install_deps -> quality -> shard_1 -> shard_2 -> shard_3 -> merge_reports).
-# Los manuales llevan allow_failure para no bloquear el pipeline ni el MR.
+# Los jobs manuales llevan allow_failure para no bloquear el pipeline ni el MR.
 # =====================================================================
-.run_mode:
+.quality_run_mode:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" || $CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: on_success
+    - if: '$REGRESSION_MODE == "auto"'
+      when: on_success
+    - when: manual
+      allow_failure: true
+
+.regression_run_mode:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "push" || $CI_PIPELINE_SOURCE == "merge_request_event"'
       when: manual
@@ -69,7 +88,7 @@ default:
 # 1. Setup: instala dependencias una vez y las comparte como artifact
 # =====================================================================
 install_deps:
-  extends: .run_mode
+  extends: .quality_run_mode
   stage: setup
   script:
     - npm install --global pnpm@${PNPM_VERSION}
@@ -85,10 +104,10 @@ install_deps:
     expire_in: 1 day
     paths:
       - node_modules/
+      - mcp-xray/node_modules/
 
 # Los jobs posteriores reutilizan node_modules/ de install_deps (no ejecutan pnpm install).
 .pnpm_setup:
-  extends: .run_mode
   before_script:
     - npm install --global pnpm@${PNPM_VERSION}
 
@@ -96,7 +115,9 @@ install_deps:
 # 2. Quality
 # =====================================================================
 quality:
-  extends: .pnpm_setup
+  extends:
+    - .pnpm_setup
+    - .quality_run_mode
   stage: quality
   needs:
     - job: install_deps
@@ -106,6 +127,8 @@ quality:
     KUBERNETES_MEMORY_REQUEST: '2Gi'
   script:
     - pnpm run check
+    - pnpm run typecheck:mcp-xray
+    - pnpm run test:mcp-xray
 
 # =====================================================================
 # 3. Regresión en 3 shards encadenados: 1 -> 2 -> 3
@@ -114,7 +137,9 @@ quality:
 # y el reporte final incluye todos los shards ejecutados.
 # =====================================================================
 .shard:
-  extends: .pnpm_setup
+  extends:
+    - .pnpm_setup
+    - .regression_run_mode
   stage: regression
   timeout: 6 hours
   allow_failure: true
@@ -190,7 +215,9 @@ shard_3:
 # En modo manual alcanza con haber corrido al menos un shard.
 # =====================================================================
 merge_reports:
-  extends: .pnpm_setup
+  extends:
+    - .pnpm_setup
+    - .regression_run_mode
   stage: report
   needs:
     - job: install_deps

@@ -10,7 +10,7 @@ Criterios comunes: login UI real; apertura del listado y del detalle con el test
 exige como visibilidad (criterio de `lote-base-ui.md`); el resto de los locators reproduce el legado y
 queda pendiente de validación UI. Ningún caso se ejecutó contra BERSA QA.
 
-Migrado en `tests/ui/003-cards/`:
+Migrado en `tests/ui/cards/`:
 
 | Caso(s)                        | Test                                                          | Page Object                       |
 | ------------------------------ | ------------------------------------------------------------- | --------------------------------- |

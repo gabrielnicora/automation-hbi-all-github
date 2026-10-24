@@ -25,7 +25,7 @@ Referencias:
 - specs/cards/credit-card-total-payment.ui.plan.md
 - src/pages/cards/credit-card-payment.page.ts
 - src/test-data/credit-card-total-payment-ui-data.ts
-- tests/ui/003-cards/should-open-total-credit-card-payment-review.ui.spec.ts
+- tests/ui/cards/should-open-total-credit-card-payment-review.ui.spec.ts
 
 ## Flujo del testigo
 
@@ -72,7 +72,7 @@ valores ni asumir que QA conserva una Mastercard disponible.
 
 ## Arquitectura
 
-- Test: tests/ui/003-cards/.
+- Test: tests/ui/cards/.
 - Page Object: src/pages/cards/credit-card-payment.page.ts.
 - Datos: src/test-data/credit-card-total-payment-ui-data.ts.
 - Sin workflow: el recorrido está contenido en un Page Object.

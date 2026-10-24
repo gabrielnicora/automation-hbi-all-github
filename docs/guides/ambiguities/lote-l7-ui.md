@@ -15,7 +15,7 @@ Criterios comunes:
 - Los locators reproducen los del legado (XPath incluidos) porque no hubo evidencia UI actual: todos
   quedan pendientes de validación en BERSA QA. Ningún caso se ejecutó.
 
-Migrado en `tests/ui/007-investments/`:
+Migrado en `tests/ui/investments/`:
 
 | Caso(s)                                                | Test                                                     | Page Object                                    |
 | ------------------------------------------------------ | -------------------------------------------------------- | ---------------------------------------------- |

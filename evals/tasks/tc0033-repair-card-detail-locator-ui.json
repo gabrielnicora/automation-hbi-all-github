@@ -8,18 +8,18 @@
       "replace": "    return this.page.locator(\n      `xpath=//div[@class='card-item']//span[contains(text(),'${lastDigits}')]/ancestor::div[2]//a[@class='btn-more']`,\n    );"
     }
   ],
-  "agentMayRun": ["tests/ui/003-cards/should-consult-credit-cards.ui.spec.ts"],
+  "agentMayRun": ["tests/ui/cards/should-consult-credit-cards.ui.spec.ts"],
   "prompt": [
-    "El test TC-003-2-0002-UNE (`tests/ui/003-cards/should-consult-credit-cards.ui.spec.ts`) empezó a fallar contra QA después de un cambio en la pantalla de Tarjetas de crédito.",
+    "El test TC0033BERSA (`tests/ui/cards/should-consult-credit-cards.ui.spec.ts`) empezó a fallar contra QA después de un cambio en la pantalla de Tarjetas de crédito.",
     "",
     "Diagnosticá la causa y repará el código del framework para que el caso vuelva a pasar. No modifiques el test ni sus expectativas.",
     "",
     "Para esta tarea podés ejecutar solamente ese caso contra QA, con:",
-    "`PW_RETRIES=0 pnpm exec playwright test tests/ui/003-cards/should-consult-credit-cards.ui.spec.ts --grep TC-003-2-0002-UNE --project=ui`",
+    "`PW_RETRIES=0 pnpm exec playwright test tests/ui/cards/should-consult-credit-cards.ui.spec.ts --grep TC0033BERSA --project=ui`",
     "No ejecutes otros specs. Seguí las instrucciones del repositorio y terminá con el reporte de la sección Done de AGENTS.md."
   ],
   "expected": {
-    "testCaseId": "TC-003-2-0002-UNE",
+    "testCaseId": "TC0033BERSA",
     "project": "ui",
     "allowedPaths": ["src/pages/cards/credit-cards.page.ts", ".agents/index/"],
     "unchangedPaths": ["tests/"],

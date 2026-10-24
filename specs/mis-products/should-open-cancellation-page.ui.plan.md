@@ -35,7 +35,7 @@ productos` de Banco Entre Ríos.
 - `src/pages/mis-products/cancellation.page.ts` contiene los locators del menú y popup,
   apertura de pestaña, sincronización de carga y lectura de URL y título observados.
 - `src/fixtures/ui-test.ts` compone `cancellationPage`.
-- `tests/ui/010-mis-products/should-open-cancellation-page.ui.spec.ts` expresa login,
+- `tests/ui/mis-products/should-open-cancellation-page.ui.spec.ts` expresa login,
   disponibilidad del popup y resultado funcional; contiene la URL estable y el título
   esperados, sin selectores.
 - No se crea workflow: no existe una secuencia reutilizable con decisiones funcionales

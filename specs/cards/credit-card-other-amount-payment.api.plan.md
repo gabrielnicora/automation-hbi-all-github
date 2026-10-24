@@ -28,7 +28,7 @@ mutación hasta cuatro veces; no se migra.
 - Cliente en `src/api/cards/credit-card-other-amount-payment.api.ts` que resuelve y valida exactamente
   los tres productos configurados.
 - Datos tipados en `src/test-data/credit-card-other-amount-payment-data.ts`; test individual en
-  `tests/api/003-cards/should-pay-credit-card-other-amount.api.spec.ts`.
+  `tests/api/cards/should-pay-credit-card-other-amount.api.spec.ts`.
 - Una única mutación por intento; no se consulta saldo ni se reintenta internamente.
 - La mutación envía los IDs en los campos `accountId`, `debitCardId` y `creditCardId`, requeridos
   por la respuesta de validación observada en BERSA QA.

@@ -13,7 +13,7 @@ Requiere el CLI `claude` autenticado y acceso a UAT (ambiente `qa`, URLs por def
 
 ## Qué hace cada corrida
 
-1. Ejecuta el login UI `TC-002-2-0001-UNE` contra UAT. Si falla, informa "ambiente no disponible".
+1. Ejecuta el login UI `TC0017BERSA` contra UAT. Si falla, informa "ambiente no disponible".
 2. Crea una copia descartable de `HEAD` sin historial de Git (`git archive`), quita el caso de la tarea y regenera el
    catálogo para que la respuesta no quede en `.agents/index/`.
 3. Corre `claude -p` con el prompt de la tarea, herramientas acotadas y presupuesto máximo.

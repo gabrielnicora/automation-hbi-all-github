@@ -27,7 +27,7 @@ SMS y ejecuta la mutación una sola vez por intento; no traslada el retry intern
 
 - Cliente funcional en `src/api/accounts/`, con la obtención de productos necesaria y la mutación.
 - Datos tipados del caso y configuración de segundo factor mediante las superficies existentes.
-- Test en `tests/api/001-accounts/`, sin workflow, gateway ni reintento interno.
+- Test en `tests/api/accounts/`, sin workflow, gateway ni reintento interno.
 
 ## Criterios de aceptación propuestos
 

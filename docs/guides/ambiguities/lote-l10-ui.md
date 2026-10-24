@@ -14,15 +14,15 @@ legado y queda pendiente de validación UI. Ningún caso se ejecutó contra BERS
 
 Migrado:
 
-| Caso(s)                                | Test                                                                    | Page Object                          |
-| -------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------ |
-| TC0040                                 | `ui/001-accounts/should-show-account-movement-detail.ui.spec.ts`        | `accounts.page.ts` (nuevo)           |
-| TC29410, TC29411, TC29412              | `ui/001-accounts/should-enable-new-account-request-continue.ui.spec.ts` | `accounts.page.ts`                   |
-| TC0222, TC0225, TC0226, TC0237, TC0238 | `ui/001-accounts/should-validate-salary-advance-request.ui.spec.ts`     | `salary-advance.page.ts` (ampliado)  |
-| TC0206, TC0220, TC0221                 | `ui/008-loans/should-request-loans.ui.spec.ts`                          | `loans/loan-request.page.ts` (nuevo) |
-| TC29413, TC0026, TC124865              | `ui/001-accounts/should-operate-echeqs.ui.spec.ts`                      | `echeq.page.ts` (ampliado)           |
+| Caso(s)                                | Test                                                                | Page Object                          |
+| -------------------------------------- | ------------------------------------------------------------------- | ------------------------------------ |
+| TC0040                                 | `ui/accounts/should-show-account-movement-detail.ui.spec.ts`        | `accounts.page.ts` (nuevo)           |
+| TC29410, TC29411, TC29412              | `ui/accounts/should-enable-new-account-request-continue.ui.spec.ts` | `accounts.page.ts`                   |
+| TC0222, TC0225, TC0226, TC0237, TC0238 | `ui/accounts/should-validate-salary-advance-request.ui.spec.ts`     | `salary-advance.page.ts` (ampliado)  |
+| TC0206, TC0220, TC0221                 | `ui/loans/should-request-loans.ui.spec.ts`                          | `loans/loan-request.page.ts` (nuevo) |
+| TC29413, TC0026, TC124865              | `ui/accounts/should-operate-echeqs.ui.spec.ts`                      | `echeq.page.ts` (ampliado)           |
 
-Los textos de `validacionPantallaSolicitudAH` se movieron a `tests/ui/001-accounts/salary-advance-request-screen.ts`
+Los textos de `validacionPantallaSolicitudAH` se movieron a `tests/ui/accounts/salary-advance-request-screen.ts`
 y los comparte el testigo TC0228BERSA (sin cambio de comportamiento).
 
 ## Adelanto de sueldo — usuario sin oferta

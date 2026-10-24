@@ -15,7 +15,7 @@ Archivos actuales:
 - Especificación: `specs/accounts/withdrawal-order.api.plan.md`.
 - Cliente: `src/api/accounts/withdrawal-order.api.ts`.
 - Datos: `src/test-data/withdrawal-order-data.ts`.
-- Test: `tests/api/001-accounts/should-generate-withdrawal-order.api.spec.ts`.
+- Test: `tests/api/accounts/should-generate-withdrawal-order.api.spec.ts`.
 - Dudas: `docs/guides/ambiguities/tc0027bersa-api.md`.
 
 El testigo consulta `widgets.accounts`, resuelve por `ctaOrigen` el `idProduct` y `number`,

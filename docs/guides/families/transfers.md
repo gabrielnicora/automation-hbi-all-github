@@ -28,7 +28,7 @@ validación del ticket final.
 Archivos de referencia:
 
 - Especificación: [own-account-transfer.api.plan.md](../../../specs/transfers/own-account-transfer.api.plan.md).
-- Test: [should-transfer-between-own-accounts.api.spec.ts](../../../tests/api/015-transfers/should-transfer-between-own-accounts.api.spec.ts).
+- Test: [should-transfer-between-own-accounts.api.spec.ts](../../../tests/api/transfers/should-transfer-between-own-accounts.api.spec.ts).
 - Cliente: [own-account-transfer.api.ts](../../../src/api/transfers/own-account-transfer.api.ts).
 - Datos: [own-account-transfer-data.ts](../../../src/test-data/own-account-transfer-data.ts).
 - Datos privados: registro `TC0139BERSA` en `test-data/private/bersa.json`.
@@ -42,7 +42,7 @@ el formulario, revisando y confirmando la operación, y verificando el ticket ex
 Archivos de referencia:
 
 - Especificación: [own-account-transfer.ui.plan.md](../../../specs/transfers/own-account-transfer.ui.plan.md).
-- Test: [should-transfer-to-own-account-by-cbu.ui.spec.ts](../../../tests/ui/015-transfers/should-transfer-to-own-account-by-cbu.ui.spec.ts).
+- Test: [should-transfer-to-own-account-by-cbu.ui.spec.ts](../../../tests/ui/transfers/should-transfer-to-own-account-by-cbu.ui.spec.ts).
 - Page Object: [own-account-transfer.page.ts](../../../src/pages/transfers/own-account-transfer.page.ts).
 - Datos: [own-account-transfer-ui-data.ts](../../../src/test-data/own-account-transfer-ui-data.ts).
 - Datos privados: registro `TC18088BERSA` en `test-data/private/bersa.json`.
@@ -77,16 +77,16 @@ No se debe concluir que dos casos tienen el mismo flujo sólo porque ambos se ll
 
 ## 3. Mapa de arquitectura
 
-| Necesidad del caso             | Ubicación actual                                       | Regla para migrar                                            |
-| ------------------------------ | ------------------------------------------------------ | ------------------------------------------------------------ |
-| Escenario y expectativas       | `tests/api/015-transfers/` o `tests/ui/015-transfers/` | Mantener lenguaje funcional y `testCaseId`                   |
-| Protocolo HTTP                 | `src/api/transfers/`                                   | Endpoints, headers, payloads y respuestas                    |
-| Mecánica UI                    | `src/pages/transfers/`                                 | Locators, acciones y esperas observables                     |
-| Datos del caso                 | `src/test-data/`                                       | Loader tipado y validaciones de formato                      |
-| Composición técnica            | `src/fixtures/`                                        | Cliente, Page Object y datos públicos                        |
-| Coordinación de varias páginas | `src/workflows/transfers/`                             | Crear sólo si el recorrido cruza páginas o decisiones reales |
-| Comportamiento aprobado        | `specs/transfers/`                                     | Registrar criterios y decisiones específicas                 |
-| Dudas de migración rápida      | `docs/guides/ambiguities/`                             | Registrar la decisión provisional y su evidencia             |
+| Necesidad del caso             | Ubicación actual                               | Regla para migrar                                            |
+| ------------------------------ | ---------------------------------------------- | ------------------------------------------------------------ |
+| Escenario y expectativas       | `tests/api/transfers/` o `tests/ui/transfers/` | Mantener lenguaje funcional y `testCaseId`                   |
+| Protocolo HTTP                 | `src/api/transfers/`                           | Endpoints, headers, payloads y respuestas                    |
+| Mecánica UI                    | `src/pages/transfers/`                         | Locators, acciones y esperas observables                     |
+| Datos del caso                 | `src/test-data/`                               | Loader tipado y validaciones de formato                      |
+| Composición técnica            | `src/fixtures/`                                | Cliente, Page Object y datos públicos                        |
+| Coordinación de varias páginas | `src/workflows/transfers/`                     | Crear sólo si el recorrido cruza páginas o decisiones reales |
+| Comportamiento aprobado        | `specs/transfers/`                             | Registrar criterios y decisiones específicas                 |
+| Dudas de migración rápida      | `docs/guides/ambiguities/`                     | Registrar la decisión provisional y su evidencia             |
 
 No trasladar las capas legacy `banks/`, `contracts/`, `features/`, `support/` o
 `test-setup/`. Tampoco crear un `TransferManager`, `TransferHelper`, gateway o factory sólo
