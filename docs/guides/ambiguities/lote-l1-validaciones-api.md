@@ -20,18 +20,15 @@ legado, HTTP 200 y código de negocio `COR020W` o `API946W` (búsqueda) / `COR02
 la plantilla de búsqueda; la plantilla del listado no envía esos campos. Cada ID es un test
 individual con datos explícitos de la variante.
 
-## L1a/L1b — API — datos de usuario `TCBERSAPRUEBA` ausentes
+## L1a/L1b — API — identidad compartida `TCBERSAPRUEBA`
 
 - Fuente: los 77 métodos llaman `testCaseData.cargaDeDatosTest("TCBERSAPRUEBA")`.
-- Faltante: `test-data/private/bersa.json` no contiene `TCBERSAPRUEBA` ni filas para los 77 IDs. El
-  lector actual exige claves `TC<numero>BERSA` y `tcName` coincidente, por lo que cada test carga su
-  propio ID, conforme a `SPEC.md`, sección 10.
-- Aplicado: no se inventaron credenciales. Los tests fallan al cargar datos con
-  `No se encontró el caso TC…BERSA en el export JSON de BERSA.` (observado para TC-001-1-0065-UNE, sin
-  llamar al banco).
-- Portado: completado. Ejecución: bloqueada por datos.
-- Revisión humana: pendiente; aportar el usuario QA dummy de `TCBERSAPRUEBA` y agregarlo como fila de
-  cada ID (con `tcName` igual a la clave), o decidir en `SPEC.md` una clave de datos compartida.
+- Decisión del usuario, 22 de octubre de 2026: conservar esa identidad una sola vez como perfil de
+  credenciales compartido y referenciarla explícitamente desde los dos archivos del lote.
+- Aplicado: `test-data/private/bersa.json` declara `TCBERSAPRUEBA` en `credentialProfiles`; ambos
+  archivos usan `credentialsRef: 'TCBERSAPRUEBA'`. El loader no aplica fallback: sin una referencia
+  explícita, un caso ausente continúa fallando.
+- Portado: completado. Bloqueo de datos: resuelto. Ejecución funcional contra el banco: pendiente.
 
 ## TC-001-1-0017-UNE — API — "typeAccount boolean true" envía `false`
 

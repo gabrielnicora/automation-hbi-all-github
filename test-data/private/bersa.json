@@ -1,4 +1,24 @@
 {
+  "credentialProfiles": {
+    "TCBERSAPRUEBA": {
+      "idSeccion": "3",
+      "idBanco": "3",
+      "tcName": "TCBERSAPRUEBA",
+      "user": "berhometest17",
+      "pass": "Fifa3028",
+      "user1": "sinDatos",
+      "pass1": "sinDatos",
+      "ctaOrigen": "sinDatos",
+      "ctaDestino": "sinDatos",
+      "ctaComitente": "sinDatos",
+      "cbuDestino": "sinDatos",
+      "aliasDestino": "sinDatos",
+      "cuitDestino": "sinDatos",
+      "tarjetaDebito": "sinDatos",
+      "tarjetaOperar": "sinDatos",
+      "ambiente": "sinDatos"
+    }
+  },
   "testCases": {
     "TC-011-1-0001-UNE": {
       "idSeccion": "1",

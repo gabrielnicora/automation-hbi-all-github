@@ -46,88 +46,88 @@ Fixtures: `echeqEndorsementData`, `echeqOperationsApi`, `loginApi`, `loginCreden
 
 Fixtures: `accountTransferSearchApi`, `loginApi`, `loginCredentials`
 
-- L325: TC-001-1-0006-UNE - Validar mensaje de error typeAccount con espacio
-- L325: TC-001-1-0007-UNE - Validar error por typeAccount con acento
-- L325: TC-001-1-0008-UNE - Validar error por typeAccount con guión
-- L325: TC-001-1-0009-UNE - Validar error por typeAccount con longitud no permitida
-- L325: TC-001-1-0010-UNE - Validar error por typeAccount con apóstrofe
-- L325: TC-001-1-0011-UNE - Validar error por typeAccount vacío
-- L325: TC-001-1-0012-UNE - Validar error por typeAccount null
-- L325: TC-001-1-0013-UNE - Validar error por typeAccount alfabético no permitido
-- L325: TC-001-1-0014-UNE - Validar error por typeAccount numérico
-- L325: TC-001-1-0015-UNE - Validar error por typeAccount alfanumérico
-- L325: TC-001-1-0016-UNE - Validar error por typeAccount con caracteres especiales
-- L325: TC-001-1-0017-UNE - Validar error por typeAccount boolean true
-- L325: TC-001-1-0018-UNE - Validar error por typeAccount boolean false
-- L325: TC-001-1-0019-UNE - Validar error por typeAccount en minúsculas
-- L325: TC-001-1-0020-UNE - Validar error por typeAccount con prefijo y espacio
-- L325: TC-001-1-0021-UNE - Validar error por account con espacio
-- L325: TC-001-1-0022-UNE - Validar error por account con acento
-- L325: TC-001-1-0023-UNE - Validar error por account con guión
-- L325: TC-001-1-0024-UNE - Validar error por account con longitud no permitida
-- L325: TC-001-1-0025-UNE - Validar error por account con apóstrofe
-- L325: TC-001-1-0026-UNE - Validar error por account vacío
-- L325: TC-001-1-0027-UNE - Validar error por account null
-- L325: TC-001-1-0028-UNE - Validar error por account CBU con longitud inválida (-1)
-- L325: TC-001-1-0029-UNE - Validar error por account CBU con longitud inválida (+1)
-- L325: TC-001-1-0030-UNE - Validar error por account alias con números adicionales
-- L325: TC-001-1-0031-UNE - Validar error por typeAccount alfanumérico
-- L325: TC-001-1-0032-UNE - Validar error por account con caracteres especiales
-- L325: TC-001-1-0033-UNE - Validar error por account boolean true
-- L325: TC-001-1-0034-UNE - Validar error por account boolean false
-- L325: TC-001-1-0035-UNE - Validar error por account con formato mixto
-- L325: TC-001-1-0036-UNE - Validar error cuando typeAccount y account están vacíos
-- L325: TC-001-1-0037-UNE - Validar error cuando typeAccount y account son inválidos
-- L325: TC-001-1-0038-UNE - Validar error por inconsistencia typeAccount CBU y account alias
-- L325: TC-001-1-0039-UNE - Validar error por inconsistencia typeAccount alias y account CBU
-- L325: TC-001-1-0040-UNE - Validar error por typeAccount CBU vacío
-- L325: TC-001-1-0041-UNE - Validar error por typeAccount CBU null
-- L325: TC-001-1-0042-UNE - Validar error por account con espacio
-- L325: TC-001-1-0043-UNE - Validar error por account con guión
-- L325: TC-001-1-0044-UNE - Validar error por account con longitud no permitida
-- L325: TC-001-1-0045-UNE - Validar error por account con apóstrofe
-- L325: TC-001-1-0046-UNE - Validar error por account vacío
-- L325: TC-001-1-0047-UNE - Validar error por account null
-- L325: TC-001-1-0048-UNE - Validar error por account CBU con longitud inválida (-1)
-- L325: TC-001-1-0049-UNE - Validar error por account cbu con caracteres especiales
-- L325: TC-001-1-0050-UNE - Validar error por account CBU boolean true
-- L325: TC-001-1-0051-UNE - Validar error por account CBU boolean false
-- L325: TC-001-1-0052-UNE - Validar error por typeAccount CVU vacío
-- L325: TC-001-1-0053-UNE - Validar error por typeAccount CVU null
-- L325: TC-001-1-0054-UNE - Validar error por account CVU con espacio
-- L325: TC-001-1-0055-UNE - Validar error por account CVU con guión
-- L325: TC-001-1-0056-UNE - Validar error por account CVU con longitud no permitida
-- L325: TC-001-1-0057-UNE - Validar error por account CVU con apóstrofe
-- L325: TC-001-1-0058-UNE - Validar error por account CVU vacío
-- L325: TC-001-1-0059-UNE - Validar error por account CVU null
-- L325: TC-001-1-0060-UNE - Validar error por account CVU con longitud inválida (-1)
-- L325: TC-001-1-0061-UNE - Validar error por account CVU con longitud inválida (+1)
-- L325: TC-001-1-0062-UNE - Validar error por account CVU con caracteres especiales
-- L325: TC-001-1-0063-UNE - Validar error por account CVU boolean true
-- L325: TC-001-1-0064-UNE - Validar error por account CVU boolean false
+- L327: TC-001-1-0006-UNE - Validar mensaje de error typeAccount con espacio
+- L327: TC-001-1-0007-UNE - Validar error por typeAccount con acento
+- L327: TC-001-1-0008-UNE - Validar error por typeAccount con guión
+- L327: TC-001-1-0009-UNE - Validar error por typeAccount con longitud no permitida
+- L327: TC-001-1-0010-UNE - Validar error por typeAccount con apóstrofe
+- L327: TC-001-1-0011-UNE - Validar error por typeAccount vacío
+- L327: TC-001-1-0012-UNE - Validar error por typeAccount null
+- L327: TC-001-1-0013-UNE - Validar error por typeAccount alfabético no permitido
+- L327: TC-001-1-0014-UNE - Validar error por typeAccount numérico
+- L327: TC-001-1-0015-UNE - Validar error por typeAccount alfanumérico
+- L327: TC-001-1-0016-UNE - Validar error por typeAccount con caracteres especiales
+- L327: TC-001-1-0017-UNE - Validar error por typeAccount boolean true
+- L327: TC-001-1-0018-UNE - Validar error por typeAccount boolean false
+- L327: TC-001-1-0019-UNE - Validar error por typeAccount en minúsculas
+- L327: TC-001-1-0020-UNE - Validar error por typeAccount con prefijo y espacio
+- L327: TC-001-1-0021-UNE - Validar error por account con espacio
+- L327: TC-001-1-0022-UNE - Validar error por account con acento
+- L327: TC-001-1-0023-UNE - Validar error por account con guión
+- L327: TC-001-1-0024-UNE - Validar error por account con longitud no permitida
+- L327: TC-001-1-0025-UNE - Validar error por account con apóstrofe
+- L327: TC-001-1-0026-UNE - Validar error por account vacío
+- L327: TC-001-1-0027-UNE - Validar error por account null
+- L327: TC-001-1-0028-UNE - Validar error por account CBU con longitud inválida (-1)
+- L327: TC-001-1-0029-UNE - Validar error por account CBU con longitud inválida (+1)
+- L327: TC-001-1-0030-UNE - Validar error por account alias con números adicionales
+- L327: TC-001-1-0031-UNE - Validar error por typeAccount alfanumérico
+- L327: TC-001-1-0032-UNE - Validar error por account con caracteres especiales
+- L327: TC-001-1-0033-UNE - Validar error por account boolean true
+- L327: TC-001-1-0034-UNE - Validar error por account boolean false
+- L327: TC-001-1-0035-UNE - Validar error por account con formato mixto
+- L327: TC-001-1-0036-UNE - Validar error cuando typeAccount y account están vacíos
+- L327: TC-001-1-0037-UNE - Validar error cuando typeAccount y account son inválidos
+- L327: TC-001-1-0038-UNE - Validar error por inconsistencia typeAccount CBU y account alias
+- L327: TC-001-1-0039-UNE - Validar error por inconsistencia typeAccount alias y account CBU
+- L327: TC-001-1-0040-UNE - Validar error por typeAccount CBU vacío
+- L327: TC-001-1-0041-UNE - Validar error por typeAccount CBU null
+- L327: TC-001-1-0042-UNE - Validar error por account con espacio
+- L327: TC-001-1-0043-UNE - Validar error por account con guión
+- L327: TC-001-1-0044-UNE - Validar error por account con longitud no permitida
+- L327: TC-001-1-0045-UNE - Validar error por account con apóstrofe
+- L327: TC-001-1-0046-UNE - Validar error por account vacío
+- L327: TC-001-1-0047-UNE - Validar error por account null
+- L327: TC-001-1-0048-UNE - Validar error por account CBU con longitud inválida (-1)
+- L327: TC-001-1-0049-UNE - Validar error por account cbu con caracteres especiales
+- L327: TC-001-1-0050-UNE - Validar error por account CBU boolean true
+- L327: TC-001-1-0051-UNE - Validar error por account CBU boolean false
+- L327: TC-001-1-0052-UNE - Validar error por typeAccount CVU vacío
+- L327: TC-001-1-0053-UNE - Validar error por typeAccount CVU null
+- L327: TC-001-1-0054-UNE - Validar error por account CVU con espacio
+- L327: TC-001-1-0055-UNE - Validar error por account CVU con guión
+- L327: TC-001-1-0056-UNE - Validar error por account CVU con longitud no permitida
+- L327: TC-001-1-0057-UNE - Validar error por account CVU con apóstrofe
+- L327: TC-001-1-0058-UNE - Validar error por account CVU vacío
+- L327: TC-001-1-0059-UNE - Validar error por account CVU null
+- L327: TC-001-1-0060-UNE - Validar error por account CVU con longitud inválida (-1)
+- L327: TC-001-1-0061-UNE - Validar error por account CVU con longitud inválida (+1)
+- L327: TC-001-1-0062-UNE - Validar error por account CVU con caracteres especiales
+- L327: TC-001-1-0063-UNE - Validar error por account CVU boolean true
+- L327: TC-001-1-0064-UNE - Validar error por account CVU boolean false
 
 ### `tests/api/001-accounts/should-reject-invalid-echeq-list-filters.api.spec.ts`
 
 Fixtures: `echeqListApi`, `loginApi`, `loginCredentials`
 
-- L113: TC-001-1-0065-UNE - Validar error por echeqNumber con espacio
-- L113: TC-001-1-0066-UNE - Validar error por echeqNumber con caracteres especiales
-- L113: TC-001-1-0067-UNE - Validar error por statement con espacio
-- L113: TC-001-1-0068-UNE - Validar error por statement con caracteres especiales
-- L113: TC-001-1-0069-UNE - Validar error por filterCuil con espacio
-- L113: TC-001-1-0070-UNE - Validar error por filterCuil con caracteres especiales
-- L113: TC-001-1-0071-UNE - Validar error por operationType con espacio
-- L113: TC-001-1-0072-UNE - Validar error por operationType con caracteres especiales
-- L113: TC-001-1-0073-UNE - Validar error por page con espacio
-- L113: TC-001-1-0074-UNE - Validar error por page con caracteres especiales
-- L113: TC-001-1-0075-UNE - Validar error por filterCuil boolean true
-- L113: TC-001-1-0076-UNE - Validar error por filterCuil boolean false
-- L113: TC-001-1-0077-UNE - Validar error por filterCuil null
-- L113: TC-001-1-0078-UNE - Validar error por page con guión
-- L113: TC-001-1-0079-UNE - Validar error por page alfabético no permitido
-- L113: TC-001-1-0080-UNE - Validar error por page boolean true
-- L113: TC-001-1-0081-UNE - Validar error por page boolean false
-- L113: TC-001-1-0082-UNE - Validar error por page con prefijo y espacio
+- L115: TC-001-1-0065-UNE - Validar error por echeqNumber con espacio
+- L115: TC-001-1-0066-UNE - Validar error por echeqNumber con caracteres especiales
+- L115: TC-001-1-0067-UNE - Validar error por statement con espacio
+- L115: TC-001-1-0068-UNE - Validar error por statement con caracteres especiales
+- L115: TC-001-1-0069-UNE - Validar error por filterCuil con espacio
+- L115: TC-001-1-0070-UNE - Validar error por filterCuil con caracteres especiales
+- L115: TC-001-1-0071-UNE - Validar error por operationType con espacio
+- L115: TC-001-1-0072-UNE - Validar error por operationType con caracteres especiales
+- L115: TC-001-1-0073-UNE - Validar error por page con espacio
+- L115: TC-001-1-0074-UNE - Validar error por page con caracteres especiales
+- L115: TC-001-1-0075-UNE - Validar error por filterCuil boolean true
+- L115: TC-001-1-0076-UNE - Validar error por filterCuil boolean false
+- L115: TC-001-1-0077-UNE - Validar error por filterCuil null
+- L115: TC-001-1-0078-UNE - Validar error por page con guión
+- L115: TC-001-1-0079-UNE - Validar error por page alfabético no permitido
+- L115: TC-001-1-0080-UNE - Validar error por page boolean true
+- L115: TC-001-1-0081-UNE - Validar error por page boolean false
+- L115: TC-001-1-0082-UNE - Validar error por page con prefijo y espacio
 
 ### `tests/api/001-accounts/should-request-salary-advance.api.spec.ts`
 

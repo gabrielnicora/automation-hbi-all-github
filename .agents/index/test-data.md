@@ -17,6 +17,7 @@ se leen con los loaders). Un campo ausente es `null`, vacío o `sinDatos`. Regla
 - `src/test-data/account-selection-data.ts`: `loadOptionalOriginAccountData(testCaseId: string): Promise<OptionalOriginAccountData>` → fixture `optionalOriginAccountData`
 - `src/test-data/account-selection-data.ts`: `loadEcheqEndorsementData(testCaseId: string): Promise<EcheqEndorsementData>` → fixture `echeqEndorsementData`
 - `src/test-data/bersa-test-case.ts`: `loadBersaTestCaseRow(testCaseId: string): Promise<BersaTestCaseRow>`
+- `src/test-data/bersa-test-case.ts`: `loadBersaCredentialProfile(credentialsRef: string): Promise<BersaTestCaseRow>`
 - `src/test-data/case-fields.ts`: `loadCaseRow(testCaseId: string): Promise<CaseRow>`
 - `src/test-data/contact-search-ui-data.ts`: `loadContactSearchUiData(testCaseId: string): Promise<ContactSearchUiData>` → fixture `contactSearchUiData`
 - `src/test-data/credit-card-detail-ui-data.ts`: `loadCreditCardDetailUiData(testCaseId: string): Promise<CreditCardDetailUiData>` → fixture `creditCardDetailUiData`
@@ -25,8 +26,8 @@ se leen con los loaders). Un campo ausente es `null`, vacío o `sinDatos`. Regla
 - `src/test-data/debin-generation-data.ts`: `loadDebinGenerationData(testCaseId: string): Promise<DebinGenerationData>` → fixture `debinGenerationData`
 - `src/test-data/fixed-access.ts`: `loadFixedAccess(): Promise<FixedAccess | undefined>`
 - `src/test-data/foreign-currency-purchase-ui-data.ts`: `loadForeignCurrencyPurchaseUiData(testCaseId: string): Promise<ForeignCurrencyPurchaseUiData>` → fixture `foreignCurrencyPurchaseUiData`
-- `src/test-data/login-credentials.ts`: `loadLoginCredentials(testCaseId: string): Promise<LoginCredentials>` → fixture `loginCredentials`, `secondUserCredentials`
-- `src/test-data/login-credentials.ts`: `loadSecondUserCredentials(testCaseId: string): Promise<LoginCredentials>` → fixture `loginCredentials`, `secondUserCredentials`
+- `src/test-data/login-credentials.ts`: `loadLoginCredentials(testCaseId: string, credentialsRef?: string): Promise<LoginCredentials>` → fixture `loginCredentials`, `secondUserCredentials`
+- `src/test-data/login-credentials.ts`: `loadSecondUserCredentials(testCaseId: string, credentialsRef?: string): Promise<LoginCredentials>` → fixture `loginCredentials`, `secondUserCredentials`
 - `src/test-data/origin-account-ui-data.ts`: `loadOriginAccountUiData(testCaseId: string): Promise<OriginAccountUiData>` → fixture `originAccountUiData`
 - `src/test-data/own-account-transfer-data.ts`: `loadOwnAccountTransferData(testCaseId: string): Promise<OwnAccountTransferData>` → fixture `ownAccountTransferData`
 - `src/test-data/own-account-transfer-ui-data.ts`: `loadOwnAccountTransferUiData(testCaseId: string): Promise<OwnAccountTransferUiData>` → fixture `ownAccountTransferUiData`

@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "xray": {
+      "command": "pnpm",
+      "args": ["--dir", "mcp-xray", "run", "dev"],
+      "env": {
+        "XRAY_JIRA_BASE_URL": "https://jira.tu-empresa.com",
+        "XRAY_JIRA_PAT": "",
+        "XRAY_PROJECT_KEY": "XT",
+        "XRAY_REQUEST_TIMEOUT_MS": "30000"
+      },
+      "disabled": true,
+      "autoApprove": ["xray_verificar_conexion", "xray_descubrir_campos_test", "xray_listar_tests"]
+    }
+  }
+}

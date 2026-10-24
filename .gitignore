@@ -10,6 +10,9 @@ blob-report/
 .auth/
 .playwright/
 .playwright-cli/
+.playwright-mcp/
+.kiro/settings/mcp.json
+mcp-xray/dist/
 .slingshot/
 .vscode/
 /web

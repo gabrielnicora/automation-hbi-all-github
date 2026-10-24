@@ -85,10 +85,13 @@ Migrado en `tests/api/011-payments/`:
   plantilla `firstPaymentRequest.json` no envía `ajax_uuid` ni `xAppVersion`; se respeta.
 - Efecto: realiza un pago real.
 
-## TC-011-1-0001-UNE — API — identidad compartida con el login
+## TC-011-1-0001-UNE — API — identidad distinta de los logins
 
-- `SPEC.md`, sección 9, menciona logins con `TC-011-1-0001-UNE`; este caso es la consulta de DEBIN
-  histórico (rango fijo desde `2022-12-01T12:47:54.000Z` hasta ahora) y exige al menos un elemento.
+- Este caso es la consulta de DEBIN histórico (rango fijo desde
+  `2022-12-01T12:47:54.000Z` hasta ahora) y exige al menos un elemento.
+- Resolución del 23 de octubre de 2026: `SPEC.md` y `README.md` se corrigieron para identificar
+  los logins `TC-002-1-0001-UNE` (API) y `TC-002-2-0001-UNE` (UI) como la identidad compartida.
+  `TC-011-1-0001-UNE` permanece exclusivamente asociado a este escenario DEBIN.
 
 ## Etiquetas `Criticos`
 

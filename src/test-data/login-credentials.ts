@@ -1,4 +1,4 @@
-import { loadBersaTestCaseRow, type BersaTestCaseRow } from './bersa-test-case';
+import { loadBersaCredentialProfile, loadBersaTestCaseRow, type BersaTestCaseRow } from './bersa-test-case';
 import { loadFixedAccess } from './fixed-access';
 
 export interface LoginCredentials {
@@ -27,15 +27,26 @@ async function applyFixedPassword(credentials: LoginCredentials): Promise<LoginC
   return fixedAccess ? { ...credentials, password: fixedAccess.password } : credentials;
 }
 
-export async function loadLoginCredentials(testCaseId: string): Promise<LoginCredentials> {
-  const row = await loadBersaTestCaseRow(testCaseId);
-  return applyFixedPassword(extractCredentials(row, testCaseId.trim().toUpperCase()));
+async function loadCredentialsRow(testCaseId: string, credentialsRef?: string): Promise<BersaTestCaseRow> {
+  if (credentialsRef !== undefined && credentialsRef.length > 0) {
+    return loadBersaCredentialProfile(credentialsRef);
+  }
+
+  return loadBersaTestCaseRow(testCaseId);
+}
+
+export async function loadLoginCredentials(testCaseId: string, credentialsRef?: string): Promise<LoginCredentials> {
+  const row = await loadCredentialsRow(testCaseId, credentialsRef);
+  const sourceId = credentialsRef?.trim().toUpperCase() || testCaseId.trim().toUpperCase();
+  return applyFixedPassword(extractCredentials(row, sourceId));
 }
 
 /** Segundo usuario del caso (`user1`/`pass1`; `usuario2`/`password2` en el legado). */
-export async function loadSecondUserCredentials(testCaseId: string): Promise<LoginCredentials> {
-  const row = await loadBersaTestCaseRow(testCaseId);
-  return applyFixedPassword(
-    extractCredentials({ user: row.user1, pass: row.pass1 }, `${testCaseId.trim().toUpperCase()} (segundo usuario)`),
-  );
+export async function loadSecondUserCredentials(
+  testCaseId: string,
+  credentialsRef?: string,
+): Promise<LoginCredentials> {
+  const row = await loadCredentialsRow(testCaseId, credentialsRef);
+  const sourceId = credentialsRef?.trim().toUpperCase() || testCaseId.trim().toUpperCase();
+  return applyFixedPassword(extractCredentials({ user: row.user1, pass: row.pass1 }, `${sourceId} (segundo usuario)`));
 }

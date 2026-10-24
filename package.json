@@ -16,6 +16,7 @@
     "test:ui:headed": "playwright test --project=ui --headed",
     "report": "playwright show-report",
     "typecheck": "tsc --noEmit",
+    "typecheck:mcp-xray": "pnpm --dir mcp-xray run typecheck",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",

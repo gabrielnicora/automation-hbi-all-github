@@ -110,7 +110,10 @@ Environment variables: `TEST_ENV` (`qa` default, `une-dev`), `UI_BASE_URL`, `API
 - Legacy migration: `.agents/docs/legacy-migration.md` (rules), `specs/migration/migratable-cases.md`.
 - Playwright exploration, generation or debugging: `.agents/skills/playwright-cli/SKILL.md`.
   Do not commit exploration snapshots.
-- Xray: `.agents/docs/integracion-xray.md` is a proposal, not an approved capability.
+- Optional Jira/Xray case-management MCP (`mcp-xray/`): read `specs/tooling/xray-mcp.md` first.
+- Publishing Playwright results to Xray: `.agents/docs/integracion-xray.md` is a proposal, not
+  an approved capability. Resolve its decisions in `specs/` before changing tests, reporters or
+  CI for it.
 - New capabilities outside migration: resolve material decisions in `specs/` first. Examples
   and snippets alone do not approve behavior. Smoke selection and offline checks follow
   `SPEC.md` section 9 before adding tags, scripts or jobs.

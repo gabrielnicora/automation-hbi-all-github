@@ -42,20 +42,22 @@ interface TestCaseFixtures {
 }
 
 interface TestCaseOptions {
+  readonly credentialsRef: string;
   readonly testCaseId: string;
 }
 
 export const test = baseTest.extend<TestCaseFixtures & TestCaseOptions>({
+  credentialsRef: ['', { option: true }],
   testCaseId: ['', { option: true }],
 
-  loginCredentials: async ({ testCaseId }, use, testInfo) => {
-    const credentials = await loadLoginCredentials(testCaseId);
+  loginCredentials: async ({ credentialsRef, testCaseId }, use, testInfo) => {
+    const credentials = await loadLoginCredentials(testCaseId, credentialsRef);
     testInfo.annotations.push({ description: credentials.username, type: 'Usuario' });
     await use(credentials);
   },
 
-  secondUserCredentials: async ({ testCaseId }, use, testInfo) => {
-    const credentials = await loadSecondUserCredentials(testCaseId);
+  secondUserCredentials: async ({ credentialsRef, testCaseId }, use, testInfo) => {
+    const credentials = await loadSecondUserCredentials(testCaseId, credentialsRef);
     testInfo.annotations.push({ description: credentials.username, type: 'Segundo usuario' });
     await use(credentials);
   },

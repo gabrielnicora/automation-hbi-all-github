@@ -318,6 +318,8 @@ const INVALID_SEARCHES: readonly InvalidSearchCase[] = [
 ];
 
 test.describe('Búsqueda de cuenta destino API de Banco Entre Ríos — datos inválidos', () => {
+  test.use({ credentialsRef: 'TCBERSAPRUEBA' });
+
   for (const testCase of INVALID_SEARCHES) {
     test.describe(testCase.id, () => {
       test.use({ testCaseId: testCase.id });

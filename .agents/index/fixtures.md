@@ -12,6 +12,7 @@ Además están las nativas de Playwright (`page`, `context`, `request`).
 | Fixture | Tipo | Definido en |
 | --- | --- | --- |
 | `accountPairData` | `AccountPairData` | `src/test-data/account-selection-data.ts` |
+| `credentialsRef` | `string` | — |
 | `creditCardOtherAmountPaymentData` | `CreditCardOtherAmountPaymentData` | `src/test-data/credit-card-other-amount-payment-data.ts` |
 | `creditCardPaymentData` | `CreditCardPaymentData` | `src/test-data/account-selection-data.ts` |
 | `debinGenerationData` | `DebinGenerationData` | `src/test-data/debin-generation-data.ts` |

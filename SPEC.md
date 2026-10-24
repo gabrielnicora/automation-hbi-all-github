@@ -637,8 +637,17 @@ con el mismo valor de su clave, y el lector valida esa coincidencia antes de dev
 decisión reemplaza el export legado indexado por el texto de una consulta SQL y evita recorridos
 lineales para localizar un caso.
 
+Decisión del usuario, 22 de octubre de 2026: cuando varios casos legados usan deliberadamente la
+misma identidad, el documento puede declarar esa identidad una sola vez en `credentialProfiles`.
+El perfil se indexa por su nombre legado y conserva un `tcName` coincidente. Los tests que lo usan
+declaran explícitamente `credentialsRef`; el loader sólo consulta el perfil solicitado y nunca lo
+usa como fallback de un caso ausente. El `testCaseId` continúa identificando al escenario y
+seleccionando sus restantes datos. Esta decisión reemplaza, únicamente para credenciales
+compartidas declaradas, la exigencia anterior de duplicar una fila completa por cada caso.
+
 Con `TEST_ENV=une-dev`, la contraseña de todos los usuarios proviene de
-`test-data/private/une-dev.json`; el usuario sigue proviniendo del caso.
+`test-data/private/une-dev.json`; el usuario sigue proviniendo de la fila del caso o del perfil de
+credenciales seleccionado explícitamente.
 
 El sufijo de los IDs no selecciona un banco ni una factory. Desde el 23 de octubre de 2026 los
 IDs llevan el sufijo `UNE` (sección 10.1); reemplaza la regla que consideraba inválido todo
@@ -717,9 +726,18 @@ evidencia parcial. Reemplaza el job manual único `ui:login:bersa`.
 - Decisión del usuario, 21 de octubre de 2026: un único pipeline con los mismos jobs en todo
   modo, en este orden: `install_deps`, `quality`, `shard_1` → `shard_2` → `shard_3` y
   `merge_reports`. Reemplaza el pipeline hijo de regresión y `RUN_REGRESSION`.
-- En push y merge request todos los jobs son manuales y no bloquean el pipeline. En schedules
-  y pipelines ad hoc, `REGRESSION_MODE=manual|auto` (por defecto `manual`) elige entre ese
-  modo manual y la ejecución encadenada.
+- Decisión del usuario, 23 de octubre de 2026: en push y merge request `install_deps` y
+  `quality` se ejecutan automáticamente y bloquean ante un fallo; los shards funcionales y
+  `merge_reports` permanecen manuales y no bloqueantes. Motivo: impedir que un MR avance con
+  dependencias, formato, lint o typecheck rotos sin obligar a ejecutar
+  la regresión bancaria. Reemplaza la decisión del 21 de octubre que hacía manuales y opcionales
+  todos los jobs en push y merge request.
+- Decisión del usuario, 23 de octubre de 2026: cuando una rama tiene un merge request abierto,
+  GitLab crea únicamente el pipeline de `merge_request_event` y omite el pipeline duplicado de
+  `push`. Los pushes sin MR, schedules y pipelines ad hoc continúan habilitados. Esta selección
+  no cambia qué jobs son automáticos, manuales o bloqueantes.
+- En schedules y pipelines ad hoc, `REGRESSION_MODE=manual|auto` (por defecto `manual`) elige
+  entre todos los jobs manuales o la ejecución encadenada completa.
 - En modo manual, `merge_reports` puede ejecutarse con al menos un shard corrido.
 - En modo automático, `quality` corre si `install_deps` termina bien y la regresión si
   `quality` termina bien. Después, los shards corren en serie sin depender del resultado del
@@ -752,8 +770,9 @@ del banco. Esta política no incorpora scripts, jobs ni una suite permanente adi
 - Variables y funciones: `camelCase`.
 - Clases, tipos e interfaces: `PascalCase`.
 - Tests: `<behavior-name>.<channel>.spec.ts`.
-- Cada título comienza con el ID del caso (sección 10.1). `testCaseId` también selecciona los
-  datos de prueba.
+- Cada título comienza con el ID del caso (sección 10.1). `testCaseId` selecciona los datos
+  propios del caso; una `credentialsRef` explícita puede seleccionar únicamente una identidad
+  compartida.
 
 ### 10.1 Numeración de casos
 
@@ -803,6 +822,27 @@ necesita una regla determinística para numerar casos nuevos.
 - No usar estado global mutable.
 - Evitar nombres arquitectónicos genéricos como `manager`, `service`, `helper`, `utils`,
   `base`, `shared`, `factory` o `gateway` cuando exista un nombre funcional más claro.
+
+### Herramienta MCP para Jira/Xray
+
+Decisión del usuario, 22 de octubre de 2026: `mcp-xray/` se conserva como herramienta opcional y
+aislada para consultar, crear y actualizar casos de prueba en Jira Server/DC con Xray. No forma
+parte del runtime Playwright ni implementa la publicación de resultados de la suite. Su contrato,
+configuración segura y validación se definen en `specs/tooling/xray-mcp.md`; la publicación de
+resultados continúa como propuesta futura en `.agents/docs/integracion-xray.md`.
+
+Decisión del usuario, 22 de octubre de 2026: el paquete forma parte del workspace pnpm y comparte
+el lockfile raíz. Docker y CI usan pnpm `11.24.0`. El MCP valida entradas, mantiene TLS activo,
+aplica timeout a Jira, sanitiza errores HTTP y reporta creaciones parciales sin reintentar.
+
+Decisión del usuario, 23 de octubre de 2026: el workspace autoriza explícitamente el script de
+instalación de `esbuild`, dependencia transitiva de `tsx` usada por el script `dev` de `mcp-xray`.
+La autorización se declara con `allowBuilds` y no desactiva `strictDepBuilds`: cualquier otro
+script de dependencia no aprobado continúa haciendo fallar la instalación en CI.
+
+Decisión del usuario, 23 de octubre de 2026: CI no ejecuta tests de `mcp-xray`; `quality` sólo
+valida su typecheck. Motivo: son tests de la integración con Jira y no aportan a la suite
+Playwright. Reemplaza la exigencia anterior de ejecutar sus tests unitarios en `quality`.
 
 ## 11. Prueba decisiva de simplicidad
 

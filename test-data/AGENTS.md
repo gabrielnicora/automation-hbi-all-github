@@ -25,6 +25,11 @@ add production credentials, real personal data, tokens or cookies.
 `TC-<FFF>-<C>-<NNNN>-UNE` format; rows with previous IDs (`TC<number>BERSA`, `TR…`) have no
 test and cannot be loaded.
 
+Shared identities: when several legacy cases deliberately use the same user, `bersa.json`
+declares it once under `credentialProfiles` (for example `TCBERSAPRUEBA`) and the spec selects
+it with `test.use({ credentialsRef: '<profile>' })`. It only changes where login credentials
+come from; `testCaseId` still selects the rest of the data, and there is no automatic fallback.
+
 ## Loaders (`src/test-data/`)
 
 - One loader per data shape: `load<Shape>Data(testCaseId)` returning a small readonly

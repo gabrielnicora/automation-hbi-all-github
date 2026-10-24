@@ -29,9 +29,11 @@ No debe haber más de uno o dos saltos entre el test y el código que realiza la
 ## Conceptos mínimos
 
 - Banco Entre Ríos (BERSA) es el único banco soportado.
-- Cada título comienza con `TC<numero>BERSA`.
+- Cada título comienza con el ID del caso, `TC-<FFF>-<C>-<NNNN>-UNE` (`SPEC.md`, sección 10.1).
 - Cada caso declara su propio `testCaseId`.
-- El identificador selecciona datos; no selecciona banco, perfil ni factory.
+- El identificador selecciona los datos propios del caso; no selecciona banco ni factory.
+- Cuando el legado comparte deliberadamente una identidad, el test declara `credentialsRef` de
+  forma explícita. La referencia sólo cambia el origen de las credenciales de login.
 - Los tests contienen expectativas funcionales.
 - Los Page Objects contienen selectores, acciones UI y comprobaciones de disponibilidad.
 - Los clientes API contienen endpoints, payloads y validación del protocolo.
