@@ -17,7 +17,7 @@ capability specification under `specs/<area>/`. Find existing cases in
   sequence, suffix `UNE`; one ID per channel. Get a new one with
   `pnpm run case:new -- <family> <api|ui>` (family name without the code, such as `cards`);
   it registers the ID in `test-data/case-ids.json`. Never invent, compute or reuse an ID. To
-  find the new ID of an old one (as cited in `specs/` or `docs/`), look up `legacyId` in
+  find the new ID of an old one (as cited in the legacy `java/` sources), look up `legacyId` in
   `test-data/case-ids.json`.
 - Wrap each functional step in `test.step('<what the user does>', ...)`.
 - Use the fixtures by name in the callback (`loginApi`, `loginCredentials`, `<area>Page`,

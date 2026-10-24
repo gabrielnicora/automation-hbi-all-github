@@ -15,24 +15,24 @@ Criterios comunes aplicados:
 - El OTP por SMS (`DobleFactor.getSecondFactor`) se resuelve con la política central de
   `specs/authentication/second-factor-code-inbox.plan.md` mediante
   `src/api/authentication/sms-operation-otp.api.ts`: dispara `secondFactor.otp.sms.sendToken` y
-  busca el código por el teléfono actual del perfil, igual que TC0027BERSA.
+  busca el código por el teléfono actual del perfil, igual que TC-001-1-0002-UNE.
 - Ningún caso se ejecutó contra BERSA QA en este lote.
 
 Migrado en:
 
-| Caso(s)        | Test                                                                               |
-| -------------- | ---------------------------------------------------------------------------------- |
-| TC0094, TC0098 | `tests/api/009-messages/should-filter-messages-by-read-state.api.spec.ts`          |
-| TC0006         | `tests/api/001-accounts/should-adhere-new-destination.api.spec.ts`                 |
-| TC0229         | `tests/api/001-accounts/should-show-salary-advance-card.api.spec.ts`               |
-| TC0223         | `tests/api/001-accounts/should-request-salary-advance.api.spec.ts`                 |
-| TC12973        | `tests/api/007-investments/should-create-usd-fixed-term.api.spec.ts`               |
-| TC0115         | `tests/api/007-investments/should-open-investment-funds.api.spec.ts`               |
-| TC0125         | `tests/api/007-investments/should-show-commitent-account-closure-form.api.spec.ts` |
-| TC0129, TC0130 | `tests/api/007-investments/should-list-fund-movements.api.spec.ts`                 |
-| TC0069, TC0009 | `tests/api/007-investments/should-exchange-dollars.api.spec.ts`                    |
+| Caso(s)                              | Test                                                                               |
+| ------------------------------------ | ---------------------------------------------------------------------------------- |
+| TC-009-1-0001-UNE, TC-009-1-0002-UNE | `tests/api/009-messages/should-filter-messages-by-read-state.api.spec.ts`          |
+| TC-001-1-0001-UNE                    | `tests/api/001-accounts/should-adhere-new-destination.api.spec.ts`                 |
+| TC-001-1-0004-UNE                    | `tests/api/001-accounts/should-show-salary-advance-card.api.spec.ts`               |
+| TC-001-1-0003-UNE                    | `tests/api/001-accounts/should-request-salary-advance.api.spec.ts`                 |
+| TC-007-1-0008-UNE                    | `tests/api/007-investments/should-create-usd-fixed-term.api.spec.ts`               |
+| TC-007-1-0004-UNE                    | `tests/api/007-investments/should-open-investment-funds.api.spec.ts`               |
+| TC-007-1-0005-UNE                    | `tests/api/007-investments/should-show-commitent-account-closure-form.api.spec.ts` |
+| TC-007-1-0006-UNE, TC-007-1-0007-UNE | `tests/api/007-investments/should-list-fund-movements.api.spec.ts`                 |
+| TC-007-1-0003-UNE, TC-007-1-0001-UNE | `tests/api/007-investments/should-exchange-dollars.api.spec.ts`                    |
 
-## TC0094BERSA / TC0098BERSA — API — comparación de `userRead` con texto
+## TC-009-1-0001-UNE / TC-009-1-0002-UNE — API — comparación de `userRead` con texto
 
 - Fuente: `MensajesSteps.validarMensajesNoLeidos` y `validarMensajesLeidos`.
 - Duda: el legado hace `a.get("userRead").equals("false")` (no leídos) y `.equals("true")`
@@ -43,9 +43,9 @@ Migrado en:
   una assertion booleana.
 - Revisión humana: pendiente; confirmar el tipo de `userRead` en QA y la expectativa correcta.
 
-## TC0006BERSA — API — agenda de destinatario
+## TC-001-1-0001-UNE — API — agenda de destinatario
 
-- Fuente: `CuentasTest.TC0006BERSA`; `consultarDestinatarioAgendaCBU`, `eliminarDestinatarioAgendaCBU`,
+- Fuente: `CuentasTest.TC-001-1-0001-UNE`; `consultarDestinatarioAgendaCBU`, `eliminarDestinatarioAgendaCBU`,
   `agregarDestinatarioAgendaCBU`.
 - Aplicado: carga widgets de cuentas y tarjetas; busca el CBU fijo `3860006503000031964422` tipo
   `CBU`; si está agendado lo elimina (precondición legada); vuelve a buscarlo y lo agenda con el
@@ -54,9 +54,9 @@ Migrado en:
 - Efecto: modifica la agenda del usuario `berhometest17`.
 - Revisión humana: pendiente sólo para confirmar que omitir la lectura de `idProduct` es aceptable.
 
-## TC0223BERSA — API — solicitud real de adelanto de sueldo
+## TC-001-1-0003-UNE — API — solicitud real de adelanto de sueldo
 
-- Fuente: `CuentasTest.TC0223BERSA`; `obtenerDatosAdelantoDeSueldo`,
+- Fuente: `CuentasTest.TC-001-1-0003-UNE`; `obtenerDatosAdelantoDeSueldo`,
   `obtenerDatosMontosAcreditacionAdelantoDeSueldo`, `adelantoDeSueldo`.
 - Aplicado: resuelve `idProduct` de `ctaOrigen` (`CC $ 009000026939`), lee tasas de la oferta por
   `shortLabel`, consulta montos por ARS 10000 y confirma el adelanto con OTP SMS. Se conservan las
@@ -66,9 +66,9 @@ Migrado en:
 - Efecto: si hay oferta, solicita un adelanto real en el usuario.
 - Revisión humana: pendiente; usuario con oferta y aceptación del efecto persistente.
 
-## TC0069BERSA — API — etiqueta de cuenta de datos
+## TC-007-1-0003-UNE — API — etiqueta de cuenta de datos
 
-- Fuente: `InversionesTest.TC0069BERSA`; `compraUSD`, `CompartidosAPI.obtenerIdDeCuenta*`.
+- Fuente: `InversionesTest.TC-007-1-0003-UNE`; `compraUSD`, `CompartidosAPI.obtenerIdDeCuenta*`.
 - Duda: el registro tiene `ctaOrigen` `Cuenta Corriente $ 009000026939` y `ctaDestino`
   `Caja de Ahorro USD 009006735969`, con etiquetas largas; el resto de los casos usa `shortLabel`
   (`CC $ …`, `CA USD …`). El legado buscaría por `shortLabel` y enviaría ids vacíos.
@@ -76,22 +76,22 @@ Migrado en:
   Compra: dólares = cuenta destino, pesos = cuenta origen, importe `"10"` (texto, como la plantilla).
 - Revisión humana: pendiente; ¿corregir el registro con las etiquetas cortas?
 
-## TC0009BERSA — API — importe y comentario de la venta
+## TC-007-1-0001-UNE — API — importe y comentario de la venta
 
-- Fuente: `InversionesTest.TC0009BERSA`; `ventaUSD`, plantilla `sellDollarTransfer.json`.
+- Fuente: `InversionesTest.TC-007-1-0001-UNE`; `ventaUSD`, plantilla `sellDollarTransfer.json`.
 - Duda: el comentario del caso dice "Compra 10 USD", pero la plantilla vende `100` (numérico).
 - Aplicado: venta de 100 con dólares = cuenta origen y pesos = cuenta destino.
 - Revisión humana: pendiente; confirmar el importe esperado.
 
-## TC0130BERSA — API — clave de descarga fija
+## TC-007-1-0007-UNE — API — clave de descarga fija
 
-- Fuente: `InversionesTest.TC0130BERSA` llama `descargaMovimientoFCI(Settings.keyLongValueUnisys)`.
+- Fuente: `InversionesTest.TC-007-1-0007-UNE` llama `descargaMovimientoFCI(Settings.keyLongValueUnisys)`.
 - Duda: `movimientosFCI` captura `keyLongValue` del primer movimiento, pero la descarga usa la
   constante `11340`; `formName` sí sale del primer movimiento (`requestTemplate`).
 - Aplicado: se conserva la constante `11340`.
 - Revisión humana: pendiente; ¿debe usarse el `keyLongValue` del movimiento?
 
-## TC0129BERSA / TC0130BERSA — API — fechas del rango de movimientos
+## TC-007-1-0006-UNE / TC-007-1-0007-UNE — API — fechas del rango de movimientos
 
 - Fuente: `Utils.fechaTransferenciaMasAntigua("40")` y `Utils.fechaHoy()`.
 - Aplicado: inicio = hace 40 días a las 00:00 con sufijo `-03`; fin = hora local con el literal `Z`
@@ -99,27 +99,27 @@ Migrado en:
   el tipo que informa `idInstrument`.
 - Revisión humana: no requerida; registrar si QA rechaza el formato.
 
-## TC12973BERSA — API — plazo fijo USD
+## TC-007-1-0008-UNE — API — plazo fijo USD
 
 - Aplicado: nuevo método `createFixedTerm` en `traditional-fixed-term.api.ts`, sin modificar el
-  testigo TC0042BERSA: USD, tipo `D`, `amount` numérico 10001, `term` `"30"`, renovación `T`, con el
+  testigo TC-007-1-0002-UNE: USD, tipo `D`, `amount` numérico 10001, `term` `"30"`, renovación `T`, con el
   `ajax_uuid` fijo de la plantilla. La cuenta se resuelve tras cargar widgets de cuentas y tarjetas.
-- Diferencia detectada: el testigo TC0042BERSA envía `amount` como texto y `ajax_uuid` aleatorio,
+- Diferencia detectada: el testigo TC-007-1-0002-UNE envía `amount` como texto y `ajax_uuid` aleatorio,
   mientras la plantilla legada envía número y UUID fijo. No se cambió el testigo.
 - Revisión humana: pendiente; decidir si el testigo se alinea con la plantilla.
 
-## TC0125BERSA — API — comparación de `order`
+## TC-007-1-0005-UNE — API — comparación de `order`
 
 - Aplicado: los campos con `order` 1 y 2 se comparan por valor numérico; varios resultados se unen
   por coma, como la lectura JSONPath sin corchetes del legado.
 
 ## Etiquetas `Criticos`
 
-TC0006, TC12973, TC0069 y TC0009 tienen `@Tag("Criticos")` en el legado. No se agregó `@critical`
-porque `SPEC.md`, sección 10, sólo la asigna a TC0139BERSA. Revisión humana: pendiente.
+TC-001-1-0001-UNE, TC-007-1-0008-UNE, TC-007-1-0003-UNE y TC-007-1-0001-UNE tienen `@Tag("Criticos")` en el legado. No se agregó `@critical`
+porque `SPEC.md`, sección 10, sólo la asigna a TC-015-1-0003-UNE. Revisión humana: pendiente.
 
 ## Reutilización pendiente
 
-`WithdrawalOrderApi` (TC0027BERSA) conserva su envío privado de OTP SMS, equivalente a
+`WithdrawalOrderApi` (TC-001-1-0002-UNE) conserva su envío privado de OTP SMS, equivalente a
 `SmsOperationOtpApi`. No se refactorizó para no alterar un testigo sin ejecución QA; unificarlo
 cuando el testigo pueda validarse.

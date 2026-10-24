@@ -4,7 +4,7 @@ Aplicar la [guía general](../README.md), los [principios](../migration-principl
 proceso de migración acelerada. El legado determina pasos, datos y expectativas; registrar las
 dudas en `ambiguities/` sin detener el portado.
 
-## Caso testigo API — `TC0027BERSA`
+## Caso testigo API — `TC-001-1-0002-UNE`
 
 Generación de una orden de extracción ARS 100 desde la cuenta origen configurada, con OTP SMS.
 El caso está portado provisionalmente; quedan pendientes revisión humana y validación en BERSA
@@ -28,7 +28,7 @@ Al migrar otros casos de cuentas, no asumir que usan la misma operación, monto,
 segundo factor, cuenta o contrato de respuesta. Conservar sus aserciones legadas y comparar sus
 payloads antes de reutilizar el cliente.
 
-## Caso UI — `TC0041BERSA`
+## Caso UI — `TC-001-2-0003-UNE`
 
 El método vigente para este ID está en `FrontTest.java`; métodos homónimos de otros archivos
 legacy están deprecados y no se migran. El escenario Playwright aprobado en BERSA QA usa la
@@ -37,7 +37,7 @@ el día 8, elige “Tipo de transacción” en “Buscar por” y verifica que e
 movimientos. El usuario confirmó que la cuenta tiene movimientos y la ejecución UI completó
 el recorrido.
 
-La cuenta se lee desde el registro `TC0041BERSA` del export privado. No reutilizar cuentas de
+La cuenta se lee desde el registro `TC-001-2-0003-UNE` del export privado. No reutilizar cuentas de
 otros usuarios ni asumir que una cuenta homónima de otro caso es equivalente. El método Java
 `validarMovimiento()` sólo exige que la primera fila esté visible; el test no afirma campos o
 datos concretos del movimiento.

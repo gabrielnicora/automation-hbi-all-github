@@ -2,20 +2,20 @@
 
 ## Estado
 
-Adaptada y validada en BERSA mediante `TC0001BERSA`. La consulta central de segundo factor
+Adaptada y validada en BERSA mediante `TC-013-1-0001-UNE`. La consulta central de segundo factor
 está alineada con el contrato observado en QA (`channel: smsCode`, `code`/`codeNoFormat`) y
 el cambio de teléfono se completa correctamente. La validación funcional fue confirmada por
 el usuario el 16 de septiembre de 2026.
 
 ## Objetivo
 
-Automatizar `TC0001BERSA`: autenticar al usuario, seleccionar un teléfono autorizado
+Automatizar `TC-013-1-0001-UNE`: autenticar al usuario, seleccionar un teléfono autorizado
 diferente al actual, completar el segundo factor y confirmar el cambio mediante API.
 
 ## Alcance
 
 - Banco: Banco Entre Ríos (BERSA).
-- Caso: `TC0001BERSA`.
+- Caso: `TC-013-1-0001-UNE`.
 - Ambiente: QA.
 - Canal: API.
 - Resultado: el nuevo teléfono queda persistido.
@@ -96,7 +96,7 @@ cliente API mientras el backend los requiera.
 
 ## Criterios de aceptación
 
-- El test comienza con `TC0001BERSA` y contiene sólo pasos funcionales.
+- El test comienza con `TC-013-1-0001-UNE` y contiene sólo pasos funcionales.
 - El timeout del escenario contempla las dos etapas de segundo factor y permite distinguir
   una indisponibilidad del código de un timeout genérico del runner.
 - El teléfono elegido difiere del actual, pertenece al conjunto privado autorizado y se
@@ -110,7 +110,7 @@ cliente API mientras el backend los requiera.
 - El caso no se ejecuta simultáneamente con otro escenario que use la misma identidad.
 - Endpoints y payloads se modifican sólo en `phone-change.api.ts`.
 - El test no atraviesa factories ni configuración bancaria.
-- Formato, lint, typecheck y `TC0001BERSA` finalizan correctamente.
+- Formato, lint, typecheck y `TC-013-1-0001-UNE` finalizan correctamente.
 
 ## Datos de prueba y resultados
 

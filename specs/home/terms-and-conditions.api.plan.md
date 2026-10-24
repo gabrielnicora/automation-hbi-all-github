@@ -2,7 +2,7 @@
 
 ## Estado
 
-Aprobada para implementación mediante `TC0159BERSA` y validada contra BERSA QA el 10 de
+Aprobada para implementación mediante `TC-005-1-0001-UNE` y validada contra BERSA QA el 10 de
 septiembre de 2026.
 
 ## Objetivo
@@ -13,7 +13,7 @@ pantalla principal devuelve el contenido general vigente en español.
 ## Alcance
 
 - Banco: Banco Entre Ríos (BERSA).
-- Caso: `TC0159BERSA`; canal: API.
+- Caso: `TC-005-1-0001-UNE`; canal: API.
 - Funcionalidad: condiciones generales de Home Banking.
 - Acceso: anónimo, sin login ni header `Authorization`.
 
@@ -33,7 +33,7 @@ es una corrección ortográfica pendiente en el cliente.
 
 ## Evidencia y decisiones
 
-El caso Java de referencia `TC0159BERSA` invoca el servicio anónimo con ese endpoint y
+El caso Java de referencia `TC-005-1-0001-UNE` invoca el servicio anónimo con ese endpoint y
 payload, y acepta `COR000I` mediante su validador transversal. La comprobación directa del
 10 de septiembre de 2026 confirmó HTTP 200, `COR000I` y `_termAndCondition` como texto.
 
@@ -51,13 +51,13 @@ legado. No se agrega polling ni reintento interno; los reintentos pertenecen al 
 
 ## Criterios de aceptación
 
-- El título comienza con `TC0159BERSA`.
+- El título comienza con `TC-005-1-0001-UNE`.
 - El test expresa la operación y el resultado sin incluir endpoint ni payload.
 - La solicitud no contiene `Authorization`.
 - El cliente exige HTTP 200, JSON objeto y `COR000I`.
 - El resultado confirma que los términos y condiciones son texto no vacío.
 - La request se ejecuta una vez por intento y no usa polling.
-- Formato, typecheck, lint y `TC0159BERSA` finalizan correctamente.
+- Formato, typecheck, lint y `TC-005-1-0001-UNE` finalizan correctamente.
 
 ## Decisiones abiertas
 

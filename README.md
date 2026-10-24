@@ -82,8 +82,9 @@ Los valores son datos dummy creados por el equipo para QA y una eventual ejecuci
 No son datos productivos ni información confidencial. No deben copiarse a esta carpeta
 credenciales o datos personales provenientes de producción.
 
-Cada test declara un identificador como `TC0012BERSA`. El sufijo BERSA se conserva por
-trazabilidad, pero ya no seleccionará un banco ni una factory.
+Cada test declara un identificador con el formato `TC-<FFF>-<C>-<NNNN>-UNE` (por ejemplo
+`TC-002-2-0001-UNE`), que se obtiene con `pnpm run case:new` (`SPEC.md`, sección 10.1). El
+sufijo no selecciona un banco ni una factory.
 
 Por claridad de los resultados, passwords y códigos dummy no se repiten en errores. Los
 tokens y cookies generados durante la ejecución no se imprimen ni se adjuntan al reporte.
@@ -162,8 +163,8 @@ datos funcionales dummy y los IDs de transacción permanecen visibles; passwords
 cookies y códigos se excluyen, y los campos Base64 grandes se reemplazan por su longitud.
 Todo test API o UI que carga credenciales muestra el usuario dummy como anotación.
 
-La suite usa un worker por defecto porque login API y UI reutilizan la identidad
-`TC0012BERSA`. `PW_WORKERS` sólo debe aumentarse cuando los escenarios seleccionados tengan
+La suite usa un worker por defecto porque login API (`TC-002-1-0001-UNE`) y UI
+(`TC-002-2-0001-UNE`) reutilizan la misma identidad. `PW_WORKERS` sólo debe aumentarse cuando los escenarios seleccionados tengan
 identidades independientes y no modifiquen estado compartido.
 
 Los escenarios fallidos tienen un reintento por defecto en local y CI (hasta dos

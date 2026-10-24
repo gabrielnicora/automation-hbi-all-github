@@ -2,7 +2,7 @@
 
 ## Estado
 
-Implementada y validada en BERSA QA el 9 de septiembre de 2026 mediante `TC0139BERSA`.
+Implementada y validada en BERSA QA el 9 de septiembre de 2026 mediante `TC-015-1-0003-UNE`.
 Este caso es la referencia de arquitectura y autoría para la migración posterior de
 transferencias API.
 
@@ -14,7 +14,7 @@ PDF de la operación mediante API, sin depender de la actualización posterior d
 ## Alcance
 
 - Banco: Banco Entre Ríos (BERSA).
-- Caso: `TC0139BERSA`; canal: API; tag: `@critical`.
+- Caso: `TC-015-1-0003-UNE`; canal: API; tag: `@critical`.
 - Tipo: transferencia inmediata `betweenOwnAccounts`.
 - Moneda: ARS; importe: 1.
 - Concepto: `VAR` / `Varios`; referencia: `Otros`.
@@ -25,7 +25,7 @@ bancos quedan fuera de alcance.
 
 ## Comportamiento esperado
 
-1. Cargar credenciales y datos de `TC0139BERSA` desde el export BERSA versionado.
+1. Cargar credenciales y datos de `TC-015-1-0003-UNE` desde el export BERSA versionado.
 2. Realizar login API y obtener una sesión autenticada.
 3. Consultar `POST /api/v1/execute/widgets.accounts` y localizar exactamente las cuentas
    origen y destino por `shortLabel`.
@@ -102,7 +102,7 @@ suite smoke, no implica integración con Xray y no modifica la política smoke p
 
 ## Criterios de aceptación
 
-- El título comienza con `TC0139BERSA` y el caso lleva `@critical`.
+- El título comienza con `TC-015-1-0003-UNE` y el caso lleva `@critical`.
 - El test contiene pasos y expectativas funcionales, sin endpoints ni payloads.
 - Cuentas, tarjeta y CBU se resuelven y validan antes de mutar.
 - Cada request exige HTTP 200, JSON válido y `COR000I`.
@@ -112,11 +112,11 @@ suite smoke, no implica integración con Xray y no modifica la política smoke p
 - Cambiar endpoint o payload afecta sólo al cliente API.
 - En fallos, el diagnóstico muestra IDs de transacción, `_bcCuil`, `ajax_uuid` y bodies;
   excluye tokens y reemplaza Base64 por su longitud.
-- Formato, typecheck, lint y `TC0139BERSA` finalizan correctamente.
+- Formato, typecheck, lint y `TC-015-1-0003-UNE` finalizan correctamente.
 
 ## Datos aprobados
 
-El registro `TC0139BERSA` utiliza:
+El registro `TC-015-1-0003-UNE` utiliza:
 
 - origen `CA $ 020000052210`;
 - destino `CC $ 001004555432`;

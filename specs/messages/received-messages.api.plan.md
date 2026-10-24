@@ -2,7 +2,7 @@
 
 ## Estado
 
-Aprobada para implementación inicial mediante `TC0109BERSA`. Una casilla vacía es válida; el caso
+Aprobada para implementación inicial mediante `TC-009-1-0003-UNE`. Una casilla vacía es válida; el caso
 verifica `COR000I` y un objeto `data` válido, sin exigir mensajes recibidos.
 
 ## Objetivo y alcance

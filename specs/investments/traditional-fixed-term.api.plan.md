@@ -2,7 +2,7 @@
 
 ## Estado
 
-Aprobada para implementación inicial mediante `TC0042BERSA`. La señal de éxito vigente es
+Aprobada para implementación inicial mediante `TC-007-1-0002-UNE`. La señal de éxito vigente es
 `COR000I`; se revisará tras la ejecución en BERSA QA si el response expone un identificador,
 ticket o estado de constitución estable.
 

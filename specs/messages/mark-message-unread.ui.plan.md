@@ -2,7 +2,7 @@
 
 ## Estado
 
-Aprobada para implementación mediante `TC0086BERSA`.
+Aprobada para implementación mediante `TC-009-2-0001-UNE`.
 
 ## Objetivo
 
@@ -11,7 +11,7 @@ Comprobar que un mensaje abierto desde la bandeja de mensajes leídos puede volv
 ## Alcance
 
 - Banco: Banco Entre Ríos (BERSA).
-- Caso: `TC0086BERSA`; canal: UI.
+- Caso: `TC-009-2-0001-UNE`; canal: UI.
 - Ambiente: QA.
 - Precondición: la bandeja debe poder recuperar al menos un mensaje para normalizar la
   existencia de un mensaje leído; el test convierte temporalmente uno a no leído.
@@ -19,7 +19,7 @@ Comprobar que un mensaje abierto desde la bandeja de mensajes leídos puede volv
 
 ## Comportamiento esperado
 
-1. Cargar las credenciales dummy de `TC0086BERSA`.
+1. Cargar las credenciales dummy de `TC-009-2-0001-UNE`.
 2. Iniciar sesión mediante `StartPage` y `LoginPage`.
 3. Abrir Mensajes y garantizar que exista un mensaje en la bandeja `Leídos`; si está vacía,
    usar el menú de tres puntos del primero de `Sin leer` y seleccionar `Marcar como leído`.
@@ -38,7 +38,7 @@ Comprobar que un mensaje abierto desde la bandeja de mensajes leídos puede volv
 
 ## Criterios de aceptación
 
-- El título comienza con `TC0086BERSA`.
+- El título comienza con `TC-009-2-0001-UNE`.
 - Se realiza login UI real, sin inyección de sesión API.
 - El mismo mensaje seleccionado queda visible en `Sin leer` después de la acción y se abre de nuevo para restaurar su estado leído.
 - La precondición recupera un mensaje leído cuando la bandeja `Leídos` está vacía.

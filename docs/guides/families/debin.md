@@ -17,7 +17,7 @@ posterior o modalidad recurrente.
 
 ## Caso testigo
 
-TC0013BERSA: generación de una orden DEBIN por API seleccionando CBU.
+TC-011-1-0002-UNE: generación de una orden DEBIN por API seleccionando CBU.
 
 Referencias:
 

@@ -65,7 +65,7 @@ Ejemplo de login UI con las fixtures y métodos disponibles:
 ```ts
 import { expect, test } from '../../../src/fixtures/ui-test';
 
-const TEST_CASE_ID = 'TC0017BERSA';
+const TEST_CASE_ID = 'TC-002-2-0001-UNE';
 
 test.describe('Login UI de Banco Entre Ríos', () => {
   test.use({ testCaseId: TEST_CASE_ID });
@@ -116,7 +116,7 @@ Ejemplo de login API con las fixtures y métodos disponibles:
 ```ts
 import { expect, test } from '../../../src/fixtures/api-test';
 
-const TEST_CASE_ID = 'TC0017BERSA';
+const TEST_CASE_ID = 'TC-002-1-0001-UNE';
 
 test.describe('Login API de Banco Entre Ríos', () => {
   test.use({ testCaseId: TEST_CASE_ID });

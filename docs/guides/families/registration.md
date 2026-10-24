@@ -18,7 +18,7 @@ debe conservar su recorrido y comprobaciones propios.
 
 ## Caso testigo
 
-TC0156BERSA: abrir el registro desde el enlace público y llegar a validación de identidad.
+TC-014-2-0002-UNE: abrir el registro desde el enlace público y llegar a validación de identidad.
 
 Referencias:
 

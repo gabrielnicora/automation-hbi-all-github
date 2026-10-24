@@ -17,8 +17,8 @@ segundo factor es una capacidad transversal que se reutiliza cuando una operaci�
 
 ## Casos testigo
 
-- TC0017BERSA API: login multi-step y sesión Bearer.
-- TC0017BERSA UI: login real y captura segura de la sesión.
+- TC-002-1-0001-UNE API: login multi-step y sesión Bearer.
+- TC-002-2-0001-UNE UI: login real y captura segura de la sesión.
 
 Referencias:
 

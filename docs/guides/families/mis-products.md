@@ -17,7 +17,7 @@ externa, no la baja efectiva de un producto.
 
 ## Caso testigo
 
-TC0075BERSA: abrir Baja / Arrepentimiento, aceptar la advertencia y validar la página pública.
+TC-010-2-0001-UNE: abrir Baja / Arrepentimiento, aceptar la advertencia y validar la página pública.
 
 Referencias:
 

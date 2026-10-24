@@ -9,35 +9,35 @@ pages correspondientes).
 
 Criterios comunes: login UI real; `isDisplayed()` sin assertion se exige como visibilidad
 (`lote-base-ui.md`); se reutilizan los testigos validados `SalaryAdvancePage.openRequest`
-(TC0227/TC0228BERSA) y `EcheqPage.openFromAccounts` (TC29414BERSA); el resto de los locators reproduce el
+(TC-001-2-0007-UNE/TC-001-2-0008-UNE) y `EcheqPage.openFromAccounts` (TC-001-2-0015-UNE); el resto de los locators reproduce el
 legado y queda pendiente de validación UI. Ningún caso se ejecutó contra BERSA QA.
 
 Migrado:
 
-| Caso(s)                                | Test                                                                    | Page Object                          |
-| -------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------ |
-| TC0040                                 | `ui/001-accounts/should-show-account-movement-detail.ui.spec.ts`        | `accounts.page.ts` (nuevo)           |
-| TC29410, TC29411, TC29412              | `ui/001-accounts/should-enable-new-account-request-continue.ui.spec.ts` | `accounts.page.ts`                   |
-| TC0222, TC0225, TC0226, TC0237, TC0238 | `ui/001-accounts/should-validate-salary-advance-request.ui.spec.ts`     | `salary-advance.page.ts` (ampliado)  |
-| TC0206, TC0220, TC0221                 | `ui/008-loans/should-request-loans.ui.spec.ts`                          | `loans/loan-request.page.ts` (nuevo) |
-| TC29413, TC0026, TC124865              | `ui/001-accounts/should-operate-echeqs.ui.spec.ts`                      | `echeq.page.ts` (ampliado)           |
+| Caso(s)                                                                                       | Test                                                                    | Page Object                          |
+| --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------ |
+| TC-001-2-0002-UNE                                                                             | `ui/001-accounts/should-show-account-movement-detail.ui.spec.ts`        | `accounts.page.ts` (nuevo)           |
+| TC-001-2-0011-UNE, TC-001-2-0012-UNE, TC-001-2-0013-UNE                                       | `ui/001-accounts/should-enable-new-account-request-continue.ui.spec.ts` | `accounts.page.ts`                   |
+| TC-001-2-0004-UNE, TC-001-2-0005-UNE, TC-001-2-0006-UNE, TC-001-2-0009-UNE, TC-001-2-0010-UNE | `ui/001-accounts/should-validate-salary-advance-request.ui.spec.ts`     | `salary-advance.page.ts` (ampliado)  |
+| TC-008-2-0001-UNE, TC-008-2-0002-UNE, TC-008-2-0003-UNE                                       | `ui/008-loans/should-request-loans.ui.spec.ts`                          | `loans/loan-request.page.ts` (nuevo) |
+| TC-001-2-0014-UNE, TC-001-2-0001-UNE, TC-001-2-0016-UNE                                       | `ui/001-accounts/should-operate-echeqs.ui.spec.ts`                      | `echeq.page.ts` (ampliado)           |
 
 Los textos de `validacionPantallaSolicitudAH` se movieron a `tests/ui/001-accounts/salary-advance-request-screen.ts`
-y los comparte el testigo TC0228BERSA (sin cambio de comportamiento).
+y los comparte el testigo TC-001-2-0008-UNE (sin cambio de comportamiento).
 
 ## Adelanto de sueldo — usuario sin oferta
 
-- Fuente: TC0225, TC0226, TC0237 y TC0238 cargan importe y presionan Continuar; necesitan oferta vigente.
+- Fuente: TC-001-2-0005-UNE, TC-001-2-0006-UNE, TC-001-2-0009-UNE y TC-001-2-0010-UNE cargan importe y presionan Continuar; necesitan oferta vigente.
   `berhometest17` no tiene oferta (ya registrado en `lote-base-ui.md`).
 - Aplicado: se porta el recorrido; sin oferta el campo `#amount` no aparece y el caso falla allí.
 - Revisión humana: pendiente; asignar un usuario con oferta.
 
-## TC0225BERSA — UI — volver
+## TC-001-2-0005-UNE — UI — volver
 
 - Fuente: `clickVolverFlechaGenerico` (`//span[normalize-space(.)='Volver']/ancestor::div[1]`).
 - Aplicado: mismo locator; se espera que reaparezca "Resumen de contrato" antes de validar la pantalla.
 
-## TC29410–TC29412BERSA — UI — botón Continuar
+## TC-001-2-0011-UNE–TC-001-2-0013-UNE — UI — botón Continuar
 
 - Fuente: los títulos dicen "Botón continuar deshabilitado", pero el recorrido exige deshabilitado al inicio
   (`validarBtnDeshabilitado`) y habilitado tras elegir tipo y moneda (`validarBotonHabilitado`: ausencia de
@@ -51,23 +51,23 @@ y los comparte el testigo TC0228BERSA (sin cambio de comportamiento).
   "Nuevo préstamo" / "Préstamo para cancelar deudas"; se espera la misma ruta.
 - Revisión humana: pendiente; confirmar el acceso por menú en QA.
 
-## TC0206/TC0220BERSA — UI — préstamo sin confirmar
+## TC-008-2-0001-UNE/TC-008-2-0002-UNE — UI — préstamo sin confirmar
 
 - Aplicado: se llega a la etapa de confirmación y se validan sus textos; no se ingresa el código ni se
-  otorga el préstamo, como el legado. TC0220 requiere un préstamo vigente para cancelar.
+  otorga el préstamo, como el legado. TC-008-2-0002-UNE requiere un préstamo vigente para cancelar.
 
-## TC0221BERSA — UI — contrato en pestaña nueva
+## TC-008-2-0003-UNE — UI — contrato en pestaña nueva
 
 - Fuente: `ManageTabPorParametro(2)` cambia a la segunda pestaña y exige `assets` en la URL.
 - Aplicado: se espera la pestaña nueva (15 s), se lee su URL y se cierra.
 
-## TC0026BERSA — UI — estado "Todos" sin selección
+## TC-001-2-0001-UNE — UI — estado "Todos" sin selección
 
 - Fuente: `keyDownXParametrosGenerico` baja 13 veces en el desplegable y sólo exige ver "Todos"; no
   selecciona. Luego Aplicar y detalle del primer eCheq.
 - Aplicado: se exige ver "Todos" sin seleccionarlo. Revisión humana: pendiente.
 
-## TC124865BERSA — UI — precondición de emisión no portada (parcial)
+## TC-001-2-0016-UNE — UI — precondición de emisión no portada (parcial)
 
 - Fuente: `echeqAPI.generacionDeEcheqAPI` emite el eCheq con el registro `TCECHEQBERSA` (login de
   empresas, ambiente y CUIT de emisor propios) y guarda su número.

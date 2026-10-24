@@ -22,35 +22,35 @@ Criterios comunes aplicados:
 
 Migrado en `tests/api/011-payments/`:
 
-| Caso(s)        | Test                                                  |
-| -------------- | ----------------------------------------------------- |
-| TC0012         | `should-list-debin-history.api.spec.ts`               |
-| TC0015         | `should-subscribe-recurring-debin.api.spec.ts`        |
-| TC0070         | `should-accept-pending-debin.api.spec.ts`             |
-| TC0074         | `should-adhere-tax-service.api.spec.ts`               |
-| TC12964        | `should-pay-tax-service-without-base.api.spec.ts`     |
-| TC12966        | `should-remove-tax-service.api.spec.ts`               |
-| TC0108         | `should-list-payment-receipts.api.spec.ts`            |
-| TC0137, TC0138 | `should-download-payment-receipts-period.api.spec.ts` |
+| Caso(s)                              | Test                                                  |
+| ------------------------------------ | ----------------------------------------------------- |
+| TC-011-1-0001-UNE                    | `should-list-debin-history.api.spec.ts`               |
+| TC-011-1-0003-UNE                    | `should-subscribe-recurring-debin.api.spec.ts`        |
+| TC-011-1-0004-UNE                    | `should-accept-pending-debin.api.spec.ts`             |
+| TC-011-1-0005-UNE                    | `should-adhere-tax-service.api.spec.ts`               |
+| TC-011-1-0009-UNE                    | `should-pay-tax-service-without-base.api.spec.ts`     |
+| TC-011-1-0010-UNE                    | `should-remove-tax-service.api.spec.ts`               |
+| TC-011-1-0006-UNE                    | `should-list-payment-receipts.api.spec.ts`            |
+| TC-011-1-0007-UNE, TC-011-1-0008-UNE | `should-download-payment-receipts-period.api.spec.ts` |
 
 ## L1–L3 — API — `ajax_uuid` fijo o por request
 
 - Fuente: `docs/guides/families/debin.md` indica generar el UUID por request y no trasladar el
   literal. Los lotes L1 y L2 conservaron los UUID literales de cada plantilla, siguiendo el
-  precedente de TC12967BERSA (`tc12967-bersa-api.md`).
+  precedente de TC-003-1-0007-UNE (`tc12967-bersa-api.md`).
 - Aplicado: en L3, las operaciones DEBIN (`debins.*`) y la sincronización Link usan UUID por
   request; pagos de servicios y comprobantes conservan el literal de su plantilla.
 - Revisión humana: pendiente; decidir un único criterio para todos los clientes API.
 
-## TC0108BERSA — API — consulta de comprobantes sin assertion de lista
+## TC-011-1-0006-UNE — API — consulta de comprobantes sin assertion de lista
 
-- Fuente: `PagosTest.TC0108BERSA` llama `comprobantePagos("false", "")`; la assertion
+- Fuente: `PagosTest.TC-011-1-0006-UNE` llama `comprobantePagos("false", "")`; la assertion
   "SIN COMPROBANTE DE PAGO" sólo corre cuando `isExport` es `""`.
 - Aplicado: se envía `isExport: false` y formato vacío; el caso valida sólo el código de éxito. No
   se agregó la assertion de lista no vacía.
 - Revisión humana: pendiente; ¿la consulta debe exigir al menos un comprobante?
 
-## TC0137BERSA / TC0138BERSA — API — espera fija antes de leer Mensajes
+## TC-011-1-0007-UNE / TC-011-1-0008-UNE — API — espera fija antes de leer Mensajes
 
 - Fuente: `utils.fixedWait(5000)` entre la exportación y
   `MensajesSteps.obtenerIdArchivoParaDescargaPagosPDF/XLS`.
@@ -60,37 +60,37 @@ Migrado en `tests/api/011-payments/`:
   archivo".
 - Revisión humana: pendiente; aprobar un `expect.poll` acotado en una especificación de comprobantes.
 
-## TC0070BERSA — API — aceptación del primer DEBIN pendiente
+## TC-011-1-0004-UNE — API — aceptación del primer DEBIN pendiente
 
 - Fuente: `obtenerIdDebin`, `obtenerDatosIdDebin`, `aceptarDebinGenerado(testCaseData.cbu)`.
 - Duda: el parámetro `cbu` no se usa en la request; el destino sale del vendedor del DEBIN
   (`targetCBU`). Se acepta el primer DEBIN `PENDIENTE` disponible, que depende de un DEBIN generado
-  antes (por ejemplo, TC0013BERSA con otro usuario).
+  antes (por ejemplo, TC-011-1-0002-UNE con otro usuario).
 - Aplicado: `ticketData` se arma con el texto literal de la plantilla reemplazando sus marcadores,
   incluido el espacio final de `_holderSeller_ `. Los campos nulos del detalle hacen fallar el caso,
   como el `toString()` legado.
 - Efecto: acepta un DEBIN real de ARS 1.
 - Revisión humana: pendiente; confirmar la precondición de datos.
 
-## TC12966BERSA — API — precondición de alta antes de eliminar
+## TC-011-1-0010-UNE — API — precondición de alta antes de eliminar
 
 - Fuente: `obtenerAdhesionCodeServicio(...)` agrega el servicio Mercado Pago si no encuentra la
   adhesión (ente 970, usuario 00449535691, referencia TestAutomation) y luego lo elimina.
 - Aplicado: la misma decisión explícita en el test; si tras el alta no aparece, falla.
 
-## TC12964BERSA — API — pago real sin base
+## TC-011-1-0009-UNE — API — pago real sin base
 
 - Aplicado: alta del ente 969 con OTP, concepto `MLIBRE FACT`, `adhesionCode` de
   `resultWithoutBase` y pago de ARS 1 desde la cuenta `ctaOrigen` y la tarjeta de débito. La
   plantilla `firstPaymentRequest.json` no envía `ajax_uuid` ni `xAppVersion`; se respeta.
 - Efecto: realiza un pago real.
 
-## TC0012BERSA — API — identidad compartida con el login
+## TC-011-1-0001-UNE — API — identidad compartida con el login
 
-- `SPEC.md`, sección 9, menciona logins con `TC0012BERSA`; este caso es la consulta de DEBIN
+- `SPEC.md`, sección 9, menciona logins con `TC-011-1-0001-UNE`; este caso es la consulta de DEBIN
   histórico (rango fijo desde `2022-12-01T12:47:54.000Z` hasta ahora) y exige al menos un elemento.
 
 ## Etiquetas `Criticos`
 
-TC0015, TC0074, TC0070, TC12964 y TC12966 tienen `@Tag("Criticos")`; no se agregó `@critical`
+TC-011-1-0003-UNE, TC-011-1-0005-UNE, TC-011-1-0004-UNE, TC-011-1-0009-UNE y TC-011-1-0010-UNE tienen `@Tag("Criticos")`; no se agregó `@critical`
 (ver `lote-l2-api.md`).

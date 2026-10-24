@@ -2,7 +2,7 @@
 
 ## Estado
 
-Aprobada para implementación inicial mediante `TC0102BERSA`. Se acepta `COR000I` y se exige que
+Aprobada para implementación inicial mediante `TC-013-1-0002-UNE`. Se acepta `COR000I` y se exige que
 la configuración exponga `subscribedSMS`, `subscribedMail` y `subscribedPush` como booleanos,
 sin imponer que estén activos.
 

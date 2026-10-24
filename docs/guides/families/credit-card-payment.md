@@ -18,7 +18,7 @@ demuestra que el pago haya sido acreditado.
 
 ## Caso testigo
 
-TC0163BERSA: pago total de una tarjeta Mastercard propia por UI.
+TC-003-2-0010-UNE: pago total de una tarjeta Mastercard propia por UI.
 
 Referencias:
 
@@ -59,7 +59,7 @@ portar también las comprobaciones adicionales que sí ejecute el legado.
 
 ## Datos del caso
 
-El loader usa los datos del registro TC0163BERSA:
+El loader usa los datos del registro TC-003-2-0010-UNE:
 
 - tarjetaDebito: últimos cuatro dígitos de la tarjeta de débito;
 - ctaOrigen: cuenta utilizada en Cuenta débito;

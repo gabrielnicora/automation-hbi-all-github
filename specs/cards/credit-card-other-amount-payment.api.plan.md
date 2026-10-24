@@ -2,7 +2,7 @@
 
 ## Estado
 
-Migración acelerada implementada para `TC12967BERSA`; el log legado aportado el 22 de septiembre de
+Migración acelerada implementada para `TC-003-1-0007-UNE`; el log legado aportado el 22 de septiembre de
 2026 demuestra que el POST de pago con su payload histórico devuelve `COR000I`. Se alineó el cliente
 migrado con esa request. La verificación QA del código actualizado está pendiente.
 
@@ -50,7 +50,7 @@ disponible no aporta una comprobación posterior estable de acreditación.
 
 ## Decisiones abiertas
 
-1. Confirmar en QA el mapeo de cuenta, tarjeta de débito y tarjeta Visa dummy de `TC12967BERSA`.
+1. Confirmar en QA el mapeo de cuenta, tarjeta de débito y tarjeta Visa dummy de `TC-003-1-0007-UNE`.
 2. Definir si `ticketData` se obtiene de una consulta actual, se construye dinámicamente o ya no es
    requerido por el endpoint.
 3. Definir evidencia funcional posterior al pago: ticket, transacción o estado de respuesta.

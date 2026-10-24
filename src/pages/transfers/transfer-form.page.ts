@@ -19,7 +19,7 @@ function stripAccents(value: string): string {
 /**
  * Formulario de transferencias inmediatas/programadas, ticket y segundo factor por UI (legado
  * TransferenciasInmediatasSteps, TicketSteps y DobleFactorSteps). Reutiliza los locators validados del
- * testigo TC18088BERSA para importe, descripción, búsqueda y botones; el resto reproduce el legado.
+ * testigo TC-015-2-0004-UNE para importe, descripción, búsqueda y botones; el resto reproduce el legado.
  */
 export class TransferFormPage {
   private readonly menu: SideMenu;
@@ -51,7 +51,7 @@ export class TransferFormPage {
     await card.click();
   }
 
-  /** Busca el CBU, CVU o alias y confirma "Son correctos" (recorrido del testigo TC18088BERSA). */
+  /** Busca el CBU, CVU o alias y confirma "Son correctos" (recorrido del testigo TC-015-2-0004-UNE). */
   public async searchRecipient(cbuOrAlias: string): Promise<void> {
     await this.page.getByPlaceholder('Ingresá CBU, CVU o Alias').fill(cbuOrAlias);
     await this.page.getByRole('button', { name: 'Buscar', exact: true }).click();

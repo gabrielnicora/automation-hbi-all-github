@@ -103,7 +103,7 @@ exigencia de una especificación individual aprobada antes de portar un caso exi
   la duda en `docs/guides/ambiguities/` y continuar el lote. No sustituir una assertion por otra
   más débil ni agregar una expectativa inventada porque el testigo tenga otro alcance.
 - Respetar las decisiones explícitas que ya reemplazaron el legado para un caso concreto
-  (por ejemplo, registro TC0156BERSA). Una diferencia no resuelta con documentación se conserva
+  (por ejemplo, registro TC-014-2-0002-UNE). Una diferencia no resuelta con documentación se conserva
   como comportamiento legado provisional y se registra para revisión; no cambia silenciosamente
   los testigos ya migrados.
 - Adaptar lenguaje, arquitectura, esperas y seguridad. No trasladar bucles internos de retry de
@@ -234,7 +234,7 @@ Estado: aprobado. Motivo: validar el contexto para agentes con evidencia y no po
   al agente que lo automatice desde una descripción funcional y corrige el resultado.
 - Ambiente: UAT es el ambiente `qa` de la sección 1 (BERSA QA, URLs por defecto) con los
   datos de `test-data/private/`. No se agregan ambientes ni variables.
-- Antes del agente se ejecuta el login UI `TC0017BERSA`; si falla, la corrida se informa como
+- Antes del agente se ejecuta el login UI `TC-002-2-0001-UNE`; si falla, la corrida se informa como
   ambiente no disponible y no se atribuye al agente.
 - En las tareas de autoría el agente no ejecuta escenarios contra el banco: valida con
   `pnpm run check` y `playwright test --list`. El runner ejecuta el caso producido con
@@ -685,7 +685,8 @@ Playwright. Los datos de sesión y autenticación indicados arriba continúan ex
 - `PW_WORKERS` controla el paralelismo de archivos y utiliza `1` por defecto.
 - `fullyParallel` permanece desactivado mientras existan identidades compartidas.
 - Dos escenarios que modifican el mismo usuario no se ejecutan simultáneamente.
-- Los logins API y UI que reutilizan `TC0012BERSA` se ejecutan secuencialmente.
+- Los logins API (`TC-002-1-0001-UNE`) y UI (`TC-002-2-0001-UNE`) comparten usuario y se ejecutan
+  secuencialmente. Corrige la mención anterior a `TC-011-1-0001-UNE`, que es un caso DEBIN.
 - Sólo se aplica polling a consultas de estado expresamente aprobadas.
 - Se permite reintentar escenarios fallidos completos, incluido el cambio de teléfono,
   mediante el runner y con los intentos visibles en el reporte. Esto reemplaza la
@@ -779,19 +780,23 @@ necesita una regla determinística para numerar casos nuevos.
   número libre y lo registra. Nadie, ni personas ni agentes, inventa o calcula un ID a mano.
   Una familia nueva se registra con `--new-family`, que asigna el siguiente código libre, y su
   carpeta se crea como `tests/<canal>/<FFF>-<familia>/`.
-- `pnpm run check` falla si una carpeta de tests no corresponde a una familia registrada, o si un
+- `pnpm run check` y el hook de pre-commit fallan si una carpeta de tests no corresponde a una
+  familia registrada, o si un
   test usa un ID no registrado, un ID anterior en lugar del nuevo, o un ID cuya familia o canal no
   corresponde a su carpeta.
 - Migración del 22 y 23 de octubre de 2026: se renombraron las carpetas de tests por familia y
   se renumeraron los tests y las filas de `test-data/private/bersa.json`, asignando la secuencia
   en el orden de los IDs anteriores. La fila del único ID compartido entre canales
   (`TC0017BERSA`) se duplicó para sus dos IDs. Las filas sin test conservan su ID anterior y el
-  lector no las carga. Se actualizaron las rutas a tests citadas en todo el repositorio, pero
-  `specs/`, este documento, `README.md`, `docs/` y el legado `java/` conservan los IDs anteriores
-  y se leen con el mapeo; los IDs citados en otras secciones de este documento son anteriores.
-- Ambos logins `TC0012BERSA` pertenecen a la selección `@regression` por su importancia.
+  lector no las carga. Se actualizaron las rutas a tests y, el 23 de octubre de 2026, las menciones de
+  IDs en `specs/`, este documento, `README.md`, `docs/`, `.agents/` y los comentarios de `src/`.
+  Sólo el legado `java/` y los casos sin test (excluidos, sin fuente o filas de datos sin test)
+  conservan el ID anterior; se traducen con el mapeo. Los ejemplos de esta sección citan IDs
+  anteriores a propósito.
+- Ambos logins (`TC-002-1-0001-UNE` y `TC-002-2-0001-UNE`) pertenecen a la selección `@regression`
+  por su importancia.
   Esta etiqueta no implica pertenencia a smoke ni una vinculación con Xray.
-- `TC0139BERSA` pertenece a `@critical`; la etiqueta expresa criticidad funcional y no
+- `TC-015-1-0003-UNE` pertenece a `@critical`; la etiqueta expresa criticidad funcional y no
   define una selección smoke ni una vinculación con Xray.
 - Un archivo agrupa casos del mismo comportamiento y canal.
 - No usar `any` salvo una frontera externa justificada y validada inmediatamente.

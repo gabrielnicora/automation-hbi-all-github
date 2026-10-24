@@ -13,10 +13,10 @@ BERSA QA.
 
 Migrado en `tests/api/001-accounts/`:
 
-| Caso(s)                                                              | Test                                         |
-| -------------------------------------------------------------------- | -------------------------------------------- |
-| TC25610, TC124909, TC124913                                          | `should-list-echeqs-by-status.api.spec.ts`   |
-| TC124907, TC124908, TC124910, TC124911, TC124912, TC128237, TC128231 | `should-operate-received-echeqs.api.spec.ts` |
+| Caso(s)                                                                                                                             | Test                                         |
+| ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| TC-001-1-0005-UNE, TC-001-1-0085-UNE, TC-001-1-0089-UNE                                                                             | `should-list-echeqs-by-status.api.spec.ts`   |
+| TC-001-1-0083-UNE, TC-001-1-0084-UNE, TC-001-1-0086-UNE, TC-001-1-0087-UNE, TC-001-1-0088-UNE, TC-001-1-0091-UNE, TC-001-1-0090-UNE | `should-operate-received-echeqs.api.spec.ts` |
 
 Cliente: `src/api/accounts/echeq-operations.api.ts`. Datos nuevos: segundo usuario (`user1`/`pass1`,
 equivalente a `usuario2`/`password2` del legado) y `cuitDestino` como CUIT de endoso.
@@ -31,14 +31,14 @@ equivalente a `usuario2`/`password2` del legado) y `cuitDestino` como CUIT de en
   En custodia el marcador `_label_` no se reemplaza en el legado y viaja literal.
 - Revisión humana: pendiente; confirmar si el backend toma sólo `checkId`/`nroEcheq`.
 
-## TC124912BERSA — API — rescate con la plantilla de repudio
+## TC-001-1-0088-UNE — API — rescate con la plantilla de repudio
 
 - Fuente: `EcheqSteps.generaEcheqRescatado` llama `echeq.operation.rescue` con
   `echeqOperationRepudiate.json` (incluye `reason`/`label` `prueba`).
 - Aplicado: se conserva esa plantilla. El título dice "Estado Custodiar" pero el recorrido acepta,
   custodia, rescata y valida `ACTIVO` en `Recibidos`.
 
-## TC124910BERSA — API — repudio sin exigir el eCheq buscado
+## TC-001-1-0086-UNE — API — repudio sin exigir el eCheq buscado
 
 - Fuente: `generacionRepudioDeEcheq` busca un eCheq `EMITIDO-PENDIENTE` con pago hoy, pero no afirma
   haberlo encontrado: si falta, envía `checkId`/`nroEcheq` `"null"`.
@@ -59,7 +59,7 @@ equivalente a `usuario2`/`password2` del legado) y `cuitDestino` como CUIT de en
 - Aplicado: se usa `session.customerCuil` (agregado en L4). Si el login no lo informa, la búsqueda
   no encuentra el eCheq y la aceptación falla.
 
-## TC128237BERSA — API — dos usuarios y estado compartido
+## TC-001-1-0091-UNE — API — dos usuarios y estado compartido
 
 - Aplicado: acepta y endosa con `berhometest17`, acepta el endoso con `ecarina27` (segundo usuario,
   OTP de su propio teléfono o master code habilitado), vuelve a autenticar al primero y solicita la
@@ -68,6 +68,6 @@ equivalente a `usuario2`/`password2` del legado) y `cuitDestino` como CUIT de en
 
 ## Efectos
 
-TC124907, TC124908, TC124910, TC124911, TC124912, TC128237 y TC128231 operan eCheq reales y
+TC-001-1-0083-UNE, TC-001-1-0084-UNE, TC-001-1-0086-UNE, TC-001-1-0087-UNE, TC-001-1-0088-UNE, TC-001-1-0091-UNE y TC-001-1-0090-UNE operan eCheq reales y
 consumen eCheq `EMITIDO-PENDIENTE` con fechas de pago específicas (hoy o hoy + 60 días); necesitan
 datos preparados en QA en cada ejecución.

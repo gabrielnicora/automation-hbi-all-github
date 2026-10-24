@@ -17,7 +17,7 @@ navegación a detalle y no demuestra contratación, cotización ni siniestro.
 
 ## Caso testigo
 
-TC0197BERSA: abrir la tarjeta Bolso (seguro de Robo) y validar el detalle de Bolso Protegido.
+TC-006-2-0002-UNE: abrir la tarjeta Bolso (seguro de Robo) y validar el detalle de Bolso Protegido.
 
 Referencias:
 
@@ -64,6 +64,6 @@ ejecutables del legado y continuar; sólo una fuente material ausente impide com
 
 - [x] Se preservó el alcance del legado: tarjeta de Robo y validación del detalle.
 - [x] El iframe está encapsulado en el Page Object.
-- [x] TC0197 valida el detalle visible actual y registra la diferencia con las aserciones legadas.
+- [x] TC-006-2-0002-UNE valida el detalle visible actual y registra la diferencia con las aserciones legadas.
 - [x] No se afirma contratación ni cobertura si el caso no las comprueba.
 - [x] Las dudas están registradas sin exigir especificación previa para el portado.

@@ -2,7 +2,7 @@
 
 ## Estado
 
-Aprobada e implementada mediante `TC0156BERSA`. La decisión explícita del usuario
+Aprobada e implementada mediante `TC-014-2-0002-UNE`. La decisión explícita del usuario
 reemplaza el recorrido de ingreso y regreso que se había extraído del cuerpo de la referencia
 legada. La ejecución UI en BERSA QA fue validada el 16 de septiembre de 2026.
 
@@ -14,7 +14,7 @@ el enlace `¿No sos cliente aún? Registrarme`.
 ## Alcance
 
 - Banco: Banco Entre Ríos (BERSA).
-- Caso: `TC0156BERSA`; canal: UI.
+- Caso: `TC-014-2-0002-UNE`; canal: UI.
 - Recorrido: pantalla principal → enlace `¿No sos cliente aún? Registrarme` → validación de
   identidad.
 - No requiere credenciales ni datos funcionales específicos.
@@ -28,8 +28,8 @@ el enlace `¿No sos cliente aún? Registrarme`.
 
 ## Decisión de migración
 
-El cuerpo de `TC0156BERSA` en la referencia legada ejecutaba `Ingresar` y luego `Volver`, lo
-que contradecía su nombre. Por decisión explícita del usuario, `TC0156BERSA` debe validar el
+El cuerpo de `TC-014-2-0002-UNE` en la referencia legada ejecutaba `Ingresar` y luego `Volver`, lo
+que contradecía su nombre. Por decisión explícita del usuario, `TC-014-2-0002-UNE` debe validar el
 acceso de registro que indica su nombre. Esta decisión reemplaza el recorrido de regreso al
 ingreso y la interpretación previa de conservar el comportamiento ejecutable de la referencia.
 
@@ -52,7 +52,7 @@ se declara ni verifica directamente en el test.
 
 ## Criterios de aceptación
 
-- El título comienza con `TC0156BERSA`.
+- El título comienza con `TC-014-2-0002-UNE`.
 - El test no contiene URL ni selectores.
 - `StartPage` utiliza la URL UI configurada y no contiene esperas fijas.
 - La pantalla inicial muestra el enlace de registro.

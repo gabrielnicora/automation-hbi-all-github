@@ -2,7 +2,7 @@
 
 ## Estado
 
-Aprobada para implementación inicial mediante `TC0013BERSA`. La señal de éxito vigente es
+Aprobada para implementación inicial mediante `TC-011-1-0002-UNE`. La señal de éxito vigente es
 `COR000I`; se revisará tras la ejecución en BERSA QA si el response expone un identificador o
 estado estable de DEBIN.
 
@@ -14,7 +14,7 @@ legado. DEBIN recurrente, aceptación, consulta de históricos y otros bancos qu
 
 ## Recorrido observado en el legado
 
-1. Carga `TC0013BERSA`, inicia sesión y consulta productos compartidos.
+1. Carga `TC-011-1-0002-UNE`, inicia sesión y consulta productos compartidos.
 2. Resuelve la cuenta origen y sincroniza pagos Link.
 3. Ejecuta `POST /api/v1/execute/debin.generate` con cuenta origen, CBU y CUIT destino.
 
@@ -31,7 +31,7 @@ Usa un UUID literal y hasta cuatro reintentos internos; ese comportamiento no se
 
 ## Criterios de aceptación propuestos
 
-- El test se titula con `TC0013BERSA`, usa la fixture API y no contiene endpoint ni payload.
+- El test se titula con `TC-011-1-0002-UNE`, usa la fixture API y no contiene endpoint ni payload.
 - Cuenta origen, CBU y CUIT se validan antes de la mutación.
 - La request exige HTTP 200, JSON objeto y `COR000I`.
 - La mutación se ejecuta una vez por intento; el éxito inicial se valida mediante `COR000I`.

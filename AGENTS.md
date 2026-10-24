@@ -64,8 +64,8 @@ Secrets and data (`SPEC.md` section 8):
 - Platform secrets (Jira/GitLab PATs, CI variables, `.env` files, local MCP configs) are
   never read, printed or committed. Do not run `printenv`, `env` or `cat .env`.
 - Never invent a test case ID: get it with `pnpm run case:new -- <family> <api|ui>`
-  (`SPEC.md` section 10.1). IDs cited in `specs/` and `docs/` are previous IDs; translate them
-  with `legacyId` in `test-data/case-ids.json`.
+  (`SPEC.md` section 10.1). Only the legacy `java/` sources and cases without tests use previous IDs
+  (`TC<number>BERSA`); translate them with `legacyId` in `test-data/case-ids.json`.
 - Never add production URLs, credentials or personal data. Never invent users, accounts or
   cards: if `bersa.json` lacks the row or field a case needs, stop that case and report the
   exact missing fields.

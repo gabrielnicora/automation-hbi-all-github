@@ -2,7 +2,7 @@
 
 ## Estado
 
-Aprobada para implementar mediante `TC0075BERSA`. La ejecución exploratoria del 15 de
+Aprobada para implementar mediante `TC-010-2-0001-UNE`. La ejecución exploratoria del 15 de
 septiembre de 2026 en QA confirmó el modal y la apertura de la página pública.
 
 ## Objetivo
@@ -13,7 +13,7 @@ Arrepentimiento` hacia la página pública de baja y arrepentimiento de BERSA.
 ## Alcance
 
 - Banco: Banco Entre Ríos (BERSA).
-- Caso: `TC0075BERSA`; canal: UI; ambiente: QA.
+- Caso: `TC-010-2-0001-UNE`; canal: UI; ambiente: QA.
 - Precondición: las credenciales dummy del caso permiten iniciar una sesión UI real.
 - Recorrido: Inicio → Mis Productos → Baja / Arrepentimiento → Aceptar.
 - Resultado: se abre una nueva pestaña con la página pública de baja y arrepentimiento.
@@ -22,7 +22,7 @@ No se completa ni se envía un formulario de baja. El escenario sólo valida la 
 
 ## Comportamiento esperado
 
-1. Cargar las credenciales de `TC0075BERSA` e iniciar sesión mediante la UI.
+1. Cargar las credenciales de `TC-010-2-0001-UNE` e iniciar sesión mediante la UI.
 2. Abrir `Mis Productos` y seleccionar `Baja / Arrepentimiento`.
 3. Confirmar que se muestra el modal `Baja y arrepentimiento` y su advertencia de salida
    del Home Banking.
@@ -43,7 +43,7 @@ productos` de Banco Entre Ríos.
 
 ## Criterios de aceptación
 
-- El título comienza con `TC0075BERSA` y declara su `testCaseId`.
+- El título comienza con `TC-010-2-0001-UNE` y declara su `testCaseId`.
 - Se realiza login UI real, sin inyección de sesión API.
 - El menú y el popup se esperan mediante estados observables, sin pausas fijas ni
   `networkidle`.
@@ -51,7 +51,7 @@ productos` de Banco Entre Ríos.
   test los compara con los valores esperados.
 - El test no contiene selectores, credenciales ni tokens.
 - La pestaña externa se cierra tras su verificación y no se solicita ni modifica una baja.
-- Formato, typecheck, lint y `TC0075BERSA` finalizan correctamente.
+- Formato, typecheck, lint y `TC-010-2-0001-UNE` finalizan correctamente.
 
 ## Seguridad y datos
 
