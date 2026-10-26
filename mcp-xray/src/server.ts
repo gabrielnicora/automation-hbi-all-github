@@ -20,7 +20,7 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { z } from 'zod';
 
 import { loadConfig, ConfigError, type XrayServerConfig } from './config.js';
-import { XrayServerClient } from './xray-client.js';
+import { validateProjectKey, XrayServerClient } from './xray-client.js';
 
 // ---------------------------------------------------------------------------
 // Helpers de respuesta MCP
@@ -53,7 +53,7 @@ function resolveProjectKey(config: XrayServerConfig, provided?: string): string 
         'Pasá el parámetro projectKey o configurá el default.'
     );
   }
-  return key;
+  return validateProjectKey(key);
 }
 
 // ---------------------------------------------------------------------------

@@ -19,6 +19,8 @@ export interface XrayServerConfig {
   jiraPat: string;
   /** Clave del proyecto por defecto. Ej: XT. Opcional (se puede pasar por tool). */
   defaultProjectKey?: string;
+  /** Timeout máximo por request a Jira/Xray, en milisegundos. */
+  requestTimeoutMs: number;
 
   /** IDs de custom fields de Xray/Jira (configurables por instancia). */
   fields: {
@@ -87,15 +89,20 @@ function envOr(name: string, fallback: string): string {
   return optionalEnv(name) ?? fallback;
 }
 
-/**
- * Aplica el flag de TLS antes de cualquier request.
- * Para Jira con certificado self-signed / CA interna.
- * En producción es preferible NODE_EXTRA_CA_CERTS apuntando al .pem de la CA.
- */
-export function applyTlsFlag(): void {
-  if (process.env.XRAY_TLS_REJECT_UNAUTHORIZED === 'false') {
-    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+function positiveIntegerEnv(name: string, fallback: number): number {
+  const raw = optionalEnv(name);
+  if (raw === undefined) return fallback;
+
+  if (!/^\d+$/.test(raw)) {
+    throw new ConfigError(`${name} debe ser un entero positivo expresado en milisegundos.`);
   }
+
+  const value = Number(raw);
+  if (!Number.isSafeInteger(value) || value <= 0) {
+    throw new ConfigError(`${name} debe ser un entero positivo expresado en milisegundos.`);
+  }
+
+  return value;
 }
 
 /**
@@ -103,8 +110,6 @@ export function applyTlsFlag(): void {
  * Lanza ConfigError con mensaje claro si falta algo obligatorio.
  */
 export function loadConfig(): XrayServerConfig {
-  applyTlsFlag();
-
   const jiraBaseUrl = requireEnv('XRAY_JIRA_BASE_URL').replace(/\/+$/, '');
   const jiraPat = requireEnv('XRAY_JIRA_PAT');
 
@@ -112,6 +117,7 @@ export function loadConfig(): XrayServerConfig {
     jiraBaseUrl,
     jiraPat,
     defaultProjectKey: optionalEnv('XRAY_PROJECT_KEY'),
+    requestTimeoutMs: positiveIntegerEnv('XRAY_REQUEST_TIMEOUT_MS', 30_000),
 
     fields: {
       candidato: envOr('XRAY_FIELD_CANDIDATO', 'customfield_18831'),

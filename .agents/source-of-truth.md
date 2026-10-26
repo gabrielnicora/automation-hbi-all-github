@@ -39,7 +39,6 @@ código, buscar en el catálogo generado `.agents/index/` (`SPEC.md`, sección 3
 | Registrar fixtures                                    | `src/fixtures/AGENTS.md`.                                                                                                           |
 | Crear o modificar workflows                           | `src/workflows/AGENTS.md`.                                                                                                          |
 | Datos de prueba y sus loaders                         | `test-data/AGENTS.md`.                                                                                                              |
-| Numeración de casos o IDs del legado `java/`          | `SPEC.md`, sección 10.1, y `test-data/case-ids.json`.                                                                               |
 | Arquitectura, dependencias, configuración global o CI | `SPEC.md` completo.                                                                                                                 |
 | Cierre transversal de encuesta opcional por UI        | `specs/ui/optional-satisfaction-survey.md`.                                                                                         |
 | Autoría o revisión de tests                           | `docs/test-authoring.md` y especificaciones de las capacidades afectadas.                                                           |
@@ -64,8 +63,7 @@ código, buscar en el catálogo generado `.agents/index/` (`SPEC.md`, sección 3
 | Baja y arrepentimiento por UI                         | `specs/mis-products/should-open-cancellation-page.ui.plan.md`.                                                                      |
 | Instalación o ejecución del proyecto                  | `README.md` y configuración real pertinente.                                                                                        |
 | Evaluación del agente de automatización               | `evals/README.md` y `SPEC.md`, sección 3.                                                                                           |
-| MCP opcional para administrar casos en Xray           | `specs/tooling/xray-mcp.md`.                                                                                                        |
-| Publicación futura de resultados en Xray              | `.agents/docs/integracion-xray.md`; es una propuesta, no una capacidad aprobada.                                                    |
+| Integración futura con Xray                           | `.agents/docs/integracion-xray.md`; es una propuesta, no una capacidad aprobada.                                                    |
 | Exploración, generación o depuración con Playwright   | `.agents/skills/playwright-cli/SKILL.md` y las referencias que correspondan según esa skill.                                        |
 | Migración acelerada de casos legados                  | `.agents/docs/legacy-migration.md`, `SPEC.md` sección 3, `docs/guides/README.md` y la guía de la familia funcional correspondiente. |
 | Elegibilidad y canal de casos a migrar                | `specs/migration/migratable-cases.md`; catálogo cerrado previo a leer o portar cada caso.                                           |

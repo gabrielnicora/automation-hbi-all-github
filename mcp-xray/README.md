@@ -40,32 +40,42 @@ agente usa estas tools para hacerlo.
 Desde la raíz del repo:
 
 ```bash
-pnpm --dir mcp-xray install --ignore-workspace
+pnpm install --frozen-lockfile
 ```
 
-(Se instala aislado porque el paquete es autocontenido y no forma parte del
-workspace de la suite de tests.)
+`mcp-xray` forma parte del workspace y comparte el único `pnpm-lock.yaml` de la raíz. Sigue
+separado del runtime de Playwright: la suite no inicia el servidor MCP.
+
+El workspace autoriza explícitamente el script de instalación de `esbuild`, dependencia de `tsx`,
+mediante `allowBuilds`. La protección `strictDepBuilds` de pnpm 11 permanece activa para cualquier
+otra dependencia que intente ejecutar un script no aprobado.
 
 ---
 
 ## 3. Configuración en Kiro (`.kiro/settings/mcp.json`)
 
-Agregá el server `xray` dentro de `mcpServers`. **Este archivo está en
-`.gitignore`**, así que tu PAT no se commitea.
+Copiá el ejemplo versionado y editá únicamente el archivo local:
+
+```powershell
+Copy-Item .kiro/settings/mcp.example.json .kiro/settings/mcp.json
+```
+
+`.kiro/settings/mcp.json` está en `.gitignore`, así que el PAT no se commitea. El ejemplo permanece
+deshabilitado y sin credenciales reales; después de completar el archivo local, cambiá
+`disabled` a `false` para habilitarlo.
 
 ```json
 {
   "mcpServers": {
     "xray": {
       "command": "pnpm",
-      "args": ["exec", "tsx", "mcp-xray/src/server.ts"],
+      "args": ["--dir", "mcp-xray", "run", "dev"],
       "env": {
         "XRAY_JIRA_BASE_URL": "https://jira.tu-empresa.com",
         "XRAY_JIRA_PAT": "PEGA_AQUI_TU_PAT_DE_JIRA",
-        "XRAY_PROJECT_KEY": "XT",
-        "XRAY_TLS_REJECT_UNAUTHORIZED": "false"
+        "XRAY_PROJECT_KEY": "XT"
       },
-      "disabled": false,
+      "disabled": true,
       "autoApprove": [
         "xray_verificar_conexion",
         "xray_descubrir_campos_test",
@@ -98,7 +108,8 @@ Después de guardar, reconectá el server desde el panel de MCP de Kiro.
 | Variable | Default | Descripción |
 |----------|---------|-------------|
 | `XRAY_PROJECT_KEY` | — | Proyecto por defecto (ej: `XT`). Se puede pasar por tool. |
-| `XRAY_TLS_REJECT_UNAUTHORIZED` | — | `false` si tu Jira usa cert self-signed / CA interna. |
+| `NODE_EXTRA_CA_CERTS` | — | Ruta al certificado PEM de la CA interna, cuando corresponda. |
+| `XRAY_REQUEST_TIMEOUT_MS` | `30000` | Timeout entero positivo por request a Jira/Xray, en milisegundos. |
 
 ### IDs de custom fields (solo si tu instancia difiere)
 
@@ -240,6 +251,8 @@ No toca "Candidato a Automatización".
 - Cada persona/despliegue usa su propio PAT — así los permisos y la trazabilidad
   en Jira quedan a nombre de quien ejecuta.
 - Las tools de escritura no están en `autoApprove`: se confirman manualmente.
+- La validación TLS permanece activa. Para certificados internos se configura
+  `NODE_EXTRA_CA_CERTS`; el ejemplo versionado no desactiva TLS.
 
 ---
 

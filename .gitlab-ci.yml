@@ -40,13 +40,10 @@ variables:
   UNE_HOST_ENTRIES: |
     10.134.68.217 onlinebanking.dev.bancoune.com
     10.134.68.217 apii.dev.bancoune.com
-    10.134.68.217 apie.dev.bancoune.com
     10.134.68.217 bffe.dev.bancoune.com
     10.134.68.217 hbi.dev.bancoune.com
     10.134.68.217 hbe.dev.bancoune.com
-    10.134.68.217 obe.dev.bancoune.com
-    10.134.68.217 officebanking.dev.bancoune.com
-
+    
 stages:
   - setup
   - quality

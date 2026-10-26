@@ -12,6 +12,35 @@
 
 import type { XrayServerConfig } from './config.js';
 
+type FetchImplementation = typeof fetch;
+
+const PROJECT_KEY_PATTERN = /^[A-Z][A-Z0-9_]*$/;
+const TEST_KEY_PATTERN = /^[A-Z][A-Z0-9_]*-\d+$/;
+
+export function validateProjectKey(value: string): string {
+  const key = value.trim();
+  if (!PROJECT_KEY_PATTERN.test(key)) {
+    throw new Error(
+      `projectKey inválido: "${key}". Debe usar mayúsculas, comenzar con una letra y contener sólo letras, números o guion bajo.`
+    );
+  }
+  return key;
+}
+
+export function validateTestKey(value: string): string {
+  const key = value.trim();
+  if (!TEST_KEY_PATTERN.test(key)) {
+    throw new Error(
+      `testKey inválido: "${key}". Debe tener el formato PROYECTO-123 y usar una clave de proyecto en mayúsculas.`
+    );
+  }
+  return key;
+}
+
+function quoteJqlString(value: string): string {
+  return `"${value.replaceAll('\\', '\\\\').replaceAll('"', '\\"')}"`;
+}
+
 // ---------------------------------------------------------------------------
 // Tipos de dominio
 // ---------------------------------------------------------------------------
@@ -78,7 +107,10 @@ export class XrayServerClient {
   private readonly baseUrl: string;
   private readonly authHeader: string;
 
-  constructor(private readonly config: XrayServerConfig) {
+  constructor(
+    private readonly config: XrayServerConfig,
+    private readonly fetchImplementation: FetchImplementation = fetch
+  ) {
     this.baseUrl = config.jiraBaseUrl;
     this.authHeader = `Bearer ${config.jiraPat}`;
   }
@@ -93,15 +125,26 @@ export class XrayServerClient {
 
   private async request<T>(method: string, path: string, body?: unknown): Promise<T> {
     const url = `${this.baseUrl}${path}`;
-    const res = await fetch(url, {
-      method,
-      headers: this.headers(),
-      body: body !== undefined ? JSON.stringify(body) : undefined,
-    });
+    let res: Response;
+    try {
+      res = await this.fetchImplementation(url, {
+        method,
+        headers: this.headers(),
+        body: body !== undefined ? JSON.stringify(body) : undefined,
+        signal: AbortSignal.timeout(this.config.requestTimeoutMs),
+      });
+    } catch (error) {
+      const errorName = error instanceof Error ? error.name : '';
+      if (errorName === 'AbortError' || errorName === 'TimeoutError') {
+        throw new Error(
+          `${method} ${path} excedió el timeout de ${this.config.requestTimeoutMs} ms.`
+        );
+      }
+      throw new Error(`${method} ${path} no pudo completarse por un error de red.`);
+    }
 
     if (!res.ok) {
-      const text = await res.text().catch(() => '');
-      throw new Error(`${method} ${path} falló (HTTP ${res.status}): ${text || res.statusText}`);
+      throw new Error(`${method} ${path} falló (HTTP ${res.status} ${res.statusText || 'sin detalle'}).`);
     }
 
     if (res.status === 204) return undefined as T;
@@ -127,17 +170,18 @@ export class XrayServerClient {
 
   /** Resuelve el id del tipo de issue "Test" en el proyecto. */
   private async obtenerTipoTestId(projectKey: string): Promise<string> {
+    const validatedProjectKey = validateProjectKey(projectKey);
     interface IssueTypesResponse {
       values: Array<{ id: string; name: string; subtask: boolean }>;
     }
     const data = await this.request<IssueTypesResponse>(
       'GET',
-      `/rest/api/2/issue/createmeta/${encodeURIComponent(projectKey)}/issuetypes`
+      `/rest/api/2/issue/createmeta/${encodeURIComponent(validatedProjectKey)}/issuetypes`
     );
     const test = data.values.find((t) => t.name === 'Test' && !t.subtask);
     if (!test) {
       throw new Error(
-        `El proyecto ${projectKey} no tiene el tipo de issue "Test" (o no es visible con este PAT).`
+        `El proyecto ${validatedProjectKey} no tiene el tipo de issue "Test" (o no es visible con este PAT).`
       );
     }
     return test.id;
@@ -190,20 +234,21 @@ export class XrayServerClient {
     soloAutomatizados?: boolean;
     labels?: string[];
   }): Promise<TestResumen[]> {
-    const { projectKey, soloPendientes, soloAutomatizados, labels } = params;
+    const { soloPendientes, soloAutomatizados, labels } = params;
+    const projectKey = validateProjectKey(params.projectKey);
     const f = this.config.fields;
     const a = this.config.automation;
 
     const cf = (id: string) => `cf[${id.replace(/^customfield_/, '')}]`;
 
-    let jql = `project = "${projectKey}" AND issuetype = "Test"`;
+    let jql = `project = ${quoteJqlString(projectKey)} AND issuetype = "Test"`;
     if (soloPendientes) {
-      jql += ` AND ${cf(f.candidato)} = "${a.candidatoSi}" AND ${cf(f.automatizado)} = "${a.automatizadoNo}"`;
+      jql += ` AND ${cf(f.candidato)} = ${quoteJqlString(a.candidatoSi)} AND ${cf(f.automatizado)} = ${quoteJqlString(a.automatizadoNo)}`;
     } else if (soloAutomatizados) {
-      jql += ` AND ${cf(f.automatizado)} = "${a.automatizadoSi}"`;
+      jql += ` AND ${cf(f.automatizado)} = ${quoteJqlString(a.automatizadoSi)}`;
     }
     if (labels && labels.length > 0) {
-      jql += ` AND labels IN (${labels.map((l) => `"${l}"`).join(', ')})`;
+      jql += ` AND labels IN (${labels.map(quoteJqlString).join(', ')})`;
     }
     jql += ' ORDER BY key ASC';
 
@@ -260,6 +305,7 @@ export class XrayServerClient {
    * luego carga los pasos vía la API de Xray Server (Raven 1.0).
    */
   async crearTestManual(input: CrearTestManualInput): Promise<CrearTestResult> {
+    const projectKey = validateProjectKey(input.projectKey);
     if (!input.steps || input.steps.length === 0) {
       throw new Error('Un Test Manual requiere al menos un paso (step).');
     }
@@ -272,7 +318,7 @@ export class XrayServerClient {
 
     // 1) Crear el issue Test en Jira con los campos obligatorios
     const fields: Record<string, unknown> = {
-      project: { key: input.projectKey },
+      project: { key: projectKey },
       summary: input.summary,
       issuetype: { name: 'Test' },
       [f.equipo]: { value: input.equipo ?? d.equipo },
@@ -295,7 +341,7 @@ export class XrayServerClient {
     // instancia tampoco los permite editar, no se rompe la creación).
     if (input.labels && input.labels.length > 0) {
       try {
-        await this.request('PUT', `/rest/api/2/issue/${created.key}`, {
+        await this.request('PUT', `/rest/api/2/issue/${encodeURIComponent(created.key)}`, {
           fields: { labels: input.labels },
         });
       } catch {
@@ -305,13 +351,25 @@ export class XrayServerClient {
 
     // 2) Cargar los steps vía Xray Server (Raven 1.0): PUT por cada paso.
     let stepsCargados = 0;
-    for (const step of input.steps) {
-      await this.request('PUT', `/rest/raven/1.0/api/test/${created.key}/step`, {
-        step: step.action,
-        data: step.data ?? '',
-        result: step.result ?? '',
-      });
-      stepsCargados++;
+    try {
+      for (const step of input.steps) {
+        await this.request(
+          'PUT',
+          `/rest/raven/1.0/api/test/${encodeURIComponent(created.key)}/step`,
+          {
+            step: step.action,
+            data: step.data ?? '',
+            result: step.result ?? '',
+          }
+        );
+        stepsCargados++;
+      }
+    } catch (error) {
+      const detail = error instanceof Error ? error.message : 'Error desconocido.';
+      throw new Error(
+        `El Test ${created.key} fue creado, pero falló la carga del paso ${stepsCargados + 1} ` +
+          `después de ${stepsCargados} paso(s). No reintentar la creación automáticamente. ${detail}`
+      );
     }
 
     return {
@@ -331,7 +389,8 @@ export class XrayServerClient {
    * "Candidato a Automatización".
    */
   async marcarAutomatizado(testKey: string, value: string): Promise<void> {
-    await this.request('PUT', `/rest/api/2/issue/${testKey}`, {
+    const validatedTestKey = validateTestKey(testKey);
+    await this.request('PUT', `/rest/api/2/issue/${encodeURIComponent(validatedTestKey)}`, {
       fields: {
         [this.config.fields.automatizado]: { value },
       },
