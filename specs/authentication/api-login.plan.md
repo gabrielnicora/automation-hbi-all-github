@@ -13,7 +13,9 @@ reutilizable sin exponer credenciales, exchange tokens ni access tokens.
 
 - Banco: Banco Entre Ríos (BERSA).
 - Caso: `TC-002-1-0001-UNE`.
-- Canal: API; tag: `@regression`. Comparte ID con el login UI por representar el mismo caso.
+- Canal: API; tag: `@regression`. Es el mismo caso funcional que el login UI
+  `TC-002-2-0001-UNE` y comparte su usuario de prueba, pero tiene ID propio por canal
+  (`SPEC.md`, sección 10.1). Reemplaza la regla anterior que compartía el ID con UI.
 - Ambiente: QA.
 - Base API: `https://apitest01.bancoentrerios.com`.
 - Resultado: access token no vacío y header Bearer.

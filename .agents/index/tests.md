@@ -15,13 +15,11 @@ Especificaciones: `specs/accounts/withdrawal-order.api.plan.md`
 Fixtures: `accountTransferSearchApi`, `adheredAccountsApi`, `loginApi`, `loginCredentials`, `productWidgetsApi`
 
 - L10: TC-001-1-0001-UNE - Adherir cuenta - nuevo destinatario de terceros con segundo factor por SMS
-- L10: TC-001-1-0001-UNE - Adherir cuenta - nuevo destinatario de terceros con segundo factor por SMS
 
 ### `tests/api/001-accounts/should-generate-withdrawal-order.api.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`, `withdrawalOrderApi`, `withdrawalOrderData`
 
-- L8: TC-001-1-0002-UNE - genera una orden de extracción con saldo disponible
 - L8: TC-001-1-0002-UNE - genera una orden de extracción con saldo disponible
 
 ### `tests/api/001-accounts/should-list-echeqs-by-status.api.spec.ts`
@@ -29,10 +27,7 @@ Fixtures: `loginApi`, `loginCredentials`, `withdrawalOrderApi`, `withdrawalOrder
 Fixtures: `echeqOperationsApi`, `loginApi`, `loginCredentials`
 
 - L19: TC-001-1-0005-UNE - Validar el listado de eCheq en el estado 'Todos'
-- L19: TC-001-1-0005-UNE - Validar el listado de eCheq en el estado 'Todos'
 - L19: TC-001-1-0085-UNE - Consulta del detalle de un eCheq - Estado 'Emitir'
-- L19: TC-001-1-0085-UNE - Consulta del detalle de un eCheq - Estado 'Emitir'
-- L19: TC-001-1-0089-UNE - Consulta del detalle de un eCheq - Estado Anular
 - L19: TC-001-1-0089-UNE - Consulta del detalle de un eCheq - Estado Anular
 
 ### `tests/api/001-accounts/should-operate-received-echeqs.api.spec.ts`
@@ -40,18 +35,11 @@ Fixtures: `echeqOperationsApi`, `loginApi`, `loginCredentials`
 Fixtures: `echeqEndorsementData`, `echeqOperationsApi`, `loginApi`, `loginCredentials`, `originAccountData`, `productWidgetsApi`, `secondUserCredentials`
 
 - L47: TC-001-1-0083-UNE - Consulta del detalle de un eCheq - Estado Aceptar
-- L47: TC-001-1-0083-UNE - Consulta del detalle de un eCheq - Estado Aceptar
-- L64: TC-001-1-0084-UNE - Consulta del detalle de un eCheq - Estado Endosar
 - L64: TC-001-1-0084-UNE - Consulta del detalle de un eCheq - Estado Endosar
 - L86: TC-001-1-0086-UNE - Consulta del detalle de un eCheq - Estado Repudiar
-- L86: TC-001-1-0086-UNE - Consulta del detalle de un eCheq - Estado Repudiar
-- L109: TC-001-1-0087-UNE - Consulta del detalle de un eCheq - Estado Custodiar
 - L109: TC-001-1-0087-UNE - Consulta del detalle de un eCheq - Estado Custodiar
 - L132: TC-001-1-0088-UNE - Consulta del detalle de un eCheq - Custodiar y rescatar
-- L132: TC-001-1-0088-UNE - Consulta del detalle de un eCheq - Custodiar y rescatar
 - L157: TC-001-1-0091-UNE - Solicitar devolución de eCheq
-- L157: TC-001-1-0091-UNE - Solicitar devolución de eCheq
-- L190: TC-001-1-0090-UNE - Depositar eCheq - Variable encendida
 - L190: TC-001-1-0090-UNE - Depositar eCheq - Variable encendida
 
 ### `tests/api/001-accounts/should-reject-invalid-account-transfer-search.api.spec.ts`
@@ -59,122 +47,63 @@ Fixtures: `echeqEndorsementData`, `echeqOperationsApi`, `loginApi`, `loginCreden
 Fixtures: `accountTransferSearchApi`, `loginApi`, `loginCredentials`
 
 - L327: TC-001-1-0006-UNE - Validar mensaje de error typeAccount con espacio
-- L327: TC-001-1-0006-UNE - Validar mensaje de error typeAccount con espacio
-- L327: TC-001-1-0007-UNE - Validar error por typeAccount con acento
 - L327: TC-001-1-0007-UNE - Validar error por typeAccount con acento
 - L327: TC-001-1-0008-UNE - Validar error por typeAccount con guión
-- L327: TC-001-1-0008-UNE - Validar error por typeAccount con guión
-- L327: TC-001-1-0009-UNE - Validar error por typeAccount con longitud no permitida
 - L327: TC-001-1-0009-UNE - Validar error por typeAccount con longitud no permitida
 - L327: TC-001-1-0010-UNE - Validar error por typeAccount con apóstrofe
-- L327: TC-001-1-0010-UNE - Validar error por typeAccount con apóstrofe
-- L327: TC-001-1-0011-UNE - Validar error por typeAccount vacío
 - L327: TC-001-1-0011-UNE - Validar error por typeAccount vacío
 - L327: TC-001-1-0012-UNE - Validar error por typeAccount null
-- L327: TC-001-1-0012-UNE - Validar error por typeAccount null
-- L327: TC-001-1-0013-UNE - Validar error por typeAccount alfabético no permitido
 - L327: TC-001-1-0013-UNE - Validar error por typeAccount alfabético no permitido
 - L327: TC-001-1-0014-UNE - Validar error por typeAccount numérico
-- L327: TC-001-1-0014-UNE - Validar error por typeAccount numérico
-- L327: TC-001-1-0015-UNE - Validar error por typeAccount alfanumérico
 - L327: TC-001-1-0015-UNE - Validar error por typeAccount alfanumérico
 - L327: TC-001-1-0016-UNE - Validar error por typeAccount con caracteres especiales
-- L327: TC-001-1-0016-UNE - Validar error por typeAccount con caracteres especiales
-- L327: TC-001-1-0017-UNE - Validar error por typeAccount boolean true
 - L327: TC-001-1-0017-UNE - Validar error por typeAccount boolean true
 - L327: TC-001-1-0018-UNE - Validar error por typeAccount boolean false
-- L327: TC-001-1-0018-UNE - Validar error por typeAccount boolean false
-- L327: TC-001-1-0019-UNE - Validar error por typeAccount en minúsculas
 - L327: TC-001-1-0019-UNE - Validar error por typeAccount en minúsculas
 - L327: TC-001-1-0020-UNE - Validar error por typeAccount con prefijo y espacio
-- L327: TC-001-1-0020-UNE - Validar error por typeAccount con prefijo y espacio
-- L327: TC-001-1-0021-UNE - Validar error por account con espacio
 - L327: TC-001-1-0021-UNE - Validar error por account con espacio
 - L327: TC-001-1-0022-UNE - Validar error por account con acento
-- L327: TC-001-1-0022-UNE - Validar error por account con acento
-- L327: TC-001-1-0023-UNE - Validar error por account con guión
 - L327: TC-001-1-0023-UNE - Validar error por account con guión
 - L327: TC-001-1-0024-UNE - Validar error por account con longitud no permitida
-- L327: TC-001-1-0024-UNE - Validar error por account con longitud no permitida
-- L327: TC-001-1-0025-UNE - Validar error por account con apóstrofe
 - L327: TC-001-1-0025-UNE - Validar error por account con apóstrofe
 - L327: TC-001-1-0026-UNE - Validar error por account vacío
-- L327: TC-001-1-0026-UNE - Validar error por account vacío
-- L327: TC-001-1-0027-UNE - Validar error por account null
 - L327: TC-001-1-0027-UNE - Validar error por account null
 - L327: TC-001-1-0028-UNE - Validar error por account CBU con longitud inválida (-1)
-- L327: TC-001-1-0028-UNE - Validar error por account CBU con longitud inválida (-1)
-- L327: TC-001-1-0029-UNE - Validar error por account CBU con longitud inválida (+1)
 - L327: TC-001-1-0029-UNE - Validar error por account CBU con longitud inválida (+1)
 - L327: TC-001-1-0030-UNE - Validar error por account alias con números adicionales
-- L327: TC-001-1-0030-UNE - Validar error por account alias con números adicionales
-- L327: TC-001-1-0031-UNE - Validar error por typeAccount alfanumérico
 - L327: TC-001-1-0031-UNE - Validar error por typeAccount alfanumérico
 - L327: TC-001-1-0032-UNE - Validar error por account con caracteres especiales
-- L327: TC-001-1-0032-UNE - Validar error por account con caracteres especiales
-- L327: TC-001-1-0033-UNE - Validar error por account boolean true
 - L327: TC-001-1-0033-UNE - Validar error por account boolean true
 - L327: TC-001-1-0034-UNE - Validar error por account boolean false
-- L327: TC-001-1-0034-UNE - Validar error por account boolean false
-- L327: TC-001-1-0035-UNE - Validar error por account con formato mixto
 - L327: TC-001-1-0035-UNE - Validar error por account con formato mixto
 - L327: TC-001-1-0036-UNE - Validar error cuando typeAccount y account están vacíos
-- L327: TC-001-1-0036-UNE - Validar error cuando typeAccount y account están vacíos
-- L327: TC-001-1-0037-UNE - Validar error cuando typeAccount y account son inválidos
 - L327: TC-001-1-0037-UNE - Validar error cuando typeAccount y account son inválidos
 - L327: TC-001-1-0038-UNE - Validar error por inconsistencia typeAccount CBU y account alias
-- L327: TC-001-1-0038-UNE - Validar error por inconsistencia typeAccount CBU y account alias
-- L327: TC-001-1-0039-UNE - Validar error por inconsistencia typeAccount alias y account CBU
 - L327: TC-001-1-0039-UNE - Validar error por inconsistencia typeAccount alias y account CBU
 - L327: TC-001-1-0040-UNE - Validar error por typeAccount CBU vacío
-- L327: TC-001-1-0040-UNE - Validar error por typeAccount CBU vacío
-- L327: TC-001-1-0041-UNE - Validar error por typeAccount CBU null
 - L327: TC-001-1-0041-UNE - Validar error por typeAccount CBU null
 - L327: TC-001-1-0042-UNE - Validar error por account con espacio
-- L327: TC-001-1-0042-UNE - Validar error por account con espacio
-- L327: TC-001-1-0043-UNE - Validar error por account con guión
 - L327: TC-001-1-0043-UNE - Validar error por account con guión
 - L327: TC-001-1-0044-UNE - Validar error por account con longitud no permitida
-- L327: TC-001-1-0044-UNE - Validar error por account con longitud no permitida
-- L327: TC-001-1-0045-UNE - Validar error por account con apóstrofe
 - L327: TC-001-1-0045-UNE - Validar error por account con apóstrofe
 - L327: TC-001-1-0046-UNE - Validar error por account vacío
-- L327: TC-001-1-0046-UNE - Validar error por account vacío
-- L327: TC-001-1-0047-UNE - Validar error por account null
 - L327: TC-001-1-0047-UNE - Validar error por account null
 - L327: TC-001-1-0048-UNE - Validar error por account CBU con longitud inválida (-1)
-- L327: TC-001-1-0048-UNE - Validar error por account CBU con longitud inválida (-1)
-- L327: TC-001-1-0049-UNE - Validar error por account cbu con caracteres especiales
 - L327: TC-001-1-0049-UNE - Validar error por account cbu con caracteres especiales
 - L327: TC-001-1-0050-UNE - Validar error por account CBU boolean true
-- L327: TC-001-1-0050-UNE - Validar error por account CBU boolean true
-- L327: TC-001-1-0051-UNE - Validar error por account CBU boolean false
 - L327: TC-001-1-0051-UNE - Validar error por account CBU boolean false
 - L327: TC-001-1-0052-UNE - Validar error por typeAccount CVU vacío
-- L327: TC-001-1-0052-UNE - Validar error por typeAccount CVU vacío
-- L327: TC-001-1-0053-UNE - Validar error por typeAccount CVU null
 - L327: TC-001-1-0053-UNE - Validar error por typeAccount CVU null
 - L327: TC-001-1-0054-UNE - Validar error por account CVU con espacio
-- L327: TC-001-1-0054-UNE - Validar error por account CVU con espacio
-- L327: TC-001-1-0055-UNE - Validar error por account CVU con guión
 - L327: TC-001-1-0055-UNE - Validar error por account CVU con guión
 - L327: TC-001-1-0056-UNE - Validar error por account CVU con longitud no permitida
-- L327: TC-001-1-0056-UNE - Validar error por account CVU con longitud no permitida
-- L327: TC-001-1-0057-UNE - Validar error por account CVU con apóstrofe
 - L327: TC-001-1-0057-UNE - Validar error por account CVU con apóstrofe
 - L327: TC-001-1-0058-UNE - Validar error por account CVU vacío
-- L327: TC-001-1-0058-UNE - Validar error por account CVU vacío
-- L327: TC-001-1-0059-UNE - Validar error por account CVU null
 - L327: TC-001-1-0059-UNE - Validar error por account CVU null
 - L327: TC-001-1-0060-UNE - Validar error por account CVU con longitud inválida (-1)
-- L327: TC-001-1-0060-UNE - Validar error por account CVU con longitud inválida (-1)
-- L327: TC-001-1-0061-UNE - Validar error por account CVU con longitud inválida (+1)
 - L327: TC-001-1-0061-UNE - Validar error por account CVU con longitud inválida (+1)
 - L327: TC-001-1-0062-UNE - Validar error por account CVU con caracteres especiales
-- L327: TC-001-1-0062-UNE - Validar error por account CVU con caracteres especiales
 - L327: TC-001-1-0063-UNE - Validar error por account CVU boolean true
-- L327: TC-001-1-0063-UNE - Validar error por account CVU boolean true
-- L327: TC-001-1-0064-UNE - Validar error por account CVU boolean false
 - L327: TC-001-1-0064-UNE - Validar error por account CVU boolean false
 
 ### `tests/api/001-accounts/should-reject-invalid-echeq-list-filters.api.spec.ts`
@@ -182,40 +111,22 @@ Fixtures: `accountTransferSearchApi`, `loginApi`, `loginCredentials`
 Fixtures: `echeqListApi`, `loginApi`, `loginCredentials`
 
 - L115: TC-001-1-0065-UNE - Validar error por echeqNumber con espacio
-- L115: TC-001-1-0065-UNE - Validar error por echeqNumber con espacio
-- L115: TC-001-1-0066-UNE - Validar error por echeqNumber con caracteres especiales
 - L115: TC-001-1-0066-UNE - Validar error por echeqNumber con caracteres especiales
 - L115: TC-001-1-0067-UNE - Validar error por statement con espacio
-- L115: TC-001-1-0067-UNE - Validar error por statement con espacio
-- L115: TC-001-1-0068-UNE - Validar error por statement con caracteres especiales
 - L115: TC-001-1-0068-UNE - Validar error por statement con caracteres especiales
 - L115: TC-001-1-0069-UNE - Validar error por filterCuil con espacio
-- L115: TC-001-1-0069-UNE - Validar error por filterCuil con espacio
-- L115: TC-001-1-0070-UNE - Validar error por filterCuil con caracteres especiales
 - L115: TC-001-1-0070-UNE - Validar error por filterCuil con caracteres especiales
 - L115: TC-001-1-0071-UNE - Validar error por operationType con espacio
-- L115: TC-001-1-0071-UNE - Validar error por operationType con espacio
-- L115: TC-001-1-0072-UNE - Validar error por operationType con caracteres especiales
 - L115: TC-001-1-0072-UNE - Validar error por operationType con caracteres especiales
 - L115: TC-001-1-0073-UNE - Validar error por page con espacio
-- L115: TC-001-1-0073-UNE - Validar error por page con espacio
-- L115: TC-001-1-0074-UNE - Validar error por page con caracteres especiales
 - L115: TC-001-1-0074-UNE - Validar error por page con caracteres especiales
 - L115: TC-001-1-0075-UNE - Validar error por filterCuil boolean true
-- L115: TC-001-1-0075-UNE - Validar error por filterCuil boolean true
-- L115: TC-001-1-0076-UNE - Validar error por filterCuil boolean false
 - L115: TC-001-1-0076-UNE - Validar error por filterCuil boolean false
 - L115: TC-001-1-0077-UNE - Validar error por filterCuil null
-- L115: TC-001-1-0077-UNE - Validar error por filterCuil null
-- L115: TC-001-1-0078-UNE - Validar error por page con guión
 - L115: TC-001-1-0078-UNE - Validar error por page con guión
 - L115: TC-001-1-0079-UNE - Validar error por page alfabético no permitido
-- L115: TC-001-1-0079-UNE - Validar error por page alfabético no permitido
-- L115: TC-001-1-0080-UNE - Validar error por page boolean true
 - L115: TC-001-1-0080-UNE - Validar error por page boolean true
 - L115: TC-001-1-0081-UNE - Validar error por page boolean false
-- L115: TC-001-1-0081-UNE - Validar error por page boolean false
-- L115: TC-001-1-0082-UNE - Validar error por page con prefijo y espacio
 - L115: TC-001-1-0082-UNE - Validar error por page con prefijo y espacio
 
 ### `tests/api/001-accounts/should-request-salary-advance.api.spec.ts`
@@ -223,13 +134,11 @@ Fixtures: `echeqListApi`, `loginApi`, `loginCredentials`
 Fixtures: `loginApi`, `loginCredentials`, `originAccountData`, `productWidgetsApi`, `salaryAdvanceApi`
 
 - L12: TC-001-1-0003-UNE - Adelantos de Sueldo - Realizar solicitud de adelanto de sueldo
-- L12: TC-001-1-0003-UNE - Adelantos de Sueldo - Realizar solicitud de adelanto de sueldo
 
 ### `tests/api/001-accounts/should-show-salary-advance-card.api.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`, `salaryAdvanceApi`
 
-- L8: TC-001-1-0004-UNE - Adelantos de Sueldo - Mis adelantos - Validar card de adelantos de sueldo
 - L8: TC-001-1-0004-UNE - Adelantos de Sueldo - Mis adelantos - Validar card de adelantos de sueldo
 
 ## `tests/api/002-authentication/`
@@ -241,7 +150,6 @@ Especificaciones: `specs/authentication/api-login.plan.md`, `specs/authenticatio
 Fixtures: `loginApi`, `loginCredentials`
 
 - L8: TC-002-1-0001-UNE - inicia sesión y captura el Bearer token @regression
-- L8: TC-002-1-0001-UNE - inicia sesión y captura el Bearer token @regression
 
 ## `tests/api/003-cards/`
 
@@ -252,8 +160,6 @@ Especificaciones: `specs/cards/credit-card-other-amount-payment.api.plan.md`, `s
 Fixtures: `creditCardPaymentData`, `creditCardPaymentsApi`, `loginApi`, `loginCredentials`, `productWidgetsApi`
 
 - L18: TC-003-1-0002-UNE - Tarjeta de Crédito - Pagar mínimo de una Tarjeta de Crédito Visa
-- L18: TC-003-1-0002-UNE - Tarjeta de Crédito - Pagar mínimo de una Tarjeta de Crédito Visa
-- L18: TC-003-1-0008-UNE - Tarjetas de crédito - Pagar el importe mínimo de una tarjeta de crédito Mastercard
 - L18: TC-003-1-0008-UNE - Tarjetas de crédito - Pagar el importe mínimo de una tarjeta de crédito Mastercard
 
 ### `tests/api/003-cards/should-pay-credit-card-other-amount.api.spec.ts`
@@ -261,13 +167,11 @@ Fixtures: `creditCardPaymentData`, `creditCardPaymentsApi`, `loginApi`, `loginCr
 Fixtures: `creditCardOtherAmountPaymentApi`, `creditCardOtherAmountPaymentData`, `loginApi`, `loginCredentials`
 
 - L8: TC-003-1-0007-UNE - paga ARS 1 de una tarjeta Visa por otro importe @regression
-- L8: TC-003-1-0007-UNE - paga ARS 1 de una tarjeta Visa por otro importe @regression
 
 ### `tests/api/003-cards/should-pay-mastercard-other-amount.api.spec.ts`
 
 Fixtures: `creditCardPaymentData`, `creditCardPaymentsApi`, `loginApi`, `loginCredentials`, `productWidgetsApi`
 
-- L12: TC-003-1-0003-UNE - Pagar tarjeta de crédito Master - Otro importe
 - L12: TC-003-1-0003-UNE - Pagar tarjeta de crédito Master - Otro importe
 
 ### `tests/api/003-cards/should-reject-credit-card-request-by-declaration.api.spec.ts`
@@ -275,10 +179,7 @@ Fixtures: `creditCardPaymentData`, `creditCardPaymentsApi`, `loginApi`, `loginCr
 Fixtures: `creditCardApplicationApi`, `loginApi`, `loginCredentials`, `optionalOriginAccountData`, `paymentLinkSyncApi`, `productWidgetsApi`
 
 - L39: TC-003-1-0004-UNE - Tarjetas de crédito - Persona expuesta políticamente no permite continuar la solicitud
-- L39: TC-003-1-0004-UNE - Tarjetas de crédito - Persona expuesta políticamente no permite continuar la solicitud
 - L39: TC-003-1-0005-UNE - Tarjetas de crédito - Residencia fiscal en el exterior no permite continuar la solicitud
-- L39: TC-003-1-0005-UNE - Tarjetas de crédito - Residencia fiscal en el exterior no permite continuar la solicitud
-- L39: TC-003-1-0006-UNE - Tarjetas de crédito - Sujeto obligado UIF no permite continuar la solicitud
 - L39: TC-003-1-0006-UNE - Tarjetas de crédito - Sujeto obligado UIF no permite continuar la solicitud
 
 ### `tests/api/003-cards/should-request-credit-card.api.spec.ts`
@@ -286,15 +187,12 @@ Fixtures: `creditCardApplicationApi`, `loginApi`, `loginCredentials`, `optionalO
 Fixtures: `creditCardApplicationApi`, `loginApi`, `loginCredentials`, `optionalOriginAccountData`, `paymentLinkSyncApi`, `productWidgetsApi`
 
 - L9: TC-003-1-0001-UNE - Tarjeta de Crédito - Solicitar nueva tarjeta de crédito
-- L9: TC-003-1-0001-UNE - Tarjeta de Crédito - Solicitar nueva tarjeta de crédito
 
 ### `tests/api/003-cards/should-send-applicant-cuil-in-credit-card-request.api.spec.ts`
 
 Fixtures: `creditCardApplicationApi`, `loginApi`, `loginCredentials`, `optionalOriginAccountData`, `paymentLinkSyncApi`, `productWidgetsApi`
 
 - L22: TC-003-1-0009-UNE - API - Tarjeta de Crédito - Verificar que el dato cuilSolicitante se envíe en application/create en nueva alta de TC
-- L22: TC-003-1-0009-UNE - API - Tarjeta de Crédito - Verificar que el dato cuilSolicitante se envíe en application/create en nueva alta de TC
-- L22: TC-003-1-0010-UNE - API - Tarjeta de Crédito - Verificar que el dato cuilSolicitante se envíe en application/update en alta de TC ya iniciada
 - L22: TC-003-1-0010-UNE - API - Tarjeta de Crédito - Verificar que el dato cuilSolicitante se envíe en application/update en alta de TC ya iniciada
 
 ## `tests/api/005-home/`
@@ -306,7 +204,6 @@ Especificaciones: `specs/home/terms-and-conditions.api.plan.md`
 Fixtures: `termsAndConditionsApi`
 
 - L8: TC-005-1-0001-UNE - obtiene los términos y condiciones generales
-- L8: TC-005-1-0001-UNE - obtiene los términos y condiciones generales
 
 ## `tests/api/007-investments/`
 
@@ -317,13 +214,11 @@ Especificaciones: `specs/investments/fund-risk-filter.ui.plan.md`, `specs/invest
 Fixtures: `loginApi`, `loginCredentials`, `traditionalFixedTermApi`, `traditionalFixedTermData`
 
 - L8: TC-007-1-0002-UNE - constituye un plazo fijo tradicional en ARS a 30 días
-- L8: TC-007-1-0002-UNE - constituye un plazo fijo tradicional en ARS a 30 días
 
 ### `tests/api/007-investments/should-create-usd-fixed-term.api.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`, `originAccountData`, `productWidgetsApi`, `traditionalFixedTermApi`
 
-- L9: TC-007-1-0008-UNE - Plazo Fijo Tradicional en Dólares
 - L9: TC-007-1-0008-UNE - Plazo Fijo Tradicional en Dólares
 
 ### `tests/api/007-investments/should-exchange-dollars.api.spec.ts`
@@ -331,8 +226,6 @@ Fixtures: `loginApi`, `loginCredentials`, `originAccountData`, `productWidgetsAp
 Fixtures: `accountPairData`, `dollarExchangeApi`, `loginApi`, `loginCredentials`, `productWidgetsApi`
 
 - L9: TC-007-1-0003-UNE - Compra de moneda extranjera (USD)
-- L9: TC-007-1-0003-UNE - Compra de moneda extranjera (USD)
-- L32: TC-007-1-0001-UNE - Venta de moneda extranjera (USD)
 - L32: TC-007-1-0001-UNE - Venta de moneda extranjera (USD)
 
 ### `tests/api/007-investments/should-list-fund-movements.api.spec.ts`
@@ -340,8 +233,6 @@ Fixtures: `accountPairData`, `dollarExchangeApi`, `loginApi`, `loginCredentials`
 Fixtures: `investmentFundsApi`, `loginApi`, `loginCredentials`
 
 - L22: TC-007-1-0006-UNE - FCI - Movimientos
-- L22: TC-007-1-0006-UNE - FCI - Movimientos
-- L38: TC-007-1-0007-UNE - FCI - Movimientos con descarga PDF
 - L38: TC-007-1-0007-UNE - FCI - Movimientos con descarga PDF
 
 ### `tests/api/007-investments/should-open-investment-funds.api.spec.ts`
@@ -349,13 +240,11 @@ Fixtures: `investmentFundsApi`, `loginApi`, `loginCredentials`
 Fixtures: `investmentFundsApi`, `loginApi`, `loginCredentials`
 
 - L9: TC-007-1-0004-UNE - FCI - Simular API (inicio a la funcionalidad)
-- L9: TC-007-1-0004-UNE - FCI - Simular API (inicio a la funcionalidad)
 
 ### `tests/api/007-investments/should-show-commitent-account-closure-form.api.spec.ts`
 
 Fixtures: `commitentAccountApi`, `loginApi`, `loginCredentials`
 
-- L16: TC-007-1-0005-UNE - FCI - Solicitar baja cuenta comitente - Validación de pantalla
 - L16: TC-007-1-0005-UNE - FCI - Solicitar baja cuenta comitente - Validación de pantalla
 
 ## `tests/api/009-messages/`
@@ -367,15 +256,12 @@ Especificaciones: `specs/messages/mark-message-unread.ui.plan.md`, `specs/messag
 Fixtures: `loginApi`, `loginCredentials`, `receivedMessagesApi`
 
 - L11: TC-009-1-0001-UNE - Mensajes - Sin Leer
-- L11: TC-009-1-0001-UNE - Mensajes - Sin Leer
-- L26: TC-009-1-0002-UNE - Mensajes - Leídos
 - L26: TC-009-1-0002-UNE - Mensajes - Leídos
 
 ### `tests/api/009-messages/should-list-received-messages.api.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`, `receivedMessagesApi`
 
-- L8: TC-009-1-0003-UNE - consulta los mensajes recibidos
 - L8: TC-009-1-0003-UNE - consulta los mensajes recibidos
 
 ## `tests/api/011-payments/`
@@ -387,13 +273,11 @@ Especificaciones: `specs/payments/debin-generation.api.plan.md`
 Fixtures: `debinOperationsApi`, `debitCardData`, `loginApi`, `loginCredentials`, `paymentLinkSyncApi`, `productWidgetsApi`
 
 - L10: TC-011-1-0004-UNE - Aceptación de DEBIN
-- L10: TC-011-1-0004-UNE - Aceptación de DEBIN
 
 ### `tests/api/011-payments/should-adhere-tax-service.api.spec.ts`
 
 Fixtures: `debitCardData`, `loginApi`, `loginCredentials`, `paymentLinkSyncApi`, `productWidgetsApi`, `taxServicesApi`
 
-- L11: TC-011-1-0005-UNE - Adherir nuevo pago o servicio
 - L11: TC-011-1-0005-UNE - Adherir nuevo pago o servicio
 
 ### `tests/api/011-payments/should-download-payment-receipts-period.api.spec.ts`
@@ -401,8 +285,6 @@ Fixtures: `debitCardData`, `loginApi`, `loginCredentials`, `paymentLinkSyncApi`,
 Fixtures: `debitCardData`, `loginApi`, `loginCredentials`, `paymentLinkSyncApi`, `paymentReceiptsApi`, `productWidgetsApi`, `receivedMessagesApi`
 
 - L26: TC-011-1-0007-UNE - Pagos - Comprobantes - Descargar periodo en PDF
-- L26: TC-011-1-0007-UNE - Pagos - Comprobantes - Descargar periodo en PDF
-- L26: TC-011-1-0008-UNE - Pagos - Comprobantes - Descargar periodo en XLS
 - L26: TC-011-1-0008-UNE - Pagos - Comprobantes - Descargar periodo en XLS
 
 ### `tests/api/011-payments/should-generate-debin.api.spec.ts`
@@ -410,13 +292,11 @@ Fixtures: `debitCardData`, `loginApi`, `loginCredentials`, `paymentLinkSyncApi`,
 Fixtures: `debinGenerationApi`, `debinGenerationData`, `loginApi`, `loginCredentials`
 
 - L8: TC-011-1-0002-UNE - genera una orden DEBIN seleccionando CBU
-- L8: TC-011-1-0002-UNE - genera una orden DEBIN seleccionando CBU
 
 ### `tests/api/011-payments/should-list-debin-history.api.spec.ts`
 
 Fixtures: `debinOperationsApi`, `loginApi`, `loginCredentials`, `paymentLinkSyncApi`
 
-- L8: TC-011-1-0001-UNE - DEBIN Comprador - Consulta DEBINes históricos - Listado
 - L8: TC-011-1-0001-UNE - DEBIN Comprador - Consulta DEBINes históricos - Listado
 
 ### `tests/api/011-payments/should-list-payment-receipts.api.spec.ts`
@@ -424,13 +304,11 @@ Fixtures: `debinOperationsApi`, `loginApi`, `loginCredentials`, `paymentLinkSync
 Fixtures: `debitCardData`, `loginApi`, `loginCredentials`, `paymentLinkSyncApi`, `paymentReceiptsApi`, `productWidgetsApi`
 
 - L12: TC-011-1-0006-UNE - Pagos - Consulta de comprobantes
-- L12: TC-011-1-0006-UNE - Pagos - Consulta de comprobantes
 
 ### `tests/api/011-payments/should-pay-tax-service-without-base.api.spec.ts`
 
 Fixtures: `debitCardData`, `loginApi`, `loginCredentials`, `originAccountData`, `paymentLinkSyncApi`, `productWidgetsApi`, `taxServicesApi`
 
-- L11: TC-011-1-0009-UNE - Pagar impuesto/servicio nuevo pago (sin base)
 - L11: TC-011-1-0009-UNE - Pagar impuesto/servicio nuevo pago (sin base)
 
 ### `tests/api/011-payments/should-remove-tax-service.api.spec.ts`
@@ -438,13 +316,11 @@ Fixtures: `debitCardData`, `loginApi`, `loginCredentials`, `originAccountData`, 
 Fixtures: `debitCardData`, `loginApi`, `loginCredentials`, `paymentLinkSyncApi`, `productWidgetsApi`, `taxServicesApi`
 
 - L10: TC-011-1-0010-UNE - Pagar impuesto/servicio - Eliminar servicio
-- L10: TC-011-1-0010-UNE - Pagar impuesto/servicio - Eliminar servicio
 
 ### `tests/api/011-payments/should-subscribe-recurring-debin.api.spec.ts`
 
 Fixtures: `debinOperationsApi`, `loginApi`, `loginCredentials`, `originAccountData`, `paymentLinkSyncApi`, `productWidgetsApi`
 
-- L11: TC-011-1-0003-UNE - Adherir DEBIN recurrente (Pesos) - segundo factor por SMS
 - L11: TC-011-1-0003-UNE - Adherir DEBIN recurrente (Pesos) - segundo factor por SMS
 
 ## `tests/api/012-procedures/`
@@ -456,7 +332,6 @@ Especificaciones: `specs/procedures/current-online-procedures.api.plan.md`
 Fixtures: `currentOnlineProceduresApi`, `loginApi`, `loginCredentials`
 
 - L8: TC-012-1-0001-UNE - consulta los trámites vigentes
-- L8: TC-012-1-0001-UNE - consulta los trámites vigentes
 
 ## `tests/api/013-profile/`
 
@@ -467,13 +342,11 @@ Especificaciones: `specs/profile/change-address.ui.plan.md`, `specs/profile/chan
 Fixtures: `loginApi`, `loginCredentials`, `phoneChangeApi`
 
 - L9: TC-013-1-0001-UNE - cambia el teléfono y verifica que quedó persistido
-- L9: TC-013-1-0001-UNE - cambia el teléfono y verifica que quedó persistido
 
 ### `tests/api/013-profile/should-get-notification-preferences.api.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`, `notificationPreferencesApi`
 
-- L8: TC-013-1-0002-UNE - consulta la configuración de notificaciones
 - L8: TC-013-1-0002-UNE - consulta la configuración de notificaciones
 
 ## `tests/api/015-transfers/`
@@ -485,12 +358,8 @@ Especificaciones: `specs/transfers/own-account-transfer.api.plan.md`, `specs/tra
 Fixtures: `credinApi`, `loginApi`, `loginCredentials`, `productWidgetsApi`, `transferCaseData`
 
 - L56: TC-015-1-0002-UNE - Generar CREDIN - Cuenta propia $ (mismo Banco u otro) - Mas de una cuenta Debito - CBU - Segundo factor por SMS
-- L56: TC-015-1-0002-UNE - Generar CREDIN - Cuenta propia $ (mismo Banco u otro) - Mas de una cuenta Debito - CBU - Segundo factor por SMS
-- L56: TC-015-1-0031-UNE - TRANSFERENCIAS - Generar CREDIN - Dolares
 - L56: TC-015-1-0031-UNE - TRANSFERENCIAS - Generar CREDIN - Dolares
 - L73: TC-015-1-0032-UNE - TRANSFERENCIAS - Consultar CREDIN Originante
-- L73: TC-015-1-0032-UNE - TRANSFERENCIAS - Consultar CREDIN Originante
-- L73: TC-015-1-0033-UNE - TRANSFERENCIAS - Consultar CREDIN destinatario
 - L73: TC-015-1-0033-UNE - TRANSFERENCIAS - Consultar CREDIN destinatario
 
 ### `tests/api/015-transfers/should-list-transfer-history.api.spec.ts`
@@ -498,18 +367,11 @@ Fixtures: `credinApi`, `loginApi`, `loginCredentials`, `productWidgetsApi`, `tra
 Fixtures: `loginApi`, `loginCredentials`, `thirdPartyTransfersApi`, `thirdPartyTransferWorkflow`, `transferCaseData`, `transferHistoryApi`
 
 - L20: TC-015-1-0045-UNE - Transferencias programadas - Fecha específica agendada - Historial de transferencias
-- L20: TC-015-1-0045-UNE - Transferencias programadas - Fecha específica agendada - Historial de transferencias
-- L66: TC-015-1-0046-UNE - Transferencias a contacto agendado - Historial de transferencias
 - L66: TC-015-1-0046-UNE - Transferencias a contacto agendado - Historial de transferencias
 - L116: TC-015-1-0047-UNE - Transferencias a CVU - Historial de transferencias
-- L116: TC-015-1-0047-UNE - Transferencias a CVU - Historial de transferencias
-- L158: TC-015-1-0036-UNE - Transferencias realizadas - Ver mis transferencias - Filtros
 - L158: TC-015-1-0036-UNE - Transferencias realizadas - Ver mis transferencias - Filtros
 - L185: TC-015-1-0037-UNE - Transferencias realizadas - Ver mis transferencias - rango más nombre en buscador
-- L185: TC-015-1-0037-UNE - Transferencias realizadas - Ver mis transferencias - rango más nombre en buscador
 - L185: TC-015-1-0038-UNE - Transferencias realizadas - Ver mis transferencias - rango más nombre en buscador
-- L185: TC-015-1-0038-UNE - Transferencias realizadas - Ver mis transferencias - rango más nombre en buscador
-- L203: TC-015-1-0048-UNE - Transferencias realizadas - Ver mis transferencias - Búsqueda sin resultados
 - L203: TC-015-1-0048-UNE - Transferencias realizadas - Ver mis transferencias - Búsqueda sin resultados
 
 ### `tests/api/015-transfers/should-manage-transfer-contacts.api.spec.ts`
@@ -517,8 +379,6 @@ Fixtures: `loginApi`, `loginCredentials`, `thirdPartyTransfersApi`, `thirdPartyT
 Fixtures: `loginApi`, `loginCredentials`, `thirdPartyTransfersApi`, `thirdPartyTransferWorkflow`, `transferCaseData`
 
 - L11: TC-015-1-0004-UNE - Transferencias - Añadir nuevo destinatario - Con cbu valido
-- L11: TC-015-1-0004-UNE - Transferencias - Añadir nuevo destinatario - Con cbu valido
-- L38: TC-015-1-0035-UNE - Transferencias - Eliminar destinatario de agenda
 - L38: TC-015-1-0035-UNE - Transferencias - Eliminar destinatario de agenda
 
 ### `tests/api/015-transfers/should-schedule-transfers.api.spec.ts`
@@ -526,36 +386,20 @@ Fixtures: `loginApi`, `loginCredentials`, `thirdPartyTransfersApi`, `thirdPartyT
 Fixtures: `loginApi`, `loginCredentials`, `productWidgetsApi`, `thirdPartyTransfersApi`, `thirdPartyTransferWorkflow`, `transferCaseData`
 
 - L47: TC-015-1-0018-UNE - Transferencias Programadas (Fecha especifica) CBU - terceros mismo banco USD - NO AGENDADOS
-- L47: TC-015-1-0018-UNE - Transferencias Programadas (Fecha especifica) CBU - terceros mismo banco USD - NO AGENDADOS
-- L47: TC-015-1-0019-UNE - Transferencias Programadas (Fecha especifica) CBU - terceros otros bancos $ - NO AGENDADOS
 - L47: TC-015-1-0019-UNE - Transferencias Programadas (Fecha especifica) CBU - terceros otros bancos $ - NO AGENDADOS
 - L47: TC-015-1-0020-UNE - Transferencias Programadas (Fecha especifica) CBU - terceros otros bancos USD - NO AGENDADOS
-- L47: TC-015-1-0020-UNE - Transferencias Programadas (Fecha especifica) CBU - terceros otros bancos USD - NO AGENDADOS
-- L47: TC-015-1-0022-UNE - Transferencias Programadas (Fecha especifica) ALIAS - terceros mismo banco USD - NO AGENDADOS
 - L47: TC-015-1-0022-UNE - Transferencias Programadas (Fecha especifica) ALIAS - terceros mismo banco USD - NO AGENDADOS
 - L47: TC-015-1-0023-UNE - Transferencias Programadas (Fecha especifica) ALIAS - terceros otros bancos $ - NO AGENDADOS
-- L47: TC-015-1-0023-UNE - Transferencias Programadas (Fecha especifica) ALIAS - terceros otros bancos $ - NO AGENDADOS
-- L47: TC-015-1-0024-UNE - Transferencias Programadas (Fecha especifica) ALIAS - terceros otros bancos USD - NO AGENDADOS
 - L47: TC-015-1-0024-UNE - Transferencias Programadas (Fecha especifica) ALIAS - terceros otros bancos USD - NO AGENDADOS
 - L47: TC-015-1-0026-UNE - Transferencias Programadas (Fecha especifica) CVU - terceros $ NO AGENDADOS
-- L47: TC-015-1-0026-UNE - Transferencias Programadas (Fecha especifica) CVU - terceros $ NO AGENDADOS
-- L47: TC-015-1-0027-UNE - Transferencias Programadas (Fecha especifica) ALIAS de CVU - terceros $ NO AGENDADOS
 - L47: TC-015-1-0027-UNE - Transferencias Programadas (Fecha especifica) ALIAS de CVU - terceros $ NO AGENDADOS
 - L84: TC-015-1-0010-UNE - Transferencias CBU - terceros otros bancos USD - NO AGENDADOS
-- L84: TC-015-1-0010-UNE - Transferencias CBU - terceros otros bancos USD - NO AGENDADOS
-- L129: TC-015-1-0040-UNE - Programada (fecha específica) CBU a cuentas propias otro banco $ - NO AGENDADO
 - L129: TC-015-1-0040-UNE - Programada (fecha específica) CBU a cuentas propias otro banco $ - NO AGENDADO
 - L129: TC-015-1-0042-UNE - Programada (fecha específica) CBU a Terceros otro banco $ - NO AGENDADOS
-- L129: TC-015-1-0042-UNE - Programada (fecha específica) CBU a Terceros otro banco $ - NO AGENDADOS
-- L178: TC-015-1-0015-UNE - Programadas (fecha específica) - terceros mismo banco $ - AGENDADOS
 - L178: TC-015-1-0015-UNE - Programadas (fecha específica) - terceros mismo banco $ - AGENDADOS
 - L178: TC-015-1-0016-UNE - Programadas (fecha específica) - terceros otros bancos $ - AGENDADOS
-- L178: TC-015-1-0016-UNE - Programadas (fecha específica) - terceros otros bancos $ - AGENDADOS
-- L178: TC-015-1-0017-UNE - Programadas (fecha específica) - terceros otros bancos USD - AGENDADOS
 - L178: TC-015-1-0017-UNE - Programadas (fecha específica) - terceros otros bancos USD - AGENDADOS
 - L178: TC-015-1-0025-UNE - Programadas (fecha específica) CVU - terceros $ AGENDADOS
-- L178: TC-015-1-0025-UNE - Programadas (fecha específica) CVU - terceros $ AGENDADOS
-- L215: TC-015-1-0001-UNE - Transferencia intrabancaria en pesos - propias - programada
 - L215: TC-015-1-0001-UNE - Transferencia intrabancaria en pesos - propias - programada
 
 ### `tests/api/015-transfers/should-transfer-between-own-accounts.api.spec.ts`
@@ -563,21 +407,15 @@ Fixtures: `loginApi`, `loginCredentials`, `productWidgetsApi`, `thirdPartyTransf
 Fixtures: `loginApi`, `loginCredentials`, `ownAccountTransferApi`, `ownAccountTransferData`
 
 - L8: TC-015-1-0003-UNE - transfiere entre cuentas propias y valida el ticket @critical
-- L8: TC-015-1-0003-UNE - transfiere entre cuentas propias y valida el ticket @critical
 
 ### `tests/api/015-transfers/should-transfer-to-adhered-contact.api.spec.ts`
 
 Fixtures: `loginApi`, `loginCredentials`, `thirdPartyTransfersApi`, `thirdPartyTransferWorkflow`, `transferCaseData`
 
 - L20: TC-015-1-0006-UNE - TRANSFERENCIAS - terceros mismo banco $ - AGENDADOS
-- L20: TC-015-1-0006-UNE - TRANSFERENCIAS - terceros mismo banco $ - AGENDADOS
-- L20: TC-015-1-0007-UNE - Transferencias - terceros mismo banco USD - AGENDADOS
 - L20: TC-015-1-0007-UNE - Transferencias - terceros mismo banco USD - AGENDADOS
 - L20: TC-015-1-0008-UNE - Transferencias - terceros otros bancos $ - AGENDADOS
-- L20: TC-015-1-0008-UNE - Transferencias - terceros otros bancos $ - AGENDADOS
 - L20: TC-015-1-0009-UNE - Transferencias - terceros mismo banco USD - AGENDADOS
-- L20: TC-015-1-0009-UNE - Transferencias - terceros mismo banco USD - AGENDADOS
-- L20: TC-015-1-0013-UNE - Transferencias CVU - terceros $ AGENDADOS
 - L20: TC-015-1-0013-UNE - Transferencias CVU - terceros $ AGENDADOS
 
 ### `tests/api/015-transfers/should-transfer-to-third-parties.api.spec.ts`
@@ -585,30 +423,17 @@ Fixtures: `loginApi`, `loginCredentials`, `thirdPartyTransfersApi`, `thirdPartyT
 Fixtures: `loginApi`, `loginCredentials`, `thirdPartyTransfersApi`, `thirdPartyTransferWorkflow`, `transferCaseData`
 
 - L117: TC-015-1-0005-UNE - A cuentas de terceros ALIAS - otros bancos - Pesos
-- L117: TC-015-1-0005-UNE - A cuentas de terceros ALIAS - otros bancos - Pesos
-- L117: TC-015-1-0011-UNE - ALIAS - terceros mismo banco USD - NO AGENDADOS
 - L117: TC-015-1-0011-UNE - ALIAS - terceros mismo banco USD - NO AGENDADOS
 - L117: TC-015-1-0012-UNE - ALIAS - terceros otros bancos USD - NO AGENDADOS
-- L117: TC-015-1-0012-UNE - ALIAS - terceros otros bancos USD - NO AGENDADOS
-- L117: TC-015-1-0014-UNE - ALIAS de CVU - terceros $ NO AGENDADOS
 - L117: TC-015-1-0014-UNE - ALIAS de CVU - terceros $ NO AGENDADOS
 - L117: TC-015-1-0028-UNE - A cuentas de terceros CBU - mismo banco - Pesos
-- L117: TC-015-1-0028-UNE - A cuentas de terceros CBU - mismo banco - Pesos
-- L117: TC-015-1-0029-UNE - A cuentas de terceros ALIAS - mismo banco - Pesos
 - L117: TC-015-1-0029-UNE - A cuentas de terceros ALIAS - mismo banco - Pesos
 - L117: TC-015-1-0034-UNE - A cuentas de terceros CVU - otros bancos - Pesos
-- L117: TC-015-1-0034-UNE - A cuentas de terceros CVU - otros bancos - Pesos
-- L117: TC-015-1-0043-UNE - Saldo actualizado - Transferencias a un Alias CVU en pesos
 - L117: TC-015-1-0043-UNE - Saldo actualizado - Transferencias a un Alias CVU en pesos
 - L117: TC-015-1-0044-UNE - Saldo actualizado - Transferencias a un Alias CBU en dólares
-- L117: TC-015-1-0044-UNE - Saldo actualizado - Transferencias a un Alias CBU en dólares
-- L174: TC-015-1-0021-UNE - Transferencias Programadas (Fecha especifica) ALIAS - terceros mismo banco $ - NO AGENDADOS
 - L174: TC-015-1-0021-UNE - Transferencias Programadas (Fecha especifica) ALIAS - terceros mismo banco $ - NO AGENDADOS
 - L174: TC-015-1-0030-UNE - Transferencias Programadas (Fecha especifica) CBU - terceros mismo banco $ - NO AGENDADOS
-- L174: TC-015-1-0030-UNE - Transferencias Programadas (Fecha especifica) CBU - terceros mismo banco $ - NO AGENDADOS
 - L213: TC-015-1-0039-UNE - Transferencia a cuentas propias con CBU de otra entidad sin el campo Descripción al agendarse
-- L213: TC-015-1-0039-UNE - Transferencia a cuentas propias con CBU de otra entidad sin el campo Descripción al agendarse
-- L213: TC-015-1-0041-UNE - Transferencia a Terceros con CBU de otra entidad sin el campo Descripción
 - L213: TC-015-1-0041-UNE - Transferencia a Terceros con CBU de otra entidad sin el campo Descripción
 
 ## `tests/ui/001-accounts/`

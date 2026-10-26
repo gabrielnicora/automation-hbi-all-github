@@ -803,6 +803,13 @@ necesita una regla determinística para numerar casos nuevos.
   familia registrada, o si un
   test usa un ID no registrado, un ID anterior en lugar del nuevo, o un ID cuya familia o canal no
   corresponde a su carpeta.
+- Ampliación del 26 de octubre de 2026, por la revisión del MR !4 (hallazgos H-01, H-04 y H-05):
+  el control también valida los escenarios efectivos que lista `playwright test --list`, sin
+  ejecutarlos. Cada título empieza con `<ID> - `, el ID tiene formato válido y está registrado,
+  ningún ID identifica a dos escenarios y cada spec corre sólo en el proyecto de su canal. Las
+  menciones de IDs en comentarios no cuentan como identidad. Si al integrar dos ramas ambas
+  asignaron el mismo número, la rama que integra después obtiene un ID nuevo con `case:new` para
+  su escenario.
 - Migración del 22 y 23 de octubre de 2026: se renombraron las carpetas de tests por familia y
   se renumeraron los tests y las filas de `test-data/private/bersa.json`, asignando la secuencia
   en el orden de los IDs anteriores. La fila del único ID compartido entre canales

@@ -3,7 +3,9 @@
 //   node scripts/case-ids.mjs new <familia> <api|ui> [--new-family]  asigna y registra el próximo ID
 // Formato: TC-<FFF familia>-<C canal: 1 api, 2 ui>-<NNNN secuencia>-UNE.
 // Carpetas: tests/<canal>/<FFF>-<familia>/.
+import { spawnSync } from 'node:child_process';
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
 import path from 'node:path';
 
 const ROOT = process.cwd();
@@ -101,6 +103,8 @@ function check() {
     }
   }
 
+  errors.push(...checkScenarios(byId));
+
   if (errors.length > 0) {
     console.error('IDs de casos inválidos (SPEC.md, sección 10.1):');
     errors.forEach((error) => console.error(`  ${error}`));
@@ -108,6 +112,80 @@ function check() {
   }
 
   console.log(`IDs de casos: ${registry.cases.length} registrados, carpetas y tests consistentes.`);
+}
+
+// Escenarios efectivos según Playwright (--list no ejecuta tests ni llama al banco).
+function listScenarios() {
+  const cli = createRequire(path.join(ROOT, 'package.json')).resolve('@playwright/test/cli');
+  const result = spawnSync(process.execPath, [cli, 'test', '--list', '--reporter=json'], {
+    cwd: ROOT,
+    encoding: 'utf8',
+    maxBuffer: 64 * 1024 * 1024,
+  });
+  let report;
+  try {
+    report = JSON.parse(result.stdout.slice(result.stdout.indexOf('{')));
+  } catch {
+    return { errors: [`playwright --list no devolvió JSON: ${(result.stderr || result.stdout).trim()}`] };
+  }
+
+  const scenarios = [];
+  const walk = (suite) => {
+    for (const spec of suite.specs ?? []) {
+      const file = path.relative(ROOT, path.join(report.config.rootDir, spec.file)).split(path.sep).join('/');
+      for (const test of spec.tests) {
+        scenarios.push({ file, line: spec.line, title: spec.title, project: test.projectName });
+      }
+    }
+    (suite.suites ?? []).forEach(walk);
+  };
+  (report.suites ?? []).forEach(walk);
+  return { scenarios, errors: (report.errors ?? []).map((error) => `playwright --list: ${error.message}`) };
+}
+
+// Cada escenario declara un ID válido y registrado al inicio del título, corre sólo en el
+// proyecto de su canal, y ningún ID identifica a dos escenarios distintos.
+function checkScenarios(byId) {
+  const { scenarios, errors } = listScenarios();
+  if (!scenarios) return errors;
+
+  const ownerById = new Map();
+  for (const { file, line, title, project } of scenarios) {
+    const where = `${file}:${line}`;
+    const channel = file.split('/')[1];
+    const family = FOLDER_PATTERN.exec(file.split('/')[2] ?? '')?.[2];
+
+    if (project !== channel) {
+      errors.push(`${where}: el proyecto "${project}" no debe incluir tests de tests/${channel}/.`);
+      continue;
+    }
+    const id = /^(\S+) - /.exec(title)?.[1];
+    if (!id) {
+      errors.push(`${where}: el título "${title}" debe empezar con "<ID> - ".`);
+      continue;
+    }
+    if (!ID_PATTERN.test(id)) {
+      errors.push(`${where}: ${id} no cumple TC-<FFF>-<C>-<NNNN>-UNE.`);
+      continue;
+    }
+    const entry = byId.get(id);
+    if (!entry) {
+      errors.push(`${where}: ${id} no está registrado. Obtenerlo con pnpm run case:new -- ${family} ${channel}.`);
+      continue;
+    }
+    if (entry.family !== family || entry.channel !== channel) {
+      errors.push(`${where}: ${id} está registrado para ${entry.family}/${entry.channel}.`);
+    }
+    const owner = ownerById.get(id);
+    if (owner) {
+      errors.push(
+        `${where}: ${id} ya identifica a ${owner}. Asignar un ID nuevo con pnpm run case:new -- ${family} ${channel}.`,
+      );
+    } else {
+      ownerById.set(id, where);
+    }
+  }
+  return errors;
 }
 
 function allocate(family, channel, allowNewFamily) {

@@ -41,6 +41,7 @@ export default defineConfig({
     },
     {
       name: 'ui',
+      testMatch: /tests\/ui\/.*\.spec\.ts/,
       use: { browserName: 'chromium' },
     },
   ],

@@ -185,7 +185,8 @@ códigos, y Base64 grande se reemplaza por su longitud.
   Por ejemplo, distintos riesgos de fondos podrían compartir la secuencia de filtrado
   si cada variante verifica que las filas correspondan al riesgo seleccionado.
 - Cada variante funcional debe producir un test individual, con título, identificador
-  y datos aprobados. El mismo caso en API y UI conserva el ID y se distingue por canal.
+  y datos aprobados. El mismo caso en API y UI recibe un ID distinto por canal
+  (`SPEC.md`, sección 10.1); ambos pueden compartir el usuario de prueba, no el ID.
   No recorrer varios casos dentro de un único test.
 - No elegir entre éxito y error según lo que devuelva la aplicación: el resultado
   esperado se define antes de ejecutar. Las decisiones funcionales previstas por la
